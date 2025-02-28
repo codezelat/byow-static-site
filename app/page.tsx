@@ -1,7 +1,13 @@
-import Image from "next/image";
+import type { NextPage } from 'next';
+import Footer from './components/footer';
 
-export default function Home() {
+
+const Home: NextPage = () => {
   return (
-    <div className=""></div>
+    <div>
+     <Footer/>
+    </div>
   );
-}
+};
+
+export default Home;
