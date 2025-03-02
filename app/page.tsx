@@ -5,7 +5,7 @@ import Footer from './components/footer';
 const Home: NextPage = () => {
   return (
     <div>
-     <Footer/>
+     
     </div>
   );
 };
