@@ -15,15 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased relative w-full h-full">
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-        >
+            {/* Top Container (Video) - Positioned behind the MiddleContainerAbout */}
+            <div className="absolute top-0 left-0 w-full h-[1074px] z-0">
+        <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
           <source src="/videos/Background Video.mp4" type="video/mp4" />
         </video>
+      </div>
 
         {/* Everything is wrapped inside BackgroundContent */}
         <BackgroundContent>{children}</BackgroundContent>
