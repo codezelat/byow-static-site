@@ -1,7 +1,6 @@
 // /app/about/page.tsx
 import React from 'react';
 import MiddleContainerAbout from '../components/middle-container-about';
-import Footer from '../components/footer';
 import aboutDescription from '../data/middlecontainer';
 
 export default function AboutPage() {
@@ -29,8 +28,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
+  
+     
     </div>
   );
 }

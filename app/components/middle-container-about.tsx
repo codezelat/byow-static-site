@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import aboutDescription from '../data/middlecontainer';
 
+
 export default function MiddleContainerAbout() {
   const { 
     title, 

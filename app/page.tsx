@@ -1,16 +1,14 @@
-// import type { NextPage } from 'next';
-// // import Footer from './components/footer';
-// import AboutPage from './about/page';
 
 
-// const Home: NextPage = () => {
-//   return (
-//     <div>
-//      {/* <Footer/> */}
-//      <AboutPage/>
-     
-//     </div>
-//   );
-// };
+import AboutPage from "./about/page";
+import { NextPage } from 'next';
 
-// export default Home;
+const Home: NextPage = () => {
+  return (
+    <div>
+     <AboutPage />
+    </div>
+  );
+};
+
+export default Home;
