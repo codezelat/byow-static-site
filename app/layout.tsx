@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/footer";
+import BackgroundContent from "./components/BackgroundContent"; // Import the new BackgroundContent
 
 export const metadata: Metadata = {
   title: "BYOW",
@@ -15,10 +14,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <Header /> 
-        <main className="container mx-auto px-6 py-8">{children}</main>
-        <Footer/>
+      <body className="antialiased relative w-full h-full">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+        >
+          <source src="/videos/Background Video.mp4" type="video/mp4" />
+        </video>
+
+        {/* Everything is wrapped inside BackgroundContent */}
+        <BackgroundContent>{children}</BackgroundContent>
       </body>
     </html>
   );
