@@ -3,47 +3,24 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Facebook as FacebookIcon,
-  LinkedIn as LinkedInIcon,
-  WhatsApp as WhatsAppIcon,
-  YouTube as YouTubeIcon,
-  Instagram as InstagramIcon,
-  X as XIcon,
-} from "@mui/icons-material";
-
-
-import {socialLinks, mainMenuLinks, quickLinks, contactInfo} from "../data/footerdata";
-
-const iconMap = {
-  FacebookIcon,
-  LinkedInIcon,
-  XIcon,
-  WhatsAppIcon,
-  YouTubeIcon,
-  InstagramIcon,
-};
+import { socialLinks, mainMenuLinks, quickLinks, contactInfo } from "../data/footerdata";
 
 const Footer: NextPage = () => {
   return (
     <footer className="bg-[#250059] text-white px-2 md:px-20 py-6 text-xs">
-      {/* Top Section with Social Icons and Description */}
       <div className="flex flex-col items-center">
         {/* Social Icons */}
         <div className="flex space-x-4 w-full md:w-1/3 mb-4 justify-center">
-          {socialLinks.map(({ id, Icon, url }) => {
-            const SocialIcon = iconMap[Icon as keyof typeof iconMap];
-            return (
-              <a key={id} href={url} className="text-xl cursor-pointer hover:text-purple-300 transition-colors">
-                <SocialIcon />
-              </a>
-            );
-          })}
+          {socialLinks.map(({ id, Icon, url }) => (
+            <a key={id} href={url} className="text-xl cursor-pointer hover:text-purple-300 transition-colors">
+              <Icon />
+            </a>
+          ))}
         </div>
 
         {/* Description */}
         <p className="mt-4 md:mt-0 w-full text-center leading-relaxed">
-          Empowering collaboration and productivity in shared spaces. Work on your projects, connect with others
+          Empowering collaboration and productivity in shared spaces. Work on your projects, connect with others.
         </p>
       </div>
 
@@ -84,15 +61,11 @@ const Footer: NextPage = () => {
           <div>
             <h3 className="font-semibold text-sm mb-5">Contact</h3>
             <ul className="space-y-1 mb-5">
-              <li className="mb-5">
-                <p className="hover:text-purple-300 transition-colors">{contactInfo.phone}</p>
-              </li>
-              <li className="mb-5">
-                <p className="hover:text-purple-300 transition-colors">{contactInfo.email}</p>
-              </li>
-              <li className="mb-5">
-                <p className="hover:text-purple-300 transition-colors">{contactInfo.address}</p>
-              </li>
+              {contactInfo.map(({ id, info }) => (
+                <li key={id} className="mb-5">
+                  <p className="hover:text-purple-300 transition-colors">{info}</p>
+                </li>
+              ))}
             </ul>
           </div>
 

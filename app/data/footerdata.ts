@@ -1,28 +1,30 @@
+import { Facebook, LinkedIn, X, WhatsApp, YouTube, Instagram } from "@mui/icons-material";
 
 export const socialLinks = [
-    { id: 1, name: "Facebook", Icon: "FacebookIcon", url: "#" },
-    { id: 2, name: "LinkedIn", Icon: "LinkedInIcon", url: "#" },
-    { id: 3, name: "X", Icon: "XIcon", url: "#" },
-    { id: 4, name: "WhatsApp", Icon: "WhatsAppIcon", url: "#" },
-    { id: 5, name: "YouTube", Icon: "YouTubeIcon", url: "#" },
-    { id: 6, name: "Instagram", Icon: "InstagramIcon", url: "#" },
-  ];
-  
-  export const mainMenuLinks = [
-    { id: 1, name: "Home", path: "/home" },
-    { id: 2, name: "About", path: "/explore-recruiters" },
-    { id: 3, name: "Service", path: "/about-us" },
-    { id: 4, name: "Product", path: "/contact-us" },
-  ];
-  
-  export const quickLinks = [
-    { id: 1, name: "Contact", path: "/privacy-policies" },
-    { id: 2, name: "Privacy Policies", path: "/sustainability-policies" },
-  ];
-  
-  export const contactInfo = {
-    phone: "+94 77 187 7955",
-    email: "info@byow.com",
-    address: "Union Place, Colombo 10, Sri Lanka.",
-  };
-  
+  { id: 1, Icon: Facebook, url: "https://facebook.com" },
+  { id: 2, Icon: LinkedIn, url: "https://linkedin.com" },
+  { id: 3, Icon: X, url: "https://twitter.com" },
+  { id: 4, Icon: WhatsApp, url: "https://wa.me/1234567890" },
+  { id: 5, Icon: YouTube, url: "https://youtube.com" },
+  { id: 6, Icon: Instagram, url: "https://instagram.com" },
+];
+
+export const mainMenuLinks = [
+  { id: 1, name: "Home", path: "/" },
+  { id: 2, name: "About", path: "/about" },
+  { id: 3, name: "Services", path: "/services" },
+  { id: 4, name: "Contact", path: "/contact" },
+];
+
+export const quickLinks = [
+  { id: 1, name: "FAQ", path: "/faq" },
+  { id: 2, name: "Support", path: "/support" },
+  { id: 3, name: "Terms of Service", path: "/terms" },
+  { id: 4, name: "Privacy Policy", path: "/privacy" },
+];
+
+export const contactInfo = [
+  { id: 1, info: "+123 456 7890" },
+  { id: 2, info: "contact@byow.com" },
+  { id: 3, info: "123 Street, City, Country" },
+];
