@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: "BYOW",
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Header /> 
+        <main className="container mx-auto px-6 py-8">{children}</main>
+        <Footer/>
+      </body>
     </html>
   );
 }

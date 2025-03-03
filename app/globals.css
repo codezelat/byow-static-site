@@ -1,27 +1,35 @@
+/* globals.css */
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Global Font Settings */
+.funnel-sans {
+  font-family: "Funnel Sans";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
+/* Dark Mode Handling */
 :root {
-  --background: #ffffff;
+  --background: #000000;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #000000;
   }
 }
 
-.funnel-sans  {
-  font-family: "Funnel Sans";
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+.container-wrapper {
+  margin-left: 200px;
+  margin-top: 45px;
+  margin-right: 200px;
+}
+body {
+  background-color: var(--background);
 }
 
 .container {
