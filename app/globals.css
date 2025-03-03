@@ -30,6 +30,7 @@
 }
 body {
   background-color: var(--background);
+
 }
 
 .container {
@@ -38,4 +39,17 @@ body {
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+@keyframes spin-counterclockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg); /* Negative value for counter-clockwise */
+  }
+}
+
+.animate-spin-counterclockwise {
+  animation: spin-counterclockwise 40s linear infinite;
 }

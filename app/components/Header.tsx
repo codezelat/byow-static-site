@@ -16,7 +16,7 @@ export default function Header() {
       <div className="  flex justify-between items-center px-8 h-[79px]">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold">
-           <Image src="/images/byow-logo.svg" alt="footer logo" width={161} height={79} />
+           <Image src="/images/byow-logo.svg" alt="header logo" width={161} height={79} />
         </Link>
 
         {/* Navigation */}
