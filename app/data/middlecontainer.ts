@@ -1,4 +1,3 @@
-// /app/data/aboutDescription.ts
 export interface AboutDescription {
     title: string;
     mainImage: {

@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import AboutPage from "./about/page";
 
 const Home: NextPage = () => {
   return (
@@ -43,9 +42,7 @@ const Home: NextPage = () => {
           </div>
         ))}
       </div>
-      <AboutPage/>
     </div>
-    
   );
 };
 

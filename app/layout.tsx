@@ -16,7 +16,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased relative w-full h-full">
         {/* Top Container (Video) - Positioned behind the MiddleContainerAbout */}
-        <div>
           <div className="absolute top-0 left-0 w-full h-[1074px] z-0">
             <video
               className="w-full h-full object-cover"
@@ -29,7 +28,6 @@ export default function RootLayout({
             </video>
           </div>
           <div className="bg-[#040010]"></div>
-        </div>
 
         {/* Everything is wrapped inside BackgroundContent */}
         <BackgroundContent>{children}</BackgroundContent>

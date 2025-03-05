@@ -22,7 +22,7 @@ export default function Header() {
         {/* Navigation */}
         <nav className="flex items-center rounded-full border gap-8 border-[#2D2836] p-2">
           <ul className="flex gap-8">
-            {["/", "/about", "/products", "/contact"].map((path, index) => {
+            {["/", "/about", "/service", "/product"].map((path, index) => {
               const isActive = pathname === path; // Check if current route matches
               const isHovered = hoveredLink === path; // Check hover state
 
@@ -58,7 +58,7 @@ export default function Header() {
         </nav>
 
         {/* Build Now Button */}
-        <button className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px]  px-6 py-2   transition">
+        <button className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px]  px-6 py-2   transition cursor-pointer">
           BUILD NOW
           <ArrowCircleRightOutlinedIcon/>
         </button>
