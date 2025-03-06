@@ -1,24 +1,38 @@
+"use client";
+
 import Image from 'next/image';
-import React from 'react';
+import { useState } from 'react';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import PopupPage from './popup';
+
 
 export default function Yoursuccess() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleGetStartedClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
-    <div className="bg-[#0E0021] min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden py-16">
+    <div className="bg-[#0E0021]  flex flex-col items-center justify-center text-center relative overflow-hidden py-6 ">
       {/* Background elements positioned as absolute */}
       <div className="absolute inset-0 z-0 flex items-center justify-center">
-    <Image 
-        src="/images/BG Pattern 1.svg" 
-        alt="bg pattern" 
-        fill 
-        className='w-1/2 h-1/2 relative'
-        style={{ 
+        <Image 
+          src="/images/BG Pattern 1.svg" 
+          alt="bg pattern" 
+          fill 
+          className='w-1/2 h-1/2 relative'
+          style={{ 
             objectFit: 'contain', 
             maxWidth: '869%', 
             maxHeight: '869%' 
-        }} 
-    />
-</div>
+          }} 
+        />
+      </div>
       
       {/* Digital handshake image */}
       <div className="relative z-10 w-full max-w-[824px] mx-auto mb-6">
@@ -37,18 +51,24 @@ export default function Yoursuccess() {
           Your Success is Our Next Story.
         </h1>
         <p className="text-white text-sm mb-8 max-w-[600px] mx-auto">
-          Whether youre redefining your brand, expanding your reach, or transforming your customer experience, BYOW is here to help you shine.
+          Whether you&apos;re redefining your brand, expanding your reach, or transforming your customer experience, BYOW is here to help you shine.
         </p>
         <p className="text-white text-sm mb-8">
-          Ready to Start Your Success Story? Lets Build Something Amazing!
+          Ready to Start Your Success Story? Let&apos;s Build Something Amazing!
         </p>
         
         {/* Button */}
-        <button className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] mx-auto transition hover:bg-[#6f23e0]">
+        <button 
+          onClick={handleGetStartedClick}
+          className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] mx-auto transition hover:bg-[#6f23e0]"
+        >
           GET STARTED
           <ArrowCircleRightOutlinedIcon />
         </button>
       </div>
+
+      {/* Popup conditionally rendered */}
+      {showPopup && <PopupPage onClose={handleClosePopup} />}
     </div>
   );
 }

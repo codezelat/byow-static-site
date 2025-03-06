@@ -14,10 +14,9 @@ export default function MiddleContainerAbout() {
     videoSrc
   } = aboutDescription;
 
-  const firstParagraphWithBreak = paragraphs[0].text.replace(
-    "and goals.", 
-    "and goals.<br/>"
-  );
+  const firstParagraphWithBreak = paragraphs[0].text
+    .replace("life online.", "life online.<br/> <br/>  ")
+
 
   return (
     <div className="container-wrapper mx-auto px-4">
@@ -40,7 +39,7 @@ export default function MiddleContainerAbout() {
 
         <div className="md:w-2/3">
           <h1 className='mb-5 text-[#8133F1] font-bold text-3xl text-left'>{title}</h1>
-          <p className="paragraph text-left mb" dangerouslySetInnerHTML={{ __html: firstParagraphWithBreak }}></p>
+          <p className="paragraph text-left mb" dangerouslySetInnerHTML={{ __html: firstParagraphWithBreak  }}></p>
         </div>
       </div>
       
