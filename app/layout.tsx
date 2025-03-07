@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import BackgroundContent from "./components/BackgroundContent"; // Import the new BackgroundContent
+import BackgroundContent from "./components/BackgroundContent"; 
 
 export const metadata: Metadata = {
   title: "BYOW",
@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased relative w-full h-full">
-        {/* Top Container (Video) - Positioned behind the MiddleContainerAbout */}
-        <div className="absolute top-0 left-0 w-full h-[1074px] z-0">
+      <body className="antialiased relative w-full h-full min-h-screen">
+        {/* Video section - top half */}
+        <div className="absolute top-0 left-0 w-full h-[50vh] xs:h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] xl:h-[1074px] z-0 overflow-hidden">
           <video
             className="w-full h-full object-cover"
             autoPlay
@@ -27,12 +27,14 @@ export default function RootLayout({
             <source src="/videos/Background Video.mp4" type="video/mp4" />
           </video>
         </div>
-
-        {/* Bottom Container (Background Color) */}
-        <div className="absolute top-[1074px] left-0 w-full h-[calc(100%-1074px)] bg-[#040010] z-0"></div>
-
-        {/* Everything is wrapped inside BackgroundContent */}
-        <BackgroundContent>{children}</BackgroundContent>
+        
+        {/* Solid color section - bottom half */}
+        <div className="absolute top-[50vh] xs:top-[60vh] sm:top-[70vh] md:top-[80vh] lg:top-[90vh] xl:top-[1074px] left-0 w-full bottom-0 bg-[#040010] z-0"></div>
+        
+        {/* Content wrapper that sits on top of both backgrounds */}
+        <div className="relative z-10 w-full min-h-screen">
+          <BackgroundContent>{children}</BackgroundContent>
+        </div>
       </body>
     </html>
   );

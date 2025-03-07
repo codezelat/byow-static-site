@@ -1,13 +1,11 @@
-// app/products/page.tsx (App Router)
 "use client";
 
 import { useState } from "react";
 import products from "../data/product";
-import ProjectCard from "../components/projectcard";
 import ProjectDetails from "../components/projectdetails";
+import ProjectGrid from "../components/projectgrid";
 
 export default function ProductPage() {
- 
   const [selectedProject, setSelectedProject] = useState<string>("athwela");
 
   // Function to handle card click
@@ -16,7 +14,7 @@ export default function ProductPage() {
   };
 
   // Get current product data
-  const currentProduct = products[selectedProject];
+  const currentProduct = products[selectedProject] || null; // Fallback for undefined
 
   return (
     <div className="w-full overflow-hidden py-8 px-4 md:px-8 container-wrapper">
@@ -26,24 +24,19 @@ export default function ProductPage() {
           Crafting Digital Masterpieces: Explore Our Work
         </h1>
         <p className="text-center text-gray-400 mt-2">
-        Reinforces BYOW’s mission of helping clients bring their visions to life
+          Reinforces BYOW’s mission of helping clients bring their visions to life
         </p>
       </div>
 
       {/* Project Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-        {Object.values(products).map((product) => (
-          <ProjectCard
-            key={product.id}
-            product={product}
-            isSelected={selectedProject === product.id}
-            onClick={() => handleCardClick(product.id)}
-          />
-        ))}
-      </div>
+      <ProjectGrid
+        products={Object.values(products)} // Convert products object to an array
+        selectedProductId={selectedProject}
+        onProductClick={handleCardClick}
+      />
 
       {/* Selected Project Details */}
-      <ProjectDetails product={currentProduct} />
+      {currentProduct && <ProjectDetails product={currentProduct} />}
     </div>
   );
 }

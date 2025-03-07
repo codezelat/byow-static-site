@@ -1,10 +1,21 @@
+"use client";
+
 import type { NextPage } from "next";
 import Image from "next/image";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
 import CardSection from "./components/CardSection";
+import { useEffect, useState } from "react";
+import IndustriesSection from "./components/IndustriesSection";
 
 const Home: NextPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Client-side detection for very small screens
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="flex flex-col text-center">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] mt-20 sm:mt-32 md:mt-40 lg:mt-[250px] font-bold text-white items-center justify-center ">
@@ -27,7 +38,7 @@ const Home: NextPage = () => {
         ].map((text, index) => (
           <div
             key={index}
-            className="w-[90%] sm:w-[45%] md:w-[314.75px] h-[200px] sm:h-[215px] rounded-2xl sm:rounded-[32px] border-[1px] p-6 sm:p-[50px] flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] relative"
+            className="w-full xs:w-[280px] sm:w-[45%] md:w-[314.75px] h-auto min-h-[150px] xs:min-h-[180px] sm:min-h-[200px] md:h-[215px] rounded-xl xs:rounded-2xl sm:rounded-[32px] border-[1px] p-3 xs:p-4 sm:p-6 md:p-[40px] lg:p-[50px] flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] relative"
             style={{
               borderImage:
                 "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
@@ -37,11 +48,11 @@ const Home: NextPage = () => {
             <Image
               src="/images/image.png"
               alt="quotation mark"
-              width={37.84}
-              height={26.8}
-              className="object-contain opacity-80 pb-5"
+              width={isMounted && window.innerWidth < 375 ? 30 : 37.84}
+              height={isMounted && window.innerWidth < 375 ? 20 : 26.8}
+              className="object-contain opacity-80 pb-3 xs:pb-4 sm:pb-5"
             />
-            <p className="text-sm sm:text-base md:text-lg">{text}</p>
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg">{text}</p>
           </div>
         ))}
       </div>
@@ -53,6 +64,9 @@ const Home: NextPage = () => {
       </div>
       <div>
         <CardSection />
+      </div>
+      <div>
+        <IndustriesSection/>
       </div>
     </div>
   );
