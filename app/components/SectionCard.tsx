@@ -113,7 +113,7 @@ const SectionCard: NextPage = () => {
   };
 
   return (
-    <div className="w-[1728px] h-auto">
+    <div className="w-[1728px] h-auto pt-36">
       <div
         className="w-[1328px] h-[518px] rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px]  "
         style={{

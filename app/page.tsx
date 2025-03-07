@@ -1,19 +1,23 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import SectionCard from "./components/SectionCard";
+import StepBar from "./components/StepsBar";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] mt-20 sm:mt-32 md:mt-40 lg:mt-[250px] font-bold text-white">
+    <div className="flex flex-col text-center">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] mt-20 sm:mt-32 md:mt-40 lg:mt-[250px] font-bold text-white items-center justify-center ">
         Why Stress Over Website Development?
       </h1>
-      <p className="text-sm sm:text-base md:text-lg lg:text-[16px] font-[400] text-white mt-4 max-w-2xl pt-10 sm:pt-20 md:pt-30 lg:pt-40">
-        Frustrated with the Process? Scroll for a Simpler Solution
-      </p>
+      {/* Centered Paragraph */}
+      <div className="flex justify-center pl-28">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[16px] font-[400] text-white mt-4 max-w-2xl pt-10 sm:pt-20 md:pt-30 lg:pt-40">
+          Frustrated with the Process? Scroll for a Simpler Solution
+        </p>
+      </div>
 
       {/* Cards Container */}
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-[23px] w-full sm:w-[90%] md:w-[1328px] mt-10 sm:mt-16 md:mt-20">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-[23px] w-full sm:w-[90%] md:w-[1328px] mt-10 sm:mt-16 md:mt-20 container-wrapper">
         {[
           "Templates can't reflect your unique vision",
           "CMS tools promise freedom but hide limitations",
@@ -39,10 +43,12 @@ const Home: NextPage = () => {
             <p className="text-sm sm:text-base md:text-lg">{text}</p>
           </div>
         ))}
-     
       </div>
       <div>
         <SectionCard />
+      </div>
+      <div>
+        <StepBar />
       </div>
     </div>
   );
