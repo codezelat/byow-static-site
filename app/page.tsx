@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
+import CardSection from "./components/CardSection";
 
 const Home: NextPage = () => {
   return (
@@ -49,6 +50,9 @@ const Home: NextPage = () => {
       </div>
       <div>
         <StepBar />
+      </div>
+      <div>
+        <CardSection />
       </div>
     </div>
   );
