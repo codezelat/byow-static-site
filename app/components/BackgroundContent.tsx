@@ -31,7 +31,7 @@ export default function BackgroundContent({
       {/* Everything is placed over the image & video */}
       <div className="relative z-10 flex flex-col h-full w-full">
         <Header />
-        <main className="flex-grow flex items-center justify-center text-center text-white ">
+        <main className="flex-grow flex  text-center text-white ">
           {children}
         </main>
         <Footer />

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-
+import SectionCard from "./components/SectionCard";
 
 const Home: NextPage = () => {
   return (
@@ -40,6 +40,9 @@ const Home: NextPage = () => {
           </div>
         ))}
      
+      </div>
+      <div>
+        <SectionCard />
       </div>
     </div>
   );
