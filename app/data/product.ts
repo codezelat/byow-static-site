@@ -32,7 +32,7 @@ export const products: Record<string, Product> = {
         appStore: true,
         googlePlay: true,
         subtitle: undefined,
-        
+        name: undefined
     },
     tidal: {
         id: "tidal",
@@ -64,7 +64,8 @@ export const products: Record<string, Product> = {
         ctaText: "Start Listening",
         appStore: true,
         googlePlay: true,
-        subtitle: undefined
+        subtitle: undefined,
+        name: undefined
     },
     databricks: {
         id: "databricks",
@@ -96,7 +97,8 @@ export const products: Record<string, Product> = {
         ctaText: "Get Started",
         appStore: false,
         googlePlay: false,
-        subtitle: undefined
+        subtitle: undefined,
+        name: undefined
     },
     razorpay: {
         id: "razorpay",
@@ -128,7 +130,8 @@ export const products: Record<string, Product> = {
         ctaText: "Start Accepting Payments",
         appStore: false,
         googlePlay: false,
-        subtitle: undefined
+        subtitle: undefined,
+        name: undefined
     }
   };
   

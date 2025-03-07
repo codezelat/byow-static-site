@@ -3,18 +3,14 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation"; // Import usePathname
 import { socialLinks, mainMenuLinks, quickLinks, contactInfo } from "../data/footerdata";
-import Yoursuccess from "./yoursuccess";
+
 
 const Footer: NextPage = () => {
-  const pathname = usePathname(); // Get the current route
 
   return (
     <>
-      {/* Conditionally render Yoursuccess only on the home page */}
-      {pathname === "/" && <Yoursuccess />}
-
+  
       <footer className="bg-[#250059] text-white px-2 md:px-20 py-6 text-xs">
         <div className="flex flex-col items-center">
           {/* Social Icons */}

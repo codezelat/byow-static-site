@@ -18,7 +18,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#060116] bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-[#060116] bg-opacity-50 flex items-center justify-center z-50 -mt-40">
       <div 
         className="relative w-[1000px] h-[500px] rounded-[64px] border border-opacity-100 p-16 bg-[#060116]"
         style={{
