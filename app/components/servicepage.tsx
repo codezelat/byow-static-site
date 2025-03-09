@@ -37,37 +37,34 @@ export default function ServicePage() {
   }, []);
 
   // If a service is selected, show the ServiceSinglePage
-  if (selectedService) {
-    return (
-      <div className="container-wrapper">
-        <button 
-          onClick={() => setSelectedService(null)}
-          className="mb-4 flex items-center text-[#8133F1] hover:underline"
+ // From your ServicePage component
+if (selectedService) {
+  return (
+    <div>
+      <button 
+        onClick={() => setSelectedService(null)}
+        className="mb-4 flex items-center text-[#8133F1] hover:underline"
+      >
+        <svg 
+          className="w-4 h-4 mr-2" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg 
-            className="w-4 h-4 mr-2" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Back to Services
-        </button>
-        <ServiceSinglePage serviceId={selectedService} />
-      </div>
-    );
-  }
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Services
+      </button>
+      <ServiceSinglePage serviceId={selectedService} />
+    </div>
+  );
+}
 
  return (
     <div 
       className="relative w-full"
-      style={{ 
-        backgroundImage: 'url("/images/Group.svg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
+
     >
       <div className="container-wrapper p-6">
         <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center mb-4">

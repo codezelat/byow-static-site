@@ -1,0 +1,80 @@
+
+
+import Image from "next/image";
+
+export default function InfiniteHorizontalScroll() {
+  // Brand logos data array
+  const brands = [
+    { id: 1, src: "/images/revlon-logo.svg", alt: "revlon" },
+    { id: 2, src: "/images/tunein-logo.svg", alt: "tunein" },
+    { id: 3, src: "/images/converse-logo.svg", alt: "converse" },
+    { id: 4, src: "/images/obey-logo.svg", alt: "obey" },
+    { id: 5, src: "/images/bose-logo.svg", alt: "bose" },
+    { id: 6, src: "/images/honda-logo.svg", alt: "honda" },
+    { id: 7, src: "/images/ray-ban-logo.svg", alt: "ray-ban" },
+    { id: 8, src: "/images/prada-logo.svg", alt: "prada" },
+    { id: 9, src: "/images/shoei.svg", alt: "shoei" },
+    { id: 10, src: "/images/adidas-logo.svg", alt: "adidas" },
+    { id: 11, src: "/images/porsche-logo.svg", alt: "porsche" },
+    { id: 12, src: "/images/the-north-face-logo.svg", alt: "the-north-face" },
+    { id: 13, src: "/images/ziggo-logo.svg", alt: "ziggo" },
+  ];
+
+  return (
+    <div className=" bg-[#040010] text-white py-16">
+      <div className="mx-auto px-4 text-center">
+        <h1 className="text-4xl font-bold text-[#8133F1] mb-4">Trusted by Visionaries and Innovators</h1>
+        <p className="max-w-3xl mx-auto text-[#ffffff]">
+          We're Proud To Partner With Forward-Thinking Businesses, Entrepreneurs, And Creatives Who Inspire Us To Push
+          Boundaries And Deliver Exceptional Results
+        </p>
+      </div>
+
+      {/* Infinite scroll container with CSS animation */}
+      <div className="container-wrapper relative overflow-hidden">
+        <div className="flex logos-slide">
+          {/* First set of logos */}
+          {brands.map((brand) => (
+            <div key={brand.id} className="mx-6">
+              <Image src={brand.src} alt={brand.alt} width={100} height={100} />
+            </div>
+          ))}
+          
+          {/* Duplicate set for seamless scrolling */}
+          {brands.map((brand) => (
+            <div key={`duplicate-${brand.id}`} className="flex-shrink-0 mx-6">
+              <Image src={brand.src} alt={brand.alt} width={100} height={100} className="object-contain" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CSS for bidirectional animation */}
+      <style jsx global>{`
+        @keyframes bidirectionalScroll {
+          0% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        
+        .logos-slide {
+          animation: bidirectionalScroll 15s linear infinite;
+          width: fit-content;
+          display: flex;
+          align-items: center;
+        }
+        
+        /* Optional: pause on hover */
+        .logos-slide:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </div>
+  );
+}

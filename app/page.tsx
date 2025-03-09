@@ -5,6 +5,10 @@ import Image from "next/image";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
 import CardSection from "./components/CardSection";
+import { useEffect, useState } from "react";
+import IndustriesSection from "./components/IndustriesSection";
+import Yoursuccess from "./components/yoursuccess";
+import InfiniteHorizontalScroll from "./components/infinite-horizontal";
 
 const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -62,6 +66,15 @@ const Home: NextPage = () => {
       </div>
       <div>
         <CardSection />
+      </div>
+      <div>
+        <IndustriesSection/>
+      </div>
+      <div>
+        <InfiniteHorizontalScroll/>
+      </div>
+      <div>
+        <Yoursuccess/>
       </div>
     </div>
   );
