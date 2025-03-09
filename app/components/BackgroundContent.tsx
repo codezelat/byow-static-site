@@ -14,7 +14,7 @@ export default function BackgroundContent({
   const isHomePage = pathname === "/";
 
   return (
-    <div className="w-full h-full min-h-screen flex flex-col relative">
+    <div className="w-full flex  relative">
       {/* Show the spinning image only on the Home page */}
       {isHomePage && (
         <div className="absolute top-[45px] left-1/2 transform -translate-x-1/2 flex items-center justify-center">
@@ -29,9 +29,9 @@ export default function BackgroundContent({
       )}
 
       {/* Everything is placed over the image & video */}
-      <div className="relative z-10 flex flex-col h-full w-full">
+      <div className="relative z-10 flex-col w-full">
         <Header />
-        <main className="flex-grow flex  text-center text-white ">
+        <main className="text-center text-white ">
           {children}
         </main>
         <Footer />

@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 
 export default function InfiniteHorizontalScroll() {
@@ -21,29 +19,31 @@ export default function InfiniteHorizontalScroll() {
   ];
 
   return (
-    <div className=" bg-[#040010] text-white py-16">
+    <div className="bg-[#040010] text-white py-10 md:py-16">
       <div className="mx-auto px-4 text-center">
-        <h1 className="text-4xl font-bold text-[#8133F1] mb-4">Trusted by Visionaries and Innovators</h1>
-        <p className="max-w-3xl mx-auto text-[#ffffff]">
-          We're Proud To Partner With Forward-Thinking Businesses, Entrepreneurs, And Creatives Who Inspire Us To Push
+        <h1 className="text-2xl md:text-4xl font-bold text-[#8133F1] mb-4">
+          Trusted by Visionaries and Innovators
+        </h1>
+        <p className="max-w-3xl mx-auto text-sm md:text-base text-[#ffffff]">
+          We are Proud To Partner With Forward-Thinking Businesses, Entrepreneurs, And Creatives Who Inspire Us To Push
           Boundaries And Deliver Exceptional Results
         </p>
       </div>
 
       {/* Infinite scroll container with CSS animation */}
-      <div className="container-wrapper relative overflow-hidden">
+      <div className="container-wrapper relative overflow-hidden mt-6">
         <div className="flex logos-slide">
           {/* First set of logos */}
           {brands.map((brand) => (
-            <div key={brand.id} className="mx-6">
-              <Image src={brand.src} alt={brand.alt} width={100} height={100} />
+            <div key={brand.id} className="mx-4 md:mx-6 flex-shrink-0">
+              <Image src={brand.src} alt={brand.alt} width={80} height={80} className="md:w-[100px] md:h-[100px] object-contain" />
             </div>
           ))}
           
           {/* Duplicate set for seamless scrolling */}
           {brands.map((brand) => (
-            <div key={`duplicate-${brand.id}`} className="flex-shrink-0 mx-6">
-              <Image src={brand.src} alt={brand.alt} width={100} height={100} className="object-contain" />
+            <div key={`duplicate-${brand.id}`} className="mx-4 md:mx-6 flex-shrink-0">
+              <Image src={brand.src} alt={brand.alt} width={80} height={80} className="md:w-[100px] md:h-[100px] object-contain" />
             </div>
           ))}
         </div>

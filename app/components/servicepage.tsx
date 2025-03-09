@@ -62,11 +62,13 @@ if (selectedService) {
 }
 
  return (
-    <div 
-      className="relative w-full"
+    
 
-    >
-      <div className="container-wrapper p-6">
+    <div 
+    className="relative w-full h-fit bg-cover bg-center mt-28"
+    style={{ backgroundImage: 'url("/images/Group.svg")' }}
+  >
+      <div>
         <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center mb-4">
           Expert Digital Services Tailored for Your Success
         </h1>

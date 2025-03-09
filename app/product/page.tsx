@@ -17,7 +17,7 @@ export default function ProductPage() {
   const currentProduct = products[selectedProject] || null; // Fallback for undefined
 
   return (
-    <div className="w-full overflow-hidden py-8 px-4 md:px-8 container-wrapper">
+    <div className=" container-wrapper">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center">

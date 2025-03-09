@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 const StepsBar: NextPage = () => {
   const [activeStep, setActiveStep] = useState(1);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const stepRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -41,7 +42,7 @@ const StepsBar: NextPage = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [stepRefs]);
 
   return (
     <div className="w-full h-auto pb-24">
@@ -73,11 +74,11 @@ const StepsBar: NextPage = () => {
               Step 1: Share Your Vision
             </h1>
             <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
-              DIY platforms ask, "What do you want?" but give you a blank canvas
+              DIY platforms ask, &quot;What do you want?&quot; but give you a blank canvas
               with zero guidance.
             </p>
             <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
-              We don't just ask; we listen. Whether you have a clear idea or
+              We do not just ask; we listen. Whether you have a clear idea or
               just a rough sketch, we help shape your vision into something
               extraordinary.
             </p>
@@ -97,12 +98,12 @@ const StepsBar: NextPage = () => {
               Step 3: Review & Perfect
             </h1>
             <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
-              DIY tools make you tweak endlessly, but they never quite "feel
-              right."
+              DIY tools make you tweak endlessly, but they never quite &quot;feel
+              right.&quot;
             </p>
             <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
-              You get to review the site we've built and provide feedback. We
-              tweak and polish it until it's perfect—your perfect.
+              You get to review the site weve built and provide feedback. We
+              tweak and polish it until its perfect—your perfect.
             </p>
           </div>
         </div>
@@ -213,8 +214,8 @@ const StepsBar: NextPage = () => {
               Step 2: Watch us build it
             </h1>
             <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
-              Drag-and-drop builders are fine... until they're not. That one
-              "custom feature" you need? Impossible.
+              Drag-and-drop builders are fine... until theyre not. That one
+              &quot;custom feature&quot; you need? Impossible.
             </p>
             <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
               Our team of pros turns your wish list into reality—no limitations,
@@ -236,7 +237,7 @@ const StepsBar: NextPage = () => {
               Step 4: Launch & Thrive
             </h1>
             <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
-              With DIY platforms, "launching" is just step one. Now you're stuck
+              With DIY platforms, &quot;launching&quot; is just step one. Now you are stuck
               dealing with slow load times, SEO issues, and constant updates.
             </p>
             <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
