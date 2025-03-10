@@ -100,9 +100,9 @@ const SectionCard: NextPage = () => {
       case 1:
         return "With BYOW, if you can dream it, we can build it. No limits. No compromises.";
       case 2:
-        return "Every website we build is designed from scratch, tailored to showcase your brand’s true personality.";
+        return "Every website we build is designed from scratch, tailored to showcase your brand's true personality.";
       case 3:
-        return "BYOW delivers transparent, all-inclusive solutions, so you know exactly what you’re paying for.";
+        return "BYOW delivers transparent, all-inclusive solutions, so you know exactly what you're paying for.";
       case 4:
         return "Leave it to us—we'll build, test, and perfect your site, so you can focus on running your business.";
       case 5:
@@ -113,25 +113,30 @@ const SectionCard: NextPage = () => {
   };
 
   return (
-    <div className="w-[1728px] h-auto pt-36">
+    <div className="w-full h-auto pt-36 overflow-x-hidden">
       <div
-        className="w-[1328px] h-[518px] rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px]  "
+      // main content
+        className={`max-w-full w-[1328px]  ${
+          showBuildSection ? "h-[850px]" : "h-[518px]"
+        } rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px] relative`}
         style={{
           background:
             "linear-gradient(127.68deg, rgba(129, 51, 241, 0.2) 28.21%, rgba(45, 40, 54, 0.2) 103.48%)",
+          transition: "height 0.3s ease-in-out",
         }}
       >
         {/* content */}
         <div className="flex flex-col items-start">
           {getContent()}
           <button
-            className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leadeing-[120%]"
-            onClick={handleBuildNowClick} // Add the click handler
+            className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
+            onClick={handleBuildNowClick}
           >
             SOLVE NOW
             <ArrowCircleDownOutlinedIcon />
           </button>
-          {/* New section that appears when BUILD NOW is clicked */}
+
+          {/* New section that appears when SOLVE NOW is clicked */}
           {showBuildSection && (
             <div className="w-[1032px] h-[300.25px] rounded-[32px] p-[48px] gap-[10px] bg-[#8133F1] mt-10">
               <div>
@@ -149,21 +154,29 @@ const SectionCard: NextPage = () => {
             </div>
           )}
         </div>
-        <div className="relative ml-[980px] w-[679.89px]  h-[500px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden">
-          {/* Gradient Background */}
-          <div className="absolute inset-0 ">
-            {/* Image */}
+
+        {/* Gradient Background Image - positioned absolute but adjusted with top based on showBuildSection */}
+        <div
+          className="absolute right-[-550px] w-[700.01px] h-[500px] mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden"
+          style={{
+            top: showBuildSection ? "350px" : "0",
+            transition: "top 0.3s ease-in-out",
+          }}
+        >
+          <div className="absolute inset-0 w-">
             <Image
               src="/images/Section Card Pattern with Gradient.svg"
-              alt="quotation mark"
+              alt="gradient background image"
               width={680}
               height={500}
-              className="relative w-full "
+              className="relative w-full"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-row w-[423px] h-[77px] gap-20 pl-[200px] mt-100 mb-20">
+
+      {/* Number Selectors */}
+      <div className="flex flex-row gap-20 pl-[200px] mt-95 mb-20">
         <div
           className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
             1

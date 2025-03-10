@@ -2,11 +2,11 @@
 
 import type { NextPage } from "next";
 import Image from "next/image";
-// import SectionCard from "./components/SectionCard";
-// import StepBar from "./components/StepsBar";
-// import CardSection from "./components/CardSection";
+import SectionCard from "./components/SectionCard";
+import StepBar from "./components/StepsBar";
+import CardSection from "./components/CardSection";
 import { useEffect, useState } from "react";
-// import IndustriesSection from "./components/IndustriesSection";
+import IndustriesSection from "./components/IndustriesSection";
 import Yoursuccess from "./components/yoursuccess";
 import InfiniteHorizontalScroll from "./components/infinite-horizontal";
 
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="text-center  ">
+    <div className="text-center overflow-x-hidden">
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] mt-16 sm:mt-24 md:mt-32 lg:mt-[250px] font-bold text-white">
         Why Stress Over Website Development?
       </h1>
@@ -30,12 +30,20 @@ const Home: NextPage = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 w-full sm:w-[90%] md:w-[1328px] mt-8 sm:mt-12 md:mt-16 container-wrapper ">
-        {["Templates can't reflect your unique vision", "CMS tools promise freedom but hide limitations", "You shouldn't need to be a coder to realize ideas", "Updating your site shouldn't feel like a hassle"].map((text, index) => (
+      <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 w-full max-w-[1328px] mx-auto mt-10 sm:mt-12 md:mt-16">
+        {[
+          "Templates can't reflect your unique vision",
+          "CMS tools promise freedom but hide limitations",
+          "You shouldn't need to be a coder to realize ideas",
+          "Updating your site shouldn't feel like a hassle",
+        ].map((text, index) => (
           <div
             key={index}
             className="w-full xs:w-[280px] sm:w-[45%] md:w-[314.75px] h-auto min-h-[150px] xs:min-h-[180px] sm:min-h-[200px] md:h-[215px] rounded-xl xs:rounded-2xl sm:rounded-[32px] border-[1px] p-4 sm:p-6 md:p-[40px] lg:p-[50px] flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] relative"
-            style={{ borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1" }}
+            style={{
+              borderImage:
+                "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
+            }}
           >
             <Image
               src="/images/image.png"
@@ -48,18 +56,18 @@ const Home: NextPage = () => {
           </div>
         ))}
       </div>
-      
+
       <div className="mt-8 sm:mt-12 md:mt-16">
-        {/* <SectionCard /> */}
+        <SectionCard />
       </div>
       <div className="mt-8 sm:mt-12 md:mt-16">
-        {/* <StepBar /> */}
+        <StepBar />
       </div>
       <div className="mt-8 sm:mt-12 md:mt-16">
-        {/* <CardSection /> */}
+        <CardSection />
       </div>
       <div className="mt-8 sm:mt-12 md:mt-16">
-        {/* <IndustriesSection /> */}
+        <IndustriesSection />
       </div>
       <div className="mt-8 sm:mt-12 md:mt-16">
         <InfiniteHorizontalScroll />

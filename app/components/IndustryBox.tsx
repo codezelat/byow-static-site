@@ -5,104 +5,103 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 const IndustryBox: NextPage = () => {
-  // Define industry data with all the necessary information
+  // Define industry data with necessary information + activeIcon
   const industries = [
     {
       id: 1,
       name: "Retail & E-Commerce",
       icon: "/images/shopping-bag (2).png",
+      activeIcon: "/images/active-shopping-bag.png", 
       backgroundImage: "/images/Retail & E-commerce.svg",
       title: "Retail & E-commerce",
       description:
-        "Transform your online store into a shopping destination that delights customers and drives sales. With user-friendly navigation, stunning product displays, and secure checkout systems, you can create a seamless shopping experience that turns casual browsers into loyal buyers. Stand out in a competitive market with a website that reflects your brand's uniqueness.",
+        "Transform your online store into a shopping destination that delights customers and drives sales. With user-friendly navigation, stunning product displays, and secure checkout systems, you can create a seamless shopping experience that turns casual browsers into loyal buyers. Stand out in a competitive market with a website that reflects your brand’s uniqueness.",
     },
     {
       id: 2,
       name: "Corporate & Professional Services",
       icon: "/images/cooparateimg.png",
-      backgroundImage: "/images/Corporate.svg",
+      activeIcon: "/images/active-corporate.png",
+      backgroundImage: "/images/Professional Services.svg",
       title: "Corporate & Professional Services",
       description:
-        "Establish credibility and showcase your expertise with a professional website that reflects your business values. Create an online presence that helps clients understand your services, builds trust, and generates quality leads. With clear messaging and strategic design, your website becomes your most effective business development tool.",
+        "Transform your business with sleek, professional designs that build trust and drive results. From consultancies to financial firms, we create websites that reflect your expertise and help you stand out in a competitive market.",
     },
     {
       id: 3,
       name: "Travel & Hospitality",
       icon: "/images/Luggage.png",
-      backgroundImage: "/images/Travel.svg",
+      activeIcon: "/images/active-luggage.png",
+      backgroundImage: "/images/Travel & Hospitality.svg",
       title: "Travel & Hospitality",
       description:
-        "Inspire wanderlust and boost bookings with an immersive website that showcases your destinations, accommodations, or services. Create visual journeys that turn visitors into travelers, with easy booking systems and compelling content that highlights unique experiences. Your website becomes the first step in their adventure.",
+        "Bring your flavors to life online with mouth-watering visuals, easy-to-navigate menus, and seamless booking systems. Whether you’re a cozy café or a luxury hotel, we’ll help you create an online experience that keeps customers coming back for more.",
     },
     {
       id: 4,
       name: "Creative & Media Agencies",
       icon: "/images/creativity.png",
-      backgroundImage: "/images/Creative.svg",
+      activeIcon: "/images/active-creativity.png",
+      backgroundImage: "/images/Creative & Media Agencies.svg",
       title: "Creative & Media Agencies",
       description:
-        "Your website is your ultimate portfolio piece. Showcase your creativity and expertise with a design that demonstrates your capabilities before you even speak to potential clients. Create an engaging digital experience that reflects your agency's unique approach and attracts clients who value innovative thinking.",
+        "Showcase your bold ideas and creative work with vibrant, imaginative designs. Whether you’re a design studio, marketing agency, or production house, we’ll help you create a website that captivates audiences and attracts clients who value innovation.",
     },
     {
       id: 5,
       name: "Construction & Real Estate",
       icon: "/images/blueprint.png",
-      backgroundImage: "/images/Construction.svg",
+      activeIcon: "/images/active-blueprint.png",
+      backgroundImage: "/images/Construction & Real Estate.svg",
       title: "Construction & Real Estate",
       description:
-        "Showcase your projects and properties with high-impact imagery and intuitive navigation. Whether you're selling homes or promoting construction services, a well-designed website helps clients visualize possibilities and take the next step. Build trust through professional presentation of your portfolio and expertise.",
+        "Showcase your projects and properties with clarity and confidence. From jaw-dropping visuals to detailed descriptions, we’ll help you create a website that inspires trust and makes it easy for clients to explore your portfolio.",
     },
     {
       id: 6,
       name: "Education & Learning",
       icon: "/images/scholorship.png",
-      backgroundImage: "/images/Education.svg",
+      activeIcon: "/images/active-education.png",
+      backgroundImage: "/images/Education & Learning Platforms.svg",
       title: "Education & Learning",
       description:
-        "Create an engaging online learning environment that supports students, educators, and institutions. From course management to resource sharing, your educational website can enhance learning experiences and streamline administrative processes. Design interfaces that are accessible, intuitive, and conducive to knowledge sharing.",
+        "Empower learners with intuitive, engaging websites that make education accessible and enjoyable. Whether you’re a school, university, or online learning platform, we’ll help you create a space that inspires curiosity and supports lifelong learning.",
     },
     {
       id: 7,
       name: "Health, Beauty & Wellness",
       icon: "/images/cardiogram.png",
-      backgroundImage: "/images/Health.svg",
+      activeIcon: "/images/active-cardiogram.png",
+      backgroundImage: "/images/Health, Beauty & Wellness.svg",
       title: "Health, Beauty & Wellness",
       description:
-        "Promote wellbeing with a website that embodies the calming, rejuvenating experience clients can expect from your services. Create an online presence that educates visitors about your approach, builds trust, and simplifies appointment booking. Your website becomes a digital extension of the care and attention you provide.",
+        "Convey trust, relaxation, and excellence with calming, inspiring designs tailored to clinics, salons, spas, and fitness studios. We’ll help you create an online presence that reflects the care and quality you provide in person.",
     },
     {
       id: 8,
       name: "Custom Product",
       icon: "/images/Group.png",
-      backgroundImage: "/images/Custom.svg",
+      activeIcon: "/images/active-slider.png",
+      backgroundImage: "/images/Custom Product.svg",
       title: "Custom Product",
       description:
-        "Showcase your unique product offerings with a website tailored to your specific needs. Whether you're selling specialized goods or offering customized services, your website can highlight what makes your offerings special. Create an online experience that communicates your product's value and converts visitors into customers.",
+        "Bring your unique vision to life with tailored solutions designed just for you. Whether it’s a custom website, app, or digital tool, we’ll work closely with you to create a product that perfectly aligns with your goals and exceeds expectations.",
     },
   ];
 
-  // State to track the active industry
   const [activeIndustry, setActiveIndustry] = useState(industries[0]);
 
-  // Function to handle card click
-  const handleCardClick = (industry: {
-    id: number;
-    name: string;
-    icon: string;
-    backgroundImage: string;
-    title: string;
-    description: string;
-  }) => {
+  const handleCardClick = (industry: typeof industries[0]) => {
     setActiveIndustry(industry);
   };
 
   return (
     <div className="flex flex-row gap-10 px-28 py-12">
-      {/* Industry Table  */}
+      {/* Industry Table */}
       <div className="w-[300px] h-[600px]">
         <div className="flex flex-row">
           {/* Left Column */}
-          <div className="">
+          <div>
             {industries.slice(0, 4).map((industry, index) => (
               <div
                 key={industry.id}
@@ -113,15 +112,15 @@ const IndustryBox: NextPage = () => {
                 onClick={() => handleCardClick(industry)}
               >
                 <Image
-                  src={industry.icon}
+                  src={
+                    activeIndustry.id === industry.id
+                      ? industry.activeIcon
+                      : industry.icon
+                  }
                   alt={industry.name}
                   width={42}
                   height={42}
-                  className={`pb-2 items-center ${
-                    activeIndustry.id === industry.id
-                      ? "filter brightness-0 saturate-100 invert-[0.5] sepia-[1] hue-rotate-[230deg]"
-                      : ""
-                  }`}
+                  className={`pb-2 items-center`}
                 />
                 <p
                   className={`font-bold text-[14px] leading-[120%] text-center ${
@@ -146,15 +145,15 @@ const IndustryBox: NextPage = () => {
                 onClick={() => handleCardClick(industry)}
               >
                 <Image
-                  src={industry.icon}
+                  src={
+                    activeIndustry.id === industry.id
+                      ? industry.activeIcon
+                      : industry.icon
+                  }
                   alt={industry.name}
                   width={42}
                   height={42}
-                  className={`pb-2 items-center ${
-                    activeIndustry.id === industry.id
-                      ? "filter brightness-0 saturate-100 invert-[0.5] sepia-[1] hue-rotate-[230deg]"
-                      : ""
-                  }`}
+                  className={`pb-2 items-center`}
                 />
                 <p
                   className={`font-bold text-[14px] leading-[120%] text-center ${
@@ -169,7 +168,7 @@ const IndustryBox: NextPage = () => {
         </div>
       </div>
 
-      {/* Industry Content  */}
+      {/* Industry Content */}
       <div
         className="w-full h-[600px] rounded-[16px] flex flex-col items-left justify-center text-left px-24 gap-[48px] p-8 bg-cover bg-center bg-no-repeat transition-all duration-500"
         style={{
