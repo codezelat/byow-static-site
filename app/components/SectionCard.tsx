@@ -34,11 +34,11 @@ const SectionCard: NextPage = () => {
         return (
           <>
             <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
-              DIY Platforms Seem Easy, Until They're Not...
+              DIY Platforms Seem Easy, Until They re Not...
             </h1>
             <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
-              They promise customization, but when you want "that one feature,"
-              it's a hard no.
+              They promise customization, but when you want &quot;that one feature,&quot;
+              it s a hard no.
             </p>
           </>
         );
@@ -72,7 +72,7 @@ const SectionCard: NextPage = () => {
               Time Is Money, And DIY Takes Too Long...
             </h1>
             <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
-              Building a site yourself isn't "quick and easy" when you're
+              Building a site yourself isn&apos;t &quot;quick and easy&quot; when you re
               learning on the go.
             </p>
           </>
@@ -84,7 +84,7 @@ const SectionCard: NextPage = () => {
               Your Vision Deserves More Than Drag-and-Drop...
             </h1>
             <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
-              Drag-and-drop editors can't keep up with creative or complex
+              Drag-and-drop editors can&apos;t keep up with creative or complex
               ideas.
             </p>
           </>
@@ -113,7 +113,7 @@ const SectionCard: NextPage = () => {
   };
 
   return (
-    <div className="w-[1728px] h-auto pt-36">
+    <div className="w-[1728px] h-auto pt-33">
       <div
         className="w-[1328px] h-[518px] rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px]  "
         style={{

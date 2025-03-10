@@ -35,15 +35,15 @@ export default function InfiniteHorizontalScroll() {
         <div className="flex logos-slide">
           {/* First set of logos */}
           {brands.map((brand) => (
-            <div key={brand.id} className="mx-4 md:mx-6 flex-shrink-0">
-              <Image src={brand.src} alt={brand.alt} width={80} height={80} className="md:w-[100px] md:h-[100px] object-contain" />
+            <div key={brand.id} className="mx-6 md:mx-6 flex-shrink-0">
+              <Image src={brand.src} alt={brand.alt} width={90} height={90} className="md:w-[100px] md:h-[100px] object-contain" />
             </div>
           ))}
           
           {/* Duplicate set for seamless scrolling */}
           {brands.map((brand) => (
             <div key={`duplicate-${brand.id}`} className="mx-4 md:mx-6 flex-shrink-0">
-              <Image src={brand.src} alt={brand.alt} width={80} height={80} className="md:w-[100px] md:h-[100px] object-contain" />
+              <Image src={brand.src} alt={brand.alt} width={90} height={90} className="md:w-[100px] md:h-[100px] object-contain" />
             </div>
           ))}
         </div>
@@ -70,10 +70,6 @@ export default function InfiniteHorizontalScroll() {
           align-items: center;
         }
         
-        /* Optional: pause on hover */
-        .logos-slide:hover {
-          animation-play-state: paused;
-        }
       `}</style>
     </div>
   );

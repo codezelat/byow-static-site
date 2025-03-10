@@ -6,6 +6,7 @@ import "flowbite";
 import { motion } from "framer-motion";
 import { Service, serviceCategories } from "../data/servicedata";
 import ServiceSinglePage from "./servicesinglepage";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 export default function ServicePage() {
@@ -38,23 +39,14 @@ export default function ServicePage() {
 
   // If a service is selected, show the ServiceSinglePage
  // From your ServicePage component
-if (selectedService) {
+ if (selectedService) {
   return (
-    <div>
+    <div className="relative ">
       <button 
         onClick={() => setSelectedService(null)}
-        className="mb-4 flex items-center text-[#8133F1] hover:underline"
+        className="absolute top-4 right-60 text-[#8133F1] hover:underline"
       >
-        <svg 
-          className="w-4 h-4 mr-2" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-        </svg>
-        Back to Services
+        <CloseIcon />
       </button>
       <ServiceSinglePage serviceId={selectedService} />
     </div>

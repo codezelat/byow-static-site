@@ -14,7 +14,7 @@ export default function BackgroundContent({
   const isHomePage = pathname === "/";
 
   return (
-    <div className="w-full flex  relative">
+    <div className="w-full flex  relative overflow-hidden">
       {/* Show the spinning image only on the Home page */}
       {isHomePage && (
         <div className="absolute top-[45px] left-1/2 transform -translate-x-1/2 flex items-center justify-center">

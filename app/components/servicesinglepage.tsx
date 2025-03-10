@@ -77,21 +77,21 @@ export default function ServiceSinglePage({ serviceId }: ServiceSinglePageProps)
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">Tools</h2>
           <div 
-            className="mb-8 p-6 relative" 
+            className="mb-8 p-10 relative" 
             style={{
               border: "1px solid",
               borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
               borderImageSlice: "1"
             }}
           >
-            <div className="flex flex-wrap gap-6 justify-start">
+            <div className="flex flex-wrap gap-15 justify-start">
               {tools.map((tool, index) => (
                 <Image 
                   key={index}
                   src={tool.image} 
                   alt={tool.name} 
-                  width={72} 
-                  height={72} 
+                  width={75} 
+                  height={75} 
                 />
               ))}
             </div>
@@ -102,21 +102,21 @@ export default function ServiceSinglePage({ serviceId }: ServiceSinglePageProps)
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">Technologies</h2>
           <div 
-            className="mb-8 p-6 relative" 
+            className="mb-8 p-10 relative" 
             style={{
               border: "1px solid",
               borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
               borderImageSlice: "1"
             }}
           >
-            <div className="flex flex-wrap gap-6 justify-start">
+            <div className="flex flex-wrap gap-15 justify-start">
               {technologies.map((tech, index) => (
                 <Image 
                   key={index}
                   src={tech.image} 
                   alt={tech.name} 
-                  width={72} 
-                  height={72} 
+                  width={75} 
+                  height={75} 
                 />
               ))}
             </div>

@@ -18,18 +18,19 @@ export default function PopupPage({ onClose }: PopupPageProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#060116] bg-opacity-50 flex items-center justify-center z-50 -mt-40">
-      <div 
-        className="relative w-[1000px] h-[500px] rounded-[64px] border border-opacity-100 p-16 bg-[#060116]"
+    <div className="fixed inset-0 bg-[#060116] bg-opacity-80 flex items-center justify-center z-50">
+        <div 
+         className="bg-[#060116] rounded-lg shadow-xl w-[95%] md:w-[1191px] h-[95%] md:h-[984px] mx-4 p-6 max-h-[90vh] overflow-y-auto relative"
         style={{
           border: '1px solid',
           borderImage: 'linear-gradient(180deg, #8133F1 0%, #090909 100%)',
           borderImageSlice: 1,
         }}
       >
+        {/* Moved Close Button Here Inside the Form Section */}
         <button 
           onClick={onClose} 
-          className="absolute top-4 right-4 text-white hover:text-[#8133F1] transition"
+          className="absolute top-6 right-6 text-white hover:text-[#8133F1] transition"
         >
           <CloseIcon />
         </button>
@@ -37,6 +38,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
         <h2 className="text-3xl font-bold text-[#8133F1] text-center mb-2">
           Let&apos;s Talk About Your Project Today!
         </h2>
+
         <p className="text-center text-gray-300 mb-8">
           Click Below For A Free Consultation And Customized Quote!
         </p>
