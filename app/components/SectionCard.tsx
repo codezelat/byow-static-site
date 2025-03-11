@@ -113,10 +113,10 @@ const SectionCard: NextPage = () => {
   };
 
   return (
-<div className="w-full h-auto pt-36 overflow-x-hidden">
+<div className="w-full h-auto pt-34 overflow-x-hidden">
       <div
-      // main content
-        className={`max-w-full w-[1328px]  ${
+        // main content
+        className={`max-w-full w-[1328px] ${
           showBuildSection ? "h-[850px]" : "h-[518px]"
         } rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px] relative`}
         style={{
@@ -126,7 +126,7 @@ const SectionCard: NextPage = () => {
         }}
       >
         {/* content */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start relative z-10">
           {getContent()}
           <button
             className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
@@ -138,7 +138,7 @@ const SectionCard: NextPage = () => {
 
           {/* New section that appears when SOLVE NOW is clicked */}
           {showBuildSection && (
-            <div className="w-[1032px] h-[300.25px] rounded-[32px] p-[48px] gap-[10px] bg-[#8133F1] mt-10">
+            <div className="w-[1032px] h-[300.25px] rounded-[32px] p-[48px] gap-[10px] bg-[#8133F1] mt-10 relative z-20">
               <div>
                 <Image
                   src="/images/Vector.svg"
@@ -155,28 +155,25 @@ const SectionCard: NextPage = () => {
           )}
         </div>
 
-        {/* Gradient Background Image - positioned absolute but adjusted with top based on showBuildSection */}
-        <div
-          className="absolute right-[-550px] w-[700.01px] h-[500px] mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden"
-          style={{
-            top: showBuildSection ? "350px" : "0",
-            transition: "top 0.3s ease-in-out",
-          }}
-        >
-          <div className="absolute inset-0 w-">
+        {/* Gradient Background Image - positioned absolute but with fixed position */}
+        <div className="absolute right-[-600px] top-0 w-[900.01px] h-[500px] mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden z-0">
+          <div
+            className="absolute inset-0"
+           
+          >
             <Image
-              src="/images/Section Card Pattern with Gradient.svg"
+              src="/images/gradient background.svg"
               alt="gradient background image"
               width={680}
               height={500}
-              className="relative w-full"
+              className="relative w-full mix-blend-screen opacity-80"
             />
           </div>
         </div>
       </div>
 
       {/* Number Selectors */}
-      <div className="flex flex-row gap-20 pl-[200px] mt-95 mb-20">
+      <div className="flex flex-row gap-20 pl-[200px] mt-75 mb-20">
         <div
           className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
             1

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const CardSection: NextPage = () => {
   return (
-    <div className="w-full h-auto container-wrapper px-4 sm:px-6 lg:px-8">
+    <div className=" h-auto container-wrapper px-4 sm:px-6 lg:px-8">
       <div className="flex flex-wrap justify-center gap-[20px] md:gap-[30px] lg:gap-[45px]">
         <div
           className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
