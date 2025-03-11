@@ -41,7 +41,7 @@ export default function Yoursuccess() {
       </div>
       
       {/* Text Content */}
-      <div className="relative z-10 text-center max-w-[800px] mx-auto px-4">
+      <div className="relative z-10 text-center max-w-[800px] mx-auto px-4 mb-10">
         <h1 className="text-[#8133F1] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           Your Success is Our Next Story.
         </h1>

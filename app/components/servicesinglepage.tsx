@@ -22,25 +22,15 @@ export default function ServiceSinglePage({ serviceId }: ServiceSinglePageProps)
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left side with image - 5 columns on large screens */}
           <div className="lg:col-span-5">
-            <div className="relative mb-6 inline-block w-full">
-              <div 
-                className="absolute inset-0 p-1.5" 
-                style={{
-                  border: "1.5px solid",
-                  borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-                  borderImageSlice: "1"
-                }}
-              />
-              <div className="relative">
-                <Image 
-                  src={service.image || "/images/service-default.jpg"} 
-                  alt="Custom Website Design" 
-                  width={542} 
-                  height={375}
-                  className="w-full h-auto"
-                />
-              </div>
-            </div>
+          <div className="relative mb-6 inline-block w-full rounded-3xl p-[1.5px] bg-gradient-to-b from-[#8133F1] to-[#090909]">
+  <Image 
+    src={service.image || "/images/service-default.jpg"} 
+    alt="Custom Website Design" 
+    width={542} 
+    height={375}
+    className="w-full h-auto rounded-3xl"
+  />
+</div>
           </div>
 
           {/* Right side with content - 7 columns on large screens */}
