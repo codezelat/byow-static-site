@@ -306,14 +306,16 @@ const StepsBar: NextPage = () => {
 
   return (
     <div className="h-auto pb-12 md:pb-24 px-4 md:px-6">
-      <div className="flex flex-col gap-4 items-center justify-center pt-6 md:pt-10">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
-          How BYOW Simplifies Your Journey?
-        </h1>
-        <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
-          Helping You Achieve More With Less Effort Through Seamless Integration
-        </p>
-      </div>
+      <div className="flex flex-col pt-40  pb-10">
+  <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+    How BYOW Simplifies Your Journey?
+  </h1>
+  <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
+    Helping You Achieve More With Less Effort Through Seamless Integration
+  </p>
+</div>
+
+
 
       {/* Mobile view */}
       <div className="md:hidden w-full mt-10">
@@ -454,7 +456,7 @@ const StepsBar: NextPage = () => {
 
       {/* Desktop view */}
       <div className="hidden md:block w-full relative">
-        <div className="w-full flex flex-col lg:flex-row gap-6 pt-10 lg:pt-20 justify-center">
+        <div className="w-full flex flex-col lg:flex-row gap-6 justify-center">
           {/* Left Column */}
           <div className="flex flex-col gap-16 lg:gap-36 w-full lg:w-auto">
             <div

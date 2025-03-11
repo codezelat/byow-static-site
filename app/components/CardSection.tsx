@@ -1,154 +1,55 @@
-// "use client";
-// import { NextPage } from "next";
-// import React from "react";
-// import Image from "next/image";
+import Image from 'next/image';
 
-// const CardSection: NextPage = () => {
-//   return (
-//     <div className="w-full h-auto container-wrapper px-4 sm:px-6 lg:px-8">
-//       <div className="flex flex-wrap justify-center gap-[20px] md:gap-[30px] lg:gap-[45px]">
-//         <div
-//           className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-//           style={{
-//             borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-//           }}
-//         >
-//           <Image
-//             src="/images/cardSection1.png"
-//             alt="card section image 1"
-//             width={64}
-//             height={64}
-//             className="pb-2"
-//           />
-//           <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-//             Feeling stuck with cookie-cutter templates?
-//           </h1>
-//           <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-//             They don’t capture your brand’s soul—we can change that.
-//           </p>
-//         </div>
-//         <div
-//           className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-//           style={{
-//             borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-//           }}
-//         >
-//           <Image
-//             src="/images/cardSection2.png"
-//             alt="card section image 2"
-//             width={64}
-//             height={64}
-//             className="pb-2"
-//           />
-//           <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-//             Frustrated by tools that limit your creativity?
-//           </h1>
-//           <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-//             If you can imagine it, we’ll bring it to life.
-//           </p>
-//         </div>
-//         <div
-//           className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-//           style={{
-//             borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-//           }}
-//         >
-//           <Image
-//             src="/images/cardSection3.png"
-//             alt="card section image 3"
-//             width={64}
-//             height={64}
-//             className="pb-2"
-//           />
-//           <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-//             Wasting precious time on DIY platforms?
-//           </h1>
-//           <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-//             Focus on your business while we handle the rest.
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+const ResponsiveCardsSection = () => {
+  const cards = [
+    {
+      img: "/images/cardSection1.png",
+      title: "Feeling stuck with cookie-cutter templates?",
+      text: "They do not capture your brand's soul—we can change that.",
+    },
+    {
+      img: "/images/cardSection2.png",
+      title: "Frustrated by tools that limit your creativity?",
+      text: "If you can imagine it, we'll bring it to life.",
+    },
+    {
+      img: "/images/cardSection3.png",
+      title: "Wasting precious time on DIY platforms?",
+      text: "Focus on your business while we handle the rest.",
+    }
+  ];
 
-// export default CardSection;
-
-
-
-
-"use client";
-import { NextPage } from "next";
-import React from "react";
-import Image from "next/image";
-
-const CardSection: NextPage = () => {
   return (
-    <div className="w-full h-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap justify-center gap-[20px] md:gap-[30px] lg:gap-[45px]">
-        <div
-          className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-          style={{
-            borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-          }}
-        >
-          <Image
-            src="/images/cardSection1.png"
-            alt="card section image 1"
-            width={64}
-            height={64}
-            className="pb-2"
-          />
-          <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-            Feeling stuck with cookie-cutter templates?
-          </h1>
-          <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-            They do not capture your brand s soul—we can change that.
-          </p>
-        </div>
-        <div
-          className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-          style={{
-            borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-          }}
-        >
-          <Image
-            src="/images/cardSection2.png"
-            alt="card section image 2"
-            width={64}
-            height={64}
-            className="pb-2"
-          />
-          <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-            Frustrated by tools that limit your creativity?
-          </h1>
-          <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-            If you can imagine it, we&apos;ll bring it to life.
-          </p>
-        </div>
-        <div
-          className="w-full sm:w-[320px] md:w-[380px] lg:w-[426.67px] h-auto border-[1px] rounded-[32px] flex flex-col p-6 sm:p-8 items-center text-center backdrop-blur-[4px] relative"
-          style={{
-            borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
-          }}
-        >
-          <Image
-            src="/images/cardSection3.png"
-            alt="card section image 3"
-            width={64}
-            height={64}
-            className="pb-2"
-          />
-          <h1 className="font-bold text-[18px] sm:text-[20px] leading-[140%] pb-2">
-            Wasting precious time on DIY platforms?
-          </h1>
-          <p className="font-normal text-[14px] sm:text-[16px] leading-[140%]">
-            Focus on your business while we handle the rest.
-          </p>
-        </div>
+    <div className="px-4 sm:px-6 lg:px-8 w-full max-w-[1440px] mx-auto py-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="w-full max-w-xs sm:max-w-sm md:w-full h-auto border rounded-3xl flex flex-col p-4 sm:p-6 md:p-8 items-center text-center backdrop-blur-md relative overflow-hidden"
+            style={{
+              borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
+            }}
+          >
+            <div className="relative w-16 h-16 mb-4">
+              <Image
+                src={card.img}
+                alt={`card section image ${index + 1}`}
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+            <h1 className="font-bold text-lg sm:text-xl leading-snug pb-2">
+              {card.title}
+            </h1>
+            <p className="font-normal text-sm sm:text-base leading-snug">
+              {card.text}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default CardSection;
+export default ResponsiveCardsSection;

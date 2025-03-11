@@ -23,8 +23,8 @@ const SectionCard: NextPage = () => {
   // Function to determine the size based on whether the number is selected or not
   const getNumberStyle = (number: number) => {
     return number === selectedNumber
-      ? "text-[64px] text-[#8133F1] transform scale-110"
-      : "text-[32px] text-[#5B546E] pt-5";
+      ? "text-[48px] sm:text-[64px] text-[#8133F1] transform scale-110"
+      : "text-[24px] sm:text-[32px] text-[#5B546E] pt-3 sm:pt-5";
   };
 
   // Content sections based on selected number
@@ -33,10 +33,10 @@ const SectionCard: NextPage = () => {
       case 1:
         return (
           <>
-            <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
+            <h1 className="font-semibold text-[28px] sm:text-[36px] md:text-[45px] leading-[120%] w-full text-left">
               DIY Platforms Seem Easy, Until They re Not...
             </h1>
-            <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
+            <p className="font-normal text-[20px] sm:text-[28px] md:text-[36px] leading-[140%] w-full text-left mt-4">
               They promise customization, but when you want &quot;that one feature,&quot;
               it s a hard no.
             </p>
@@ -45,10 +45,10 @@ const SectionCard: NextPage = () => {
       case 2:
         return (
           <>
-            <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
+            <h1 className="font-semibold text-[28px] sm:text-[36px] md:text-[45px] leading-[120%] w-full text-left">
               Templates Are Not Your Brand...
             </h1>
-            <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
+            <p className="font-normal text-[20px] sm:text-[28px] md:text-[36px] leading-[140%] w-full text-left mt-4">
               Templates are cookie-cutter and never truly reflect your unique
               identity.
             </p>
@@ -57,10 +57,10 @@ const SectionCard: NextPage = () => {
       case 3:
         return (
           <>
-            <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
+            <h1 className="font-semibold text-[28px] sm:text-[36px] md:text-[45px] leading-[120%] w-full text-left">
               CMS Platforms Sound Free, But Hidden Costs Pile Up...
             </h1>
-            <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
+            <p className="font-normal text-[20px] sm:text-[28px] md:text-[36px] leading-[140%] w-full text-left mt-4">
               Hosting fees, plugin subscriptions, upgrades—they add up fast.
             </p>
           </>
@@ -68,10 +68,10 @@ const SectionCard: NextPage = () => {
       case 4:
         return (
           <>
-            <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
+            <h1 className="font-semibold text-[28px] sm:text-[36px] md:text-[45px] leading-[120%] w-full text-left">
               Time Is Money, And DIY Takes Too Long...
             </h1>
-            <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
+            <p className="font-normal text-[20px] sm:text-[28px] md:text-[36px] leading-[140%] w-full text-left mt-4">
               Building a site yourself isn&apos;t &quot;quick and easy&quot; when you re
               learning on the go.
             </p>
@@ -80,10 +80,10 @@ const SectionCard: NextPage = () => {
       case 5:
         return (
           <>
-            <h1 className="font-semibold text-[45px] leading-[120%] w-full text-left">
+            <h1 className="font-semibold text-[28px] sm:text-[36px] md:text-[45px] leading-[120%] w-full text-left">
               Your Vision Deserves More Than Drag-and-Drop...
             </h1>
-            <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4">
+            <p className="font-normal text-[20px] sm:text-[28px] md:text-[36px] leading-[140%] w-full text-left mt-4">
               Drag-and-drop editors can&apos;t keep up with creative or complex
               ideas.
             </p>
@@ -112,13 +112,14 @@ const SectionCard: NextPage = () => {
     }
   };
 
+
   return (
-<div className="w-full h-auto pt-36 overflow-x-hidden">
+<div className="w-full h-auto pt-34">
       <div
-      // main content
-        className={`max-w-full w-[1328px]  ${
-          showBuildSection ? "h-[850px]" : "h-[518px]"
-        } rounded-tr-[48px] rounded-br-[48px] pt-[96px] pr-[96px] pb-[96px] gap-49 pl-[200px] relative`}
+        // main content
+        className={`max-w-full w-full sm:w-[1328px] ${
+          showBuildSection ? "h-auto sm:h-[850px]" : "h-auto sm:h-[518px]"
+        } rounded-tr-[48px] rounded-br-[48px] pt-[40px] sm:pt-[96px] pr-[20px] sm:pr-[96px] pb-[40px] sm:pb-[96px] gap-6 sm:gap-49 pl-[20px] sm:pl-[200px] relative`}
         style={{
           background:
             "linear-gradient(127.68deg, rgba(129, 51, 241, 0.2) 28.21%, rgba(45, 40, 54, 0.2) 103.48%)",
@@ -126,10 +127,10 @@ const SectionCard: NextPage = () => {
         }}
       >
         {/* content */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start relative z-10">
           {getContent()}
           <button
-            className="bg-[#8133F1] flex items-center justify-center gap-2 text-[18px] font-semibold text-white w-[239px] h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
+            className="bg-[#8133F1] flex items-center justify-center gap-2 text-[16px] sm:text-[18px] font-semibold text-white w-[180px] sm:w-[239px] h-[60px] sm:h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
             onClick={handleBuildNowClick}
           >
             SOLVE NOW
@@ -138,47 +139,45 @@ const SectionCard: NextPage = () => {
 
           {/* New section that appears when SOLVE NOW is clicked */}
           {showBuildSection && (
-            <div className="w-[1032px] h-[300.25px] rounded-[32px] p-[48px] gap-[10px] bg-[#8133F1] mt-10">
-              <div>
-                <Image
-                  src="/images/Vector.svg"
-                  alt="quotation mark"
-                  width={104.23}
-                  height={29.27}
-                  className="relative w-[104.232px] h-[29.27px]"
-                />
-              </div>
-              <p className="font-normal text-[36px] leading-[140%] w-full text-left mt-4 text-white">
-                {getBuildNowContent()}
-              </p>
-            </div>
+                  <div className="w-full max-w-[1032px] h-auto rounded-[32px] p-6 sm:p-[48px] bg-[#8133F1] mt-10 relative z-20">
+                  <div>
+                    <Image
+                      src="/images/Vector.svg"
+                      alt="quotation mark"
+                      width={80}
+                      height={20}
+                      className="w-[60px] sm:w-[104.232px] h-auto"
+                    />
+                  </div>
+                  <p className="font-normal text-[18px] sm:text-[36px] leading-[140%] text-left mt-4 text-white break-words">
+                    {getBuildNowContent()}
+                  </p>
+                  </div>
+
           )}
         </div>
 
-        {/* Gradient Background Image - positioned absolute but adjusted with top based on showBuildSection */}
-        <div
-          className="absolute right-[-550px] w-[700.01px] h-[500px] mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden"
-          style={{
-            top: showBuildSection ? "350px" : "0",
-            transition: "top 0.3s ease-in-out",
-          }}
-        >
-          <div className="absolute inset-0 w-">
+        {/* Gradient Background Image - positioned absolute but with fixed position */}
+        <div className="absolute right-[-200px] sm:right-[-600px] top-0 w-[400px] sm:w-[900.01px] h-[250px] sm:h-[500px] mt-[100px] sm:mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden z-0">
+          <div className="absolute inset-0">
             <Image
-              src="/images/Section Card Pattern with Gradient.svg"
+              src="/images/gradient background.svg"
               alt="gradient background image"
-              width={680}
-              height={500}
-              className="relative w-full"
+              width={340}
+              height={250}
+              className="relative w-full mix-blend-screen opacity-80"
             />
           </div>
         </div>
       </div>
 
+
       {/* Number Selectors */}
-      <div className="flex flex-row gap-20 pl-[200px] mt-95 mb-20">
+      <div
+        className="flex flex-row flex-wrap gap-6 sm:gap-10 md:gap-12 lg:gap-20 px-4 sm:px-10 md:px-20 lg:pl-[200px] mt-10 sm:mt-12 md:mt-16 lg:mt-[75px] mb-10 sm:mb-12 md:mb-16 lg:mb-20"
+      >
         <div
-          className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
+          className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             1
           )}`}
           onClick={() => handleNumberClick(1)}
@@ -186,7 +185,7 @@ const SectionCard: NextPage = () => {
           01
         </div>
         <div
-          className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
+          className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             2
           )}`}
           onClick={() => handleNumberClick(2)}
@@ -194,7 +193,7 @@ const SectionCard: NextPage = () => {
           02
         </div>
         <div
-          className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
+          className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             3
           )}`}
           onClick={() => handleNumberClick(3)}
@@ -202,7 +201,7 @@ const SectionCard: NextPage = () => {
           03
         </div>
         <div
-          className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
+          className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             4
           )}`}
           onClick={() => handleNumberClick(4)}
@@ -210,7 +209,7 @@ const SectionCard: NextPage = () => {
           04
         </div>
         <div
-          className={`w-[36px] h-[36px] font-light cursor-pointer ${getNumberStyle(
+          className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             5
           )}`}
           onClick={() => handleNumberClick(5)}
