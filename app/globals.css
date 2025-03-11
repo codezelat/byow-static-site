@@ -23,16 +23,51 @@
   }
 }
 
+/* Responsive Layout Adjustments */
 .container-wrapper {
-  margin-left: 200px;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 45px;
-  margin-right: 200px;
 }
+
+@media (min-width: 768px) {
+  .container-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wrapper {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+
 body {
   background-color: var(--background);
-
 }
 
+/* Ensuring Images Scale Responsively */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Button Adjustments for Mobile */
+button {
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Counterclockwise Animation */
 @keyframes spin-counterclockwise {
   0% {
     transform: rotate(0deg);
@@ -45,5 +80,3 @@ body {
 .animate-spin-counterclockwise {
   animation: spin-counterclockwise 40s linear infinite;
 }
-
-
