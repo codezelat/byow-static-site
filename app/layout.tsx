@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import BackgroundContent from "./components/BackgroundContent"; 
 
 export const metadata: Metadata = {
   title: "BYOW",
@@ -14,7 +14,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased relative w-full h-full min-h-screen">
+        {/* Video section - top half */}
+        <div className="absolute top-0 left-0 w-full h-[28vh] xs:h-[60vh] sm:h-[70vh] md:h-[55vh] lg:h-[90vh] xl:h-[1074px] z-0 overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/videos/Background Video.mp4" type="video/mp4" />
+          </video>
+        </div>
+        
+        {/* Solid color section - bottom half */}
+        <div className="absolute top-[50vh] xs:top-[60vh] sm:top-[70vh] md:top-[80vh] lg:top-[90vh] xl:top-[1074px] left-0 w-full bottom-0 bg-[#040010] z-0"></div>
+        
+        {/* Content wrapper that sits on top of both backgrounds */}
+        <div className="relative z-10 w-full min-h-screen">
+          <BackgroundContent>{children}</BackgroundContent>
+        </div>
+      </body>
     </html>
   );
 }
