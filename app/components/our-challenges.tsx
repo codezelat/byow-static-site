@@ -232,18 +232,87 @@ export default function OurChallengesPage() {
   ];
 
   return (
-    <div className="container-wrapper flex flex-col lg:grid lg:grid-cols-[1fr_auto] rounded-3xl gap-4 lg:gap-12">
-      {/* Challenges section */}
-      <div 
-        className="text-white p-4 sm:p-6 lg:p-12 rounded-3xl" 
-        style={{ 
-          width: '100%',
-          borderRadius: selectedSolution && window.innerWidth >= 1024 ? '32px 0 0 32px' : '32px',
+    <div
+      className="container-wrapper relative rounded-3xl flex"
+      style={{ maxWidth: "100%" }}
+    >
+      {/* Solution section always visible on the right */}
+      <div
+        className="text-white flex flex-col items-center rounded-3xl transition-all duration-300 overflow-hidden"
+        style={{
+          width: "730px",
+          borderRadius: "0 32px 32px 0",
+          background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+          position: "absolute",
+          right: 0,
+          top: 0,
+          bottom: 0,
+          zIndex: 1,
         }}
       >
-        <h1 className="text-[#8133F1] text-xl sm:text-2xl font-bold mb-2 text-start">The Challenges</h1>
-        <hr className="border-[#8133F1] mb-4 sm:mb-6" />
-        
+        <div className="w-full h-full" style={{ padding: " 48px" }}>
+          <>
+            <div className="flex justify-between items-center mb-2 w-full">
+              <h1 className="text-2xl font-bold">Our Solution</h1>
+              <button
+                onClick={() => setSelectedSolution(null)}
+                className="text-white hover:text-gray-200 transition-colors"
+                aria-label="Close solution"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <hr className="border-white mb-6 w-full" />
+
+            {/* Video section - always show a video */}
+            <div className="bg-white rounded-[16px] overflow-hidden mb-6 w-full max-w-[90vw] sm:max-w-[634px] h-auto aspect-[3/4]">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src={
+                    selectedSolution
+                      ? challenges.find((c) => c.id === selectedSolution)
+                          ?.videoSrc
+                      : challenges[0]?.videoSrc 
+                  }
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+
+            {/* Solution Paragraph */}
+            <p className="text-white text-center px-4">
+              {selectedSolution
+                ? challenges.find((c) => c.id === selectedSolution)?.solution
+                : challenges[0]?.solution}
+            </p>
+          </>
+        </div>
+      </div>
+
+      {/* Challenges section */}
+      <div
+        className="text-white bg-black p-6 sm:p-8 transition-all duration-300"
+        style={{
+          width: selectedSolution ? "600px" : "calc(90% - 100px)",
+          borderRadius: selectedSolution ? "32px 0 0 32px" : "32px",
+          border: "1px solid #8133F1",
+          padding: "72px",
+          maxWidth: "100%",
+          position: "relative",
+          zIndex: selectedSolution ? 1 : 2,
+        }}
+      >
+        <h1 className="text-[#8133F1] text-2xl font-bold mb-2 text-start">
+          The Challenges
+        </h1>
+        <hr className="border-[#8133F1] mb-6" />
+
         {challenges.map((challenge) => (
           <div key={challenge.id} className="mb-8 sm:mb-12">
             <p className="mb-4 text-start text-sm sm:text-base">
@@ -252,9 +321,9 @@ export default function OurChallengesPage() {
               <span className="text-xs sm:text-sm text-[#a37ff0] mt-2 block">{challenge.tagline}</span>
             </p>
             <div className="flex justify-start">
-              <button 
+              <button
                 onClick={() => setSelectedSolution(challenge.id)}
-                className="bg-[#8133F1] text-white px-4 sm:px-6 py-2 rounded-full mb-4 text-sm sm:text-base hover:bg-[#6325c5] transition"
+                className="bg-[#8133F1] text-white px-6 py-2 rounded-full mb-4 hover:bg-[#6325c5] transition"
               >
                 View Solution
               </button>
@@ -264,73 +333,6 @@ export default function OurChallengesPage() {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Solutions section - Mobile version (accordion-style) */}
-      {selectedSolution && window.innerWidth < 1024 && (
-        <div 
-          className="text-white p-4 sm:p-6 flex flex-col items-center rounded-3xl lg:hidden transition-all duration-300"
-          style={{
-            width: '100%',
-            background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-          }}
-        >
-          <div className="flex justify-between items-center mb-2 w-full">
-            <h1 className="text-xl sm:text-2xl font-bold">Our Solution</h1>
-            <button onClick={() => setSelectedSolution(null)} className="text-white">
-              <CloseIcon />
-            </button>
-          </div>
-          <hr className="border-white mb-4 sm:mb-6 w-full" />
-          <div className="bg-white rounded-[16px] overflow-hidden mb-4 sm:mb-6 w-full aspect-video">
-            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src={challenges.find(c => c.id === selectedSolution)?.videoSrc} type="video/mp4" />
-            </video>
-          </div>
-          <p className="text-white text-center text-sm sm:text-base">
-            {challenges.find(c => c.id === selectedSolution)?.solution}
-          </p>
-        </div>
-      )}
-
-      {/* Solutions section - Desktop version (side panel) */}
-      <div
-        className="hidden lg:flex text-white flex-col items-center rounded-3xl transition-all duration-300"
-        style={{
-          width: selectedSolution ? 'min(730px, 40vw)' : '100px',
-          borderRadius: selectedSolution ? '0 32px 32px 0' : '0 32px 32px 0',
-          padding: selectedSolution ? 'clamp(16px, 5vw, 72px) clamp(16px, 3vw, 48px)' : 'clamp(16px, 5vw, 72px) clamp(8px, 2vw, 24px)',
-          background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-          overflow: 'hidden',
-        }}
-      >
-        {selectedSolution ? (
-          <>
-            <div className="flex justify-between items-center mb-2 w-full">
-              <h1 className="text-xl sm:text-2xl font-bold">Our Solution</h1>
-              <button onClick={() => setSelectedSolution(null)} className="text-white">
-                <CloseIcon />
-              </button>
-            </div>
-            <hr className="border-white mb-4 sm:mb-6 w-full" />
-            <div 
-              className="bg-white rounded-[16px] overflow-hidden mb-4 sm:mb-6"
-              style={{ width: '634px', height: '668px', borderRadius: '16px' }}
-            >
-              <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-                <source src={challenges.find(c => c.id === selectedSolution)?.videoSrc} type="video/mp4" />
-              </video>
-            </div>
-
-            <p className="text-white text-center text-sm sm:text-base">
-              {challenges.find(c => c.id === selectedSolution)?.solution}
-            </p>
-          </>
-        ) : (
-          <div className="flex justify-center items-center h-full">
-
-          </div>
-        )}
       </div>
     </div>
   );
