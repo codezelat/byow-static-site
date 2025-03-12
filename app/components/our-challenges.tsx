@@ -176,13 +176,9 @@
 //   );
 // }
 
-
-
-
-
-import { useState } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
-import Image from 'next/image';
+import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 
 interface Challenge {
   id: number;
@@ -200,35 +196,43 @@ export default function OurChallengesPage() {
     {
       id: 1,
       title: "The Luxe Café",
-      description: "The Luxe Café wanted a website that mirrored their premium dining experience. DIY platforms left them stuck with bland templates that didn't capture their unique vibe.",
+      description:
+        "The Luxe Café wanted a website that mirrored their premium dining experience. DIY platforms left them stuck with bland templates that didn't capture their unique vibe.",
       tagline: "From Cookie-Cutter to One-of-a-Kind: The Luxe Cafe",
       videoSrc: "/videos/video-01.mp4",
-      solution: "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month."
+      solution:
+        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
     },
     {
       id: 2,
       title: "Elite Builders",
-      description: "As a construction company, Elite Builders struggled to showcase their impressive portfolio and win client trust online. Drag-and-drop tools weren't cutting it.",
+      description:
+        "As a construction company, Elite Builders struggled to showcase their impressive portfolio and win client trust online. Drag-and-drop tools weren't cutting it.",
       tagline: "Building Trust, Brick by Brick: Elite Builders & Co.",
       videoSrc: "/videos/video-02.mp4",
-      solution: "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month."
+      solution:
+        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
     },
     {
       id: 3,
       title: "Vision Creative Studio",
-      description: "Vision Creative Studio's site felt outdated and didn't reflect their innovative approach. They needed a website as bold as their ideas.",
+      description:
+        "Vision Creative Studio's site felt outdated and didn't reflect their innovative approach. They needed a website as bold as their ideas.",
       tagline: "Bold Ideas, Bigger Impact: Vision Creative Studio",
       videoSrc: "/videos/video-03.mp4",
-      solution: "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month."
+      solution:
+        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
     },
     {
       id: 4,
       title: "EduQuest",
-      description: "EduQuest wanted to expand its reach with an engaging platform for online courses, but their previous website was clunky and hard to navigate.",
+      description:
+        "EduQuest wanted to expand its reach with an engaging platform for online courses, but their previous website was clunky and hard to navigate.",
       tagline: "Making Learning Accessible: EduQuest Academy",
       videoSrc: "/videos/video-04.mp4",
-      solution: "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month."
-    }
+      solution:
+        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
+    },
   ];
 
   return (
@@ -278,7 +282,7 @@ export default function OurChallengesPage() {
                     selectedSolution
                       ? challenges.find((c) => c.id === selectedSolution)
                           ?.videoSrc
-                      : challenges[0]?.videoSrc 
+                      : challenges[0]?.videoSrc
                   }
                   type="video/mp4"
                 />
@@ -297,15 +301,17 @@ export default function OurChallengesPage() {
 
       {/* Challenges section */}
       <div
-        className="text-white bg-black p-6 sm:p-8 transition-all duration-300"
+        className={`text-white transition-all duration-300 lg:static ${
+          selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"
+        } h-[1044px] p-[72px] rounded-l-[32px]`}
         style={{
-          width: selectedSolution ? "600px" : "calc(90% - 100px)",
-          borderRadius: selectedSolution ? "32px 0 0 32px" : "32px",
-          border: "1px solid #8133F1",
-          padding: "72px",
-          maxWidth: "100%",
-          position: "relative",
-          zIndex: selectedSolution ? 1 : 2,
+          background: "#000",
+          zIndex: "10",
+          border: "1px solid",
+          borderImageSource:
+            "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+          borderImageSlice: "1",
+          borderRight: selectedSolution ? "none" : "1px solid",
         }}
       >
         <h1 className="text-[#8133F1] text-2xl font-bold mb-2 text-start">
@@ -318,7 +324,9 @@ export default function OurChallengesPage() {
             <p className="mb-4 text-start text-sm sm:text-base">
               {challenge.description}
               <br />
-              <span className="text-xs sm:text-sm text-[#a37ff0] mt-2 block">{challenge.tagline}</span>
+              <span className="text-xs sm:text-sm text-[#a37ff0] mt-2 block">
+                {challenge.tagline}
+              </span>
             </p>
             <div className="flex justify-start">
               <button
@@ -329,7 +337,12 @@ export default function OurChallengesPage() {
               </button>
             </div>
             <div className="hidden sm:block">
-              <Image src={"/images/Arrow 1.png"} alt='arrow' width={10} height={10} />
+              <Image
+                src={"/images/Arrow 1.png"}
+                alt="arrow"
+                width={10}
+                height={10}
+              />
             </div>
           </div>
         ))}
