@@ -56,17 +56,22 @@ export default function ServicePage() {
  return (
     
 
-    <div 
-    className="relative w-full h-fit bg-cover bg-center mt-28"
-    style={{ backgroundImage: 'url("/images/Group.svg")' }}
-  >
-      <div>
-        <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center mb-4">
-          Expert Digital Services Tailored for Your Success
-        </h1>
-        <p className="text-gray-400 text-center mb-6">
-          At BYOW, we craft websites that go beyond templates, delivering tailored designs, seamless functionality, and a unique online presence that truly represents your brand.
-        </p>
+<div 
+  className="relative w-full h-fit bg-cover bg-center mt-28"
+  style={{ 
+    backgroundImage: 'url("/images/Group.svg")',
+    backgroundColor: 'transparent', // Very dark background
+    backgroundBlendMode: 'overlay'
+  }}
+>
+  {/* Add a container with padding to better space the content */}
+  <div className="container mx-auto px-4 py-12">
+    <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center mb-4">
+      Expert Digital Services Tailored for Your Success
+    </h1>
+    <p className="text-gray-400 text-center mb-6">
+      At BYOW, we craft websites that go beyond templates, delivering tailored designs, seamless functionality, and a unique online presence that truly represents your brand.
+    </p>
 
         <div id="accordion-collapse" data-accordion="collapse" className="max-w-4xl mx-auto space-y-4">
           {serviceCategories.map((category, index) => (
