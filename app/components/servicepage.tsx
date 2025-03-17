@@ -8,6 +8,55 @@ import { Service, serviceCategories } from "../data/servicedata";
 import ServiceSinglePage from "./servicesinglepage";
 import CloseIcon from "@mui/icons-material/Close";
 
+// Card Component
+interface CardProps {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  isHovered: boolean;
+  setHoveredCard: React.Dispatch<React.SetStateAction<string | null>>;
+  setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const Card = ({
+  id,
+  title,
+  description,
+  icon,
+  isHovered,
+  setHoveredCard,
+  setSelectedService,
+}: CardProps) => (
+  <motion.div
+    className="relative p-6 w-[430px] h-[221px] rounded-[28px] overflow-hidden cursor-pointer bg-[#0C090D]"
+    onHoverStart={() => setHoveredCard(id)}
+    onHoverEnd={() => setHoveredCard(null)}
+    onClick={() => setSelectedService(id)}
+    style={{
+      border: "1px solid",
+      borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+      borderImageSlice: "1"
+    }}
+  >
+    {/* Background Fill Animation */}
+    <motion.div
+      className="absolute top-0 left-0 w-full h-full bg-[#8133F1]"
+      initial={{ width: "0%" }}
+      animate={{ width: isHovered ? "100%" : "0%" }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+    />
+
+    {/* Content */}
+    <div className="relative z-10">
+      <Image src={icon} alt={title} width={57} height={57} className="mb-3" />
+      <h3 className="font-semibold text-white text-start">{title}</h3>
+      <p className="text-gray-400 text-sm text-start">{description}</p>
+    </div>
+  </motion.div>
+);
+
+
 export default function ServicePage() {
   const initialized = useRef(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -60,12 +109,12 @@ export default function ServicePage() {
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
       {/* Content container */}
-      <div className="relative z-10 container mx-auto px-4 pb-20">
-        <div className="flex flex-col  pb-10">
+      <div className="relative container-wrapper z-10 mx-auto px-4 pb-20">
+        <div className="flex flex-col pb-10">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
             Expert Digital Services Tailored for Your Success
           </h1>
-          <p className=" max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+          <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
             At BYOW, we craft websites that go beyond templates, delivering
             tailored designs, seamless functionality, and a unique online
             presence that truly represents your brand.
@@ -75,7 +124,7 @@ export default function ServicePage() {
         <div
           id="accordion-collapse"
           data-accordion="collapse"
-          className="max-w-4xl mx-auto space-y-4"
+          className="space-y-4"
         >
           {serviceCategories.map((category, index) => (
             <AccordionItem
@@ -104,15 +153,28 @@ interface AccordionItemProps {
   children: React.ReactNode;
 }
 
+
 const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
   <>
     <h2 id={`accordion-heading-${id}`}>
       <button
         type="button"
-        className="flex items-center justify-between w-full p-5 font-medium text-white rounded-4xl bg-[#080709] gap-3"
+        className="flex items-center justify-between w-full p-5 font-medium text-white rounded-[36px] bg-[#080709] gap-3 border border-[#2D2836]"
         data-accordion-target={`#accordion-body-${id}`}
         aria-expanded="false"
         aria-controls={`accordion-body-${id}`}
+        style={{
+          width: "1332px",
+          height: "72px",
+          justifyContent: "space-between",
+          paddingTop: "24px",
+          paddingRight: "32px",
+          paddingBottom: "24px",
+          paddingLeft: "32px",
+          borderRadius: "36px",
+          borderWidth: "1px",
+          background: "#080709",
+        }}
       >
         <span>{title}</span>
         <svg
@@ -143,6 +205,7 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
   </>
 );
 
+
 // Service Grid Component
 interface ServiceGridProps {
   services: Service[];
@@ -160,7 +223,7 @@ const ServiceGrid = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {services.map((service) => (
-        <ServiceCard
+        <Card
           key={service.id}
           id={service.id}
           title={service.title}
@@ -175,45 +238,3 @@ const ServiceGrid = ({
   );
 };
 
-// Service Card Component
-interface ServiceCardProps {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  isHovered: boolean;
-  setHoveredCard: React.Dispatch<React.SetStateAction<string | null>>;
-  setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
-}
-
-const ServiceCard = ({
-  id,
-  title,
-  description,
-  icon,
-  isHovered,
-  setHoveredCard,
-  setSelectedService,
-}: ServiceCardProps) => (
-  <motion.div
-    className="relative p-4 rounded-xl border bg-[#080709] border-gray-700 overflow-hidden cursor-pointer"
-    onHoverStart={() => setHoveredCard(id)}
-    onHoverEnd={() => setHoveredCard(null)}
-    onClick={() => setSelectedService(id)}
-  >
-    {/* Background Fill Animation */}
-    <motion.div
-      className="absolute top-0 left-0 w-full h-full bg-[#8133F1]"
-      initial={{ width: "0%" }}
-      animate={{ width: isHovered ? "100%" : "0%" }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
-    />
-
-    {/* Content */}
-    <div className="relative z-10">
-      <Image src={icon} alt={title} width={30} height={30} className="mb-3" />
-      <h3 className="font-semibold text-white text-start">{title}</h3>
-      <p className="text-gray-400 text-sm text-start">{description}</p>
-    </div>
-  </motion.div>
-);
