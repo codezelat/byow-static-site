@@ -6,8 +6,7 @@ import "flowbite";
 import { motion } from "framer-motion";
 import { Service, serviceCategories } from "../data/servicedata";
 import ServiceSinglePage from "./servicesinglepage";
-import CloseIcon from '@mui/icons-material/Close';
-
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function ServicePage() {
   const initialized = useRef(false);
@@ -15,13 +14,13 @@ export default function ServicePage() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only import and initialize Flowbite once
     const initFlowbite = async () => {
       const flowbite = await import("flowbite");
-      
-      // Initialize all accordion elements on the page
+
       if (!initialized.current) {
-        const accordionElements = document.querySelectorAll('[data-accordion="collapse"]');
+        const accordionElements = document.querySelectorAll(
+          '[data-accordion="collapse"]'
+        );
         accordionElements.forEach(() => {
           flowbite.initAccordions();
         });
@@ -31,53 +30,62 @@ export default function ServicePage() {
 
     initFlowbite();
 
-    // Re-initialize when component unmounts and remounts
     return () => {
       initialized.current = false;
     };
   }, []);
 
-  // If a service is selected, show the ServiceSinglePage
- // From your ServicePage component
- if (selectedService) {
+  if (selectedService) {
+    return (
+      <div className="relative">
+        <button
+          onClick={() => setSelectedService(null)}
+          className="absolute top-4 right-60 text-[#8133F1] hover:underline"
+        >
+          <CloseIcon />
+        </button>
+        <ServiceSinglePage serviceId={selectedService} />
+      </div>
+    );
+  }
+
   return (
-    <div className="relative ">
-      <button 
-        onClick={() => setSelectedService(null)}
-        className="absolute top-4 right-60 text-[#8133F1] hover:underline"
-      >
-        <CloseIcon />
-      </button>
-      <ServiceSinglePage serviceId={selectedService} />
-    </div>
-  );
-}
+    <div
+      className="relative w-full h-fit mt-10 bg-cover bg-center"
+      style={{
+        backgroundImage: 'url("/images/service_background.png")',
+      }}
+    >
+      {/* Overlay with reduced opacity */}
+      <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
- return (
-    
+      {/* Content container */}
+      <div className="relative z-10 container mx-auto px-4 pb-20">
+        <div className="flex flex-col  pb-10">
+          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+            Expert Digital Services Tailored for Your Success
+          </h1>
+          <p className=" max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+            At BYOW, we craft websites that go beyond templates, delivering
+            tailored designs, seamless functionality, and a unique online
+            presence that truly represents your brand.
+          </p>
+        </div>
 
-    <div 
-    className="relative w-full h-fit bg-cover bg-center mt-28"
-    style={{ backgroundImage: 'url("/images/Group.svg")' }}
-  >
-      <div>
-        <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center mb-4">
-          Expert Digital Services Tailored for Your Success
-        </h1>
-        <p className="text-gray-400 text-center mb-6">
-          At BYOW, we craft websites that go beyond templates, delivering tailored designs, seamless functionality, and a unique online presence that truly represents your brand.
-        </p>
-
-        <div id="accordion-collapse" data-accordion="collapse" className="max-w-4xl mx-auto space-y-4">
+        <div
+          id="accordion-collapse"
+          data-accordion="collapse"
+          className="max-w-4xl mx-auto space-y-4"
+        >
           {serviceCategories.map((category, index) => (
-            <AccordionItem 
-              key={category.id} 
-              id={(index + 2).toString()} 
+            <AccordionItem
+              key={category.id}
+              id={(index + 2).toString()}
               title={category.title}
             >
-              <ServiceGrid 
-                services={category.services} 
-                hoveredCard={hoveredCard} 
+              <ServiceGrid
+                services={category.services}
+                hoveredCard={hoveredCard}
                 setHoveredCard={setHoveredCard}
                 setSelectedService={setSelectedService}
               />
@@ -88,6 +96,7 @@ export default function ServicePage() {
     </div>
   );
 }
+
 // Accordion Item Component
 interface AccordionItemProps {
   id: string;
@@ -114,11 +123,21 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
           fill="none"
           viewBox="0 0 10 6"
         >
-          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 5 5 1 1 5"
+          />
         </svg>
       </button>
     </h2>
-    <div id={`accordion-body-${id}`} className="hidden" aria-labelledby={`accordion-heading-${id}`}>
+    <div
+      id={`accordion-body-${id}`}
+      className="hidden"
+      aria-labelledby={`accordion-heading-${id}`}
+    >
       <div className="p-5">{children}</div>
     </div>
   </>
@@ -132,7 +151,12 @@ interface ServiceGridProps {
   setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const ServiceGrid = ({ services, hoveredCard, setHoveredCard, setSelectedService }: ServiceGridProps) => {
+const ServiceGrid = ({
+  services,
+  hoveredCard,
+  setHoveredCard,
+  setSelectedService,
+}: ServiceGridProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {services.map((service) => (
@@ -162,14 +186,14 @@ interface ServiceCardProps {
   setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const ServiceCard = ({ 
-  id, 
-  title, 
-  description, 
-  icon, 
-  isHovered, 
+const ServiceCard = ({
+  id,
+  title,
+  description,
+  icon,
+  isHovered,
   setHoveredCard,
-  setSelectedService 
+  setSelectedService,
 }: ServiceCardProps) => (
   <motion.div
     className="relative p-4 rounded-xl border bg-[#080709] border-gray-700 overflow-hidden cursor-pointer"
@@ -184,13 +208,12 @@ const ServiceCard = ({
       animate={{ width: isHovered ? "100%" : "0%" }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
     />
-    
-    {/* Content with relative positioning to appear above the background */}
+
+    {/* Content */}
     <div className="relative z-10">
       <Image src={icon} alt={title} width={30} height={30} className="mb-3" />
       <h3 className="font-semibold text-white text-start">{title}</h3>
       <p className="text-gray-400 text-sm text-start">{description}</p>
     </div>
   </motion.div>
-  
 );

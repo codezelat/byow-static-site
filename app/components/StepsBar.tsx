@@ -49,7 +49,7 @@ const StepsBar: NextPage = () => {
 
   return (
     <div className="h-auto pb-12 md:pb-24 px-4 md:px-6">
-      <div className="flex flex-col pt-40  pb-10">
+      <div className="flex flex-col pt-40  pb-20">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           How BYOW Simplifies Your Journey?
         </h1>
@@ -235,7 +235,7 @@ const StepsBar: NextPage = () => {
                 style={{
                   position: "absolute",
                   content: "''",
-                  inset: "-1px", // 1px larger than the parent
+                  inset: "-1px",
                   borderRadius: "20px",
                   background:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
@@ -269,7 +269,7 @@ const StepsBar: NextPage = () => {
                 style={{
                   position: "absolute",
                   content: "''",
-                  inset: "-1px", // 1px larger than the parent
+                  inset: "-1px",
                   borderRadius: "20px",
                   background:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
@@ -298,7 +298,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "110px",
+                top: "80px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -317,7 +317,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "320px",
+                top: "280px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -336,7 +336,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "550px",
+                top: "450px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -355,7 +355,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "732px",
+                top: "600px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",

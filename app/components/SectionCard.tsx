@@ -2,6 +2,7 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
 import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
+import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined"; // Import the new icon
 import Image from "next/image";
 
 const SectionCard: NextPage = () => {
@@ -112,9 +113,8 @@ const SectionCard: NextPage = () => {
     }
   };
 
-
   return (
-<div className="w-full h-auto pt-34">
+    <div className="w-full h-auto pt-34">
       <div
         // main content
         className={`max-w-full w-full sm:w-[1328px] ${
@@ -133,27 +133,26 @@ const SectionCard: NextPage = () => {
             className="bg-[#8133F1] flex items-center justify-center gap-2 text-[16px] sm:text-[18px] font-semibold text-white w-[180px] sm:w-[239px] h-[60px] sm:h-[70px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
             onClick={handleBuildNowClick}
           >
-            SOLVE NOW
-            <ArrowCircleDownOutlinedIcon />
+            {showBuildSection ? "SOLVED" : "SOLVE NOW"}
+            {showBuildSection ? <ArrowCircleUpOutlinedIcon /> : <ArrowCircleDownOutlinedIcon />}
           </button>
 
           {/* New section that appears when SOLVE NOW is clicked */}
           {showBuildSection && (
-                  <div className="w-full max-w-[1032px] h-auto rounded-[32px] p-6 sm:p-[48px] bg-[#8133F1] mt-10 relative z-20">
-                  <div>
-                    <Image
-                      src="/images/Vector.svg"
-                      alt="quotation mark"
-                      width={80}
-                      height={20}
-                      className="w-[60px] sm:w-[104.232px] h-auto"
-                    />
-                  </div>
-                  <p className="font-normal text-[18px] sm:text-[36px] leading-[140%] text-left mt-4 text-white break-words">
-                    {getBuildNowContent()}
-                  </p>
-                  </div>
-
+            <div className="w-full max-w-[1032px] h-auto rounded-[32px] p-6 sm:p-[48px] bg-[#8133F1] mt-10 relative z-20">
+              <div>
+                <Image
+                  src="/images/Group (1).png"
+                  alt="arrow"
+                  width={80}
+                  height={20}
+                  className="w-[60px] sm:w-[104.232px] h-auto"
+                />
+              </div>
+              <p className="font-normal text-[18px] sm:text-[36px] leading-[140%] text-left mt-4 text-white break-words">
+                {getBuildNowContent()}
+              </p>
+            </div>
           )}
         </div>
 
@@ -171,11 +170,8 @@ const SectionCard: NextPage = () => {
         </div>
       </div>
 
-
       {/* Number Selectors */}
-      <div
-        className="flex flex-row flex-wrap gap-6 sm:gap-10 md:gap-12 lg:gap-20 px-4 sm:px-10 md:px-20 lg:pl-[200px] mt-10 sm:mt-12 md:mt-16 lg:mt-[75px] mb-10 sm:mb-12 md:mb-16 lg:mb-20"
-      >
+      <div className="flex flex-row flex-wrap gap-6 sm:gap-10 md:gap-12 lg:gap-20 px-4 sm:px-10 md:px-20 lg:pl-[200px] mt-10 sm:mt-12 md:mt-16 lg:mt-[75px] mb-10 sm:mb-12 md:mb-16 lg:mb-20">
         <div
           className={`w-[36px] h-[36px] font-light cursor-pointer text-center ${getNumberStyle(
             1
