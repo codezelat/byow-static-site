@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const ResponsiveCardsSection = () => {
   const cards = [
@@ -16,7 +16,7 @@ const ResponsiveCardsSection = () => {
       img: "/images/cardSection3.png",
       title: "Wasting precious time on DIY platforms?",
       text: "Focus on your business while we handle the rest.",
-    }
+    },
   ];
 
   return (
@@ -25,9 +25,15 @@ const ResponsiveCardsSection = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="w-full max-w-xs sm:max-w-sm md:w-full h-auto border rounded-3xl flex flex-col p-4 sm:p-6 md:p-8 items-center text-center backdrop-blur-md relative overflow-hidden"
+            className="w-full relative max-w-xs sm:max-w-sm md:w-full h-auto rounded-3xl flex flex-col p-4 sm:p-6 md:p-8 items-center text-center backdrop-blur-md overflow-hidden"
             style={{
-              borderImage: "linear-gradient(180deg, #8133F1 0%, #090909 100%) 1",
+              background: "black",
+              border: "2px solid transparent", 
+              borderRadius: "24px", 
+              backgroundImage:
+                "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)", 
+              backgroundOrigin: "border-box", 
+              backgroundClip: "padding-box, border-box", 
             }}
           >
             <div className="relative w-16 h-16 mb-4">

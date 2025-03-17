@@ -134,17 +134,19 @@ export default function OurChallengesPage() {
         </div>
         {/* Challenges section */}
         <div
-          className={`text-white transition-all duration-300 lg:static rounded-3xl ${
+          className={`text-white transition-all duration-300 lg:static  ${
             selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"
-          } h-[1044px] p-[72px] rounded-t-[32px]`}
+          } h-[1044px] p-[72px] `}
           style={{
             background: "#000",
             zIndex: "10",
-            border: "1px solid",
-            borderImageSource:
-              "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+            borderTopLeftRadius: "24px",
+            border: "2px solid transparent",
+            backgroundImage:
+              "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
             borderImageSlice: "1",
-            borderRight: selectedSolution ? "none" : "1px solid",
+            backgroundOrigin: "border-box",
+            backgroundClip: "padding-box, border-box",
           }}
         >
           <h1 className="text-[#8133F1] text-2xl font-bold mb-2 text-start">
