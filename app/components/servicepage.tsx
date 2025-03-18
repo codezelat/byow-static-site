@@ -18,7 +18,6 @@ interface CardProps {
   setHoveredCard: React.Dispatch<React.SetStateAction<string | null>>;
   setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
 }
-
 const Card = ({
   id,
   title,
@@ -28,34 +27,34 @@ const Card = ({
   setHoveredCard,
   setSelectedService,
 }: CardProps) => (
-  <motion.div
-    className="relative p-6 w-[430px] h-[221px] rounded-[28px] overflow-hidden cursor-pointer bg-[#0C090D]"
-    onHoverStart={() => setHoveredCard(id)}
-    onHoverEnd={() => setHoveredCard(null)}
-    onClick={() => setSelectedService(id)}
+  <div
+    className="relative w-[430px] h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer"
     style={{
-      border: "1px solid",
-      borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-      borderImageSlice: "1"
+      background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)"
     }}
+    onMouseEnter={() => setHoveredCard(id)}
+    onMouseLeave={() => setHoveredCard(null)}
+    onClick={() => setSelectedService(id)}
   >
-    {/* Background Fill Animation */}
-    <motion.div
-      className="absolute top-0 left-0 w-full h-full bg-[#8133F1]"
-      initial={{ width: "0%" }}
-      animate={{ width: isHovered ? "100%" : "0%" }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
-    />
+    {/* Inner content container */}
+    <motion.div className="relative w-full h-full rounded-[27px] bg-[#0C090D] p-6 overflow-hidden">
+      {/* Background Fill Animation */}
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full bg-[#8133F1]"
+        initial={{ width: "0%" }}
+        animate={{ width: isHovered ? "100%" : "0%" }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+      />
 
-    {/* Content */}
-    <div className="relative z-10">
-      <Image src={icon} alt={title} width={57} height={57} className="mb-3" />
-      <h3 className="font-semibold text-white text-start">{title}</h3>
-      <p className="text-gray-400 text-sm text-start">{description}</p>
-    </div>
-  </motion.div>
+      {/* Content */}
+      <div className="relative z-10">
+        <Image src={icon} alt={title} width={57} height={57} className="mb-3" />
+        <h3 className="font-semibold text-white text-start">{title}</h3>
+        <p className="text-gray-400 text-sm text-start">{description}</p>
+      </div>
+    </motion.div>
+  </div>
 );
-
 
 export default function ServicePage() {
   const initialized = useRef(false);
@@ -111,10 +110,30 @@ export default function ServicePage() {
       {/* Content container */}
       <div className="relative container-wrapper z-10 mx-auto px-4 pb-20">
         <div className="flex flex-col pb-10">
-          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+          <h1 
+            className="text-[#8133F1] capitalize text-center"
+            style={{
+              fontWeight: 600,
+              fontSize: "48px",
+              lineHeight: "120%",
+              letterSpacing: "0%",
+              width: "1328px",
+              height: "58px",
+              margin: "0 auto"
+            }}
+          >
             Expert Digital Services Tailored for Your Success
           </h1>
-          <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
+          <p 
+            className="text-white capitalize text-center"
+            style={{
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "140%",
+              letterSpacing: "0%",
+              margin: "0 auto"
+            }}
+          >
             At BYOW, we craft websites that go beyond templates, delivering
             tailored designs, seamless functionality, and a unique online
             presence that truly represents your brand.
@@ -159,7 +178,7 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
     <h2 id={`accordion-heading-${id}`}>
       <button
         type="button"
-        className="flex items-center justify-between w-full p-5 font-medium text-white rounded-[36px] bg-[#080709] gap-3 border border-[#2D2836]"
+        className="flex items-center justify-between w-full border border-[#2D2836]"
         data-accordion-target={`#accordion-body-${id}`}
         aria-expanded="false"
         aria-controls={`accordion-body-${id}`}
@@ -174,12 +193,17 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
           borderRadius: "36px",
           borderWidth: "1px",
           background: "#080709",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "120%",
+          letterSpacing: "0%",
+          color: "white"
         }}
       >
-        <span>{title}</span>
+        <div className="flex-grow text-left">{title}</div>
         <svg
           data-accordion-icon
-          className="w-3 h-3 rotate-180 shrink-0"
+          className="w-3 h-3 rotate-180 shrink-0 ml-2"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -237,4 +261,3 @@ const ServiceGrid = ({
     </div>
   );
 };
-

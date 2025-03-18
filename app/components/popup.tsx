@@ -35,7 +35,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
       {/* Popup content */}
       <div className="fixed inset-0 flex items-center justify-center z-50 ">
         {/* Main popup container with gradient border */}
-        <div className="relative w-[95%] md:w-[1291px] max-w-[1500px] h-[80%] md:h-[850px] max-h-[85vh] my-[103px] ">
+        <div className="relative w-[95%] md:w-[1291px] max-w-[1500px] h-[100%] md:h-[900px] max-h-[90vh] my-[103px] ">
           {/* Gradient border using pseudo element technique */}
           <div
             className="absolute inset-0 rounded-[64px]"
@@ -45,7 +45,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
           />
 
           {/* Inner content container - slightly smaller to create border effect */}
-          <div className="absolute inset-[2px] bg-[#060116] rounded-[64px] overflow-y-auto px-[64px] py-[64px]">
+          <div className="absolute inset-[2px] bg-[#060116] rounded-[64px]  px-[64px] py-[64px]">
             {/* Close Button */}
             <button
               onClick={onClose}
@@ -54,13 +54,14 @@ export default function PopupPage({ onClose }: PopupPageProps) {
               <CloseIcon />
             </button>
 
-            <h2 className="text-3xl font-bold text-[#8133F1] text-center mb-2">
-              Let&apos;s Talk About Your Project Today!
-            </h2>
-
-            <p className="text-center text-gray-300 mb-8">
-              Click Below For A Free Consultation And Customized Quote!
-            </p>
+            <div className="flex flex-col gap-[24px] pb-10">
+              <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+                Let’s Talk About Your Project Today!
+              </h1>
+              <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
+                Click Below for a Free Consultation and Customized Quote!
+              </p>
+            </div>
 
             <form
               onSubmit={handleSubmit}
@@ -174,7 +175,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
               </div>
             </form>
 
-            <div className="mt-6 flex flex-wrap items-start space-y-4 md:space-y-0 relative">
+            <div className="mt-6 mb-10 flex flex-wrap items-start space-y-4 md:space-y-0 relative">
               <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
                 <div className="bg-[#18171A] flex items-center w-[196px] h-[50px] rounded-[64px] gap-[10px] px-6 py-3 text-white">
                   <div className="flex items-center gap-2">

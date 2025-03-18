@@ -49,7 +49,7 @@ const StepsBar: NextPage = () => {
 
   return (
     <div className="h-auto pb-12 md:pb-24 px-4 md:px-6">
-      <div className="flex flex-col pt-40  pb-20">
+      <div className="flex flex-col pt-40  pb-20 gap-[24px]">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           How BYOW Simplifies Your Journey?
         </h1>
@@ -65,7 +65,7 @@ const StepsBar: NextPage = () => {
           <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-white"></div>
 
           {/* Mobile steps */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 ">
             {/* Step 1 */}
             <div className="flex flex-col ml-16">
               <div className="absolute left-5 w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black transform -translate-x-1/2">
@@ -84,8 +84,9 @@ const StepsBar: NextPage = () => {
                   border: "1px solid",
                   borderImageSource:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+                    
                   borderImageSlice: 1,
-                  clipPath: "inset(0 round 16px)",
+                  clipPath: "inset(0 round 32px)",
                 }}
               >
                 <h1 className="font-bold text-base leading-[140%] text-left pb-3 text-[#8133F1]">

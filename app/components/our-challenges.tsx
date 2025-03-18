@@ -59,7 +59,7 @@ export default function OurChallengesPage() {
 
   return (
     <>
-      <div className="flex flex-col  pb-10">
+      <div className="flex flex-col  pb-10 gap-[24px]">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           See BYOW in Action
         </h1>

@@ -30,50 +30,59 @@ export default function ServiceSinglePage({
                 alt="Custom Website Design"
                 width={542}
                 height={375}
-                className="w-full h-auto rounded-3xl"
+                className="w-full h-auto rounded-[16px]"
+                style={{
+                  width: "542px",
+                  height: "375px",
+                  borderRadius: "16px",
+                  borderWidth: "1.5px"
+                }}
               />
             </div>
           </div>
 
           {/* Right side with content - 7 columns on large screens */}
-          <div className="lg:col-span-7 text-start">
-            <h1 className="text-3xl font-bold mb-4 text-purple-600">
-              Custom Website Design
-            </h1>
-            <div className="space-y-4 mb-8">
-              <p>
-                At BYOW, we believe your website is more than just a digital
-                presence—its the heart of your brands story. Our Custom Website
-                Design service is tailored to create unique, visually stunning,
-                and highly functional websites that reflect your identity,
-                values, and goals. Whether youre a startup, a growing business,
-                or an established brand, we work closely with you to design a
-                website that not only looks amazing but also delivers results.
-              </p>
-              <p>
-                From the initial concept to the final launch, our process is
-                built on collaboration and innovation. We start by understanding
-                your vision, target audience, and business objectives. Then, our
-                team of designers and developers brings your ideas to life with
-                cutting-edge design trends, intuitive navigation, and responsive
-                layouts that work seamlessly across all devices.
-              </p>
-              <p>
-                What sets us apart is our commitment to creating websites that
-                are not just beautiful but also purposeful. We focus on user
-                experience (UX), ensuring every interaction is smooth and
-                engaging, while optimizing for performance and search engine
-                visibility. Whether you need an e-commerce platform, a portfolio
-                showcase, or a corporate website, we craft solutions that drive
-                growth, build trust, and leave a lasting impression.
-              </p>
+          <div className="lg:col-span-7 text-start flex flex-col justify-between" style={{ height: "375px" }}>
+            <div>
+              <h1 className="text-3xl font-bold mb-4 text-purple-600">
+                Custom Website Design
+              </h1>
+              <div className="space-y-4" style={{ maxHeight: "310px" }}>
+                <p>
+                  At BYOW, we believe your website is more than just a digital
+                  presence—its the heart of your brands story. Our Custom Website
+                  Design service is tailored to create unique, visually stunning,
+                  and highly functional websites that reflect your identity,
+                  values, and goals. Whether youre a startup, a growing business,
+                  or an established brand, we work closely with you to design a
+                  website that not only looks amazing but also delivers results.
+                </p>
+                <p>
+                  From the initial concept to the final launch, our process is
+                  built on collaboration and innovation. We start by understanding
+                  your vision, target audience, and business objectives. Then, our
+                  team of designers and developers brings your ideas to life with
+                  cutting-edge design trends, intuitive navigation, and responsive
+                  layouts that work seamlessly across all devices.
+                </p>
+                <p>
+                  What sets us apart is our commitment to creating websites that
+                  are not just beautiful but also purposeful. We focus on user
+                  experience (UX), ensuring every interaction is smooth and
+                  engaging, while optimizing for performance and search engine
+                  visibility. 
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Full width content section */}
+        {/* Full width content section below the image */}
         <div className="mt-8 mb-12 text-start">
           <p className="mb-4">
+            Whether you need an e-commerce platform, a portfolio
+            showcase, or a corporate website, we craft solutions that drive
+            growth, build trust, and leave a lasting impression.
             But our work doesnt stop at launch. We believe that a great website
             is a living, evolving entity that grows with your business. Thats
             why we offer ongoing support, updates, and maintenance to keep your
@@ -97,61 +106,61 @@ export default function ServiceSinglePage({
           </p>
         </div>
 
-        {/* Tools Section with gradient border */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">
-            Tools
-          </h2>
-          <div
-            className="mb-8 p-10 relative"
-            style={{
-              border: "1px solid",
-              borderImageSource:
-                "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-              borderImageSlice: "1",
-            }}
-          >
-            <div className="flex flex-wrap gap-15 justify-start">
-              {tools.map((tool, index) => (
-                <Image
-                  key={index}
-                  src={tool.image}
-                  alt={tool.name}
-                  width={75}
-                  height={75}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+{/* Tools Section with rounded corners and gradient border */}
+<div className="mb-12">
+  <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">
+    Tools
+  </h2>
+  {/* Outer div with rounded corners */}
+  <div className="mb-8 rounded overflow-hidden">
+    {/* Inner div with gradient border */}
+    <div className="p-10" style={{ 
+      border: "1px solid",
+      borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+      borderImageSlice: "1"
+    }}>
+      <div className="flex flex-wrap gap-15 justify-start">
+        {tools.map((tool, index) => (
+          <Image
+            key={index}
+            src={tool.image}
+            alt={tool.name}
+            width={75}
+            height={75}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
 
-        {/* Technologies Section with gradient border */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">
-            Technologies
-          </h2>
-          <div
-            className="mb-8 p-10 relative"
-            style={{
-              border: "1px solid",
-              borderImageSource:
-                "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-              borderImageSlice: "1",
-            }}
-          >
-            <div className="flex flex-wrap gap-15 justify-start">
-              {technologies.map((tech, index) => (
-                <Image
-                  key={index}
-                  src={tech.image}
-                  alt={tech.name}
-                  width={75}
-                  height={75}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+{/* Technologies Section with rounded corners and gradient border */}
+<div className="mb-12">
+  <h2 className="text-3xl font-bold mb-6 text-start text-[#8133F1]">
+    Technologies
+  </h2>
+  {/* Outer div with rounded corners */}
+  <div className="mb-8 rounded overflow-hidden">
+    {/* Inner div with gradient border */}
+    <div className="p-10" style={{ 
+      border: "1px solid",
+      borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+      borderImageSlice: "1"
+    }}>
+      <div className="flex flex-wrap gap-15 justify-start">
+        {technologies.map((tech, index) => (
+          <Image
+            key={index}
+            src={tech.image}
+            alt={tech.name}
+            width={75}
+            height={75}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
       </div>
 
       <div>
