@@ -126,129 +126,131 @@ const IndustryBox: NextPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10 px-4 xs:px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-6 sm:py-8 lg:py-12">
-      {/* Industry Grid/Table */}
-      <div className="w-full lg:w-[300px] h-auto lg:h-[600px]">
-        {/* For mobile and small screens - single row scroll */}
-        <div className="flex lg:hidden overflow-x-auto pb-4 snap-x snap-mandatory">
-          {industries.map((industry) => (
-            <div
-              key={industry.id}
-              className={`min-w-[120px] xs:min-w-[140px] sm:min-w-[160px] h-[120px] xs:h-[140px] sm:h-[160px] border border-1-white p-2 xs:p-3 sm:p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 snap-start mr-2 xs:mr-3 rounded-[12px]
-                ${activeIndustry.id === industry.id ? "bg-white" : ""}`}
-              onClick={() => handleCardClick(industry)}
+<div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10 px-4 xs:px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-6 sm:py-8 lg:py-12">
+  {/* Industry Grid/Table */}
+  <div className="w-full lg:w-[300px] h-auto lg:h-[600px]">
+    {/* For mobile and small screens - single row scroll */}
+    <div className="flex lg:hidden overflow-x-auto pb-4 snap-x snap-mandatory">
+      {industries.map((industry) => (
+        <div
+          key={industry.id}
+          className={`min-w-[120px] xs:min-w-[140px] sm:min-w-[160px] h-[120px] xs:h-[140px] sm:h-[160px] border border-1-white p-2 xs:p-3 sm:p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 snap-start mr-2 xs:mr-3 rounded-[12px] 
+            ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}`}
+          onClick={() => handleCardClick(industry)}
+        >
+          <Image
+            src={
+              activeIndustry.id === industry.id
+                ? industry.activeIcon
+                : industry.icon
+            }
+            alt={industry.name}
+            width={32}
+            height={32}
+            className="pb-2 items-center w-[32px] xs:w-[36px] sm:w-[42px] h-auto"
+          />
+          <p
+            className={`font-bold text-[12px] xs:text-[13px] sm:text-[14px] leading-[120%] text-center ${
+              activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
+            }`}
+          >
+            {industry.name}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    {/* For desktop - 2x4 grid */}
+    <div className="hidden lg:flex flex-row">
+      {/* Left Column */}
+      <div>
+        {industries.slice(0, 4).map((industry, index) => (
+          <div
+            key={industry.id}
+            className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
+              ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}
+              ${index === 0 ? "rounded-tl-[16px]" : ""} 
+              ${index === 3 ? "rounded-bl-[16px]" : ""}`}
+            onClick={() => handleCardClick(industry)}
+          >
+            <Image
+              src={
+                activeIndustry.id === industry.id
+                  ? industry.activeIcon
+                  : industry.icon
+              }
+              alt={industry.name}
+              width={42}
+              height={42}
+              className="pb-2 items-center"
+            />
+            <p
+              className={`font-bold text-[14px] leading-[120%] text-center ${
+                activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
+              }`}
             >
-              <Image
-                src={
-                  activeIndustry.id === industry.id
-                    ? industry.activeIcon
-                    : industry.icon
-                }
-                alt={industry.name}
-                width={32}
-                height={32}
-                className="pb-2 items-center w-[32px] xs:w-[36px] sm:w-[42px] h-auto"
-              />
-              <p
-                className={`font-bold text-[12px] xs:text-[13px] sm:text-[14px] leading-[120%] text-center ${
-                  activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
-                }`}
-              >
-                {industry.name}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* For desktop - 2x4 grid */}
-        <div className="hidden lg:flex flex-row">
-          {/* Left Column */}
-          <div>
-            {industries.slice(0, 4).map((industry, index) => (
-              <div
-                key={industry.id}
-                className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
-                  ${index === 0 ? "rounded-tl-[16px]" : ""} 
-                  ${index === 3 ? "rounded-bl-[16px]" : ""}
-                  ${activeIndustry.id === industry.id ? "bg-white" : ""}`}
-                onClick={() => handleCardClick(industry)}
-              >
-                <Image
-                  src={
-                    activeIndustry.id === industry.id
-                      ? industry.activeIcon
-                      : industry.icon
-                  }
-                  alt={industry.name}
-                  width={42}
-                  height={42}
-                  className="pb-2 items-center"
-                />
-                <p
-                  className={`font-bold text-[14px] leading-[120%] text-center ${
-                    activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
-                  }`}
-                >
-                  {industry.name}
-                </p>
-              </div>
-            ))}
+              {industry.name}
+            </p>
           </div>
-
-          {/* Right Column */}
-          <div>
-            {industries.slice(4, 8).map((industry, index) => (
-              <div
-                key={industry.id}
-                className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
-                  ${index === 0 ? "rounded-tr-[16px]" : ""} 
-                  ${index === 3 ? "rounded-br-[16px]" : ""}
-                  ${activeIndustry.id === industry.id ? "bg-white" : ""}`}
-                onClick={() => handleCardClick(industry)}
-              >
-                <Image
-                  src={
-                    activeIndustry.id === industry.id
-                      ? industry.activeIcon
-                      : industry.icon
-                  }
-                  alt={industry.name}
-                  width={42}
-                  height={42}
-                  className="pb-2 items-center"
-                />
-                <p
-                  className={`font-bold text-[14px] leading-[120%] text-center ${
-                    activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
-                  }`}
-                >
-                  {industry.name}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* Industry Content */}
-      <div
-        id="industry-content"
-        className="w-full h-[300px] xs:h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-[16px] flex flex-col items-left justify-center text-left px-4 xs:px-6 sm:px-10 md:px-16 lg:px-24 gap-4 sm:gap-6 md:gap-8 lg:gap-[48px] p-4 sm:p-6 md:p-8 bg-cover bg-center bg-no-repeat transition-all duration-500"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(129, 51, 241, 0.4) 0%, rgba(45, 40, 54, 0.4) 100%), url('${activeIndustry.backgroundImage}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <h1 className="font-bold text-[24px] xs:text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[120%] text-white">
-          {activeIndustry.title}
-        </h1>
-        <p className="w-full max-w-[1104px] font-normal text-[14px] xs:text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-[140%] text-white overflow-y-auto max-h-[200px] xs:max-h-[220px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-none">
-          {activeIndustry.description}
-        </p>
+      {/* Right Column */}
+      <div>
+        {industries.slice(4, 8).map((industry, index) => (
+          <div
+            key={industry.id}
+            className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
+              ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}
+              ${index === 0 ? "rounded-tr-[16px]" : ""} 
+              ${index === 3 ? "rounded-br-[16px]" : ""}`}
+            onClick={() => handleCardClick(industry)}
+          >
+            <Image
+              src={
+                activeIndustry.id === industry.id
+                  ? industry.activeIcon
+                  : industry.icon
+              }
+              alt={industry.name}
+              width={42}
+              height={42}
+              className="pb-2 items-center"
+            />
+            <p
+              className={`font-bold text-[14px] leading-[120%] text-center ${
+                activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
+              }`}
+            >
+              {industry.name}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
+
+  {/* Industry Content */}
+  <div
+    id="industry-content"
+    className="w-full h-[300px] xs:h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-[16px] flex flex-col items-left justify-center text-left px-4 xs:px-6 sm:px-10 md:px-16 lg:px-24 gap-4 sm:gap-6 md:gap-8 lg:gap-[48px] p-4 sm:p-6 md:p-8 bg-cover bg-center bg-no-repeat transition-all duration-500"
+    style={{
+      backgroundImage: `linear-gradient(180deg, rgba(129, 51, 241, 0.4) 0%, rgba(45, 40, 54, 0.4) 100%), url('${activeIndustry.backgroundImage}')`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <h1 className="font-bold text-[24px] xs:text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[120%] text-white">
+      {activeIndustry.title}
+    </h1>
+    <p className="w-full max-w-[1104px] font-normal text-[14px] xs:text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-[140%] text-white overflow-y-auto max-h-[200px] xs:max-h-[220px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-none">
+      {activeIndustry.description}
+    </p>
+  </div>
+</div>
+
+
   );
 };
 

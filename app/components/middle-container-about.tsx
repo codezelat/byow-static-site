@@ -47,15 +47,23 @@ export default function MiddleContainerAbout() {
         
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
         {galleryImages.map((image, index) => (
-          <div key={index} className="w-full">
-            <Image 
-              src={image.src} 
-              alt={image.alt} 
-              width={image.width} 
-              height={image.height} 
-              className="rounded-3xl w-full h-auto object-cover"
-            />
-          </div>      
+          <div
+            key={index}
+            className="p-[1.5px] rounded-3xl m-2"
+            style={{ 
+              background: 'linear-gradient(180deg, #8133F1 0%, #090909 100%)'
+            }}
+          >
+            <div className="relative w-full" style={{ height: '300px' }}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="rounded-3xl object-cover"
+                sizes="(max-width: 600px) 40vw, (max-width: 600px) 30vw, 30vw"
+              />
+            </div>
+          </div>
         ))}
       </div>
       
@@ -65,9 +73,13 @@ export default function MiddleContainerAbout() {
         </p>
         
         <div className="w-full max-w-[1728px] mx-auto mt-6 mb-6">
-          <video className="w-full rounded-3xl" autoPlay loop muted playsInline>
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          <div className="p-[1.5px] rounded-3xl" style={{ 
+            background: 'linear-gradient(180deg, #8133F1 0%, #090909 100%)'
+          }}>
+            <video className="w-full rounded-3xl" autoPlay loop muted playsInline>
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          </div>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ export default function OurChallengesPage() {
       id: 1,
       title: "The Luxe Café",
       description:
-        "The Luxe Café wanted a website that mirrored their premium dining experience. DIY platforms left them stuck with bland templates that didn’t capture their unique vibe.",
+        "The Luxe Café wanted a website that mirrored their premium dining experience. DIY platforms left them stuck with bland templates that didn't capture their unique vibe.",
       tagline: "From Cookie-Cutter to One-of-a-Kind: The Luxe Cafe",
       videoSrc: "/videos/video-01.mp4",
       solution:
@@ -29,21 +29,21 @@ export default function OurChallengesPage() {
       id: 2,
       title: "Elite Builders",
       description:
-        "As a construction company, Elite Builders struggled to showcase their impressive portfolio and win client trust online. Drag-and-drop tools weren’t cutting it.",
+        "As a construction company, Elite Builders struggled to showcase their impressive portfolio and win client trust online. Drag-and-drop tools weren't cutting it.",
       tagline: "Building Trust, Brick by Brick: Elite Builders & Co.",
       videoSrc: "/videos/video-02.mp4",
       solution:
-        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
+        "BYOW designed an interactive portfolio with immersive project galleries and detailed case studies. Paired with an intuitive inquiry form, they saw a 50% increase in client leads.",
     },
     {
       id: 3,
       title: "Vision Creative Studio",
       description:
-        "Vision Creative Studio's site felt outdated and didn’t reflect their innovative approach. They needed a website as bold as their ideas.",
+        "Vision Creative Studio's site felt outdated and didn't reflect their innovative approach. They needed a website as bold as their ideas.",
       tagline: "Bold Ideas, Bigger Impact: Vision Creative Studio",
       videoSrc: "/videos/video-03.mp4",
       solution:
-        "BYOW created a sleek, custom design with mouth-watering visuals, dynamic menus, and an easy-to-use booking system. The result? A 30% boost in online reservations within the first month.",
+        "BYOW delivered a visually striking design with animations, sleek transitions, and portfolio filters. The result? A website that’s just as creative as the studio itself, leading to a 40% rise in client inquiries.",
     },
     {
       id: 4,
@@ -53,7 +53,7 @@ export default function OurChallengesPage() {
       tagline: "Making Learning Accessible: EduQuest Academy",
       videoSrc: "/videos/video-04.mp4",
       solution:
-        "BYOW designed an interactive portfolio with immersive project galleries and detailed case studies. Paired with an intuitive inquiry form, they saw a 50% increase in client leads.",
+        "BYOW built an intuitive learning platform with streamlined navigation, integrated payment options, and mobile responsiveness. The academy saw a 25% increase in enrollments within three months.",
     },
   ];
 
@@ -72,7 +72,7 @@ export default function OurChallengesPage() {
       <div
         className="container-wrapper flex flex-col
        lg:flex-row relative  rounded-3xl "
-        style={{ maxWidth: "100%" }}
+        style={{ maxWidth: "80%" }}
       >
         {/* Solution section always visible on the right */}
         <div
@@ -102,26 +102,27 @@ export default function OurChallengesPage() {
               </div>
               <hr className="border-white mb-6 w-full" />
 
-              {/* Video section - always show a video */}
-              <div className="rounded-[16px] overflow-hidden sm:max-w-[634px] h-[668px] aspect-[3/4]">
-                <video
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source
-                    src={
-                      selectedSolution
-                        ? challenges.find((c) => c.id === selectedSolution)
-                            ?.videoSrc
-                        : challenges[0]?.videoSrc
-                    }
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
+          
+                {/* Video section - Center using mx-auto */}
+                  <div className="rounded-[16px] overflow-hidden sm:max-w-[634px] h-[668px] mx-auto">
+                            <video
+                              className="w-full h-full object-cover"
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              key={selectedSolution ? challenges.find((c) => c.id === selectedSolution)?.videoSrc : challenges[0]?.videoSrc}
+                            >
+                              <source
+                                src={
+                                  selectedSolution
+                                    ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+                                    : challenges[0]?.videoSrc
+                                }
+                                type="video/mp4"
+                              />
+                            </video>
+                          </div>
 
               {/* Solution Paragraph */}
               <p className="text-white text-start px-4 mt-10">
@@ -182,7 +183,7 @@ export default function OurChallengesPage() {
             </div>
           ))}
         </div>
-           
+           
       </div>
     </>
   );
