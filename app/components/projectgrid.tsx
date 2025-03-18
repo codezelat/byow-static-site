@@ -1,7 +1,6 @@
 import { Product } from "../types/product";
 import ProjectCard from "./projectcard";
 
-
 interface ProjectGridProps {
   products: Product[];
   selectedProductId: string | null;
@@ -9,28 +8,28 @@ interface ProjectGridProps {
 }
 
 const ProjectGrid: React.FC<ProjectGridProps> = ({
-    products = [],
-    selectedProductId,
-    onProductClick,
-  }) => {
-    return (
-      <div
-        className="flex justify-center gap-10  p-1 rounded-4xl border border-transparent w-full"
-        style={{
-          borderImageSource: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-          borderImageSlice: 1,
-        }}
-      >
-        {products.map((product) => (
-          <ProjectCard
-            key={product.id}
-            product={product}
-            isSelected={selectedProductId === product.id}
-            onClick={() => onProductClick(product.id)}
-          />
-        ))}
+  products = [],
+  selectedProductId,
+  onProductClick,
+}) => {
+  return (
+    <div className="w-full flex justify-center">
+      {/* Outer div with gradient border effect */}
+      <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full ">
+        {/* Inner container with solid background and matching rounded corners */}
+        <div className="flex justify-center gap-10 p-4 bg-[#111111] rounded-3xl w-full">
+          {products.map((product) => (
+            <ProjectCard
+              key={product.id}
+              product={product}
+              isSelected={selectedProductId === product.id}
+              onClick={() => onProductClick(product.id)}
+            />
+          ))}
+        </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default ProjectGrid;

@@ -61,7 +61,7 @@ export default function ServicePage() {
 
       {/* Content container */}
       <div className="relative z-10 container mx-auto px-4 pb-20">
-        <div className="flex flex-col  pb-10">
+        <div className="flex flex-col  pb-20 gap-[24px]">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
             Expert Digital Services Tailored for Your Success
           </h1>

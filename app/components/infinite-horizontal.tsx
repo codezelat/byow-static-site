@@ -20,7 +20,7 @@ export default function InfiniteHorizontalScroll() {
 
   return (
     <div className="bg-[#040010] text-white py-10 md:py-16">
-      <div className="flex flex-col   pb-10">
+      <div className="flex flex-col   pb-10 gap-[24px]">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Trusted by Visionaries and Innovators
         </h1>

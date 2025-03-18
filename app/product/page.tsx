@@ -19,12 +19,13 @@ export default function ProductPage() {
   return (
     <div className=" container-wrapper">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-[#8133F1] font-bold text-4xl md:text-3xl text-center">
+      <div className="flex flex-col  pb-10 gap-[24px]">
+        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Crafting Digital Masterpieces: Explore Our Work
         </h1>
-        <p className="text-center text-gray-400 mt-2">
-          Reinforces BYOW’s mission of helping clients bring their visions to life
+        <p className=" max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+          Reinforces BYOW’s mission of helping clients bring their visions to
+          life
         </p>
       </div>
 

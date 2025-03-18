@@ -54,13 +54,14 @@ export default function PopupPage({ onClose }: PopupPageProps) {
               <CloseIcon />
             </button>
 
-            <h2 className="text-3xl font-bold text-[#8133F1] text-center mb-2">
-              Let&apos;s Talk About Your Project Today!
-            </h2>
-
-            <p className="text-center text-gray-300 mb-8">
-              Click Below For A Free Consultation And Customized Quote!
-            </p>
+            <div className="flex flex-col gap-[24px] pb-10">
+              <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+                Let’s Talk About Your Project Today!
+              </h1>
+              <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
+                Click Below for a Free Consultation and Customized Quote!
+              </p>
+            </div>
 
             <form
               onSubmit={handleSubmit}
