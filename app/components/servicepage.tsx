@@ -28,7 +28,7 @@ const Card = ({
   setSelectedService,
 }: CardProps) => (
   <div
-    className="relative w-[430px] h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer"
+    className="relative w-full max-w-[430px] h-auto min-h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer mx-auto"
     style={{
       background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)"
     }}
@@ -37,7 +37,7 @@ const Card = ({
     onClick={() => setSelectedService(id)}
   >
     {/* Inner content container */}
-    <motion.div className="relative w-full h-full rounded-[27px] bg-[#0C090D] p-6 overflow-hidden">
+    <motion.div className="relative w-full h-full rounded-[27px] bg-[#0C090D] p-4 md:p-6 overflow-hidden">
       {/* Background Fill Animation */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full bg-[#8133F1]"
@@ -88,7 +88,7 @@ export default function ServicePage() {
       <div className="relative">
         <button
           onClick={() => setSelectedService(null)}
-          className="absolute top-4 right-60 text-[#8133F1] hover:underline"
+          className="absolute top-4 right-4 md:right-16 lg:right-60 text-[#8133F1] hover:underline z-20"
         >
           <CloseIcon />
         </button>
@@ -108,27 +108,23 @@ export default function ServicePage() {
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
       {/* Content container */}
-      <div className="relative container-wrapper z-10 mx-auto px-4 pb-20">
-        <div className="flex flex-col pb-10">
+      <div className="relative z-10 mx-auto px-4 pb-10 md:pb-20 w-full max-w-[1328px]">
+        <div className="flex flex-col pb-6 md:pb-10">
           <h1 
-            className="text-[#8133F1] capitalize text-center"
+            className="text-[#8133F1] capitalize text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight"
             style={{
               fontWeight: 600,
-              fontSize: "48px",
               lineHeight: "120%",
               letterSpacing: "0%",
-              width: "1328px",
-              height: "58px",
               margin: "0 auto"
             }}
           >
             Expert Digital Services Tailored for Your Success
           </h1>
           <p 
-            className="text-white capitalize text-center"
+            className="text-white capitalize text-center text-sm md:text-base mt-2 md:mt-4 px-4"
             style={{
               fontWeight: 400,
-              fontSize: "16px",
               lineHeight: "140%",
               letterSpacing: "0%",
               margin: "0 auto"
@@ -172,63 +168,64 @@ interface AccordionItemProps {
   children: React.ReactNode;
 }
 
+const AccordionItem = ({ id, title, children }: AccordionItemProps) => {
+  
 
-const AccordionItem = ({ id, title, children }: AccordionItemProps) => (
-  <>
-    <h2 id={`accordion-heading-${id}`}>
-      <button
-        type="button"
-        className="flex items-center justify-between w-full border border-[#2D2836]"
-        data-accordion-target={`#accordion-body-${id}`}
-        aria-expanded="false"
-        aria-controls={`accordion-body-${id}`}
-        style={{
-          width: "1332px",
-          height: "72px",
-          justifyContent: "space-between",
-          paddingTop: "24px",
-          paddingRight: "32px",
-          paddingBottom: "24px",
-          paddingLeft: "32px",
-          borderRadius: "36px",
-          borderWidth: "1px",
-          background: "#080709",
-          fontWeight: 400,
-          fontSize: "18px",
-          lineHeight: "120%",
-          letterSpacing: "0%",
-          color: "white"
-        }}
-      >
-        <div className="flex-grow text-left">{title}</div>
-        <svg
-          data-accordion-icon
-          className="w-3 h-3 rotate-180 shrink-0 ml-2"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
+  return (
+    <>
+      <h2 id={`accordion-heading-${id}`}>
+        <button
+          type="button"
+          className="flex items-center justify-between w-full border border-[#2D2836] md:text-lg md:py-6 md:px-8 lg:w-full lg:max-w-[1332px] lg:h-[72px] lg:py-[24px] lg:px-[32px] lg:text-[18px]"
+          data-accordion-target={`#accordion-body-${id}`}
+          aria-expanded="false"
+          aria-controls={`accordion-body-${id}`}
+          style={{
+            width: "100%", // Mobile-first approach
+            height: "auto",
+            minHeight: "60px",
+            justifyContent: "space-between",
+            padding: "16px",
+            borderRadius: "36px",
+            borderWidth: "1px",
+            background: "#080709",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "120%",
+            letterSpacing: "0%",
+            color: "white",
+           
+          }}
         >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 5 5 1 1 5"
-          />
-        </svg>
-      </button>
-    </h2>
-    <div
-      id={`accordion-body-${id}`}
-      className="hidden"
-      aria-labelledby={`accordion-heading-${id}`}
-    >
-      <div className="p-5">{children}</div>
-    </div>
-  </>
-);
-
+          <div className="flex-grow text-left">{title}</div>
+          <svg
+            data-accordion-icon
+            className="w-3 h-3 rotate-180 shrink-0 ml-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5 5 1 1 5"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        id={`accordion-body-${id}`}
+        className="hidden"
+        aria-labelledby={`accordion-heading-${id}`}
+      >
+        <div className="p-2 md:p-5">{children}</div>
+      </div>
+    </>
+  );
+};
 
 // Service Grid Component
 interface ServiceGridProps {
@@ -245,7 +242,7 @@ const ServiceGrid = ({
   setSelectedService,
 }: ServiceGridProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {services.map((service) => (
         <Card
           key={service.id}

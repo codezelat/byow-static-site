@@ -58,133 +58,120 @@ export default function OurChallengesPage() {
   ];
 
   return (
-    <>
-      <div className="flex flex-col  pb-10 gap-[24px]">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
-          See BYOW in Action
-        </h1>
-        <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
-          A Closer Look at How BYOW Elevates Businesses with Smart, Scalable
-          Solutions
+<div
+  className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
+  style={{ maxWidth: "80%" }}
+>
+  {/* Challenges Section */}
+  <div
+    className={`text-white transition-all duration-300 lg:static  
+    ${selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"}
+    h-[1044px] p-[72px]`}
+    style={{
+      background: "#000",
+      zIndex: "10",
+      borderTopLeftRadius: "24px",
+      border: "2px solid transparent",
+      backgroundImage:
+        "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
+      borderImageSlice: "1",
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    }}
+  >
+    <h1 className="text-[#8133F1] text-2xl font-bold mb-2 text-start">
+      The Challenges
+    </h1>
+    <hr className="border-[#8133F1] mb-6" />
+
+    {challenges.map((challenge) => (
+      <div key={challenge.id} className="mb-8 sm:mb-12">
+        <p className="mb-4 text-start text-sm sm:text-base">
+          {challenge.description}
+          <br />
+          <span className="text-xs sm:text-sm text-[#a37ff0] mt-2 block">
+            {challenge.tagline}
+          </span>
         </p>
-      </div>
-
-      <div
-        className="container-wrapper flex flex-col
-       lg:flex-row relative  rounded-3xl "
-        style={{ maxWidth: "80%" }}
-      >
-        {/* Solution section always visible on the right */}
-        <div
-          className="text-white flex flex-col items-center rounded-3xl transition-all duration-300 overflow-hidden"
-          style={{
-            width: "730px",
-            borderRadius: "0 32px 32px 0",
-            background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            zIndex: 1,
-          }}
-        >
-          <div className="w-full h-full" style={{ padding: " 50px" }}>
-            <>
-              <div className="flex justify-between items-center mb-2 w-full">
-                <h1 className="text-2xl font-bold">Our Solution</h1>
-                <button
-                  onClick={() => setSelectedSolution(null)}
-                  className="text-white hover:text-gray-200 transition-colors"
-                  aria-label="Close solution"
-                >
-                  <CloseIcon />
-                </button>
-              </div>
-              <hr className="border-white mb-6 w-full" />
-
-          
-                {/* Video section - Center using mx-auto */}
-                  <div className="rounded-[16px] overflow-hidden sm:max-w-[634px] h-[668px] mx-auto">
-                            <video
-                              className="w-full h-full object-cover"
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              key={selectedSolution ? challenges.find((c) => c.id === selectedSolution)?.videoSrc : challenges[0]?.videoSrc}
-                            >
-                              <source
-                                src={
-                                  selectedSolution
-                                    ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-                                    : challenges[0]?.videoSrc
-                                }
-                                type="video/mp4"
-                              />
-                            </video>
-                          </div>
-
-              {/* Solution Paragraph */}
-              <p className="text-white text-start px-4 mt-10">
-                {selectedSolution
-                  ? challenges.find((c) => c.id === selectedSolution)?.solution
-                  : challenges[0]?.solution}
-              </p>
-            </>
+        <div className="flex justify-start items-center">
+          <button
+            onClick={() => setSelectedSolution(challenge.id)}
+            className="max-w-[150px] w-full bg-[#8133F1] text-white px-6 py-2 rounded-full hover:bg-[#6325c5] transition"
+          >
+            View Solution
+          </button>
+          <div className="ml-2 hidden sm:block">
+            <Image
+              src="/images/Arrow 1.png"
+              alt="arrow"
+              width={856}
+              height={25}
+            />
           </div>
         </div>
-        {/* Challenges section */}
-        <div
-          className={`text-white transition-all duration-300 lg:static  ${
-            selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"
-          } h-[1044px] p-[72px] `}
-          style={{
-            background: "#000",
-            zIndex: "10",
-            borderTopLeftRadius: "24px",
-            border: "2px solid transparent",
-            backgroundImage:
-              "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
-            borderImageSlice: "1",
-            backgroundOrigin: "border-box",
-            backgroundClip: "padding-box, border-box",
-          }}
-        >
-          <h1 className="text-[#8133F1] text-2xl font-bold mb-2 text-start">
-            The Challenges
-          </h1>
-          <hr className="border-[#8133F1] mb-6" />
-
-          {challenges.map((challenge) => (
-            <div key={challenge.id} className="mb-8 sm:mb-12">
-              <p className="mb-4 text-start text-sm sm:text-base">
-                {challenge.description}
-                <br />
-                <span className="text-xs sm:text-sm text-[#a37ff0] mt-2 block">
-                  {challenge.tagline}
-                </span>
-              </p>
-              <div className="flex justify-start items-center">
-                <button
-                  onClick={() => setSelectedSolution(challenge.id)}
-                  className="max-w-[150px] w-full bg-[#8133F1] text-white px-6 py-2 rounded-full  hover:bg-[#6325c5] transition"
-                >
-                  View Solution
-                </button>
-                <div className="ml-2 hidden sm:block">
-                  <Image
-                    src="/images/Arrow 1.png"
-                    alt="arrow"
-                    width={856}
-                    height={25}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-           
       </div>
-    </>
+    ))}
+  </div>
+
+  {/* Solution Section */}
+  <div
+    className="text-white flex flex-col items-center rounded-3xl transition-all duration-300 overflow-hidden
+    lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[730px] lg:border-l-2 lg:border-[#8133F1]
+    mt-10 md:mt-16 lg:mt-0" /* This moves it down on mobile */
+    style={{
+      background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+      zIndex: 1,
+      borderRadius: "0 32px 32px 0",
+    }}
+  >
+    <div className="w-full h-full p-6 md:p-10">
+      <div className="flex justify-between items-center mb-2 w-full">
+        <h1 className="text-2xl font-bold">Our Solution</h1>
+        <button
+          onClick={() => setSelectedSolution(null)}
+          className="text-white hover:text-gray-200 transition-colors"
+          aria-label="Close solution"
+        >
+          <CloseIcon />
+        </button>
+      </div>
+      <hr className="border-white mb-6 w-full" />
+
+      {/* Video Section */}
+      <div className="rounded-[16px] overflow-hidden sm:max-w-[634px] h-[668px] mx-auto">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          key={
+            selectedSolution
+              ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+              : challenges[0]?.videoSrc
+          }
+        >
+          <source
+            src={
+              selectedSolution
+                ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+                : challenges[0]?.videoSrc
+            }
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      {/* Solution Paragraph */}
+      <p className="text-white text-start px-4 mt-10">
+        {selectedSolution
+          ? challenges.find((c) => c.id === selectedSolution)?.solution
+          : challenges[0]?.solution}
+      </p>
+    </div>
+  </div>
+</div>
+
+
   );
 }
