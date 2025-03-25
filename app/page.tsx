@@ -39,26 +39,26 @@ const Home: NextPage = () => {
         </p>
       </div>
 
-      {/* Cards Container */}
-      <div className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 w-full pt-40 ">
-        {cardData.map((text, index) => (
-          <div
-            key={index}
-            className="relative w-full max-w-[300px] sm:max-w-[45%] md:max-w-[314.75px] min-h-[150px] sm:min-h-[200px] md:h-[215px] rounded-xl sm:rounded-2xl md:rounded-[32px] p-[1px] overflow-hidden bg-gradient-to-b from-[#8133F1] to-[#090909]"
-          >
-            <div className="flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] w-full h-full rounded-xl sm:rounded-2xl md:rounded-[32px] p-4 sm:p-6 md:p-10 bg-[#090909]">
-              <Image
-                src="/images/image.png"
-                alt="quotation mark"
-                width={37.84}
-                height={26.8}
-                className="object-contain opacity-80 pb-3 sm:pb-5"
-              />
-              <p className="text-xs sm:text-sm md:text-lg">{text}</p>
-            </div>
-          </div>
-        ))}
+{/* Cards Container */}
+<div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 w-full pt-40">
+  {cardData.map((text, index) => (
+    <div
+      key={index}
+      className="relative w-[calc(50%-8px)] sm:w-auto max-w-[300px] sm:max-w-[45%] md:max-w-[314.75px] min-h-[150px] sm:min-h-[200px] md:h-[215px] rounded-xl sm:rounded-2xl md:rounded-[32px] p-[1px] overflow-hidden bg-gradient-to-b from-[#8133F1] to-[#090909]"
+    >
+      <div className="flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] w-full h-full rounded-xl sm:rounded-2xl md:rounded-[32px] p-4 sm:p-6 md:p-10 bg-[#090909]">
+        <Image
+          src="/images/image.png"
+          alt="quotation mark"
+          width={37.84}
+          height={26.8}
+          className="object-contain opacity-80 pb-3 sm:pb-5"
+        />
+        <p className="text-xs sm:text-sm md:text-lg">{text}</p>
       </div>
+    </div>
+  ))}
+</div>
 
       {/* Only render components if client-side mounted to avoid hydration issues */}
       {isMounted && (
