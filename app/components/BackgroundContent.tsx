@@ -14,10 +14,10 @@ export default function BackgroundContent({
   const isHomePage = pathname === "/";
 
   return (
-    <div className="w-full flex  relative overflow-hidden">
+    <div className="w-full flex relative overflow-hidden">
       {/* Show the spinning image only on the Home page */}
       {isHomePage && (
-        <div className="absolute top-[45px] left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <div className="absolute lg:w-[843px] lg:h-[843px] xl:w-[843px] xl:h-[843px] w-[500px] h-[500px] md:w-[700px] md:h-[700px] md:mt-0 lg:pt-20  left-1/2 transform -translate-x-1/2 flex items-center justify-center">
           <Image
             src="/images/Long Dashed Circle.png"
             alt="dashed circle"
@@ -31,9 +31,7 @@ export default function BackgroundContent({
       {/* Everything is placed over the image & video */}
       <div className="relative z-10 flex-col w-full">
         <Header />
-        <main className="text-center text-white ">
-          {children}
-        </main>
+        <main className="text-center text-white ">{children}</main>
         <Footer />
       </div>
     </div>

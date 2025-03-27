@@ -48,8 +48,8 @@ const StepsBar: NextPage = () => {
   }, [stepRefs]);
 
   return (
-    <div className="h-auto pb-12 md:pb-24 px-4 md:px-6">
-      <div className="flex flex-col pt-40  pb-10">
+    <div className="h-auto pb-12 md:pb-24 sm:pb-5 px-4 md:px-6">
+      <div className="flex flex-col md:pt-40 sm:pb-10 px-10 pb-10 pt-20 gap-[24px]">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           How BYOW Simplifies Your Journey?
         </h1>
@@ -59,13 +59,13 @@ const StepsBar: NextPage = () => {
       </div>
 
       {/* Mobile view */}
-      <div className="md:hidden w-full mt-10">
+      <div className="md:hidden w-full mt-10 ">
         <div className="relative">
           {/* Vertical stepper line */}
           <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-white"></div>
 
           {/* Mobile steps */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 ">
             {/* Step 1 */}
             <div className="flex flex-col ml-16">
               <div className="absolute left-5 w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black transform -translate-x-1/2">
@@ -84,8 +84,9 @@ const StepsBar: NextPage = () => {
                   border: "1px solid",
                   borderImageSource:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+
                   borderImageSlice: 1,
-                  clipPath: "inset(0 round 16px)",
+                  clipPath: "inset(0 round 32px)",
                 }}
               >
                 <h1 className="font-bold text-base leading-[140%] text-left pb-3 text-[#8133F1]">
@@ -217,13 +218,13 @@ const StepsBar: NextPage = () => {
       </div>
 
       {/* Desktop view */}
-      <div className="hidden md:block w-full relative">
-        <div className="w-full flex flex-col lg:flex-row gap-20 justify-center">
+      <div className="hidden md:block w-full relative md:px-10 md:pt-10">
+        <div className="w-full flex flex-col lg:flex-row gap-20 justify-center lg:mx-auto lg:px-6">
           {/* Left Column */}
-          <div className="flex flex-col gap-16 lg:gap-36 w-full lg:w-auto rounded-xl sm:rounded-2xl md:rounded-[32px] ">
+          <div className="flex flex-col gap-16 lg:gap-36 w-full lg:w-auto rounded-xl sm:rounded-2xl md:rounded-[32px]">
             <div
               ref={stepRefs[0]}
-              className="w-full lg:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
+              className="w-full lg:ml-40 xl:ml-0 lg:w-[350px] xl:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
               style={{
                 position: "relative",
                 borderRadius: "20px",
@@ -235,7 +236,7 @@ const StepsBar: NextPage = () => {
                 style={{
                   position: "absolute",
                   content: "''",
-                  inset: "-1px", // 1px larger than the parent
+                  inset: "-1px",
                   borderRadius: "20px",
                   background:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
@@ -257,7 +258,7 @@ const StepsBar: NextPage = () => {
             </div>
             <div
               ref={stepRefs[2]}
-              className="w-full lg:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
+              className="w-full lg:ml-40 xl:ml-0 lg:w-[350px] xl:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
               style={{
                 position: "relative",
                 borderRadius: "20px",
@@ -269,7 +270,7 @@ const StepsBar: NextPage = () => {
                 style={{
                   position: "absolute",
                   content: "''",
-                  inset: "-1px", // 1px larger than the parent
+                  inset: "-1px",
                   borderRadius: "20px",
                   background:
                     "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
@@ -298,7 +299,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "110px",
+                top: "80px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -317,7 +318,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "320px",
+                top: "280px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -336,7 +337,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "550px",
+                top: "450px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -355,7 +356,7 @@ const StepsBar: NextPage = () => {
             <div
               className={`absolute w-[42px] h-[42px] rounded-full transition-colors duration-300 border bg-black`}
               style={{
-                top: "732px",
+                top: "600px",
                 left: "0",
                 border: "2px solid #9654F4",
                 transform: "translateX(-50%)",
@@ -375,7 +376,7 @@ const StepsBar: NextPage = () => {
           <div className="flex flex-col gap-16 lg:gap-36 w-full lg:w-auto lg:mt-36">
             <div
               ref={stepRefs[1]}
-              className="w-full lg:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
+              className="w-full lg:mr-40 xl:mr-0 lg:w-[350px] xl:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
               style={{
                 position: "relative",
                 borderRadius: "20px",
@@ -408,7 +409,7 @@ const StepsBar: NextPage = () => {
             </div>
             <div
               ref={stepRefs[3]}
-              className="w-full lg:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
+              className="w-full lg:mr-40 xl:mr-0 lg:w-[350px] xl:w-[500px] p-6 lg:p-8 relative bg-black rounded-[20px]"
               style={{
                 position: "relative",
                 borderRadius: "20px",

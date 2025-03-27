@@ -16,9 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased relative w-full h-full min-h-screen">
         {/* Video section - top half */}
-        <div className="absolute top-0 left-0 w-full h-[28vh] xs:h-[60vh] sm:h-[70vh] md:h-[55vh] lg:h-[90vh] xl:h-[1074px] z-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1100px] xs:h-[60vh] sm:h-[70vh] md:h-[55vh] lg:h-[1900px] xl:h-[1100px] z-0 overflow-hidden">
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-[1100px] object-cover"
             autoPlay
             loop
             muted

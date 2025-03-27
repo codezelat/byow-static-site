@@ -28,33 +28,60 @@ const Home: NextPage = () => {
 
   return (
     <div className="text-center">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] mt-16 sm:mt-24 md:mt-32 lg:mt-[250px] font-bold text-white">
+      {/* Main Heading - Responsive */}
+      <h1
+        className="text-3xl xs:text-2.5xl sm:text-3xl md:text-5xl md:pt-40 lg:pt-64  lg:text-[64px] 3xl:text-[80px] 
+             
+                      font-bold text-white px-4 xs:px-6 sm:px-0 pt-40"
+      >
         Why Stress Over Website Development?
       </h1>
 
-      {/* Centered Paragraph */}
-      <div className="flex justify-center">
-        <p className="text-sm sm:text-base md:text-lg lg:text-[16px] font-[400] text-white mt-4 max-w-2xl pt-6 sm:pt-12 md:pt-16 lg:pt-20">
+      {/* Centered Paragraph - Responsive */}
+      <div className="flex justify-center px-4 xs:px-6 sm:px-0">
+        <p
+          className="text-[16px] xs:text-sm sm:text-base md:text-lg lg:text-[16px] 3xl:text-xl
+                     font-[400] text-white 
+                     mt-3 xs:mt-4 sm:mt-16 md:mt-4
+                     max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl
+                     pt-10 xs:pt-6 sm:pt-8 md:pt-16 lg:pt-20 xl:pt-36"
+        >
           Frustrated with the Process? Scroll for a Simpler Solution
         </p>
       </div>
 
-      {/* Cards Container */}
-      <div className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 w-full pt-40 ">
+      <div
+        className="flex flex-wrap py-3 justify-center items-center gap-3 xs:gap-4 sm:gap-6 md:gap-8 
+                w-full px-4 xs:px-6 sm:px-8 md:px-10
+                pt-20 xs:pt-12 sm:pt-20 md:pt-32 3xl:pt-40"
+      >
         {cardData.map((text, index) => (
           <div
             key={index}
-            className="relative w-full max-w-[300px] sm:max-w-[45%] md:max-w-[314.75px] min-h-[150px] sm:min-h-[200px] md:h-[215px] rounded-xl sm:rounded-2xl md:rounded-[32px] p-[1px] overflow-hidden bg-gradient-to-b from-[#8133F1] to-[#090909]"
+            className="relative w-full xs:w-[calc(50%-6px)] sm:w-[calc(50%-12px)] md:w-auto
+                 max-w-xs xs:max-w-[48%] sm:max-w-[45%] md:max-w-[314.75px] 3xl:max-w-[400px]
+                 h-[90px] xs:h-[100px] sm:h-[120px] md:h-[215px] 3xl:h-[250px]
+                 rounded-lg xs:rounded-xl sm:rounded-2xl md:rounded-[32px]
+                 p-[1px] sm:p-[1px] overflow-hidden bg-gradient-to-b from-[#8133F1] to-[#090909]"
           >
-            <div className="flex flex-col items-center justify-center text-center text-white backdrop-blur-[4px] w-full h-full rounded-xl sm:rounded-2xl md:rounded-[32px] p-4 sm:p-6 md:p-10 bg-[#090909]">
+            <div
+              className="flex flex-col  items-center justify-center text-center text-white 
+                    backdrop-blur-[4px] w-full h-full 
+                    rounded-lg xs:rounded-xl sm:rounded-2xl md:rounded-[32px]
+                    p-2 xs:p-3 sm:p-4 md:p-10 3xl:p-12 bg-[#090909]"
+            >
               <Image
                 src="/images/image.png"
                 alt="quotation mark"
                 width={37.84}
                 height={26.8}
-                className="object-contain opacity-80 pb-3 sm:pb-5"
+                className="object-contain opacity-80 
+                     w-5 xs:w-6 sm:w-7 md:w-[37.84px] 
+                     pb-1 xs:pb-2 sm:pb-3 md:pb-5"
               />
-              <p className="text-xs sm:text-sm md:text-lg">{text}</p>
+              <p className="text-[16px] xs:text-[14px] sm:text-[18px] md:text-lg 3xl:text-xl leading-tight">
+                {text}
+              </p>
             </div>
           </div>
         ))}
@@ -63,25 +90,25 @@ const Home: NextPage = () => {
       {/* Only render components if client-side mounted to avoid hydration issues */}
       {isMounted && (
         <>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20  xs:px-6 sm:px-0">
             <SectionCard />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20  xs:px-6 sm:px-0">
             <StepBar />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <CardSection />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <IndustriesSection />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <OurChallengesPage />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <InfiniteHorizontalScroll />
           </div>
-          <div className="mt-8 sm:mt-12 md:mt-16">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <Yoursuccess />
           </div>
         </>
