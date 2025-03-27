@@ -114,7 +114,8 @@ const SectionCard: NextPage = () => {
   };
 
   return (
-    <div className="w-full h-auto pt-34">
+    <div className="w-full h-auto md:pt-10 lg:pt-10 ">
+
       <div
         // main content
         className={`max-w-full w-full sm:w-[1328px] ${

@@ -21,7 +21,7 @@ const ResponsiveCardsSection = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 w-full max-w-[1440px] mx-auto py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center">
+      <div className="grid px-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center">
         {cards.map((card, index) => (
           <div
             key={index}

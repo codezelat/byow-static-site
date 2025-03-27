@@ -19,12 +19,12 @@ export default function InfiniteHorizontalScroll() {
   ];
 
   return (
-    <div className="bg-[#040010] text-white py-10 md:py-16">
-      <div className="flex flex-col   pb-10 gap-[24px]">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+    <div className="bg-[#040010] text-white py-10 md:py-16 mx-3">
+      <div className="flex flex-col  pb-10 gap-[24px]">
+        <h1 className="font-bold px-10 text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Trusted by Visionaries and Innovators
         </h1>
-        <p className="max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+        <p className="max-w-[892px] px-10 mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
           We’re proud to partner with forward-thinking businesses,
           entrepreneurs, and creatives who inspire us to push boundaries and
           deliver exceptional results

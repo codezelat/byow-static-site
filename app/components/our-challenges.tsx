@@ -60,7 +60,7 @@ export default function OurChallengesPage() {
   return (
 <div
   className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
-  style={{ maxWidth: "80%" }}
+  style={{ maxWidth: "100%" }}
 >
   {/* Challenges Section */}
   <div

@@ -108,38 +108,28 @@ export default function ServicePage() {
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
       {/* Content container */}
-      <div className="relative z-10 mx-auto px-4 pb-10 md:pb-20 w-full max-w-[1328px]">
-        <div className="flex flex-col pb-6 md:pb-10">
-          <h1 
-            className="text-[#8133F1] capitalize text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight"
-            style={{
-              fontWeight: 600,
-              lineHeight: "120%",
-              letterSpacing: "0%",
-              margin: "0 auto"
-            }}
-          >
-            Expert Digital Services Tailored for Your Success
-          </h1>
-          <p 
-            className="text-white capitalize text-center text-sm md:text-base mt-2 md:mt-4 px-4"
-            style={{
-              fontWeight: 400,
-              lineHeight: "140%",
-              letterSpacing: "0%",
-              margin: "0 auto"
-            }}
-          >
-            At BYOW, we craft websites that go beyond templates, delivering
-            tailored designs, seamless functionality, and a unique online
-            presence that truly represents your brand.
-          </p>
-        </div>
+      <div className="relative z-10 mx-auto px-4 pb-10 md:pb-20 w-full max-w-[1328px] pt-10">
+       
+       
+        <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
+        <h1 className="px-10 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]"
+          
+        >
+          Expert Digital Services Tailored for Your Success
+        </h1>
+        <p className="max-w-[892px] mx-auto font-normal text-xs sm:text-sm md:text-base text-center text-white leading-[140%]"
+          
+        >
+          At BYOW, we craft websites that go beyond templates, delivering
+          tailored designs, seamless functionality, and a unique online
+          presence that truly represents your brand.
+        </p>
+      </div>
 
         <div
           id="accordion-collapse"
           data-accordion="collapse"
-          className="space-y-4"
+          className="space-y-4 px-10"
         >
           {serviceCategories.map((category, index) => (
             <AccordionItem

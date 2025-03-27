@@ -6,11 +6,11 @@ import IndustryBox from "./IndustryBox";
 const IndustriesSection: NextPage = () => {
   return (
     <>
-      <div className="flex flex-col  pb-10 gap-[24px]">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+      <div className="flex flex-col mx-3 pb-10 gap-[24px]">
+        <h1 className="font-bold md:px-10 text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Industries We Empower with Bespoke Websites
         </h1>
-        <p className="max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+        <p className="max-w-[892px] mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%] px-10">
           At BYOW, we believe every business deserves a website as unique as its
           purpose. No matter your field, we craft solutions that work for you.
           Here’s how we transform visions across industries:

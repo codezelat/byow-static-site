@@ -40,7 +40,7 @@ export default function MiddleContainerAbout() {
         {/* Left Side - Image */}
         <div className="w-full lg:w-1/3 flex justify-center">
           <div
-            className="w-full max-w-md lg:max-w-none p-[1.5px] rounded-[16px] border-[1.5px] border-gray-700"
+            className="w-full lg:h-80 max-w-md lg:max-w-none p-[1px] rounded-[16px] "
             style={{
               background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
             }}

@@ -126,7 +126,7 @@ const IndustryBox: NextPage = () => {
   };
 
   return (
-<div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10 px-4 xs:px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-6 sm:py-8 lg:py-12">
+<div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10 px-4 xs:px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 mx-3 mb-3 sm:py-8 lg:py-12">
   {/* Industry Grid/Table */}
   <div className="w-full lg:w-[300px] h-auto lg:h-[600px]">
     {/* For mobile and small screens - single row scroll */}
