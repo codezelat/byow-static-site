@@ -10,7 +10,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import PopupPage from "./popup";
 
-
 export default function Header() {
   const pathname = usePathname();
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
@@ -28,44 +27,44 @@ export default function Header() {
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const sidebar = document.getElementById('mobile-sidebar');
-      const toggleButton = document.getElementById('sidebar-toggle');
+      const sidebar = document.getElementById("mobile-sidebar");
+      const toggleButton = document.getElementById("sidebar-toggle");
       if (
-        sidebarVisible && 
-        sidebar && 
-        !sidebar.contains(event.target as Node) && 
-        toggleButton && 
+        sidebarVisible &&
+        sidebar &&
+        !sidebar.contains(event.target as Node) &&
+        toggleButton &&
         !toggleButton.contains(event.target as Node)
       ) {
         setSidebarVisible(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [sidebarVisible]);
 
   // Prevent body scrolling when sidebar is open
   useEffect(() => {
     if (sidebarVisible) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [sidebarVisible]);
 
   // Prevent body scrolling when popup is open
   useEffect(() => {
     if (popupVisible) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [popupVisible]);
 
@@ -81,16 +80,16 @@ export default function Header() {
   };
 
   return (
-    <header className="container-wrapper bg-transparent text-white py-2 shadow-md relative z-50">
-      <div className="flex justify-between items-center px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 h-[50px] xs:h-[55px] sm:h-[70px] w-full max-w-screen-2xl mx-auto">
+    <header className="md:container-wrapper sm:px-20  bg-transparent text-white md:pt-10 shadow-md relative z-50">
+      <div className="flex justify-between items-center xs:px-4 sm:px-5 lg:px-8 h-[50px] xs:h-[55px] sm:h-[70px] w-full">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold flex-shrink-0">
+        <Link href="/" className="text-2xl ml-5 font-bold flex-shrink-0 ">
           <Image
             src="/images/byow-logo.svg"
             alt="header logo"
             width={161}
             height={79}
-            className="w-[70px] xs:w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px]"
+            className=" xs:w-[80px] w-[90px] h-[80px] md:w-[120px] lg:w-[140px] "
             priority
           />
         </Link>
@@ -138,7 +137,9 @@ export default function Header() {
                       href={path}
                       className="relative z-10 text-white text-xs sm:text-sm md:text-base font-medium px-1 sm:px-2 flex items-center justify-center w-full h-full"
                     >
-                      {path === "/" ? "HOME" : path.toUpperCase().replace("/", "")}
+                      {path === "/"
+                        ? "HOME"
+                        : path.toUpperCase().replace("/", "")}
                     </Link>
                   </motion.div>
                 </li>
@@ -148,7 +149,7 @@ export default function Header() {
         </nav>
 
         {/* Build Now Button */}
-        <button 
+        <button
           className="hidden sm:flex bg-[#8133F1] items-center justify-center text-xs sm:text-sm md:text-base font-semibold text-white w-[100px] md:w-[120px] lg:w-[160px] h-[32px] sm:h-[38px] md:h-[42px] lg:h-[50px] rounded-full p-2 transition gap-1 sm:gap-2 flex-shrink-0"
           onClick={handleOpenPopup} // Add click handler here
         >
@@ -178,7 +179,9 @@ export default function Header() {
                     }`}
                     onClick={() => setSidebarVisible(false)}
                   >
-                    {path === "/" ? "HOME" : path.toUpperCase().replace("/", "")}
+                    {path === "/"
+                      ? "HOME"
+                      : path.toUpperCase().replace("/", "")}
                   </Link>
                 </li>
               );

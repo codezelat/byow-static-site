@@ -1,5 +1,7 @@
 /* globals.css */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 /* Global Font Settings */
@@ -79,4 +81,24 @@ button {
 
 .animate-spin-counterclockwise {
   animation: spin-counterclockwise 40s linear infinite;
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #8133f1 #060116;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #060116;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #8133f1;
+    border-radius: 20px;
+  }
 }

@@ -19,14 +19,15 @@ export default function InfiniteHorizontalScroll() {
   ];
 
   return (
-    <div className="bg-[#040010] text-white py-10 md:py-16">
-      <div className="mx-auto px-4 text-center">
-        <h1 className="text-2xl md:text-4xl font-bold text-[#8133F1] mb-4">
+    <div className="bg-[#040010] text-white py-10 md:py-16 mx-3">
+      <div className="flex flex-col  pb-10 gap-[24px]">
+        <h1 className="font-bold px-10 text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Trusted by Visionaries and Innovators
         </h1>
-        <p className="max-w-3xl mx-auto text-sm md:text-base text-[#ffffff]">
-          We are Proud To Partner With Forward-Thinking Businesses, Entrepreneurs, And Creatives Who Inspire Us To Push
-          Boundaries And Deliver Exceptional Results
+        <p className="max-w-[892px] px-10 mx-auto font-normal text-sm md:text-base text-center text-white leading-[140%]">
+          We’re proud to partner with forward-thinking businesses,
+          entrepreneurs, and creatives who inspire us to push boundaries and
+          deliver exceptional results
         </p>
       </div>
 
@@ -36,14 +37,29 @@ export default function InfiniteHorizontalScroll() {
           {/* First set of logos */}
           {brands.map((brand) => (
             <div key={brand.id} className="mx-6 md:mx-6 flex-shrink-0">
-              <Image src={brand.src} alt={brand.alt} width={90} height={90} className="md:w-[100px] md:h-[100px] object-contain" />
+              <Image
+                src={brand.src}
+                alt={brand.alt}
+                width={90}
+                height={90}
+                className="md:w-[100px] md:h-[100px] object-contain"
+              />
             </div>
           ))}
-          
+
           {/* Duplicate set for seamless scrolling */}
           {brands.map((brand) => (
-            <div key={`duplicate-${brand.id}`} className="mx-4 md:mx-6 flex-shrink-0">
-              <Image src={brand.src} alt={brand.alt} width={90} height={90} className="md:w-[100px] md:h-[100px] object-contain" />
+            <div
+              key={`duplicate-${brand.id}`}
+              className="mx-4 md:mx-6 flex-shrink-0"
+            >
+              <Image
+                src={brand.src}
+                alt={brand.alt}
+                width={90}
+                height={90}
+                className="md:w-[100px] md:h-[100px] object-contain"
+              />
             </div>
           ))}
         </div>
@@ -62,14 +78,13 @@ export default function InfiniteHorizontalScroll() {
             transform: translateX(0);
           }
         }
-        
+
         .logos-slide {
           animation: bidirectionalScroll 15s linear infinite;
           width: fit-content;
           display: flex;
           align-items: center;
         }
-        
       `}</style>
     </div>
   );
