@@ -89,7 +89,7 @@ export default function Header() {
             alt="header logo"
             width={161}
             height={79}
-            className=" xs:w-[80px] w-[90px] h-[80px] md:w-[120px] lg:w-[140px] sm:pt-4"
+            className=" xs:w-[80px] w-[90px] h-[80px] md:w-[120px] lg:w-[140px] "
             priority
           />
         </Link>
