@@ -20,20 +20,20 @@ const ResponsiveCardsSection = () => {
   ];
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 w-full max-w-[1440px] mx-auto py-8">
-      <div className="grid px-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center">
+    <div className=" sm:px-6 lg:px-8 w-full max-w-[1440px] mx-auto py-8">
+      <div className="grid px-10 grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center">
         {cards.map((card, index) => (
           <div
             key={index}
             className="w-full relative max-w-xs sm:max-w-sm md:w-full h-auto rounded-3xl flex flex-col p-4 sm:p-6 md:p-8 items-center text-center backdrop-blur-md overflow-hidden"
             style={{
               background: "black",
-              border: "2px solid transparent", 
-              borderRadius: "24px", 
+              border: "2px solid transparent",
+              borderRadius: "24px",
               backgroundImage:
-                "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)", 
-              backgroundOrigin: "border-box", 
-              backgroundClip: "padding-box, border-box", 
+                "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
+              backgroundOrigin: "border-box",
+              backgroundClip: "padding-box, border-box",
             }}
           >
             <div className="relative w-16 h-16 mb-4">

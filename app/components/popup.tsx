@@ -25,28 +25,56 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
   return (
     <>
+      {/* Combine all styled-jsx tags at the top level */}
+      <style jsx>{`
+        /* Hide scrollbar for all browsers */
+        .overflow-y-auto {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .overflow-y-auto::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Chrome, Safari, Edge autofill styles */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus,
+        select:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px #060116 inset !important;
+          -webkit-text-fill-color: white !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      `}</style>
+
       {/* Full screen overlay with higher z-index to cover all content */}
       <div
-        className="fixed mt-10 inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-lg"
+        className="fixed mt-40 inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-lg"
         onClick={onClose}
       ></div>
 
       {/* Popup content */}
-      <div className="fixed mt-24 mx-5 inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4">
+      <div className="fixed mt-24 mx-5 inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4 ">
         {/* Main popup container with gradient border */}
-        <div className="relative w-full max-w-[1291px] h-[90vh] rounded-[32px] overflow-hidden">
+        <div className="relative w-full max-w-[1291px] h-full rounded-[32px] overflow-hidden ">
           {/* Gradient border using pseudo element technique */}
           <div
-            className="absolute inset-0 rounded-[32px] "
+            className="absolute inset-0 h-full rounded-[32px]"
             style={{
               background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
             }}
           />
 
-          {/* Inner content container - slightly smaller to create border effect */}
-          <div className="absolute inset-[2px] bg-[#060116] rounded-[32px]  flex flex-col">
-            {/* Scrollable content area */}
-            <div className="overflow-y-auto scrollbar-thin   px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-16">
+          {/* Inner content container - now with h-full to ensure full height coverage */}
+          <div className="absolute inset-[2px] bg-[#060116] h-full rounded-[32px] flex flex-col  overflow-y-auto">
+            {/* Content area with solid background from parent div */}
+            <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-16  ">
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -66,25 +94,9 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
               <form
                 onSubmit={handleSubmit}
-                className="space-y-4 2xs:space-y-6 md:space-y-6"
+                className="space-y-4 2xs:space-y-6 md:space-y-6 "
               >
-                <style jsx>{`
-                  /* Chrome, Safari, Edge autofill styles */
-                  input:-webkit-autofill,
-                  input:-webkit-autofill:hover,
-                  input:-webkit-autofill:focus,
-                  input:-webkit-autofill:active,
-                  select:-webkit-autofill,
-                  select:-webkit-autofill:hover,
-                  select:-webkit-autofill:focus,
-                  select:-webkit-autofill:active {
-                    -webkit-box-shadow: 0 0 0 30px #060116 inset !important;
-                    -webkit-text-fill-color: white !important;
-                    transition: background-color 5000s ease-in-out 0s;
-                  }
-                `}</style>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4 ">
                   <div>
                     <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
                       First Name*
@@ -171,7 +183,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                     type="submit"
                     className="bg-[#8133F1] text-white px-6 py-2 2xs:px-8 2xs:py-3 rounded-full flex items-center gap-2 hover:bg-[#6A22CC] transition duration-300 text-xs 2xs:text-sm"
                   >
-                    SUBMIT NOW <ArrowCircleRightOutlinedIcon className="w-5 h-5" />
+                    SUBMIT NOW{" "}
+                    <ArrowCircleRightOutlinedIcon className="w-5 h-5" />
                   </button>
                 </div>
               </form>
@@ -199,7 +212,9 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         height={16}
                         className="w-4 h-4 2xs:w-5 2xs:h-5"
                       />
-                      <span className="text-xs 2xs:text-sm">+9411 234 8276</span>
+                      <span className="text-xs 2xs:text-sm">
+                        +9411 234 8276
+                      </span>
                     </div>
                   </div>
                 </div>
