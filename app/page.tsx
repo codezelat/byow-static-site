@@ -29,11 +29,7 @@ const Home: NextPage = () => {
   return (
     <div className="text-center">
       {/* Main Heading - Responsive */}
-      <h1
-        className="text-3xl xs:text-2.5xl sm:text-3xl md:text-5xl md:pt-40 lg:pt-64  lg:text-[64px] 3xl:text-[80px] 
-             
-                      font-bold text-white px-4 xs:px-6 sm:px-0 pt-40"
-      >
+      <h1 className="xs:text-2.5xl sm:text-3xl md:text-5xl md:pt-40 lg:pt-64 xl:pt-64 lg:text-[64px] 3xl:text-[80px] font-bold text-white px-4 xs:px-6 sm:px-0 2xs:pt-44 2xs:text-[22px]">
         Why Stress Over Website Development?
       </h1>
 
@@ -44,7 +40,7 @@ const Home: NextPage = () => {
                      font-[400] text-white 
                      mt-3 xs:mt-4 sm:mt-16 md:mt-4
                      max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl
-                     pt-10 xs:pt-6 sm:pt-8 md:pt-16 lg:pt-20 xl:pt-36"
+                     pt-10 xs:pt-6 sm:pt-8 md:pt-16 lg:pt-20 xl:pt-40 sm:px-8"
         >
           Frustrated with the Process? Scroll for a Simpler Solution
         </p>
@@ -52,14 +48,14 @@ const Home: NextPage = () => {
 
       <div
         className="flex flex-wrap py-3 justify-center items-center gap-3 xs:gap-4 sm:gap-6 md:gap-8 
-                w-full px-4 xs:px-6 sm:px-8 md:px-10
-                pt-20 xs:pt-12 sm:pt-20 md:pt-32 3xl:pt-40"
+                w-full xs:px-6 sm:px-8 md:px-10
+                pt-20 xs:pt-12 sm:pt-20 md:pt-32 3xl:pt-40 2xs:px-10 "
       >
         {cardData.map((text, index) => (
           <div
             key={index}
-            className="relative w-full xs:w-[calc(50%-6px)] sm:w-[calc(50%-12px)] md:w-auto
-                 max-w-xs xs:max-w-[48%] sm:max-w-[45%] md:max-w-[314.75px] 3xl:max-w-[400px]
+            className="relative w-full xs:w-[calc(60%-6px)] sm:w-[calc(50%-12px)] md:w-auto
+                 max-w-xs xs:max-w-[60%] sm:max-w-[45%] md:max-w-[314.75px] 3xl:max-w-[400px]
                  h-[90px] xs:h-[100px] sm:h-[120px] md:h-[215px] 3xl:h-[250px]
                  rounded-lg xs:rounded-xl sm:rounded-2xl md:rounded-[32px]
                  p-[1px] sm:p-[1px] overflow-hidden bg-gradient-to-b from-[#8133F1] to-[#090909]"
@@ -79,7 +75,7 @@ const Home: NextPage = () => {
                      w-5 xs:w-6 sm:w-7 md:w-[37.84px] 
                      pb-1 xs:pb-2 sm:pb-3 md:pb-5"
               />
-              <p className="text-[16px] xs:text-[14px] sm:text-[18px] md:text-lg 3xl:text-xl leading-tight">
+              <p className="text-[16px] xs:text-[14px] sm:text-[16px] md:text-lg 3xl:text-xl leading-tight">
                 {text}
               </p>
             </div>
@@ -90,7 +86,7 @@ const Home: NextPage = () => {
       {/* Only render components if client-side mounted to avoid hydration issues */}
       {isMounted && (
         <>
-          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20  xs:px-6 sm:px-0">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20  sm:px-0">
             <SectionCard />
           </div>
           <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20  xs:px-6 sm:px-0">

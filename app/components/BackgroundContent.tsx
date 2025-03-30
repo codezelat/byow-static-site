@@ -17,7 +17,7 @@ export default function BackgroundContent({
     <div className="w-full flex relative overflow-hidden">
       {/* Show the spinning image only on the Home page */}
       {isHomePage && (
-        <div className="absolute lg:w-[843px] lg:h-[843px] xl:w-[843px] xl:h-[843px] w-[500px] h-[500px] md:w-[700px] md:h-[700px] md:mt-0 lg:pt-20  left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <div className="2xs:pb-48 absolute lg:w-[943px] lg:h-[943px] xl:w-[1043px] xl:h-[1043px] xl:pb-60 xs:w-[700px] xs:h-[700px] 2xs:w-[700px] 2xs:h-[700px] md:w-[800px] md:h-[800px] lg:pt-20  left-1/2 transform -translate-x-1/2 flex items-center justify-center">
           <Image
             src="/images/Long Dashed Circle.png"
             alt="dashed circle"

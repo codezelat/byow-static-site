@@ -66,7 +66,7 @@ export default function OurChallengesPage() {
   <div
     className={`text-white transition-all duration-300 lg:static  
     ${selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"}
-    h-[1044px] p-[72px]`}
+    h-auto p-[72px]`}
     style={{
       background: "#000",
       zIndex: "10",
