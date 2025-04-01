@@ -88,30 +88,31 @@ export default function MiddleContainerAbout() {
         </div>
       </div>
 
-    {/* Third Section - Gallery */}
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
-        {galleryImages.map((image, index) => (
-          <div
-            key={index}
-            className="p-[1.5px] rounded-[16px] border-[1.5px] border-gray-700"
-            style={{
-              background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-            }}
-          >
-            <div className="relative w-full" style={{ height: "300px" }}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="rounded-[16px] object-cover"
-              />
-            </div>
-          </div>
-        ))}
+  
+{/* Third Section - Gallery */}
+<div className="flex flex-col sm:grid sm:grid-cols-3 gap-4 mt-10">
+    {galleryImages.map((image, index) => (
+      <div
+        key={index}
+        className="p-[1.5px] rounded-[16px] border-[1.5px] border-gray-700 mb-4 sm:mb-0"
+        style={{
+          background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+        }}
+      >
+        <div className="relative w-full" style={{ height: "300px" }}>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="rounded-[16px] object-cover"
+          />
+        </div>
       </div>
+    ))}
+  </div>
       {/* Fourth Section - Closing Message */}
       <div className="mt-8 sm:mt-10 space-y-4 text-start">
-        <p className="font-semibold text-sm sm:text-base">
+        <p className=" text-sm sm:text-base">
           What sets BYOW apart is our commitment to collaboration and innovation. We don&apos;t just build websites—we build partnerships. We work closely with our clients to ensure that their ideas are fully realized and translated into a dynamic online presence.
         </p>
         <p className="text-sm sm:text-base">
