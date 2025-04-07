@@ -146,30 +146,31 @@ export default function OurChallengesPage() {
           </div>
           <hr className="border-white mb-4 md:mb-6 w-full" />
 
-          {/* Video Section */}
-          <div className="rounded-[16px] overflow-hidden sm:max-w-[634px] h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              key={
-                selectedSolution
-                  ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-                  : challenges[0]?.videoSrc
-              }
-            >
-              <source
-                src={
-                  selectedSolution
-                    ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-                    : challenges[0]?.videoSrc
-                }
-                type="video/mp4"
-              />
-            </video>
-          </div>
+{/* Video Section */}
+<div className="rounded-[16px] overflow-hidden sm:max-w-[634px] w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto"
+     style={{ maxWidth: '634px' }}>
+  <video
+    className="w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
+    key={
+      selectedSolution
+        ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+        : challenges[0]?.videoSrc
+    }
+  >
+    <source
+      src={
+        selectedSolution
+          ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+          : challenges[0]?.videoSrc
+      }
+      type="video/mp4"
+    />
+  </video>
+</div>
 
           {/* Solution Paragraph */}
           <p className="text-white text-start px-2 xs:px-4 mt-6 xs:mt-8 md:mt-10 text-xs xs:text-sm md:text-base">
