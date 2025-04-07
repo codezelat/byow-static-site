@@ -9,17 +9,17 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ product }) => {
   return (
     <div className="bg-gradient-to-b from-[rgba(129,51,241,0.4)] to-[rgba(45,40,54,0.4)] rounded-2xl p-3 sm:p-4 md:p-6 mb-6 sm:mb-8 md:mb-12 max-w-full overflow-hidden">
       <div>
-        {/* Project Image */}
-        <div className="w-full mb-4 sm:mb-6 md:mb-10">
-          <Image
-            src={product.mobileImage}
-            alt={`${product.id} mobile view`}
-            width={600}
-            height={400}
-            className="rounded-xl sm:rounded-2xl w-full object-cover max-h-[500px]"
-            priority
-          />
-        </div>
+{/* Project Image */}
+<div className="w-full mb-4 sm:mb-6 md:mb-10">
+  <Image
+    src={product.mobileImage}
+    alt={`${product.id} mobile view`}
+    width={1264}
+    height={648}
+    className="rounded-xl sm:rounded-2xl w-full object-cover max-h-[648px]"
+    priority
+  />
+</div>
 
         {/* Project Info */}
         <div className="w-full flex flex-col">
