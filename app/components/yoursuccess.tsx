@@ -55,7 +55,7 @@ export default function Yoursuccess() {
         {/* Button */}
         <button 
           onClick={handleGetStartedClick}
-          className="bg-[#8133F1] flex items-center justify-center gap-2 text-sm sm:text-[18px] font-semibold text-white w-[180px] sm:w-[239px] h-[50px] sm:h-[70px] rounded-[36px] mx-auto transition hover:bg-[#6f23e0]"
+          className="bg-[#8133F1] flex items-center justify-center gap-2   text-[18px] 3xl:text-[18px] 2xl:text-[18px] xl:text-[18px] lg:text-[18px] md:text-[16px] sm:text-[14px] xs:text-[14px] 2xs:text-[14px] font-semibold text-white  sm:w-[189px]  sm:h-[50px] rounded-[36px] mx-auto transition hover:bg-[#6f23e0]"
         >
           GET STARTED
           <ArrowCircleRightOutlinedIcon className="w-5 h-5 sm:w-6 sm:h-6" />

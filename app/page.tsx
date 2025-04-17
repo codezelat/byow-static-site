@@ -29,18 +29,18 @@ const Home: NextPage = () => {
   return (
     <div className="text-center">
       {/* Main Heading - Responsive */}
-      <h1 className="xs:text-2.5xl sm:text-3xl md:text-5xl md:pt-40 lg:pt-64 xl:pt-64 lg:text-[64px] 3xl:text-[80px] font-bold text-white px-4 xs:px-6 sm:px-0 2xs:pt-44 2xs:text-[22px]">
+      <h1 className="text-[64px] xl:text-[64px] 2xl:text-[64px] 3xl:text-[64px]  md:text-[45px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] md:pt-40 lg:pt-60 xl:pt-64  sm:pt-40 font-bold text-white  2xs:pt-40 ">
         Why Stress Over Website Development?
       </h1>
 
       {/* Centered Paragraph - Responsive */}
       <div className="flex justify-center px-4 xs:px-6 sm:px-0">
         <p
-          className="text-[16px] xs:text-sm sm:text-base md:text-lg lg:text-[16px] 3xl:text-xl
+          className="text-[16px] 3xl:text-[16px] 2xl:text-[16px] xl:text-[16px] md:text-[16px]
                      font-[400] text-white 
                      mt-3 xs:mt-4 sm:mt-16 md:mt-4
                      max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl
-                     pt-10 xs:pt-6 sm:pt-8 md:pt-16 lg:pt-20 xl:pt-40 sm:px-8"
+                      xs:pt-6 2xs:pt-6 sm:pt-8 md:pt-16 lg:mt-[105px] xl:pt-[36px] sm:px-8"
         >
           Frustrated with the Process? Scroll for a Simpler Solution
         </p>
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
 
       <div
         className="flex flex-wrap py-3 justify-center items-center gap-3 xs:gap-4 sm:gap-6 md:gap-8 
-                w-full xs:px-6 sm:px-8 md:px-10
+                 xs:px-6 sm:px-8 md:px-10
                 pt-20 xs:pt-12 sm:pt-20 md:pt-32 3xl:pt-40 2xs:px-10 "
       >
         {cardData.map((text, index) => (
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                      w-5 xs:w-6 sm:w-7 md:w-[37.84px] 
                      pb-1 xs:pb-2 sm:pb-3 md:pb-5"
               />
-              <p className="text-[16px] xs:text-[14px] sm:text-[16px] md:text-lg 3xl:text-xl leading-tight">
+              <p className="text-[14px] leading-tight">
                 {text}
               </p>
             </div>
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
           <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <InfiniteHorizontalScroll />
           </div>
-          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-0 sm:px-0">
             <Yoursuccess />
           </div>
         </>

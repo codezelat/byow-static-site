@@ -45,10 +45,10 @@ const ResponsiveCardsSection = () => {
                 priority
               />
             </div>
-            <h1 className="font-bold text-lg sm:text-xl leading-snug pb-2">
+            <h1 className="font-bold text-[20px] leading-snug pb-2">
               {card.title}
             </h1>
-            <p className="font-normal text-sm sm:text-base leading-snug">
+            <p className="font-normal text-[16px] leading-snug">
               {card.text}
             </p>
           </div>

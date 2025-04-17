@@ -49,11 +49,11 @@ const StepsBar: NextPage = () => {
 
   return (
     <div className="h-auto pb-12 md:pb-24 sm:pb-5 px-4 md:px-6">
-      <div className="flex flex-col md:pt-40 sm:pb-10 px-10 pb-10 pt-20 gap-[24px]">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
+      <div className="flex flex-col md:pt-40 sm:pb-10 px-5 pb-10 pt-20 gap-[24px]">
+        <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
           How BYOW Simplifies Your Journey?
         </h1>
-        <p className="font-normal text-sm md:text-base text-center text-white leading-[140%]">
+        <p className="font-normal text-[16px]  text-center text-white leading-[140%]">
           Helping You Achieve More With Less Effort Through Seamless Integration
         </p>
       </div>
@@ -243,14 +243,14 @@ const StepsBar: NextPage = () => {
                   zIndex: "-1",
                 }}
               />
-              <h1 className="font-bold text-lg leading-[140%] text-left pb-4 text-[#8133F1]">
+              <h1 className="font-bold text-[18px] leading-[140%] text-left pb-4 text-[#8133F1]">
                 Step 1: Share Your Vision
               </h1>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left pb-4 text-white">
+              <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
                 DIY platforms ask, &quot;What do you want?&quot; but give you a
                 blank canvas with zero guidance.
               </p>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left text-[#CEB0FA]">
+              <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
                 We do not just ask; we listen. Whether you have a clear idea or
                 just a rough sketch, we help shape your vision into something
                 extraordinary.
@@ -277,14 +277,14 @@ const StepsBar: NextPage = () => {
                   zIndex: "-1",
                 }}
               />
-              <h1 className="font-bold text-lg leading-[140%] text-left pb-4 text-[#8133F1]">
+              <h1 className="font-bold text-[18px] leading-[140%] text-left pb-4 text-[#8133F1]">
                 Step 3: Review & Perfect
               </h1>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left pb-4 text-white">
+              <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
                 DIY tools make you tweak endlessly, but they never quite
                 &quot;feel right.&quot;
               </p>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left text-[#CEB0FA]">
+              <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
                 You get to review the site weve built and provide feedback. We
                 tweak and polish it until its perfect—your perfect.
               </p>
@@ -395,14 +395,14 @@ const StepsBar: NextPage = () => {
                   zIndex: "-1",
                 }}
               />
-              <h1 className="font-bold text-lg leading-[140%] text-left pb-4 text-[#8133F1]">
+              <h1 className="font-bold text-[18px] leading-[140%] text-left pb-4 text-[#8133F1]">
                 Step 2: Watch us build it
               </h1>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left pb-4 text-white">
+              <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
                 Drag-and-drop builders are fine... until theyre not. That one
                 &quot;custom feature&quot; you need? Impossible.
               </p>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left text-[#CEB0FA]">
+              <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
                 Our team of pros turns your wish list into reality—no
                 limitations, no shortcuts.
               </p>
@@ -428,15 +428,15 @@ const StepsBar: NextPage = () => {
                   zIndex: "-1",
                 }}
               />
-              <h1 className="font-bold text-lg leading-[140%] text-left pb-4 text-[#8133F1]">
+              <h1 className="font-bold text-[18px] leading-[140%] text-left pb-4 text-[#8133F1]">
                 Step 4: Launch & Thrive
               </h1>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left pb-4 text-white">
+              <p className="text-[16px] font-normal leading-[140%] text-left pb-4 text-white">
                 With DIY platforms, &quot;launching&quot; is just step one. Now
                 you are stuck dealing with slow load times, SEO issues, and
                 constant updates.
               </p>
-              <p className="text-sm lg:text-base font-normal leading-[140%] text-left text-[#CEB0FA]">
+              <p className="text-[16px] font-normal leading-[140%] text-left text-[#CEB0FA]">
                 We handle all the heavy lifting—optimised performance, SEO-ready
                 designs, and future-proofed functionality. Your job? Enjoy the
                 results.

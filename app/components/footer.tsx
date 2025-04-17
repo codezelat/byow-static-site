@@ -28,7 +28,7 @@ const Footer: NextPage = () => {
 
       {/* Middle Section */}
       <div className="container mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 text-left px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-4 2xl:grid-cols-4 lg:grid-cols-4  xs:grid-cols-2 gap-4 w-full">
           {/* Main Menu */}
           <div>
             <h3 className="font-semibold mb-3 text-sm">Main Menu</h3>
@@ -70,7 +70,7 @@ const Footer: NextPage = () => {
           </div>
 
           {/* Newsletter Signup */}
-          <div className="col-span-2 sm:col-span-1">
+          <div className="col-span-2 3xl:col-span-1 2xl:col-span-1 xl:col-span-1 lg:col-span-1 md:col-span-4 sm:col-span-4 xs:col-span-4 ">
             <div className="w-full flex items-start mb-3">
               <Image src="/images/byow-logo.svg" alt="footer logo" width={100} height={40} className="w-auto h-auto" />
             </div>

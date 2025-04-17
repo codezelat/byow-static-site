@@ -30,7 +30,7 @@ const Card = ({
   <div
     className="relative w-full max-w-[430px] h-auto min-h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer mx-auto"
     style={{
-      background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)"
+      background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
     }}
     onMouseEnter={() => setHoveredCard(id)}
     onMouseLeave={() => setHoveredCard(null)}
@@ -108,23 +108,18 @@ export default function ServicePage() {
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
       {/* Content container */}
-      <div className="relative z-10 mx-auto px-4 pb-10 md:pb-20 w-full max-w-[1328px] pt-10">
-       
-       
+      <div className="relative container-wrapper  z-10 mx-auto px-4 pb-10 md:pb-20 pt-10">
         <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
-        <h1 className="px-10 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]"
-          
-        >
-          Expert Digital Services Tailored for Your Success
-        </h1>
-        <p className="max-w-[892px] mx-auto font-normal text-xs sm:text-sm md:text-base text-center text-white leading-[140%]"
-          
-        >
-          At BYOW, we craft websites that go beyond templates, delivering
-          tailored designs, seamless functionality, and a unique online
-          presence that truly represents your brand.
-        </p>
-      </div>
+          <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
+            {" "}
+            Expert Digital Services Tailored for Your Success
+          </h1>
+          <p className="font-normal text-[16px] lg:px-10 text-center text-white leading-[140%]">
+            At BYOW, we craft websites that go beyond templates, delivering
+            tailored designs, seamless functionality, and a unique online
+            presence that truly represents your brand.
+          </p>
+        </div>
 
         <div
           id="accordion-collapse"
@@ -159,8 +154,6 @@ interface AccordionItemProps {
 }
 
 const AccordionItem = ({ id, title, children }: AccordionItemProps) => {
-  
-
   return (
     <>
       <h2 id={`accordion-heading-${id}`}>
@@ -184,7 +177,6 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => {
             lineHeight: "120%",
             letterSpacing: "0%",
             color: "white",
-           
           }}
         >
           <div className="flex-grow text-left">{title}</div>

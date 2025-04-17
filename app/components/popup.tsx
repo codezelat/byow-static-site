@@ -53,16 +53,16 @@ export default function PopupPage({ onClose }: PopupPageProps) {
         }
       `}</style>
 
-      {/* Full screen overlay with higher z-index to cover all content */}
+      {/* Overlay with backdrop blur - z-index lower than sidemenu but higher than main content */}
       <div
-        className="fixed mt-40 inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-lg"
+        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-30"
         onClick={onClose}
       ></div>
 
-      {/* Popup content */}
-      <div className="fixed mt-24 mx-5 inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4 ">
+      {/* Popup content - higher z-index than backdrop but lower than sidemenu */}
+      <div className="fixed mt-24 mx-5 inset-0 flex items-center justify-center z-40 p-2 2xs:p-3 sm:p-4">
         {/* Main popup container with gradient border */}
-        <div className="relative w-full max-w-[1291px] h-full rounded-[32px] overflow-hidden ">
+        <div className="relative w-full max-w-[1291px] h-full rounded-[32px] overflow-hidden">
           {/* Gradient border using pseudo element technique */}
           <div
             className="absolute inset-0 h-full rounded-[32px]"
@@ -71,10 +71,10 @@ export default function PopupPage({ onClose }: PopupPageProps) {
             }}
           />
 
-          {/* Inner content container - now with h-full to ensure full height coverage */}
-          <div className="absolute inset-[2px] bg-[#060116] h-full rounded-[32px] flex flex-col  overflow-y-auto">
-            {/* Content area with solid background from parent div */}
-            <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-16  ">
+          {/* Inner content container - slightly smaller to create border effect */}
+          <div className="absolute inset-[2px] bg-[#060116] rounded-[32px] flex flex-col">
+            {/* Scrollable content area */}
+            <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-16">
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -83,8 +83,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 <CloseIcon className="w-6 h-6 2xs:w-8 2xs:h-8" />
               </button>
 
-              <div className="flex flex-col gap-4 2xs:gap-6 md:gap-[24px] pb-6 md:pb-10 pt-10">
-                <h1 className="font-bold text-2xl 2xs:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-tight">
+              <div className="flex flex-col gap-4 2xs:gap-6 md:gap-[24px] pb-6 md:pb-10 pt-2">
+                <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
                   Let's Talk About Your Project Today!
                 </h1>
                 <p className="font-normal text-xs 2xs:text-sm md:text-base text-center text-white leading-relaxed">
@@ -94,9 +94,9 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
               <form
                 onSubmit={handleSubmit}
-                className="space-y-4 2xs:space-y-6 md:space-y-6 "
+                className="space-y-4 2xs:space-y-6 md:space-y-6"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
                   <div>
                     <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
                       First Name*
@@ -190,7 +190,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
               </form>
 
               <div className="mt-4 2xs:mt-6 mb-6 md:mb-10 flex flex-col 2xs:flex-row flex-wrap items-center justify-between space-y-3 2xs:space-y-0 gap-3 2xs:gap-4">
-                <div className="flex flex-row 2xs:flex-col items-center gap-3 2xs:gap-4">
+                <div className="flex flex-row items-center gap-3 2xs:gap-4">
                   <div className="bg-[#18171A] flex items-center w-full 2xs:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
                     <div className="flex items-center gap-2">
                       <Image

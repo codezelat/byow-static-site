@@ -129,7 +129,7 @@ export default function Header() {
                     />
                     <Link
                       href={path}
-                      className="relative z-10 text-white text-xs sm:text-sm md:text-base font-medium px-1 sm:px-2 flex items-center justify-center w-full h-full"
+                      className="relative z-10 text-white text-[18px] sm:text-sm md:text-base font-medium px-1 sm:px-2 flex items-center justify-center w-full h-full"
                     >
                       {path === "/"
                         ? "HOME"

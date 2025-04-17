@@ -233,7 +233,7 @@ const IndustryBox: NextPage = () => {
   {/* Industry Content */}
   <div
     id="industry-content"
-    className="w-full h-[300px] xs:h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-[16px] flex flex-col items-left justify-center text-left px-4 xs:px-6 sm:px-10 md:px-16 lg:px-24 gap-4 sm:gap-6 md:gap-8 lg:gap-[48px] p-4 sm:p-6 md:p-8 bg-cover bg-center bg-no-repeat transition-all duration-500"
+    className="w-full h-[300px] xs:h-[450px] sm:h-[550px] md:h-[500px] lg:h-[600px] 2xs:h-[450px] rounded-[16px] flex flex-col items-left justify-center text-left px-4 xs:px-6 sm:px-10 md:px-16 lg:px-24 gap-4 sm:gap-6 md:gap-8 lg:gap-[48px] p-4 sm:p-6 md:p-8 bg-cover bg-center bg-no-repeat transition-all duration-500"
     style={{
       backgroundImage: `linear-gradient(180deg, rgba(129, 51, 241, 0.4) 0%, rgba(45, 40, 54, 0.4) 100%), url('${activeIndustry.backgroundImage}')`,
       backgroundSize: "cover",
@@ -241,10 +241,10 @@ const IndustryBox: NextPage = () => {
       backgroundRepeat: "no-repeat",
     }}
   >
-    <h1 className="font-bold text-[24px] xs:text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[120%] text-white">
+    <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] leading-[120%] text-white">
       {activeIndustry.title}
     </h1>
-    <p className="w-full max-w-[1104px] font-normal text-[14px] xs:text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-[140%] text-white overflow-y-auto max-h-[200px] xs:max-h-[220px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-none">
+    <p className="w-full max-w-[1104px] font-normal text-[24px] 3xl:text-[24px] 2xl:text-[24px] xl:text-[24px] lg:text-[22px] md:text-[18px] sm:text-[18px] xs:text-[16px] 2xs:text-[16px] leading-[140%] text-white h-auto my-auto">
       {activeIndustry.description}
     </p>
   </div>

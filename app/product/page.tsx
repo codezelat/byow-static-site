@@ -17,7 +17,7 @@ export default function ProductPage() {
   const currentProduct = products[selectedProject] || null; // Fallback for undefined
 
   return (
-    <div className="relative z-10 w-full max-w-[1428px] px-4 sm:px-6 md:px-8 mx-auto pt-20">
+    <div className="relative z-10 container-wrapper px-4 sm:px-6 md:px-8 mx-auto pt-20">
       {/* Header */}
       <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
         <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
