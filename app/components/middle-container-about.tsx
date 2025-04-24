@@ -38,7 +38,7 @@ export default function MiddleContainerAbout() {
       {/* First Section - Main Image & Intro */}
       <div className="flex flex-col lg:flex-row gap-6 space-y-6 lg:space-y-0">
         {/* Left Side - Image */}
-        <div className="w-full lg:w-1/3 flex justify-center">
+        <div className="w-full lg:w-1/3 flex justify-center mb-20">
           <div
             className="w-full lg:h-80 max-w-md lg:max-w-none p-[1px] rounded-[16px] "
             style={{
@@ -57,10 +57,10 @@ export default function MiddleContainerAbout() {
         </div>
 
         {/* Right Side - Text Content */}
-        <div className="w-full lg:w-2/3 space-y-4 text-start">
+        <div className="w-full lg:w-2/3 space-y-4 text-start ">
           <h2 className="text-2xl sm:text-3xl font-bold text-purple-400">About BYOW</h2>
           <div className="space-y-4">
-            <p className="text-sm sm:text-base">
+            <p className="text-sm sm:text-base ">
               At BYOW, we believe that the digital world is more than just a space—it&apos;s a canvas for creativity, connection, and growth. Our journey began with a simple yet powerful idea: to help entrepreneurs, businesses, and individuals bring their visions to life online. With a passion for design and technology, we set out to make website building an effortless and enjoyable experience for everyone.
             </p>
             <p className="text-sm sm:text-base">
@@ -111,7 +111,7 @@ export default function MiddleContainerAbout() {
     ))}
   </div>
       {/* Fourth Section - Closing Message */}
-      <div className="mt-8 sm:mt-10 space-y-4 text-start">
+      <div className="mt-10 sm:mt-10 space-y-4 text-start">
         <p className=" text-sm sm:text-base">
           What sets BYOW apart is our commitment to collaboration and innovation. We don&apos;t just build websites—we build partnerships. We work closely with our clients to ensure that their ideas are fully realized and translated into a dynamic online presence.
         </p>

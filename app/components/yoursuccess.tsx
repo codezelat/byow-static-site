@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
-import PopupPage from './popup';
+import PopupPage from '../popup/popup-page';
 
 export default function Yoursuccess() {
   const [showPopup, setShowPopup] = useState(false);
