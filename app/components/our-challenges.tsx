@@ -43,7 +43,7 @@ export default function OurChallengesPage() {
       tagline: "Bold Ideas, Bigger Impact: Vision Creative Studio",
       videoSrc: "/videos/video-03.mp4",
       solution:
-        "BYOW delivered a visually striking design with animations, sleek transitions, and portfolio filters. The result? A website that’s just as creative as the studio itself, leading to a 40% rise in client inquiries.",
+        "BYOW delivered a visually striking design with animations, sleek transitions, and portfolio filters. The result? A website that's just as creative as the studio itself, leading to a 40% rise in client inquiries.",
     },
     {
       id: 4,
@@ -58,6 +58,7 @@ export default function OurChallengesPage() {
   ];
 
   return (
+<<<<<<< HEAD
     <div>
       <div className="flex flex-col md:pt-20 sm:pb-10 px-10 pb-10  gap-[24px]">
         <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
@@ -179,9 +180,133 @@ export default function OurChallengesPage() {
                 ? challenges.find((c) => c.id === selectedSolution)?.solution
                 : challenges[0]?.solution}
             </p>
+=======
+    <div
+      className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
+      style={{ maxWidth: "100%" }}
+    >
+      {/* Challenges Section */}
+      <div
+        className={`text-white transition-all duration-300 relative
+        ${selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"}
+        h-auto p-4 xs:p-6 md:p-[72px]`}
+        style={{
+          background: "#000",
+          zIndex: selectedSolution ? "10" : "20", // Higher z-index on mobile to ensure it stays on top
+          borderTopLeftRadius: "24px",
+          borderTopRightRadius: "24px",
+          borderBottomLeftRadius: selectedSolution ? "0" : "24px",
+          borderBottomRightRadius: selectedSolution ? "0" : "24px",
+          border: "2px solid transparent",
+          backgroundImage:
+            "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
+          borderImageSlice: "1",
+          backgroundOrigin: "border-box",
+          backgroundClip: "padding-box, border-box",
+        }}
+      >
+        <h1 className="text-[#8133F1] text-xl xs:text-2xl font-bold mb-2 text-start">
+          The Challenges
+        </h1>
+        <hr className="border-[#8133F1] mb-4 md:mb-6" />
+
+        {challenges.map((challenge) => (
+          <div key={challenge.id} className="mb-6 md:mb-8 lg:mb-12">
+            <p className="mb-3 md:mb-4 text-start text-xs xs:text-sm md:text-base">
+              {challenge.description}
+              <br />
+              <span className="text-2xs xs:text-xs md:text-sm text-[#a37ff0] mt-1 xs:mt-2 block">
+                {challenge.tagline}
+              </span>
+            </p>
+            <div className="flex justify-start items-center">
+              <button
+                onClick={() => setSelectedSolution(challenge.id)}
+                className="max-w-[120px] xs:max-w-[150px] w-full bg-[#8133F1] text-white px-4 xs:px-6 py-1 xs:py-2 rounded-full hover:bg-[#6325c5] transition text-xs xs:text-sm md:text-base"
+              >
+                View Solution
+              </button>
+              <div className="ml-2 hidden sm:block">
+                <Image
+                  src="/images/Arrow 1.png"
+                  alt="arrow"
+                  width={856}
+                  height={25}
+                />
+              </div>
+            </div>
+>>>>>>> hirushi-001
           </div>
+        ))}
+      </div>
+<<<<<<< HEAD
+=======
+
+      {/* Solution Section */}
+      <div
+        className={`text-white flex flex-col items-center transition-all duration-300 overflow-hidden
+        ${
+          selectedSolution
+            ? "opacity-100 visible max-h-[5000px]"
+            : "opacity-0 invisible max-h-0 lg:opacity-100 lg:visible lg:max-h-[5000px]"
+        }
+        lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[730px] lg:border-l-2 lg:border-[#8133F1]`}
+        style={{
+          background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
+          zIndex: "15",
+          borderRadius: "0 0 24px 24px",
+          borderTopLeftRadius: "0",
+          borderTopRightRadius: "0",
+        }}
+      >
+        <div className="w-full h-full p-4 xs:p-6 md:p-10">
+          <div className="flex justify-between items-center mb-2 w-full">
+            <h1 className="text-xl xs:text-2xl font-bold">Our Solution</h1>
+            <button
+              onClick={() => setSelectedSolution(null)}
+              className="text-white hover:text-gray-200 transition-colors"
+              aria-label="Close solution"
+            >
+              <CloseIcon />
+            </button>
+          </div>
+          <hr className="border-white mb-4 md:mb-6 w-full" />
+
+{/* Video Section */}
+<div className="rounded-[16px] overflow-hidden sm:max-w-[634px] w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto"
+     style={{ maxWidth: '634px' }}>
+  <video
+    className="w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
+    key={
+      selectedSolution
+        ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+        : challenges[0]?.videoSrc
+    }
+  >
+    <source
+      src={
+        selectedSolution
+          ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+          : challenges[0]?.videoSrc
+      }
+      type="video/mp4"
+    />
+  </video>
+</div>
+
+          {/* Solution Paragraph */}
+          <p className="text-white text-start px-2 xs:px-4 mt-6 xs:mt-8 md:mt-10 text-xs xs:text-sm md:text-base">
+            {selectedSolution
+              ? challenges.find((c) => c.id === selectedSolution)?.solution
+              : challenges[0]?.solution}
+          </p>
         </div>
       </div>
+>>>>>>> hirushi-001
     </div>
   );
 }
