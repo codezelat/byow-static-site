@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
@@ -80,7 +80,16 @@ export default function OurChallengesPage() {
   };
 
   return (
-    <div
+    <>
+     <div className="flex flex-col md:pt-32 sm:pt-24  sm:pb-8 pb-6 px-4 sm:px-6 md:px-10 gap-4 sm:gap-6">
+  <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-left md:text-center text-[#8133F1] leading-[120%]  mb-6">
+        See BYOW in Action
+  </h1>
+  <p className="font-normal text-xs sm:text-sm md:text-base text-left md:text-center mb-14 text-white leading-[140%]">
+  A Closer Look at How BYOW Elevates Businesses with Smart, Scalable Solutions
+  </p>
+</div>
+        <div
       className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
       style={{ maxWidth: "100%" }}
     >
@@ -228,5 +237,7 @@ export default function OurChallengesPage() {
         </div>
       </div>
     </div>
+    </>
+
   );
 }

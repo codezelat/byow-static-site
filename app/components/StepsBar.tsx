@@ -48,17 +48,17 @@ const StepsBar: NextPage = () => {
 
   return (
     <div className="h-auto pb-12 md:pb-24 sm:pb-5 px-2 sm:px-3 md:px-6">
-      <div className="flex flex-col md:pt-32 sm:pt-24 pt-20 sm:pb-8 pb-6 px-4 sm:px-6 md:px-10 gap-4 sm:gap-6">
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
-          How BYOW Simplifies Your Journey?
-        </h1>
-        <p className="font-normal text-xs sm:text-sm md:text-base text-center text-white leading-[140%]">
-          Helping You Achieve More With Less Effort Through Seamless Integration
-        </p>
-      </div>
+ <div className="flex flex-col md:pt-32 sm:pt-24 pt-20 sm:pb-8 pb-6 px-4 sm:px-6 md:px-10 gap-4 sm:gap-6">
+  <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-left md:text-center text-[#8133F1] leading-[120%] mt-20 mb-6">
+    How BYOW Simplifies Your Journey?
+  </h1>
+  <p className="font-normal text-xs sm:text-sm md:text-base text-left md:text-center mb-14 text-white leading-[140%]">
+    Helping You Achieve More With Less Effort Through Seamless Integration
+  </p>
+</div>
       
       {/* Main content with stepper */}
-      <div className="w-full relative md:px-6 sm:px-4 px-3">
+      <div className="w-full relative md:px-8 sm:px-6 px-4">
         <div className="w-full mx-auto max-w-4xl">
           {/* Mobile and Tablet Layout */}
           <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start">

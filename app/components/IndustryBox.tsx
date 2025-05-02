@@ -160,7 +160,7 @@ const IndustryBox: NextPage = () => {
               <ChevronLeftIcon fontSize="large" />
             </button>
             
-            <div className="flex-1 grid grid-cols-1 xs:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 mx-2 xs:mx-1">
+            <div className="flex-1 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 mx-2 xs:mx-1">
               {getCurrentIndustries().map((industry) => (
                 <div
                   key={industry.id}
@@ -181,7 +181,7 @@ const IndustryBox: NextPage = () => {
                       className="pb-3 w-[32px] xs:w-[40px] sm:w-[48px] h-auto"
                     />
                     <p
-                      className={`font-bold text-[12px] xs:text-[14px] sm:text-[16px] leading-[130%] text-center ${
+                      className={`font-bold text-[14px] 2xs:text-[12px]  xs:text-[12px] sm:text-[12px] leading-[130%] text-center ${
                         activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
                       }`}
                     >

@@ -104,7 +104,7 @@ const Home: NextPage = () => {
           <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <InfiniteHorizontalScroll />
           </div>
-          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-0 sm:px-0">
+          <div className="mt-4 xs:mt-6 sm:mt-10 md:mt-16 3xl:mt-20 xs:px-6 sm:px-0">
             <Yoursuccess />
           </div>
         </>
