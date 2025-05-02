@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
@@ -13,6 +13,8 @@ interface Challenge {
 
 export default function OurChallengesPage() {
   const [selectedSolution, setSelectedSolution] = useState<number | null>(null);
+  const challengeRef = useRef<HTMLDivElement>(null);
+  const solutionRef = useRef<HTMLDivElement>(null);
 
   const challenges: Challenge[] = [
     {
@@ -57,6 +59,26 @@ export default function OurChallengesPage() {
     },
   ];
 
+  const handleViewSolution = (id: number) => {
+    setSelectedSolution(id);
+    if (window.innerWidth <= 768) {
+      // Smooth scroll to solution section
+      setTimeout(() => {
+        solutionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
+
+  const handleBackToChallenges = () => {
+    setSelectedSolution(null);
+    if (window.innerWidth <= 768) {
+      // Smooth scroll back to top
+      setTimeout(() => {
+        challengeRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
+
   return (
     <div
       className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
@@ -64,12 +86,13 @@ export default function OurChallengesPage() {
     >
       {/* Challenges Section */}
       <div
+        ref={challengeRef}
         className={`text-white transition-all duration-300 relative
         ${selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"}
         h-auto p-4 xs:p-6 md:p-[72px]`}
         style={{
           background: "#000",
-          zIndex: selectedSolution ? "10" : "20", // Higher z-index on mobile to ensure it stays on top
+          zIndex: selectedSolution ? "10" : "20",
           borderTopLeftRadius: "24px",
           borderTopRightRadius: "24px",
           borderBottomLeftRadius: selectedSolution ? "0" : "24px",
@@ -98,7 +121,7 @@ export default function OurChallengesPage() {
             </p>
             <div className="flex justify-start items-center">
               <button
-                onClick={() => setSelectedSolution(challenge.id)}
+                onClick={() => handleViewSolution(challenge.id)}
                 className="max-w-[120px] xs:max-w-[150px] w-full bg-[#8133F1] text-white px-4 xs:px-6 py-1 xs:py-2 rounded-full hover:bg-[#6325c5] transition text-xs xs:text-sm md:text-base"
               >
                 View Solution
@@ -118,6 +141,7 @@ export default function OurChallengesPage() {
 
       {/* Solution Section */}
       <div
+        ref={solutionRef}
         className={`text-white flex flex-col items-center transition-all duration-300 overflow-hidden
         ${
           selectedSolution
@@ -137,8 +161,28 @@ export default function OurChallengesPage() {
           <div className="flex justify-between items-center mb-2 w-full">
             <h1 className="text-xl xs:text-2xl font-bold">Our Solution</h1>
             <button
+              onClick={handleBackToChallenges}
+              className="lg:hidden animate-bounce"
+              aria-label="Back to challenges"
+            >
+              <div
+                className="w-10 h-10 flex items-center justify-center rounded-full shadow-md"
+                style={{
+                  backgroundColor: "#5b28a3",
+                  boxShadow: "0 0 12px rgba(91, 40, 163, 0.5)",
+                }}
+              >
+                <img
+                  src="/images/up-chevron.png"
+                  alt="Back arrow"
+                  className="w-5 h-5 object-contain"
+                />
+              </div>
+            </button>
+
+            <button
               onClick={() => setSelectedSolution(null)}
-              className="text-white hover:text-gray-200 transition-colors"
+              className="text-white hover:text-gray-200 transition-colors hidden lg:block"
               aria-label="Close solution"
             >
               <CloseIcon />
@@ -146,31 +190,34 @@ export default function OurChallengesPage() {
           </div>
           <hr className="border-white mb-4 md:mb-6 w-full" />
 
-{/* Video Section */}
-<div className="rounded-[16px] overflow-hidden sm:max-w-[634px] w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto"
-     style={{ maxWidth: '634px' }}>
-  <video
-    className="w-full h-full object-cover"
-    autoPlay
-    loop
-    muted
-    playsInline
-    key={
-      selectedSolution
-        ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-        : challenges[0]?.videoSrc
-    }
-  >
-    <source
-      src={
-        selectedSolution
-          ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-          : challenges[0]?.videoSrc
-      }
-      type="video/mp4"
-    />
-  </video>
-</div>
+          {/* Video Section */}
+          <div
+            className="rounded-[16px] overflow-hidden sm:max-w-[634px] w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto"
+            style={{ maxWidth: "634px" }}
+          >
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              key={
+                selectedSolution
+                  ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
+                  : challenges[0]?.videoSrc
+              }
+            >
+              <source
+                src={
+                  selectedSolution
+                    ? challenges.find((c) => c.id === selectedSolution)
+                        ?.videoSrc
+                    : challenges[0]?.videoSrc
+                }
+                type="video/mp4"
+              />
+            </video>
+          </div>
 
           {/* Solution Paragraph */}
           <p className="text-white text-start px-2 xs:px-4 mt-6 xs:mt-8 md:mt-10 text-xs xs:text-sm md:text-base">

@@ -1,6 +1,9 @@
 import { Product } from "../types/product";
 import ProjectCard from "./projectcard";
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 interface ProjectGridProps {
   products: Product[];
@@ -19,7 +22,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   // Check viewport size
   useEffect(() => {
     const checkViewportSize = () => {
-      if (window.innerWidth <= 640) {
+      if (window.innerWidth <= 425) {
         setViewportSize("mobile");
       } else if (window.innerWidth <= 768) {
         setViewportSize("tablet");
@@ -27,33 +30,22 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
         setViewportSize("desktop");
       }
     };
-    
-    // Initial check
+
     checkViewportSize();
-    
-    // Add event listener for window resize
     window.addEventListener("resize", checkViewportSize);
-    
-    // Cleanup
     return () => window.removeEventListener("resize", checkViewportSize);
   }, []);
 
-  // Scroll handling for mobile
+  // Scroll logic
   const handleScroll = (direction: "left" | "right") => {
     if (!sliderRef.current) return;
-    
     const scrollAmount = 300;
-    const newScrollLeft = direction === "left" 
-      ? sliderRef.current.scrollLeft - scrollAmount 
-      : sliderRef.current.scrollLeft + scrollAmount;
-      
-    sliderRef.current.scrollTo({
-      left: newScrollLeft,
-      behavior: "smooth"
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
     });
   };
 
-  // Determine the appropriate layout class based on viewport size
   const getLayoutClass = () => {
     switch (viewportSize) {
       case "mobile":
@@ -63,12 +55,11 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
       case "desktop":
         return "flex justify-center gap-10 p-4";
       default:
-        return "flex justify-center gap-10 p-4";
+        return "";
     }
   };
 
-  // Determine item class based on viewport size
-  const getItemClass = (productId: string) => {
+  const getItemClass = () => {
     switch (viewportSize) {
       case "mobile":
         return "snap-center min-w-full flex justify-center";
@@ -80,16 +71,32 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Outer div with gradient border effect */}
-      <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full">
-        {/* Inner container with solid background and matching rounded corners */}
-        <div 
-          ref={sliderRef}
-          className={`bg-[#111111] rounded-3xl w-full ${getLayoutClass()}`}
+    <div className="w-full flex flex-col items-center relative">
+      {/* Prev button */}
+      {viewportSize === "mobile" && (
+        <button
+          onClick={() => handleScroll("left")}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-[#5b28a3] rounded-full p-2 shadow-lg"
         >
+          <ChevronLeftIcon/>
+        </button>
+      )}
+
+      {/* Next button */}
+      {viewportSize === "mobile" && (
+        <button
+          onClick={() => handleScroll("right")}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-[#5b28a3] rounded-full p-2 shadow-lg"
+        >
+          <ChevronRightIcon/>
+        </button>
+      )}
+
+      {/* Grid container */}
+      <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full">
+        <div ref={sliderRef} className={`bg-[#111111] rounded-3xl w-full ${getLayoutClass()}`}>
           {products.map((product) => (
-            <div key={product.id} className={getItemClass(product.id)}>
+            <div key={product.id} className={getItemClass()}>
               <ProjectCard
                 product={product}
                 isSelected={selectedProductId === product.id}
