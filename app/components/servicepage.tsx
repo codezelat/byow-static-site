@@ -88,7 +88,7 @@ export default function ServicePage() {
       <div className="relative">
         <button
           onClick={() => setSelectedService(null)}
-          className="absolute top-4 right-4 md:right-16 lg:right-60 text-[#8133F1] hover:underline z-20"
+          className="absolute top-4 right-4 md:right-16 lg:right-70 text-[#8133F1] hover:underline z-20"
         >
           <CloseIcon />
         </button>
@@ -125,7 +125,7 @@ export default function ServicePage() {
         <div
           id="accordion-collapse"
           data-accordion="collapse"
-          className="space-y-4 px-10"
+          className="space-y-4 "
         >
           {serviceCategories.map((category, index) => (
             <AccordionItem
@@ -225,7 +225,7 @@ const ServiceGrid = ({
   setSelectedService,
 }: ServiceGridProps) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
       {services.map((service) => (
         <Card
           key={service.id}

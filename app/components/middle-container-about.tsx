@@ -34,7 +34,7 @@ const videoSrc = "/videos/aboutvedio.mp4";
 
 export default function MiddleContainerAbout() {
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-white">
+    <div className="container-wrapper py-6 text-white">
       {/* First Section - Main Image & Intro */}
       <div className="flex flex-col lg:flex-row gap-6 space-y-6 lg:space-y-0">
         {/* Left Side - Image */}
