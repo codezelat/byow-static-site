@@ -38,6 +38,9 @@
   margin-right: 16px;
 }
 
+
+
+
 /* 2xs - 320px */
 @media (min-width: 320px) {
   .container-wrapper {
@@ -157,4 +160,13 @@ button {
     background-color: #8133f1;
     border-radius: 20px;
   }
+}
+
+/* globals.css */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

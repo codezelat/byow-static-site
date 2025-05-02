@@ -64,24 +64,16 @@ const StepsBar: NextPage = () => {
           <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start">
             {/* Left-aligned vertical timeline for mobile and tablet */}
             <div className="w-full flex lg:hidden relative">
-              {/* Vertical line on left side */}
-              <div className="absolute left-3 sm:left-4 top-0 bottom-0 w-[2px] bg-[#9654F4] h-full"></div>
+              {/* Removed the vertical line for mobile */}
               
               <div className="w-full flex flex-col">
-                {/* Step 1 Card with left-aligned indicator */}
+                {/* Step 1 Card with removed indicator */}
                 <div className="flex flex-row items-start mb-10 w-full">
-                  {/* Left-aligned indicator */}
-                  <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 ml-1">
-                    <div className="w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black flex items-center justify-center z-10">
-                      <div className={`w-[25px] h-[25px] rounded-full ${
-                        activeStep === 1 ? "bg-white border-4 border-[#9654F4]" : "bg-[#9654F4]"
-                      }`}></div>
-                    </div>
-                  </div>
+                  {/* Removed the left-aligned indicator */}
                   
                   <div
                     ref={stepRefs[0]}
-                    className="flex-grow pl-4 sm:pl-6 pr-1 sm:pr-2 w-full"
+                    className="flex-grow w-full"
                   >
                     <div className="p-4 sm:p-5 relative bg-black rounded-[16px] sm:rounded-[20px]"
                       style={{
@@ -115,20 +107,13 @@ const StepsBar: NextPage = () => {
                   </div>
                 </div>
                 
-                {/* Step 2 Card with left-aligned indicator */}
+                {/* Step 2 Card with removed indicator */}
                 <div className="flex flex-row items-start mb-10 w-full">
-                  {/* Left-aligned indicator */}
-                  <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 ml-1">
-                    <div className="w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black flex items-center justify-center z-10">
-                      <div className={`w-[25px] h-[25px] rounded-full ${
-                        activeStep === 2 ? "bg-white border-4 border-[#9654F4]" : "bg-[#9654F4]"
-                      }`}></div>
-                    </div>
-                  </div>
+                  {/* Removed the left-aligned indicator */}
                   
                   <div
                     ref={stepRefs[1]}
-                    className="flex-grow pl-4 sm:pl-6 pr-1 sm:pr-2 w-full"
+                    className="flex-grow w-full"
                   >
                     <div className="p-4 sm:p-5 relative bg-black rounded-[16px] sm:rounded-[20px]"
                       style={{
@@ -161,20 +146,13 @@ const StepsBar: NextPage = () => {
                   </div>
                 </div>
                 
-                {/* Step 3 Card with left-aligned indicator */}
+                {/* Step 3 Card with removed indicator */}
                 <div className="flex flex-row items-start mb-10 w-full">
-                  {/* Left-aligned indicator */}
-                  <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 ml-1">
-                    <div className="w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black flex items-center justify-center z-10">
-                      <div className={`w-[25px] h-[25px] rounded-full ${
-                        activeStep === 3 ? "bg-white border-4 border-[#9654F4]" : "bg-[#9654F4]"
-                      }`}></div>
-                    </div>
-                  </div>
+                  {/* Removed the left-aligned indicator */}
                   
                   <div
                     ref={stepRefs[2]}
-                    className="flex-grow pl-4 sm:pl-6 pr-1 sm:pr-2 w-full"
+                    className="flex-grow w-full"
                   >
                     <div className="p-4 sm:p-5 relative bg-black rounded-[16px] sm:rounded-[20px]"
                       style={{
@@ -207,20 +185,13 @@ const StepsBar: NextPage = () => {
                   </div>
                 </div>
                 
-                {/* Step 4 Card with left-aligned indicator */}
+                {/* Step 4 Card with removed indicator */}
                 <div className="flex flex-row items-start w-full">
-                  {/* Left-aligned indicator */}
-                  <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 ml-1">
-                    <div className="w-[42px] h-[42px] rounded-full border-2 border-[#9654F4] bg-black flex items-center justify-center z-10">
-                      <div className={`w-[25px] h-[25px] rounded-full ${
-                        activeStep === 4 ? "bg-white border-4 border-[#9654F4]" : "bg-[#9654F4]"
-                      }`}></div>
-                    </div>
-                  </div>
+                  {/* Removed the left-aligned indicator */}
                   
                   <div
                     ref={stepRefs[3]}
-                    className="flex-grow pl-4 sm:pl-6 pr-1 sm:pr-2 w-full"
+                    className="flex-grow w-full"
                   >
                     <div className="p-4 sm:p-5 relative bg-black rounded-[16px] sm:rounded-[20px]"
                       style={{
@@ -493,6 +464,3 @@ const StepsBar: NextPage = () => {
 };
 
 export default StepsBar;
-
-
-
