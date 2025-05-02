@@ -19,73 +19,76 @@ export default function InfiniteHorizontalScroll() {
   ];
 
   return (
-    <div className="bg-[#040010] text-white py-10 md:py-16 mx-3">
-      <div className="flex flex-col  pb-10 gap-[24px]">
-      <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
-          Trusted by Visionaries and Innovators
-        </h1>
-        <p className="font-normal text-[16px]  text-center text-white leading-[140%]">
-          We’re proud to partner with forward-thinking businesses,
-          entrepreneurs, and creatives who inspire us to push boundaries and
-          deliver exceptional results
-        </p>
-      </div>
-
-      {/* Infinite scroll container with CSS animation */}
-      <div className="container-wrapper relative overflow-hidden mt-6">
-        <div className="flex logos-slide">
-          {/* First set of logos */}
-          {brands.map((brand) => (
-            <div key={brand.id} className="mx-6 md:mx-6 flex-shrink-0">
-              <Image
-                src={brand.src}
-                alt={brand.alt}
-                width={90}
-                height={90}
-                className="md:w-[100px] md:h-[100px] object-contain"
-              />
-            </div>
-          ))}
-
-          {/* Duplicate set for seamless scrolling */}
-          {brands.map((brand) => (
-            <div
-              key={`duplicate-${brand.id}`}
-              className="mx-4 md:mx-6 flex-shrink-0"
-            >
-              <Image
-                src={brand.src}
-                alt={brand.alt}
-                width={90}
-                height={90}
-                className="md:w-[100px] md:h-[100px] object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CSS for bidirectional animation */}
-      <style jsx global>{`
-        @keyframes bidirectionalScroll {
-          0% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .logos-slide {
-          animation: bidirectionalScroll 15s linear infinite;
-          width: fit-content;
-          display: flex;
-          align-items: center;
-        }
-      `}</style>
+<div className="bg-[#040010] text-white py-10 md:py-16">
+  <div className="container-wrapper">
+    <div className="flex flex-col pb-10 gap-[24px]">
+      <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start md:text-center text-[#8133F1] leading-[120%]">
+        Trusted by Visionaries and Innovators
+      </h1>
+      <p className="font-normal text-[16px] text-start md:text-center text-white leading-[140%]">
+        We’re proud to partner with forward-thinking businesses,
+        entrepreneurs, and creatives who inspire us to push boundaries and
+        deliver exceptional results
+      </p>
     </div>
+
+    {/* Infinite scroll container with CSS animation */}
+    <div className="relative overflow-hidden mt-6">
+      <div className="flex logos-slide">
+        {/* First set of logos */}
+        {brands.map((brand) => (
+          <div key={brand.id} className="mx-6 md:mx-6 flex-shrink-0">
+            <Image
+              src={brand.src}
+              alt={brand.alt}
+              width={90}
+              height={90}
+              className="md:w-[100px] md:h-[100px] object-contain"
+            />
+          </div>
+        ))}
+
+        {/* Duplicate set for seamless scrolling */}
+        {brands.map((brand) => (
+          <div
+            key={`duplicate-${brand.id}`}
+            className="mx-4 md:mx-6 flex-shrink-0"
+          >
+            <Image
+              src={brand.src}
+              alt={brand.alt}
+              width={90}
+              height={90}
+              className="md:w-[100px] md:h-[100px] object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* CSS for bidirectional animation */}
+  <style jsx global>{`
+    @keyframes bidirectionalScroll {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .logos-slide {
+      animation: bidirectionalScroll 15s linear infinite;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+    }
+  `}</style>
+</div>
+
   );
 }

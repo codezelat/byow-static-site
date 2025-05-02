@@ -107,19 +107,20 @@ export default function ServicePage() {
       {/* Overlay with reduced opacity */}
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
-      {/* Content container */}
-      <div className="relative container-wrapper  z-10 mx-auto px-4 pb-10 md:pb-20 pt-10">
-        <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
-          <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
-            {" "}
-            Expert Digital Services Tailored for Your Success
-          </h1>
-          <p className="font-normal text-[16px] lg:px-10 text-center text-white leading-[140%]">
-            At BYOW, we craft websites that go beyond templates, delivering
-            tailored designs, seamless functionality, and a unique online
-            presence that truly represents your brand.
-          </p>
-        </div>
+{/* Content container */}
+<div className="relative container-wrapper z-10 mx-auto px-4 pb-10 md:pb-20 pt-10">
+  <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
+    <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start sm:text-start md:text-center text-[#8133F1] leading-[120%]">
+      Expert Digital Services Tailored for Your Success
+    </h1>
+    <p className="font-normal text-[16px] lg:px-10 text-start sm:text-start md:text-center text-white leading-[140%]">
+      At BYOW, we craft websites that go beyond templates, delivering
+      tailored designs, seamless functionality, and a unique online
+      presence that truly represents your brand.
+    </p>
+  </div>
+
+
 
         <div
           id="accordion-collapse"

@@ -96,10 +96,10 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 </button>
 
                 <div className="flex flex-col gap-4 2xs:gap-6 md:gap-[24px] pb-6 md:pb-10 pt-2">
-                  <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-center text-[#8133F1] leading-[120%]">
+                  <h1 className="font-bold text-[28px] 2xs:text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-center sm:text-center text-[#8133F1] leading-[120%]">
                     Let&apos;s Talk About Your Project Today!
                   </h1>
-                  <p className="font-normal text-xs 2xs:text-sm md:text-base text-center text-white leading-relaxed">
+                  <p className="font-normal text-xs 2xs:text-sm md:text-base text-left sm:text-center text-white leading-relaxed">
                     Click Below for a Free Consultation and Customized Quote!
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         First Name*
                       </label>
                       <input
@@ -122,7 +122,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         Last Name*
                       </label>
                       <input
@@ -136,7 +136,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                       Business Name*
                     </label>
                     <input
@@ -149,7 +149,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                       I am looking for...
                     </label>
                     <select
@@ -165,7 +165,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         Email*
                       </label>
                       <input
@@ -177,7 +177,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-start pl-2">
+                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         Contact Number*
                       </label>
                       <input
@@ -202,34 +202,34 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 </form>
 
                 <div className="mt-4 2xs:mt-6 mb-6 md:mb-10 flex flex-col 2xs:flex-row flex-wrap items-center justify-between space-y-3 2xs:space-y-0 gap-3 2xs:gap-4">
-                  <div className="flex flex-row items-center gap-3 2xs:gap-4">
-                    <div className="bg-[#18171A] flex items-center w-full 2xs:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
-                      <div className="flex items-center gap-2">
-                        <Image
-                          src="/images/sms.png"
-                          alt="Email"
-                          width={16}
-                          height={16}
-                          className="w-4 h-4 2xs:w-5 2xs:h-5"
-                        />
-                        <span className="text-xs 2xs:text-sm">info@byow.com</span>
-                      </div>
-                    </div>
-                    <div className="bg-[#18171A] flex items-center w-full 2xs:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
-                      <div className="flex items-center gap-2">
-                        <Image
-                          src="/images/call-calling.png"
-                          alt="Phone"
-                          width={16}
-                          height={16}
-                          className="w-4 h-4 2xs:w-5 2xs:h-5"
-                        />
-                        <span className="text-xs 2xs:text-sm">
-                          +9411 234 8276
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <div className="flex flex-col md:flex-row items-center gap-3 2xs:gap-4">
+  <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white mb-3 sm:mb-0">
+    <div className="flex items-center gap-2">
+      <Image
+        src="/images/sms.png"
+        alt="Email"
+        width={16}
+        height={16}
+        className="w-4 h-4 2xs:w-5 2xs:h-5"
+      />
+      <span className="text-xs 2xs:text-sm">info@byow.com</span>
+    </div>
+  </div>
+  <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
+    <div className="flex items-center gap-2">
+      <Image
+        src="/images/call-calling.png"
+        alt="Phone"
+        width={16}
+        height={16}
+        className="w-4 h-4 2xs:w-5 2xs:h-5"
+      />
+      <span className="text-xs 2xs:text-sm">
+        +9411 234 8276
+      </span>
+    </div>
+  </div>
+</div>
                   <div className="flex gap-3 2xs:gap-4 text-white bg-[#18171A] items-center w-full 2xs:w-auto h-[40px] 2xs:h-[50px] rounded-full px-4 py-2 justify-center">
                     <a
                       href="https://www.facebook.com/byow"

@@ -39,19 +39,6 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   }, []);
 
   // Scroll handling for mobile
-  const handleScroll = (direction: "left" | "right") => {
-    if (!sliderRef.current) return;
-    
-    const scrollAmount = 300;
-    const newScrollLeft = direction === "left" 
-      ? sliderRef.current.scrollLeft - scrollAmount 
-      : sliderRef.current.scrollLeft + scrollAmount;
-      
-    sliderRef.current.scrollTo({
-      left: newScrollLeft,
-      behavior: "smooth"
-    });
-  };
 
   // Determine the appropriate layout class based on viewport size
   const getLayoutClass = () => {
@@ -68,7 +55,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   };
 
   // Determine item class based on viewport size
-  const getItemClass = (productId: string) => {
+  const getItemClass = (id: string) => {
     switch (viewportSize) {
       case "mobile":
         return "snap-center min-w-full flex justify-center";
