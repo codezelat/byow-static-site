@@ -64,14 +64,13 @@ export default function PopupPage({ onClose }: PopupPageProps) {
         }
       `}</style>
 
-      {/* Overlay with backdrop blur - z-index lower than sidemenu but higher than main content */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-30"
+        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"
         onClick={onClose}
       ></div>
 
       {/* Popup content - higher z-index than backdrop but lower than sidemenu */}
-      <div className="fixed inset-0 flex items-center justify-center z-40 p-2 2xs:p-3 sm:p-4">
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4">
         {/* Main popup container with gradient border */}
         <div className="relative w-full max-w-[1291px] h-[90vh] rounded-[32px]">
           {/* Gradient border using pseudo element technique */}
@@ -202,34 +201,36 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 </form>
 
                 <div className="mt-4 2xs:mt-6 mb-6 md:mb-10 flex flex-col 2xs:flex-row flex-wrap items-center justify-between space-y-3 2xs:space-y-0 gap-3 2xs:gap-4">
-                <div className="flex flex-col md:flex-row items-center gap-3 2xs:gap-4">
-  <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white mb-3 sm:mb-0">
-    <div className="flex items-center gap-2">
-      <Image
-        src="/images/sms.png"
-        alt="Email"
-        width={16}
-        height={16}
-        className="w-4 h-4 2xs:w-5 2xs:h-5"
-      />
-      <span className="text-xs 2xs:text-sm">info@byow.com</span>
-    </div>
-  </div>
-  <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
-    <div className="flex items-center gap-2">
-      <Image
-        src="/images/call-calling.png"
-        alt="Phone"
-        width={16}
-        height={16}
-        className="w-4 h-4 2xs:w-5 2xs:h-5"
-      />
-      <span className="text-xs 2xs:text-sm">
-        +9411 234 8276
-      </span>
-    </div>
-  </div>
-</div>
+                  <div className="flex flex-col md:flex-row items-center gap-3 2xs:gap-4">
+                    <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white mb-3 sm:mb-0">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src="/images/sms.png"
+                          alt="Email"
+                          width={16}
+                          height={16}
+                          className="w-4 h-4 2xs:w-5 2xs:h-5"
+                        />
+                        <span className="text-xs 2xs:text-sm">
+                          info@byow.com
+                        </span>
+                      </div>
+                    </div>
+                    <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src="/images/call-calling.png"
+                          alt="Phone"
+                          width={16}
+                          height={16}
+                          className="w-4 h-4 2xs:w-5 2xs:h-5"
+                        />
+                        <span className="text-xs 2xs:text-sm">
+                          +9411 234 8276
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex gap-3 2xs:gap-4 text-white bg-[#18171A] items-center w-full 2xs:w-auto h-[40px] 2xs:h-[50px] rounded-full px-4 py-2 justify-center">
                     <a
                       href="https://www.facebook.com/byow"
