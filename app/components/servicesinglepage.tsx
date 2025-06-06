@@ -18,7 +18,7 @@ interface ServiceSinglePageProps {
 export default function ServiceSinglePage({
   serviceId,
 }: ServiceSinglePageProps) {
-  const { service, tools, technologies } = serviceData;
+  const { tools, technologies } = serviceData;
 
   console.log("Selected service ID:", serviceId);
 
@@ -54,7 +54,7 @@ export default function ServiceSinglePage({
           <div className="space-y-4 text-sm sm:text-base">
             <p>
               At BYOW, we believe your website is more than just a digital
-              presence—it's the heart of your brand's story. Our Custom Website
+              presence—it&apos;s the heart of your brand&apos;s story. Our Custom Website
               Design service is tailored to create unique, visually stunning,
               and highly functional websites that reflect your identity, values,
               and goals.
@@ -84,13 +84,13 @@ export default function ServiceSinglePage({
         </p>
         <p>
           We believe a great website is a living, evolving entity that grows
-          with your business. That's why we offer ongoing support, updates, and
-          maintenance. Whether a small change or full revamp — we're here for
+          with your business. That&apos;s why we offer ongoing support, updates, and
+          maintenance. Whether a small change or full revamp — we&apos;re here for
           you.
         </p>
         <p>
-          Let's build something great together. Your vision is unique, and your
-          website should be too. Get in touch with us today and let's bring your
+          Let&apos;s build something great together. Your vision is unique, and your
+          website should be too. Get in touch with us today and let&apos;s bring your
           ideas to life!
         </p>
       </div>
