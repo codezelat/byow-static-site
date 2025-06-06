@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Product } from "../types/product";
-import { useState } from "react";
 
 interface ProjectCardProps {
   product: Product;
@@ -15,11 +14,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick,
   viewportSize 
 }) => {
-  // Determine appropriate container styles based on viewport
-  const getContainerStyles = () => {
-    return "";
-  };
-
   // Determine inner container styles based on viewport
   const getInnerContainerStyles = () => {
     switch (viewportSize) {

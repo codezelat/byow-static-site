@@ -1,7 +1,6 @@
 import { Product } from "../types/product";
 import ProjectCard from "./projectcard";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 

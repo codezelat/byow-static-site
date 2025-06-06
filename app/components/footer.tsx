@@ -209,4 +209,4 @@ const Footer: NextPage = () => {
   );
 };
 
-export default Footer;
+export default Footer;
