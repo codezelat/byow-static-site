@@ -1,4 +1,3 @@
-// Create this as serviceData.ts
 export interface Service {
     id: string;
     title: string;

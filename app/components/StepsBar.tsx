@@ -1,15 +1,17 @@
 "use client";
 import { NextPage } from "next";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 
 const StepsBar: NextPage = () => {
   const [activeStep, setActiveStep] = useState(1);
-  const stepRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-  ];
+  const stepRef1 = useRef<HTMLDivElement>(null);
+  const stepRef2 = useRef<HTMLDivElement>(null);
+  const stepRef3 = useRef<HTMLDivElement>(null);
+  const stepRef4 = useRef<HTMLDivElement>(null);
+  const stepRefs = useMemo(
+    () => [stepRef1, stepRef2, stepRef3, stepRef4],
+    []
+  );
 
   // Add scroll event listener to track which step is in view
   useEffect(() => {

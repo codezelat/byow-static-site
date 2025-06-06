@@ -27,12 +27,6 @@
 
 /* Responsive Layout Adjustments */
 .container-wrapper {
-  margin-left:"200px";
-  margin-right:"200px";
-  
-}
-
-.container-wrapper {
   /* Default for smallest screens (below 320px) */
   margin-left: 16px;
   margin-right: 16px;

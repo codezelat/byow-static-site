@@ -181,9 +181,11 @@ export default function OurChallengesPage() {
                   boxShadow: "0 0 12px rgba(91, 40, 163, 0.5)",
                 }}
               >
-                <img
+                <Image
                   src="/images/up-chevron.png"
                   alt="Back arrow"
+                  width={20}
+                  height={20}
                   className="w-5 h-5 object-contain"
                 />
               </div>

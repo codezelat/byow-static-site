@@ -14,6 +14,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick,
   viewportSize 
 }) => {
+
   // Determine inner container styles based on viewport
   const getInnerContainerStyles = () => {
     switch (viewportSize) {
