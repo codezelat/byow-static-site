@@ -25,121 +25,57 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
   return (
     <>
-      {/* Combine all styled-jsx tags at the top level */}
-      <style jsx>{`
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .custom-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-
-
-          .mobile-scrollbar::-webkit-scrollbar-track {
-            background: #18171A;
-            border-radius: 10px;
-          }
-
-          .mobile-scrollbar::-webkit-scrollbar-thumb {
-            background: #8133F1;
-            border-radius: 10px;
-          }
-        }
-
-        /* Hide horizontal scrollbar everywhere */
-        .no-horizontal-scroll {
-          overflow-x: hidden;
-        }
-
-        /* Chrome, Safari, Edge autofill styles */
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active,
-        select:-webkit-autofill,
-        select:-webkit-autofill:hover,
-        select:-webkit-autofill:focus,
-        select:-webkit-autofill:active {
-          -webkit-box-shadow: 0 0 0 30px #060116 inset !important;
-          -webkit-text-fill-color: white !important;
-          transition: background-color 5000s ease-in-out 0s;
-        }
-
-        /* Custom select dropdown styling */
-        select option {
-          background-color: #18171A;
-          color: white;
-          padding: 12px 16px;
-          font-size: 14px;
-        }
-
-        select option:hover {
-          background-color: #8133F1;
-          color: white;
-        }
-
-        select option:checked {
-          background-color: #8133F1;
-          color: white;
-        }
-
-        select optgroup {
-          background-color: #0a0a0a;
-          color: #8133F1;
-          font-weight: 600;
-          font-size: 13px;
-          padding: 8px 12px;
-          font-style: normal;
-        }
-
-        /* Firefox dropdown styling */
-        @-moz-document url-prefix() {
-          select option {
-            padding: 10px;
-          }
-        }
-      `}</style>
-
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 animate-in fade-in duration-300"
+        className="fixed inset-0 bg-black/60 backdrop-blur-md z-[99999]"
         onClick={onClose}
       ></div>
 
-      {/* Popup content - higher z-index than backdrop but lower than sidemenu */}
-      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4 animate-in slide-in-from-bottom-4 fade-in duration-500">
+      {/* Popup content - highest possible z-index */}
+      <div className="fixed inset-0 flex items-center justify-center z-[100000] p-4 pointer-events-none">
         {/* Main popup container with gradient border */}
-        <div className="relative w-full max-w-[1291px] h-[90vh] rounded-[32px]">
+        <div
+          className="relative w-full max-w-[1200px] max-h-[90vh] rounded-[32px] pointer-events-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Gradient border using pseudo element technique */}
           <div
-            className="absolute inset-0 h-full rounded-[32px]"
+            className="absolute inset-0 rounded-[32px]"
             style={{
               background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
             }}
           />
 
           {/* Inner content container - slightly smaller to create border effect */}
-          <div className="absolute inset-[2px] bg-[#060116] rounded-[32px] flex flex-col">
-            {/* Scrollable content area with scrollbar on mobile */}
-            <div className="h-full overflow-y-auto mobile-scrollbar no-horizontal-scroll lg:overflow-y-visible">
-              <div className="px-4 py-3 sm:px-8 sm:py-10 md:px-16 md:py-6">
+          <div className="relative m-[2px] bg-[#060116] rounded-[30px] max-h-[calc(90vh-4px)] overflow-hidden">
+            {/* Scrollable content area */}
+            <div
+              className="overflow-y-auto max-h-[calc(90vh-4px)]"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "#8133F1 #18171A",
+              }}
+            >
+              <div className="px-4 py-6 xs:px-6 xs:py-8 sm:px-8 sm:py-10 md:px-12 lg:px-16">
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 text-white hover:text-[#8133F1] hover:scale-110 active:scale-95 transition-all duration-300 z-10"
+                  className="absolute top-3 right-3 xs:top-4 xs:right-4 text-white hover:text-[#8133F1] hover:scale-110 active:scale-95 transition-all duration-300 z-10"
                 >
-                  <CloseIcon className="w-6 h-6 2xs:w-8 2xs:h-8" />
+                  <CloseIcon className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                 </button>
 
-                <div className="flex flex-col gap-4 2xs:gap-6 md:gap-[24px] pb-6 md:pb-10 pt-2">
-                  <h1 className="font-bold text-[28px] 2xs:text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-center sm:text-center text-[#8133F1] leading-[120%]">
+                <div className="flex flex-col gap-3 xs:gap-4 sm:gap-6 pb-4 sm:pb-6 pt-1 xs:pt-2">
+                  <h1 className="font-bold text-[24px] xs:text-[28px] sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] text-center text-[#8133F1] leading-[120%] pr-8 xs:pr-10 sm:pr-0">
                     Let&apos;s Talk About Your Project Today!
                   </h1>
-                  <p className="font-normal text-xs 2xs:text-sm md:text-base text-left sm:text-center text-white leading-relaxed">
+                  <p className="font-normal text-xs xs:text-sm md:text-base text-center text-white leading-relaxed">
                     Submit your requirement below and we will get in touch.
                   </p>
                 </div>
 
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-4 2xs:space-y-6 md:space-y-6"
+                  className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
                     <div>
@@ -237,21 +173,21 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 xs:gap-4">
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                      <label className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
                         Email*
                       </label>
                       <input
                         type="email"
                         name="email"
                         required
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 xs:px-4 xs:py-2.5 sm:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 text-sm"
                         placeholder="your.email@company.com"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                      <label className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
                         Contact Number*
                       </label>
                       <input
@@ -260,62 +196,58 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         required
                         pattern="[+]?[0-9\s\-\(\)]{7,20}"
                         title="Please enter a valid phone number (e.g., +1 555-123-4567, +44 20 1234 5678, +94 77 123 4567)"
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 xs:px-4 xs:py-2.5 sm:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 text-sm"
                         placeholder="+94 77 123 4567 (LK/UK/US/Any country)"
                       />
                     </div>
                   </div>
 
-                  <div className="flex justify-start mt-4 2xs:mt-6">
+                  <div className="flex justify-start mt-3 xs:mt-4 sm:mt-6">
                     <button
                       type="submit"
-                      className="bg-[#8133F1] text-white px-6 py-2 2xs:px-8 2xs:py-3 rounded-full flex items-center gap-2 hover:bg-[#9d5bff] active:scale-95 transition-all duration-300 text-xs 2xs:text-sm font-medium"
+                      className="bg-[#8133F1] text-white px-5 py-2 xs:px-6 xs:py-2.5 sm:px-8 sm:py-3 rounded-full flex items-center gap-2 hover:bg-[#9d5bff] active:scale-95 transition-all duration-300 text-xs xs:text-sm font-medium"
                     >
                       SUBMIT NOW{" "}
-                      <ArrowCircleRightOutlinedIcon className="w-5 h-5" />
+                      <ArrowCircleRightOutlinedIcon className="w-4 h-4 xs:w-5 xs:h-5" />
                     </button>
                   </div>
                 </form>
 
-                <div className="mt-4 2xs:mt-6 mb-6 md:mb-10 flex flex-col 2xs:flex-row flex-wrap items-center justify-between space-y-3 2xs:space-y-0 gap-3 2xs:gap-4">
-                  <div className="flex flex-col md:flex-row items-center gap-3 2xs:gap-4">
-                    <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white mb-3 sm:mb-0">
+                <div className="mt-3 xs:mt-4 sm:mt-6 mb-4 xs:mb-6 md:mb-8 flex flex-col xs:flex-row flex-wrap items-center justify-between space-y-3 xs:space-y-0 gap-3 xs:gap-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 xs:gap-4 w-full xs:w-auto">
+                    <div className="bg-[#18171A] flex items-center w-full xs:w-auto sm:w-[180px] md:w-[196px] h-[40px] xs:h-[44px] sm:h-[50px] rounded-full gap-2 px-3 xs:px-4 py-2 text-white">
                       <div className="flex items-center gap-2">
                         <Image
                           src="/images/sms.png"
                           alt="Email"
                           width={16}
                           height={16}
-                          className="w-4 h-4 2xs:w-5 2xs:h-5"
+                          className="w-4 h-4 xs:w-5 xs:h-5"
                         />
-                        <span className="text-xs 2xs:text-sm">
-                          info@byow.lk
-                        </span>
+                        <span className="text-xs xs:text-sm">info@byow.lk</span>
                       </div>
                     </div>
-                    <div className="bg-[#18171A] flex items-center w-full sm:w-[180px] md:w-[196px] h-[40px] 2xs:h-[50px] rounded-full gap-2 px-4 py-2 text-white">
+                    <div className="bg-[#18171A] flex items-center w-full xs:w-auto sm:w-[180px] md:w-[196px] h-[40px] xs:h-[44px] sm:h-[50px] rounded-full gap-2 px-3 xs:px-4 py-2 text-white">
                       <div className="flex items-center gap-2">
                         <Image
                           src="/images/call-calling.png"
                           alt="Phone"
                           width={16}
                           height={16}
-                          className="w-4 h-4 2xs:w-5 2xs:h-5"
+                          className="w-4 h-4 xs:w-5 xs:h-5"
                         />
-                        <span className="text-xs 2xs:text-sm">
-                          +94727333577
-                        </span>
+                        <span className="text-xs xs:text-sm">+94727333577</span>
                       </div>
                     </div>
                   </div>
-                  <div className="flex gap-3 2xs:gap-4 text-white bg-[#18171A] items-center w-full 2xs:w-auto h-[40px] 2xs:h-[50px] rounded-full px-4 py-2 justify-center">
+                  <div className="flex gap-3 xs:gap-4 text-white bg-[#18171A] items-center w-full xs:w-auto h-[40px] xs:h-[44px] sm:h-[50px] rounded-full px-3 xs:px-4 py-2 justify-center">
                     <a
                       href="https://www.facebook.com/byow"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <Facebook className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <Facebook className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://www.linkedin.com/company/byow"
@@ -323,7 +255,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <LinkedIn className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <LinkedIn className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://www.x.com/byow"
@@ -331,7 +263,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <X className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <X className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://www.youtube.com/byow"
@@ -339,7 +271,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <YouTube className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <YouTube className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://wa.me/94727333577"
@@ -347,7 +279,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <WhatsApp className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <WhatsApp className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://www.instagram.com/byow"
@@ -355,7 +287,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
-                      <Instagram className="w-4 h-4 2xs:w-5 2xs:h-5" />
+                      <Instagram className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                   </div>
                 </div>
