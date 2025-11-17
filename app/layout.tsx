@@ -79,7 +79,11 @@ export default function RootLayout({
             gtag('config', 'G-G3VDZC765B');
           `}
         </Script>
-        <Script id="structured-data" type="application/ld+json" strategy="afterInteractive">
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -109,7 +113,10 @@ export default function RootLayout({
           })}
         </Script>
       </head>
-      <body className="antialiased relative w-full h-full min-h-screen" suppressHydrationWarning>
+      <body
+        className="antialiased relative w-full h-full min-h-screen"
+        suppressHydrationWarning
+      >
         {/* Video section - fixed height for hero area */}
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
           <video
