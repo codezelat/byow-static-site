@@ -74,13 +74,29 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-base mb-3">Contact</h3>
             <ul className="space-y-1">
-              {contactInfo.map(({ id, info }) => (
-                <li key={id}>
-                  <p className="hover:text-purple-300 transition-colors text-sm">
-                    {info}
-                  </p>
-                </li>
-              ))}
+              {contactInfo.map(({ id, info }) => {
+                const isPhone = info.trim().startsWith("+");
+                const href = isPhone
+                  ? `tel:${info.replace(/\s+/g, "")}`
+                  : info.includes("@")
+                  ? `mailto:${info}`
+                  : undefined;
+
+                return (
+                  <li key={id}>
+                    {href ? (
+                      <a
+                        href={href}
+                        className="hover:text-purple-300 transition-colors text-sm"
+                      >
+                        {info}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-white/80">{info}</p>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
