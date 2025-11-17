@@ -8,7 +8,8 @@ const industries = [
   {
     id: 1,
     name: "Retail & E-Commerce",
-    description: "Immersive storefronts with rich merchandising and fast checkout paths.",
+    description:
+      "Immersive storefronts with rich merchandising and fast checkout paths.",
     image: "/images/Retail & E-commerce.svg",
     icon: "/images/shopping-bag (2).png",
     metricLabel: "Avg. commerce uplift",
@@ -17,7 +18,8 @@ const industries = [
   {
     id: 2,
     name: "Corporate & Professional Services",
-    description: "Executive-ready sites that build trust, clarify services, and convert leads.",
+    description:
+      "Executive-ready sites that build trust, clarify services, and convert leads.",
     image: "/images/Professional Services.svg",
     icon: "/images/cooparateimg.png",
     metricLabel: "Lead conversion increase",
@@ -26,7 +28,8 @@ const industries = [
   {
     id: 3,
     name: "Travel & Hospitality",
-    description: "Transportive storytelling with realtime booking flows and clear itineraries.",
+    description:
+      "Transportive storytelling with realtime booking flows and clear itineraries.",
     image: "/images/Travel & Hospitality.svg",
     icon: "/images/Luggage.png",
     metricLabel: "Booking uplift",
@@ -35,7 +38,8 @@ const industries = [
   {
     id: 4,
     name: "Creative & Media",
-    description: "Bold stage sets for agencies, studios, and creators who need their work to shine.",
+    description:
+      "Bold stage sets for agencies, studios, and creators who need their work to shine.",
     image: "/images/Creative & Media Agencies.svg",
     icon: "/images/creativity.png",
     metricLabel: "Portfolio engagement",
@@ -44,7 +48,8 @@ const industries = [
   {
     id: 5,
     name: "Construction & Real Estate",
-    description: "Portfolio-driven experiences with interactive listings and investor-ready insights.",
+    description:
+      "Portfolio-driven experiences with interactive listings and investor-ready insights.",
     image: "/images/Construction & Real Estate.svg",
     icon: "/images/blueprint.png",
     metricLabel: "Project win rate",
@@ -53,7 +58,8 @@ const industries = [
   {
     id: 6,
     name: "Education & Learning",
-    description: "Learning platforms and academies that make enrollment and content feel intuitive.",
+    description:
+      "Learning platforms and academies that make enrollment and content feel intuitive.",
     image: "/images/Education & Learning Platforms.svg",
     icon: "/images/scholorship.png",
     metricLabel: "Enrollment growth",
@@ -62,7 +68,8 @@ const industries = [
   {
     id: 7,
     name: "Health, Beauty & Wellness",
-    description: "Serene, high-touch experiences that mirror the care clients receive in person.",
+    description:
+      "Serene, high-touch experiences that mirror the care clients receive in person.",
     image: "/images/Health, Beauty & Wellness.svg",
     icon: "/images/cardiogram.png",
     metricLabel: "Appointment lift",
@@ -71,7 +78,8 @@ const industries = [
   {
     id: 8,
     name: "Custom Products",
-    description: "When your idea doesn’t fit a template, we craft a digital product from scratch.",
+    description:
+      "When your idea doesn’t fit a template, we craft a digital product from scratch.",
     image: "/images/Custom Product.svg",
     icon: "/images/Group.png",
     metricLabel: "Custom launches delivered",
@@ -81,16 +89,21 @@ const industries = [
 
 const IndustryBox: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInitialMount, setIsInitialMount] = useState(true);
   const activeIndustry = industries[activeIndex];
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const pillContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (isInitialMount) {
+      setIsInitialMount(false);
+      return;
+    }
     const activeButton = buttonRefs.current[activeIndex];
     if (activeButton && pillContainerRef.current) {
       activeButton.scrollIntoView({ block: "nearest", inline: "center" });
     }
-  }, [activeIndex]);
+  }, [activeIndex, isInitialMount]);
 
   return (
     <div className="relative overflow-hidden rounded-[48px] border border-white/10 bg-gradient-to-br from-[#080111] via-[#020007] to-[#000000] p-5 sm:p-8">
@@ -136,7 +149,9 @@ const IndustryBox: NextPage = () => {
                 <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">
                   {activeIndustry.metricLabel}
                 </p>
-                <p className="text-lg text-white">{activeIndustry.metricValue}</p>
+                <p className="text-lg text-white">
+                  {activeIndustry.metricValue}
+                </p>
               </div>
             </div>
           </div>
@@ -167,10 +182,19 @@ const IndustryBox: NextPage = () => {
                       isActive ? "bg-[#8133F1]/40" : "bg-white/10"
                     }`}
                   >
-                    <Image src={industry.icon} alt={industry.name} width={24} height={24} />
+                    <Image
+                      src={industry.icon}
+                      alt={industry.name}
+                      width={24}
+                      height={24}
+                    />
                   </div>
                   <div>
-                    <p className={`text-sm font-semibold ${isActive ? "text-white" : "text-white/70"}`}>
+                    <p
+                      className={`text-sm font-semibold ${
+                        isActive ? "text-white" : "text-white/70"
+                      }`}
+                    >
                       {industry.name}
                     </p>
                     <p className="text-xs text-white/50">Tap to explore</p>
@@ -185,9 +209,12 @@ const IndustryBox: NextPage = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
                 Collaboration
               </p>
-              <p className="mt-2 text-lg font-semibold text-white">Strategy studio + build pod</p>
+              <p className="mt-2 text-lg font-semibold text-white">
+                Strategy studio + build pod
+              </p>
               <p className="mt-2 text-sm text-white/70">
-                Dedicated multi-disciplinary team that stays with the engagement end-to-end.
+                Dedicated multi-disciplinary team that stays with the engagement
+                end-to-end.
               </p>
             </div>
             <div className="rounded-[28px] border border-white/20 bg-white/5 p-5 text-left">
@@ -196,16 +223,20 @@ const IndustryBox: NextPage = () => {
               </p>
               <p className="mt-2 text-lg font-semibold text-white">4-8 weeks</p>
               <p className="mt-2 text-sm text-white/70">
-                Sprint planning tuned to your launch cadence, including QA + training.
+                Sprint planning tuned to your launch cadence, including QA +
+                training.
               </p>
             </div>
             <div className="rounded-[28px] border border-white/20 bg-white/5 p-5 text-left">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
                 Deliverables
               </p>
-              <p className="mt-2 text-lg font-semibold text-white">UX · UI · Dev</p>
+              <p className="mt-2 text-lg font-semibold text-white">
+                UX · UI · Dev
+              </p>
               <p className="mt-2 text-sm text-white/70">
-                From research to production-grade builds, handed over with documentation.
+                From research to production-grade builds, handed over with
+                documentation.
               </p>
             </div>
           </div>
