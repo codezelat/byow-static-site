@@ -1,8 +1,8 @@
 import { Product } from "../types/product";
 import ProjectCard from "./projectcard";
 import { useRef, useState, useEffect } from "react";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 interface ProjectGridProps {
   products: Product[];
@@ -15,11 +15,15 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   selectedProductId,
   onProductClick,
 }) => {
-  const [viewportSize, setViewportSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const [viewportSize, setViewportSize] = useState<
+    "mobile" | "tablet" | "desktop"
+  >("desktop");
+  const [mounted, setMounted] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   // Check viewport size
   useEffect(() => {
+    setMounted(true);
     const checkViewportSize = () => {
       if (window.innerWidth <= 425) {
         setViewportSize("mobile");
@@ -72,28 +76,31 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   return (
     <div className="w-full flex flex-col items-center relative">
       {/* Prev button */}
-      {viewportSize === "mobile" && (
+      {mounted && viewportSize === "mobile" && (
         <button
           onClick={() => handleScroll("left")}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-[#5b28a3] rounded-full p-2 shadow-lg"
         >
-          <ChevronLeftIcon/>
+          <ChevronLeftIcon />
         </button>
       )}
 
       {/* Next button */}
-      {viewportSize === "mobile" && (
+      {mounted && viewportSize === "mobile" && (
         <button
           onClick={() => handleScroll("right")}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-[#5b28a3] rounded-full p-2 shadow-lg"
         >
-          <ChevronRightIcon/>
+          <ChevronRightIcon />
         </button>
       )}
 
       {/* Grid container */}
       <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full">
-        <div ref={sliderRef} className={`bg-[#111111] rounded-3xl w-full ${getLayoutClass()}`}>
+        <div
+          ref={sliderRef}
+          className={`bg-[#111111] rounded-3xl w-full ${getLayoutClass()}`}
+        >
           {products.map((product) => (
             <div key={product.id} className={getItemClass()}>
               <ProjectCard

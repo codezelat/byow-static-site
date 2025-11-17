@@ -1,10 +1,10 @@
 "use client";
 
 import { NextPage } from "next";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const IndustryBox: NextPage = () => {
   // Define industry data with necessary information + activeIcon
@@ -13,7 +13,7 @@ const IndustryBox: NextPage = () => {
       id: 1,
       name: "Retail & E-Commerce",
       icon: "/images/shopping-bag (2).png",
-      activeIcon: "/images/active-shopping-bag.png", 
+      activeIcon: "/images/active-shopping-bag.png",
       backgroundImage: "/images/Retail & E-commerce.svg",
       title: "Retail & E-commerce",
       description:
@@ -92,39 +92,20 @@ const IndustryBox: NextPage = () => {
   ];
 
   const [activeIndustry, setActiveIndustry] = useState(industries[0]);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 2; // Show 2 items per page on mobile
   const totalPages = Math.ceil(industries.length / itemsPerPage);
 
-  // Track screen size for responsive changes
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1280);
-    };
-    
-    // Initial check
-    handleResize();
-    
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    
-    // Cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const handleCardClick = (industry: typeof industries[0]) => {
+  const handleCardClick = (industry: (typeof industries)[0]) => {
     setActiveIndustry(industry);
-    
+
     // Scroll to content on mobile/tablet after selection
-    if (isMobile || isTablet) {
-      const contentElement = document.getElementById('industry-content');
+    if (typeof window !== "undefined" && window.innerWidth < 1280) {
+      const contentElement = document.getElementById("industry-content");
       if (contentElement) {
         // Add a small delay to allow state to update
         setTimeout(() => {
-          contentElement.scrollIntoView({ behavior: 'smooth' });
+          contentElement.scrollIntoView({ behavior: "smooth" });
         }, 100);
       }
     }
@@ -152,20 +133,24 @@ const IndustryBox: NextPage = () => {
         {/* Mobile Industry Grid with Chevron Navigation - For screens below 768px */}
         <div className="w-full md:hidden mb-10 sm:mb-8">
           <div className="flex items-center justify-between mb-4">
-            <button 
+            <button
               onClick={goToPrevPage}
               aria-label="Previous industries"
               className="text-[#8133F1] h-10 w-10 flex items-center justify-center"
             >
               <ChevronLeftIcon fontSize="large" />
             </button>
-            
+
             <div className="flex-1 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 mx-2 xs:mx-1">
               {getCurrentIndustries().map((industry) => (
                 <div
                   key={industry.id}
                   className={`w-full h-[100px] xs:h-[120px] sm:h-[130px] border border-1-white p-3 xs:p-4 sm:p-5 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 rounded-[10px] sm:rounded-[12px] 
-                    ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}`}
+                    ${
+                      activeIndustry.id === industry.id
+                        ? "bg-white"
+                        : "hover:bg-gray-600"
+                    }`}
                   onClick={() => handleCardClick(industry)}
                 >
                   <div className="w-full flex flex-col items-center justify-center">
@@ -182,7 +167,9 @@ const IndustryBox: NextPage = () => {
                     />
                     <p
                       className={`font-bold text-[14px] 2xs:text-[12px]  xs:text-[12px] sm:text-[12px] leading-[130%] text-center ${
-                        activeIndustry.id === industry.id ? "text-[#8133F1]" : ""
+                        activeIndustry.id === industry.id
+                          ? "text-[#8133F1]"
+                          : ""
                       }`}
                     >
                       {industry.name}
@@ -191,8 +178,8 @@ const IndustryBox: NextPage = () => {
                 </div>
               ))}
             </div>
-            
-            <button 
+
+            <button
               onClick={goToNextPage}
               aria-label="Next industries"
               className="text-[#8133F1] h-10 w-10 flex items-center justify-center"
@@ -208,7 +195,11 @@ const IndustryBox: NextPage = () => {
             <div
               key={industry.id}
               className={`w-[calc(25%-12px)] h-[120px] xs:h-[140px] sm:h-[160px] border border-1-white p-2 xs:p-3 sm:p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 rounded-[12px] 
-                ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}`}
+                ${
+                  activeIndustry.id === industry.id
+                    ? "bg-white"
+                    : "hover:bg-gray-600"
+                }`}
               onClick={() => handleCardClick(industry)}
             >
               <Image
@@ -241,7 +232,11 @@ const IndustryBox: NextPage = () => {
               <div
                 key={industry.id}
                 className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
-                  ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}
+                  ${
+                    activeIndustry.id === industry.id
+                      ? "bg-white"
+                      : "hover:bg-gray-600"
+                  }
                   ${index === 0 ? "rounded-tl-[16px]" : ""} 
                   ${index === 3 ? "rounded-bl-[16px]" : ""}`}
                 onClick={() => handleCardClick(industry)}
@@ -274,7 +269,11 @@ const IndustryBox: NextPage = () => {
               <div
                 key={industry.id}
                 className={`w-[150px] h-[150px] border border-1-white p-4 flex flex-col items-center justify-center cursor-pointer transition-colors duration-300
-                  ${activeIndustry.id === industry.id ? "bg-white" : "hover:bg-gray-600"}
+                  ${
+                    activeIndustry.id === industry.id
+                      ? "bg-white"
+                      : "hover:bg-gray-600"
+                  }
                   ${index === 0 ? "rounded-tr-[16px]" : ""} 
                   ${index === 3 ? "rounded-br-[16px]" : ""}`}
                 onClick={() => handleCardClick(industry)}
@@ -314,10 +313,10 @@ const IndustryBox: NextPage = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <h1 className={`font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[40px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] leading-[120%] text-[#8133F1] mb-0 ${isMobile ? 'text-start' : ''}`}>
+        <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[40px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] leading-[120%] text-[#8133F1] mb-0 text-start">
           {activeIndustry.title}
         </h1>
-        <p className={`w-full max-w-[1104px] font-normal text-[24px] 3xl:text-[24px] 2xl:text-[24px] xl:text-[24px] lg:text-[18px] md:text-[18px] sm:text-[18px] xs:text-[16px] 2xs:text-[16px] leading-[140%] text-white h-auto mt-0 ${isMobile ? 'text-start' : ''}`}>
+        <p className="w-full max-w-[1104px] font-normal text-[24px] 3xl:text-[24px] 2xl:text-[24px] xl:text-[24px] lg:text-[18px] md:text-[18px] sm:text-[18px] xs:text-[16px] 2xs:text-[16px] leading-[140%] text-white h-auto mt-0 text-start">
           {activeIndustry.description}
         </p>
       </div>

@@ -15,16 +15,10 @@ export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [popupVisible, setPopupVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -90,8 +84,8 @@ export default function Header() {
         </Link>
 
         {/* Mobile Sidebar Toggle - Shows on 2xs, xs, sm, md */}
-        {isMobile && (
-          <div className="fixed pt-2 md:right-10 sm:right-3 xs:right-3 2xs:right-3  z-50">
+        {mounted && (
+          <div className="fixed pt-2 md:right-10 sm:right-3 xs:right-3 2xs:right-3 z-50 lg:hidden">
             <button
               id="sidebar-toggle"
               className="bg-[#8133F1] p-1.5 xs:p-2 rounded-lg shadow-lg hover:bg-[#6a1fc7] transition-colors duration-200"
@@ -153,10 +147,10 @@ export default function Header() {
       </div>
 
       {/* Mobile Sidebar - Shows on 2xs, xs, sm, md */}
-      {isMobile && (
+      {mounted && (
         <div
           id="mobile-sidebar"
-          className={`fixed top-0 right-0 w-56 xs:w-64 max-w-[80vw] h-full bg-[#090909] text-white p-4 xs:p-5 transition-transform duration-300 z-40 overflow-y-auto ${
+          className={`fixed top-0 right-0 w-56 xs:w-64 max-w-[80vw] h-full bg-[#090909] text-white p-4 xs:p-5 transition-transform duration-300 z-40 overflow-y-auto lg:hidden ${
             sidebarVisible ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -196,9 +190,9 @@ export default function Header() {
       )}
 
       {/* Overlay for Mobile Sidebar */}
-      {sidebarVisible && isMobile && (
+      {sidebarVisible && mounted && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
           onClick={() => setSidebarVisible(false)}
         ></div>
       )}

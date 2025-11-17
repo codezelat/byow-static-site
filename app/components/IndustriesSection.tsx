@@ -1,34 +1,16 @@
 "use client";
 import { NextPage } from "next";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import IndustryBox from "./IndustryBox";
 
 const IndustriesSection: NextPage = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // Track screen size for responsive changes
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Initial check
-    handleResize();
-    
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    
-    // Cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <>
       <div className="container-wrapper">
-        <h1 className={`font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] ${isMobile ? 'text-start' : 'text-center'} text-[#8133F1] leading-[120%] mb-10`}>
+        <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-start md:text-center text-[#8133F1] leading-[120%] mb-10">
           Industries We Empower with Bespoke Websites
         </h1>
-        <p className={`${isMobile ? 'text-start px-0' : 'text-center px-10'} max-w-[892px] ${isMobile ? '' : 'mx-auto'} font-normal text-[16px] text-white leading-[140%] mb-20`}>
+        <p className="text-start md:text-center px-0 md:px-10 max-w-[892px] md:mx-auto font-normal text-[16px] text-white leading-[140%] mb-20">
           At BYOW, we believe every business deserves a website as unique as its
           purpose. No matter your field, we craft solutions that work for you.
           Here s how we transform visions across industries:

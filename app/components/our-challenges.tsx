@@ -146,8 +146,8 @@ export default function OurChallengesPage() {
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#8133F1]/20 via-[#090909] to-[#05010F] p-6 sm:p-8">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div className="space-y-2">
+            <div className="flex items-start justify-between gap-4">
+              <div className="space-y-2 text-left">
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
                   Our solution
                 </p>
@@ -155,7 +155,7 @@ export default function OurChallengesPage() {
                   {activeChallenge.title}
                 </p>
               </div>
-              <div className="rounded-full bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white/70">
+              <div className="flex-shrink-0 rounded-full bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white/70">
                 Case {String(activeChallenge.id).padStart(2, "0")}
               </div>
             </div>
