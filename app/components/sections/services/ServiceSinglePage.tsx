@@ -1,8 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import YourSuccessSection from "../common/YourSuccessSection";
-import { serviceData } from "@/app/data/servicesingledata";
+import {
+  serviceDetails,
+  serviceTechnologies,
+  serviceTools,
+} from "@/app/data/servicesingledata";
 
 const mainImage = {
   src: "/images/servicesingleimage.jpeg",
@@ -18,16 +23,33 @@ interface ServiceSinglePageProps {
 export default function ServiceSinglePage({
   serviceId,
 }: ServiceSinglePageProps) {
-  const { tools, technologies } = serviceData;
+  const detail = serviceDetails[serviceId] || serviceDetails.default;
+  const heroParagraphs =
+    detail.heroParagraphs && detail.heroParagraphs.length > 0
+      ? detail.heroParagraphs
+      : serviceDetails.default.heroParagraphs;
+  const extendedCopy =
+    detail.extendedCopy && detail.extendedCopy.length > 0
+      ? detail.extendedCopy
+      : serviceDetails.default.extendedCopy;
   const formattedServiceName = serviceId
     .replace(/[-_]/g, " ")
     .split(" ")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
+  const pageTitle = detail.title || formattedServiceName;
 
   return (
     <div className="py-6 pt-24 text-white">
       <div className="container-wrapper px-4 sm:px-6 md:px-8">
+        <div className="mb-8">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition"
+          >
+            <span aria-hidden="true">&larr;</span> Back to services
+          </Link>
+        </div>
       {/* First Section - Image & Description */}
       <div className="flex flex-col  lg:flex-row gap-6 space-y-6 lg:space-y-0">
         {/* Left - Image */}
@@ -52,50 +74,21 @@ export default function ServiceSinglePage({
         {/* Right - Content */}
         <div className="w-full lg:w-2/3 space-y-4 text-start ">
           <h2 className="text-2xl sm:text-3xl font-bold text-purple-400">
-            {formattedServiceName}
+            {pageTitle}
           </h2>
           <div className="space-y-4 text-sm sm:text-base">
-            <p>
-              At BYOW, we believe your website is more than just a digital
-              presence—it&apos;s the heart of your brand&apos;s story. Our Custom Website
-              Design service is tailored to create unique, visually stunning,
-              and highly functional websites that reflect your identity, values,
-              and goals.
-            </p>
-            <p>
-              From the initial concept to the final launch, our process is built
-              on collaboration and innovation. We start by understanding your
-              vision, target audience, and business objectives. Then, our team
-              brings your ideas to life with cutting-edge design trends,
-              intuitive navigation, and responsive layouts.
-            </p>
-            <p>
-              What sets us apart is our commitment to creating websites that are
-              not just beautiful but also purposeful, focusing on UX and
-              performance optimization.
-            </p>
+            {heroParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Extended Content */}
       <div className="space-y-4 text-sm sm:text-base text-start ">
-        <p>
-          Whether you need an e-commerce platform, a portfolio showcase, or a
-          corporate website, we craft solutions that drive growth, build trust,
-          and leave a lasting impression.
-        </p>
-        <p>
-          We believe a great website is a living, evolving entity that grows
-          with your business. That&apos;s why we offer ongoing support, updates, and
-          maintenance. Whether a small change or full revamp — we&apos;re here for
-          you.
-        </p>
-        <p>
-          Let&apos;s build something great together. Your vision is unique, and your
-          website should be too. Get in touch with us today and let&apos;s bring your
-          ideas to life!
-        </p>
+        {extendedCopy.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </div>
 
       {/* Tools */}
@@ -105,7 +98,7 @@ export default function ServiceSinglePage({
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-between">
-            {tools.map((tool, index) => (
+            {serviceTools.map((tool, index) => (
               <Image
                 key={index}
                 src={tool.image}
@@ -126,7 +119,7 @@ export default function ServiceSinglePage({
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-between">
-            {technologies.map((tech, index) => (
+            {serviceTechnologies.map((tech, index) => (
               <Image
                 key={index}
                 src={tech.image}

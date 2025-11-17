@@ -5,8 +5,7 @@ import Image from "next/image";
 import "flowbite";
 import { motion } from "framer-motion";
 import { Service, serviceCategories } from "../../../data/servicedata";
-import ServiceSinglePage from "./ServiceSinglePage";
-import CloseIcon from "@mui/icons-material/Close";
+import { useRouter } from "next/navigation";
 
 // Card Component
 interface CardProps {
@@ -16,7 +15,7 @@ interface CardProps {
   icon: string;
   isHovered: boolean;
   setHoveredCard: React.Dispatch<React.SetStateAction<string | null>>;
-  setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
+  onSelect: (serviceId: string) => void;
 }
 const Card = ({
   id,
@@ -25,16 +24,16 @@ const Card = ({
   icon,
   isHovered,
   setHoveredCard,
-  setSelectedService,
+  onSelect,
 }: CardProps) => (
   <div
-    className="relative w-full max-w-[430px] h-auto min-h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer mx-auto"
+    className="relative w-full max-w-[430px] h-auto min-h-[221px] p-[1px] rounded-[28px] overflow-hidden cursor-pointer mx-auto transition-transform hover:-translate-y-1"
     style={{
       background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
     }}
     onMouseEnter={() => setHoveredCard(id)}
     onMouseLeave={() => setHoveredCard(null)}
-    onClick={() => setSelectedService(id)}
+    onClick={() => onSelect(id)}
   >
     {/* Inner content container */}
     <motion.div className="relative w-full h-full rounded-[27px] bg-[#0C090D] p-4 md:p-6 overflow-hidden">
@@ -48,7 +47,18 @@ const Card = ({
 
       {/* Content */}
       <div className="relative z-10">
-        <Image src={icon} alt={title} width={57} height={57} className="mb-3" />
+        <Image
+          src={icon}
+          alt={title}
+          width={57}
+          height={57}
+          className="mb-3 h-14 w-14 object-contain transition-all duration-500 ease-out"
+          style={{
+            filter: isHovered
+              ? "brightness(0) saturate(100%) invert(1)"
+              : "none",
+          }}
+        />
         <h3 className="font-semibold text-white text-start">{title}</h3>
         <p className="text-gray-400 text-sm text-start">{description}</p>
       </div>
@@ -59,7 +69,7 @@ const Card = ({
 export default function ServicePage() {
   const initialized = useRef(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const initFlowbite = async () => {
@@ -83,19 +93,9 @@ export default function ServicePage() {
     };
   }, []);
 
-  if (selectedService) {
-    return (
-      <div className="relative">
-        <button
-          onClick={() => setSelectedService(null)}
-          className="absolute top-4 right-4 md:right-16 lg:right-70 text-[#8133F1] hover:underline z-20"
-        >
-          <CloseIcon />
-        </button>
-        <ServiceSinglePage serviceId={selectedService} />
-      </div>
-    );
-  }
+  const handleSelect = (serviceId: string) => {
+    router.push(`/services/${serviceId}`);
+  };
 
   return (
     <div
@@ -105,15 +105,18 @@ export default function ServicePage() {
       }}
     >
       {/* Overlay with reduced opacity */}
-      <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-0" />
 
       {/* Content container */}
       <div className="relative container-wrapper z-10 mx-auto px-4 pb-10 md:pb-20 pt-10">
         <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
-          <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start sm:text-start md:text-center text-[#8133F1] leading-[120%]">
+          <p className="uppercase tracking-[0.35em] text-xs text-white/60 text-start sm:text-center">
+            Services
+          </p>
+          <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start sm:text-start md:text-center text-[#8133F1] leading-[120%] text-balance">
             Digital Services Tailored for Business Growth
           </h1>
-          <p className="font-normal text-[16px] lg:px-10 text-start sm:text-start md:text-center text-white leading-[140%]">
+          <p className="font-normal text-[16px] lg:px-10 text-start sm:text-start md:text-center text-white/80 leading-[160%] text-balance">
             At BYOW, we craft websites that go beyond templates, delivering
             tailored designs, seamless functionality, and a unique online
             presence that truly represents your brand.
@@ -135,7 +138,7 @@ export default function ServicePage() {
                 services={category.services}
                 hoveredCard={hoveredCard}
                 setHoveredCard={setHoveredCard}
-                setSelectedService={setSelectedService}
+                onSelect={handleSelect}
               />
             </AccordionItem>
           ))}
@@ -158,25 +161,10 @@ const AccordionItem = ({ id, title, children }: AccordionItemProps) => {
       <h2 id={`accordion-heading-${id}`}>
         <button
           type="button"
-          className="flex items-center justify-between w-full border border-[#2D2836] md:text-lg md:py-6 md:px-8 lg:w-full lg:max-w-[1332px] lg:h-[72px] lg:py-[24px] lg:px-[32px] lg:text-[18px]"
+          className="flex w-full items-center justify-between rounded-[36px] border border-[#2D2836] bg-[#080709] px-4 py-4 text-sm text-white transition hover:border-[#8133F1]/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8133F1] md:text-lg md:px-8 md:py-6"
           data-accordion-target={`#accordion-body-${id}`}
           aria-expanded="false"
           aria-controls={`accordion-body-${id}`}
-          style={{
-            width: "100%", // Mobile-first approach
-            height: "auto",
-            minHeight: "60px",
-            justifyContent: "space-between",
-            padding: "16px",
-            borderRadius: "36px",
-            borderWidth: "1px",
-            background: "#080709",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "120%",
-            letterSpacing: "0%",
-            color: "white",
-          }}
         >
           <div className="flex-grow text-left">{title}</div>
           <svg
@@ -213,14 +201,14 @@ interface ServiceGridProps {
   services: Service[];
   hoveredCard: string | null;
   setHoveredCard: React.Dispatch<React.SetStateAction<string | null>>;
-  setSelectedService: React.Dispatch<React.SetStateAction<string | null>>;
+  onSelect: (serviceId: string) => void;
 }
 
 const ServiceGrid = ({
   services,
   hoveredCard,
   setHoveredCard,
-  setSelectedService,
+  onSelect,
 }: ServiceGridProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
@@ -233,7 +221,7 @@ const ServiceGrid = ({
           icon={service.icon}
           isHovered={hoveredCard === service.id}
           setHoveredCard={setHoveredCard}
-          setSelectedService={setSelectedService}
+          onSelect={onSelect}
         />
       ))}
     </div>

@@ -107,7 +107,18 @@ const Footer = () => {
       {/* Bottom Section */}
       <hr className="my-6 border-t border-indigo-200/30" />
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center text-xs sm:text-sm px-4">
-        <p className="w-full">©2025 BYOW. All rights reserved.</p>
+        <p className="w-full">
+          ©2025 BYOW. All rights reserved. A proud product built with love by{" "}
+          <a
+            href="https://codezela.com"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-dotted decoration-white/50 hover:text-purple-300"
+          >
+            Codezela Technologies
+          </a>
+          .
+        </p>
       </div>
     </footer>
   );
