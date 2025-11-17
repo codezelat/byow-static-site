@@ -111,7 +111,7 @@ export default function Header() {
               return (
                 <li key={index}>
                   <motion.div
-                    className="relative w-[60px] sm:w-[75px] md:w-[85px] lg:w-[90px] h-[32px] sm:h-[38px] md:h-[42px] lg:h-[45px] rounded-full border border-[#2D2836] flex items-center justify-center overflow-hidden cursor-pointer"
+                    className="relative w-[70px] sm:w-[85px] md:w-[100px] lg:w-[110px] h-[32px] sm:h-[38px] md:h-[42px] lg:h-[45px] rounded-full border border-[#2D2836] flex items-center justify-center overflow-hidden cursor-pointer"
                     onHoverStart={() => setHoveredLink(path)}
                     onHoverEnd={() => setHoveredLink(null)}
                   >
