@@ -109,7 +109,7 @@ export default function RootLayout({
           })}
         </Script>
       </head>
-      <body className="antialiased relative w-full h-full min-h-screen">
+      <body className="antialiased relative w-full h-full min-h-screen" suppressHydrationWarning>
         {/* Video section - fixed height for hero area */}
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
           <video
