@@ -104,7 +104,7 @@ export default function Header() {
         {/* Desktop Navigation - Shows on lg and above */}
         <nav className="hidden lg:flex items-center rounded-full border border-[#2D2836] p-1 sm:p-1.5">
           <ul className="flex flex-row gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
-            {["/", "/about", "/service", "/product"].map((path, index) => {
+            {["/", "/about", "/services", "/products"].map((path, index) => {
               const isActive = pathname === path;
               const isHovered = hoveredLink === path;
 
@@ -156,7 +156,7 @@ export default function Header() {
         >
           <div className="mt-12 xs:mt-14 sm:mt-16">
             <ul className="flex flex-col gap-5 xs:gap-6">
-              {["/", "/about", "/service", "/product"].map((path, index) => {
+              {["/", "/about", "/services", "/products"].map((path, index) => {
                 const isActive = pathname === path;
 
                 return (

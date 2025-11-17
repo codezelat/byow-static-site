@@ -1,4 +1,4 @@
-import ServicePage from "../components/sections/service/ServicePage";
+import ServicePage from "../components/sections/services/ServicePage";
 
 export default function ServicePageComponent() {
   return (
