@@ -62,15 +62,49 @@ export default function PopupPage({ onClose }: PopupPageProps) {
           -webkit-text-fill-color: white !important;
           transition: background-color 5000s ease-in-out 0s;
         }
+
+        /* Custom select dropdown styling */
+        select option {
+          background-color: #18171A;
+          color: white;
+          padding: 12px 16px;
+          font-size: 14px;
+        }
+
+        select option:hover {
+          background-color: #8133F1;
+          color: white;
+        }
+
+        select option:checked {
+          background-color: #8133F1;
+          color: white;
+        }
+
+        select optgroup {
+          background-color: #0a0a0a;
+          color: #8133F1;
+          font-weight: 600;
+          font-size: 13px;
+          padding: 8px 12px;
+          font-style: normal;
+        }
+
+        /* Firefox dropdown styling */
+        @-moz-document url-prefix() {
+          select option {
+            padding: 10px;
+          }
+        }
       `}</style>
 
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"
+        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 animate-in fade-in duration-300"
         onClick={onClose}
       ></div>
 
       {/* Popup content - higher z-index than backdrop but lower than sidemenu */}
-      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4">
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 2xs:p-3 sm:p-4 animate-in slide-in-from-bottom-4 fade-in duration-500">
         {/* Main popup container with gradient border */}
         <div className="relative w-full max-w-[1291px] h-[90vh] rounded-[32px]">
           {/* Gradient border using pseudo element technique */}
@@ -89,7 +123,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 text-white hover:text-[#8133F1] transition z-10"
+                  className="absolute top-4 right-4 text-white hover:text-[#8133F1] hover:scale-110 active:scale-95 transition-all duration-300 z-10"
                 >
                   <CloseIcon className="w-6 h-6 2xs:w-8 2xs:h-8" />
                 </button>
@@ -116,8 +150,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         type="text"
                         name="firstName"
                         required
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none rounded-full"
-                        placeholder="Alan"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none rounded-full transition-all duration-300"
+                        placeholder="Enter your first name"
                       />
                     </div>
                     <div>
@@ -128,8 +162,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         type="text"
                         name="lastName"
                         required
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none"
-                        placeholder="Aronian"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                        placeholder="Enter your last name"
                       />
                     </div>
                   </div>
@@ -142,8 +176,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       type="text"
                       name="business"
                       required
-                      className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none"
-                      placeholder="Aronian"
+                      className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                      placeholder="Your company or business name"
                     />
                   </div>
 
@@ -154,11 +188,52 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                     <select
                       name="service"
                       required
-                      className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none"
+                      className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 cursor-pointer appearance-none"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
+                        backgroundPosition: "right 0.75rem center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "1.5em 1.5em",
+                      }}
                     >
                       <option value="">Select a service</option>
-                      <option value="e-commerce">E-commerce web site</option>
-                      <option value="byow">BYOW Web Site</option>
+                      <optgroup label="🎨 Design & Development">
+                        <option value="custom-website">
+                          Custom Website Design
+                        </option>
+                        <option value="web-development">
+                          Website Development
+                        </option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                      </optgroup>
+                      <optgroup label="🛒 E-Commerce">
+                        <option value="ecommerce-website">
+                          E-Commerce Website
+                        </option>
+                        <option value="online-store">Online Store Setup</option>
+                      </optgroup>
+                      <optgroup label="🏢 Enterprise Solutions">
+                        <option value="web-application">
+                          Custom Web Application
+                        </option>
+                        <option value="enterprise-platform">
+                          Enterprise Platform
+                        </option>
+                        <option value="api-integration">API Integration</option>
+                      </optgroup>
+                      <optgroup label="⚙️ Support & Optimization">
+                        <option value="website-maintenance">
+                          Website Maintenance
+                        </option>
+                        <option value="performance-optimization">
+                          Performance Optimization
+                        </option>
+                        <option value="seo-optimization">SEO Services</option>
+                      </optgroup>
+                      <optgroup label="💡 Other">
+                        <option value="consultation">Free Consultation</option>
+                        <option value="other">Other Services</option>
+                      </optgroup>
                     </select>
                   </div>
 
@@ -171,8 +246,8 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         type="email"
                         name="email"
                         required
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none"
-                        placeholder="alanaronian@gmail.com"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                        placeholder="your.email@company.com"
                       />
                     </div>
                     <div>
@@ -183,8 +258,10 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                         type="tel"
                         name="phone"
                         required
-                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none"
-                        placeholder="0647 1 8826 828"
+                        pattern="[+]?[0-9\s\-\(\)]{7,20}"
+                        title="Please enter a valid phone number (e.g., +1 555-123-4567, +44 20 1234 5678, +94 77 123 4567)"
+                        className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
+                        placeholder="+94 77 123 4567 (LK/UK/US/Any country)"
                       />
                     </div>
                   </div>
@@ -192,7 +269,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   <div className="flex justify-start mt-4 2xs:mt-6">
                     <button
                       type="submit"
-                      className="bg-[#8133F1] text-white px-6 py-2 2xs:px-8 2xs:py-3 rounded-full flex items-center gap-2 hover:bg-[#6A22CC] transition duration-300 text-xs 2xs:text-sm"
+                      className="bg-[#8133F1] text-white px-6 py-2 2xs:px-8 2xs:py-3 rounded-full flex items-center gap-2 hover:bg-[#9d5bff] active:scale-95 transition-all duration-300 text-xs 2xs:text-sm font-medium"
                     >
                       SUBMIT NOW{" "}
                       <ArrowCircleRightOutlinedIcon className="w-5 h-5" />
@@ -236,7 +313,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://www.facebook.com/byow"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <Facebook className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
@@ -244,7 +321,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://www.linkedin.com/company/byow"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <LinkedIn className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
@@ -252,7 +329,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://www.x.com/byow"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <X className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
@@ -260,7 +337,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://www.youtube.com/byow"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <YouTube className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
@@ -268,7 +345,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://wa.me/94727333577"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <WhatsApp className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
@@ -276,7 +353,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       href="https://www.instagram.com/byow"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] transition"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <Instagram className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
