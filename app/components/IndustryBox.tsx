@@ -94,6 +94,7 @@ const IndustryBox: NextPage = () => {
   const activeIndustry = industries[activeIndex];
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const pillContainerRef = useRef<HTMLDivElement | null>(null);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Auto-slide effect
   useEffect(() => {
@@ -101,7 +102,7 @@ const IndustryBox: NextPage = () => {
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % industries.length);
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -127,11 +128,21 @@ const IndustryBox: NextPage = () => {
     }
   }, [activeIndex, isInitialMount]);
 
+  useEffect(() => {
+    return () => {
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleManualClick = (index: number) => {
     setActiveIndex(index);
     setIsPaused(true);
-    // Resume auto-slide after 10 seconds of manual interaction
-    setTimeout(() => setIsPaused(false), 10000);
+    if (resumeTimeoutRef.current) {
+      clearTimeout(resumeTimeoutRef.current);
+    }
+    resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 10000);
   };
 
   return (

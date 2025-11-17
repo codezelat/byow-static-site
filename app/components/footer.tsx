@@ -1,6 +1,3 @@
-"use client";
-
-import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,7 +7,7 @@ import {
   contactInfo,
 } from "../data/footerdata";
 
-const Footer: NextPage = () => {
+const Footer = () => {
   return (
     <footer className="bg-[#250059] text-white px-4 md:px-20 py-6 text-sm">
       <div className="flex flex-col items-center">
@@ -95,6 +92,7 @@ const Footer: NextPage = () => {
                 alt="footer logo"
                 width={100}
                 height={40}
+                sizes="100px"
                 className="w-auto h-auto"
               />
             </div>

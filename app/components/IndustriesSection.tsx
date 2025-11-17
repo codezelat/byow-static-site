@@ -1,9 +1,6 @@
-"use client";
-import { NextPage } from "next";
-import React from "react";
 import IndustryBox from "./IndustryBox";
 
-const IndustriesSection: NextPage = () => {
+const IndustriesSection = () => {
   return (
     <>
       <div className="container-wrapper">

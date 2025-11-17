@@ -140,6 +140,12 @@ button {
   animation: spin-counterclockwise 40s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-counterclockwise {
+    animation: none;
+  }
+}
+
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;

@@ -119,7 +119,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
           <div className="absolute inset-[2px] bg-[#060116] rounded-[32px] flex flex-col">
             {/* Scrollable content area with scrollbar on mobile */}
             <div className="h-full overflow-y-auto mobile-scrollbar no-horizontal-scroll lg:overflow-y-visible">
-              <div className="px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-16">
+              <div className="px-4 py-3 sm:px-8 sm:py-10 md:px-16 md:py-6">
                 {/* Close Button */}
                 <button
                   onClick={onClose}
@@ -133,7 +133,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                     Let&apos;s Talk About Your Project Today!
                   </h1>
                   <p className="font-normal text-xs 2xs:text-sm md:text-base text-left sm:text-center text-white leading-relaxed">
-                    Click Below for a Free Consultation and Customized Quote!
+                    Submit your requirement below and we will get in touch.
                   </p>
                 </div>
 

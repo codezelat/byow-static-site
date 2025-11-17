@@ -1,6 +1,5 @@
-"use client";
-
 import type { FC } from "react";
+import Image from "next/image";
 
 const heroStats = [
   { value: "120+", label: "Custom builds launched" },
@@ -15,6 +14,19 @@ const HeroSection: FC = () => (
       <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 bg-[#8133F1]/30 blur-[120px]" />
       <div className="absolute right-10 top-16 h-48 w-48 rounded-full bg-[#2D2836]/70 blur-[90px]" />
       <div className="absolute bottom-0 left-4 h-64 w-64 rounded-full bg-[#090909] blur-[100px] opacity-80" />
+    </div>
+    <div className="pointer-events-none absolute left-1/2 top-10 -z-20 -translate-x-1/2">
+      <div className="relative h-[460px] w-[460px] xs:h-[520px] xs:w-[520px] md:h-[700px] md:w-[700px] lg:h-[843px] lg:w-[843px]">
+        <Image
+          src="/images/Long Dashed Circle.png"
+          alt=""
+          fill
+          sizes="(max-width: 768px) 80vw, (max-width: 1280px) 60vw, 843px"
+          priority
+          aria-hidden="true"
+          className="object-contain opacity-80 motion-safe:animate-spin-counterclockwise"
+        />
+      </div>
     </div>
 
     <div className="mx-auto flex max-w-6xl flex-col items-center px-4 xs:px-6 sm:px-8">
@@ -32,7 +44,7 @@ const HeroSection: FC = () => (
         </p>
       </div>
 
-      <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+      <div className="relative z-10 mt-8 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
         <a
           href="https://cal.com/codezela/"
           target="_blank"
@@ -49,7 +61,7 @@ const HeroSection: FC = () => (
         </a>
       </div>
 
-      <div className="mt-12 grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="relative z-10 mt-12 grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
         {heroStats.map((stat) => (
           <div
             key={stat.label}

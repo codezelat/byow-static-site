@@ -24,6 +24,7 @@ export default function Yoursuccess() {
           src="/images/BG Pattern 1.svg"
           alt="bg pattern"
           fill
+          sizes="100vw"
           className="w-full h-auto max-w-[869%] max-h-[869%] object-contain"
         />
       </div>
@@ -35,6 +36,7 @@ export default function Yoursuccess() {
           alt="Digital handshake"
           width={824}
           height={298}
+          sizes="(max-width: 900px) 100vw, 824px"
           priority
           className="w-full h-auto"
         />

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 const mainImage = {
@@ -50,6 +48,7 @@ export default function MiddleContainerAbout() {
               alt={mainImage.alt}
               width={mainImage.width}
               height={mainImage.height}
+              sizes="(max-width: 1024px) 100vw, 33vw"
               className="w-full h-auto rounded-[16px] object-cover"
               priority
             />
@@ -104,6 +103,7 @@ export default function MiddleContainerAbout() {
             src={image.src}
             alt={image.alt}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="rounded-[16px] object-cover"
           />
         </div>
