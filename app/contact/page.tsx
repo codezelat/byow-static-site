@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import YourSuccessSection from "../components/sections/common/YourSuccessSection";
 import { contactInfo } from "../data/footerdata";
+
+export const metadata: Metadata = {
+  title: "Contact BYOW | Website Design & Development Sri Lanka",
+  description:
+    "Email, call, or message BYOW to discuss website design, development, and maintenance projects in Sri Lanka. Expect a reply within one business day.",
+  alternates: { canonical: "/contact" },
+};
 
 const deriveMeta = (info: string) => {
   if (info.includes("@")) {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import DisableScrollRestoration from "./components/DisableScrollRestoration";
 import HeroSection from "./components/sections/home/HeroSection";
 import PainPointsSection from "./components/sections/home/PainPointsSection";
@@ -8,6 +9,15 @@ import ChallengesSection from "./components/sections/home/ChallengesSection";
 import BuildSquadSection from "./components/sections/home/BuildSquadSection";
 import InfiniteHorizontalScroll from "./components/sections/home/InfiniteHorizontalScroll";
 import YourSuccessSection from "./components/sections/common/YourSuccessSection";
+
+export const metadata: Metadata = {
+  title: "Website Design & Development Agency in Sri Lanka",
+  description:
+    "BYOW crafts conversion-focused websites for startups, enterprises, and ambitious founders in Sri Lanka. Strategy, UX/UI, and engineering in one squad.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

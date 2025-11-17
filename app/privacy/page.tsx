@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 const sections = [
@@ -30,6 +31,13 @@ const sections = [
     body: `Questions about privacy? Reach out via info@byow.lk or call +94 72 733 3577.`,
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | BYOW",
+  description:
+    "Understand how BYOW collects, stores, and protects your information across strategy workshops, product builds, and marketing sites.",
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
   return (

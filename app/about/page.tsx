@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import MiddleContainerAbout from "../components/sections/about/MiddleContainerAbout";
 import YourSuccessSection from "../components/sections/common/YourSuccessSection";
+
+export const metadata: Metadata = {
+  title: "About BYOW | Sri Lanka’s Custom Website Studio",
+  description:
+    "Learn how BYOW blends UX, content, and engineering to ship world-class websites for Sri Lankan brands and global teams.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (
