@@ -115,8 +115,6 @@ const IndustryBox: NextPage = () => {
     const container = pillContainerRef.current;
 
     if (activeButton && container) {
-      const containerRect = container.getBoundingClientRect();
-      const buttonRect = activeButton.getBoundingClientRect();
       const scrollLeft =
         activeButton.offsetLeft -
         container.offsetWidth / 2 +

@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 export default function InfiniteHorizontalScroll() {
   // Brand logos data array
@@ -32,62 +37,38 @@ export default function InfiniteHorizontalScroll() {
       </p>
     </div>
 
-    {/* Infinite scroll container with CSS animation */}
-    <div className="relative overflow-hidden mt-6">
-      <div className="flex logos-slide">
-        {/* First set of logos */}
+    {/* Swiper infinite scroll */}
+    <div className="mt-6">
+      <Swiper
+        modules={[Autoplay]}
+        spaceBetween={40}
+        slidesPerView="auto"
+        loop={true}
+        speed={3000}
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        freeMode={true}
+        className="!overflow-visible"
+      >
         {brands.map((brand) => (
-          <div key={brand.id} className="mx-6 md:mx-6 flex-shrink-0">
-            <Image
-              src={brand.src}
-              alt={brand.alt}
-              width={90}
-              height={90}
-              className="md:w-[100px] md:h-[100px] object-contain"
-            />
-          </div>
+          <SwiperSlide key={brand.id} className="!w-auto">
+            <div className="flex items-center justify-center px-4">
+              <Image
+                src={brand.src}
+                alt={brand.alt}
+                width={100}
+                height={100}
+                className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+          </SwiperSlide>
         ))}
-
-        {/* Duplicate set for seamless scrolling */}
-        {brands.map((brand) => (
-          <div
-            key={`duplicate-${brand.id}`}
-            className="mx-4 md:mx-6 flex-shrink-0"
-          >
-            <Image
-              src={brand.src}
-              alt={brand.alt}
-              width={90}
-              height={90}
-              className="md:w-[100px] md:h-[100px] object-contain"
-            />
-          </div>
-        ))}
-      </div>
+      </Swiper>
     </div>
   </div>
-
-  {/* CSS for bidirectional animation */}
-  <style jsx global>{`
-    @keyframes bidirectionalScroll {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-50%);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    .logos-slide {
-      animation: bidirectionalScroll 15s linear infinite;
-      width: fit-content;
-      display: flex;
-      align-items: center;
-    }
-  `}</style>
 </div>
 
   );
