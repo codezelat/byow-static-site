@@ -9,24 +9,6 @@ const heroStats = [
   { value: "24/7", label: "Product team support" },
 ];
 
-const heroHighlights = [
-  {
-    title: "Mobile-first every time",
-    description:
-      "Layouts flex from 320px upward with no awkward jumps or hidden content.",
-  },
-  {
-    title: "Real prototypes fast",
-    description:
-      "Design paired with production-ready builds so you can test what matters.",
-  },
-  {
-    title: "Launch-ready ops",
-    description:
-      "Content strategy, QA, and performance baked in-no handoff lag.",
-  },
-];
-
 const HeroSection: FC = () => (
   <section className="relative isolate overflow-hidden pt-24 pb-16 xs:pt-28 sm:pt-32 sm:pb-20 md:pt-40 lg:pt-48">
     <div className="pointer-events-none absolute inset-0 -z-10">
