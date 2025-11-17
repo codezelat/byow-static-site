@@ -88,21 +88,23 @@ export default function OurChallengesPage() {
                       : "border-white/5 bg-[#05010F]/60 hover:border-white/20"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
-                      {challenge.title}
-                    </p>
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+                        {challenge.title}
+                      </p>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-white/60 sm:text-sm">
+                        {challenge.tagline}
+                      </p>
+                    </div>
                     <span
-                      className={`ml-3 h-2 w-2 rounded-full transition ${
+                      className={`h-2 w-2 rounded-full transition ${
                         isActive ? "bg-[#CEB0FA]" : "bg-white/20"
                       }`}
                     />
                   </div>
-                  <p className="mt-3 text-sm text-white/80 sm:text-base">
+                  <p className="mt-4 text-sm text-white/80 sm:text-base">
                     {challenge.description}
-                  </p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-white/60 sm:text-sm">
-                    {challenge.tagline}
                   </p>
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
                     View solution
@@ -144,12 +146,12 @@ export default function OurChallengesPage() {
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#8133F1]/20 via-[#090909] to-[#05010F] p-6 sm:p-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="space-y-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
                   Our solution
                 </p>
-                <p className="mt-2 text-xl font-semibold sm:text-2xl">
+                <p className="text-xl font-semibold sm:text-2xl">
                   {activeChallenge.title}
                 </p>
               </div>
