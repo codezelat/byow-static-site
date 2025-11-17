@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
-import CardSection from "./components/CardSection";
 import IndustriesSection from "./components/IndustriesSection";
 import Yoursuccess from "./components/yoursuccess";
 import InfiniteHorizontalScroll from "./components/infinite-horizontal";
@@ -225,9 +224,6 @@ const Home: NextPage = () => {
           </section>
           <section id="journey">
             <StepBar />
-          </section>
-          <section>
-            <CardSection />
           </section>
           <section>
             <IndustriesSection />

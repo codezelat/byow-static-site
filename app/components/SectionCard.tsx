@@ -1,223 +1,185 @@
 "use client";
-import { NextPage } from "next";
-import React, { useState } from "react";
-import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
-import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined"; // Import the new icon
+
+import type { NextPage } from "next";
 import Image from "next/image";
+import { useState } from "react";
+
+type Issue = {
+  id: number;
+  label: string;
+  summary: string;
+  solution: string;
+};
+
+const issues: Issue[] = [
+  {
+    id: 1,
+    label: "DIY platforms seem easy… until they're not",
+    summary:
+      "Builders promise limitless customization, but the exact feature you need is off-limits.",
+    solution:
+      "We design and ship production-ready builds, so you never fight a template again.",
+  },
+  {
+    id: 2,
+    label: "Templates aren’t your brand",
+    summary:
+      "Cookie-cutter layouts flatten your personality and make launches look identical.",
+    solution:
+      "Every BYOW project starts with a bespoke system tuned to your visuals, content, and product goals.",
+  },
+  {
+    id: 3,
+    label: "CMS tools hide costs",
+    summary:
+      "Plugins, hosting, and constant patchwork pile up into surprise expenses and tech debt.",
+    solution:
+      "We architect transparent stacks, optimize performance, and keep maintenance predictable.",
+  },
+  {
+    id: 4,
+    label: "DIY drains your time",
+    summary:
+      "Learning a new builder while running a business eats calendars and delays your launch.",
+    solution:
+      "Our sprint-based pods handle the heavy lifting so you can stay focused on strategy.",
+  },
+];
 
 const SectionCard: NextPage = () => {
-  // State to keep track of the selected number
-  const [selectedNumber, setSelectedNumber] = useState<number>(1);
-  // State to track if the Build Now button has been clicked
-  const [showBuildSection, setShowBuildSection] = useState<boolean>(false);
-
-  // Handler for when a number is clicked
-  const handleNumberClick = (number: number) => {
-    setSelectedNumber(number);
-  };
-
-  // Handler for the Build Now button
-  const handleBuildNowClick = () => {
-    setShowBuildSection(!showBuildSection); // Toggle the state
-  };
-
-  // Function to determine the size based on whether the number is selected or not
-  const getNumberStyle = (number: number) => {
-    return number === selectedNumber
-      ? "text-[48px] md:text-[48px] sm:text-[44px] xs:text-[44px] 2xs:text-[40px] text-[#8133F1] transform scale-110"
-      : "text-[24px] sm:text-[30px] xs:text-[30px] text-[#5B546E] pt-3 sm:pt-5";
-  };
-
-  // Content sections based on selected number
-  const getContent = () => {
-    switch (selectedNumber) {
-      case 1:
-        return (
-          <>
-            <h1 className="font-semibold text-[28px] sm:text-[26px] md:text-[40px] leading-[120%] w-full text-left">
-              DIY Platforms Seem Easy, Until They re Not...
-            </h1>
-            <p className="font-normal text-[20px] sm:text-[18px] md:text-[26px] leading-[140%] w-full text-left mt-4">
-              They promise customization, but when you want &quot;that one
-              feature,&quot; it s a hard no.
-            </p>
-          </>
-        );
-      case 2:
-        return (
-          <>
-            <h1 className="font-semibold text-[28px] sm:text-[26px] md:text-[40px] leading-[120%] w-full text-left">
-              Templates Are Not Your Brand...
-            </h1>
-            <p className="font-normal text-[20px] sm:text-[18px] md:text-[26px] leading-[140%] w-full text-left mt-4">
-              Templates are cookie-cutter and never truly reflect your unique
-              identity.
-            </p>
-          </>
-        );
-      case 3:
-        return (
-          <>
-            <h1 className="font-semibold text-[28px] sm:text-[26px] md:text-[40px] leading-[120%] w-full text-left">
-              CMS Platforms Sound Free, But Hidden Costs Pile Up...
-            </h1>
-            <p className="font-normal text-[20px] sm:text-[18px] md:text-[26px] leading-[140%] w-full text-left mt-4">
-              Hosting fees, plugin subscriptions, upgrades—they add up fast.
-            </p>
-          </>
-        );
-      case 4:
-        return (
-          <>
-            <h1 className="font-semibold text-[28px] sm:text-[26px] md:text-[40px] leading-[120%] w-full text-left">
-              Time Is Money, And DIY Takes Too Long...
-            </h1>
-            <p className="font-normal text-[20px] sm:text-[18px] md:text-[26px] leading-[140%] w-full text-left mt-4">
-              Building a site yourself isn&apos;t &quot;quick and easy&quot;
-              when you re learning on the go.
-            </p>
-          </>
-        );
-      case 5:
-        return (
-          <>
-            <h1 className="font-semibold text-[28px] sm:text-[26px] md:text-[40px] leading-[120%] w-full text-left">
-              Your Vision Deserves More Than Drag-and-Drop...
-            </h1>
-            <p className="font-normal text-[20px] sm:text-[18px] md:text-[26px] leading-[140%] w-full text-left mt-4">
-              Drag-and-drop editors can&apos;t keep up with creative or complex
-              ideas.
-            </p>
-          </>
-        );
-      default:
-        return null;
-    }
-  };
-
-  // Get the build now content based on selected number
-  const getBuildNowContent = () => {
-    switch (selectedNumber) {
-      case 1:
-        return "With BYOW, if you can dream it, we can build it. No limits. No compromises.";
-      case 2:
-        return "Every website we build is designed from scratch, tailored to showcase your brand's true personality.";
-      case 3:
-        return "BYOW delivers transparent, all-inclusive solutions, so you know exactly what you're paying for.";
-      case 4:
-        return "Leave it to us—we'll build, test, and perfect your site, so you can focus on running your business.";
-      case 5:
-        return "Our custom development brings your creative vision to life exactly as you imagined.";
-      default:
-        return "With BYOW, if you can dream it, we can build it. No limits. No compromises.";
-    }
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeIssue = issues[activeIndex];
 
   return (
-    <div className="w-full h-auto md:pt-10 lg:pt-10 ">
-      <div
-        // main content
-        className={`max-w-full w-full sm:w-[1328px] ${
-          showBuildSection ? "h-auto sm:h-[850px]" : "h-auto sm:h-[518px]"
-        } rounded-tr-[48px] rounded-br-[48px] pt-[40px] sm:pt-[96px] pr-[20px] sm:pr-[96px] pb-[40px] sm:pb-[96px] gap-6 sm:gap-49 xl:pl-[200px] md:pl-[100px] sm:pl-[80px] lg:pl-[150px] xs:pl-[60px] 2xs:pl-[60px] relative`}
-        style={{
-          background:
-            "linear-gradient(127.68deg, rgba(129, 51, 241, 0.2) 28.21%, rgba(45, 40, 54, 0.2) 103.48%)",
-          transition: "height 0.3s ease-in-out",
-        }}
-      >
-        {/* content */}
-        <div className="flex flex-col items-start relative z-10">
-          {getContent()}
-          <button
-            className="bg-[#8133F1] flex items-center justify-center gap-2 text-[16px] sm:text-[16px] font-semibold text-white  sm:w-[189px]  sm:h-[50px] rounded-[36px] px-6 py-2 transition cursor-pointer mt-6 leading-[120%]"
-            onClick={handleBuildNowClick}
-          >
-            {showBuildSection ? "SOLVED" : "SOLVE NOW"}
-            {showBuildSection ? (
-              <ArrowCircleUpOutlinedIcon />
-            ) : (
-              <ArrowCircleDownOutlinedIcon />
-            )}
-          </button>
+    <section className="relative w-full px-4 pt-14 pb-14 xs:px-6 sm:px-8">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[56px] border border-white/10 bg-gradient-to-br from-[#19042B] via-[#08010F] to-[#030008] px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16">
+        <div className="pointer-events-none absolute -top-16 right-6 h-64 w-64 rounded-full bg-[#8133F1]/40 blur-[120px]" />
+        <div className="pointer-events-none absolute bottom-0 left-[-50px] h-72 w-72 rounded-full bg-[#03062B]/70 blur-[140px]" />
 
-          {/* New section that appears when SOLVE NOW is clicked */}
-          {showBuildSection && (
-            <div className="w-full max-w-[1032px] h-auto rounded-[32px] p-6 sm:p-[48px] bg-[#8133F1] mt-10 relative z-20">
-              <div>
-                <Image
-                  src="/images/Group (1).png"
-                  alt="arrow"
-                  width={80}
-                  height={20}
-                  className="w-[60px] sm:w-[104.232px] h-auto"
-                />
-              </div>
-              <p className="font-normal text-[18px] sm:text-[24px] md:text-[36px] leading-[140%] text-left mt-4 text-white break-words">
-                {getBuildNowContent()}
-              </p>
-            </div>
-          )}
+        <div className="relative z-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+            Problems we solve every week
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl md:text-[40px]">
+            Slide through the friction, see how we fix it
+          </h2>
+          <p className="mt-4 text-sm text-white/70 sm:text-base">
+            Pick the pain point that matches your world. Our solution tile updates in real
+            time, so you can see how we respond.
+          </p>
         </div>
 
-        {/* Gradient Background Image - positioned absolute but with fixed position */}
-        <div className="absolute right-[-200px] sm:right-[-600px] top-0 w-[400px] sm:w-[900.01px] h-[250px] sm:h-[500px] mt-[100px] sm:mt-[306px] rounded-tl-[24px] rounded-bl-[24px] overflow-hidden z-0">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/gradient background.svg"
-              alt="gradient background image"
-              width={340}
-              height={250}
-              className="relative w-full mix-blend-screen opacity-80"
-            />
+        <div className="relative z-10 mt-12 space-y-10">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {issues.map((issue, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={issue.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`group flex flex-col gap-3 rounded-[32px] border px-5 py-5 text-left transition-all duration-300 ${
+                    isActive
+                      ? "border-[#8133F1] bg-[#1F0533]/70 shadow-[0_30px_120px_rgba(6,0,20,0.65)]"
+                      : "border-white/5 bg-white/5 hover:border-white/15"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+                      0{issue.id}
+                    </span>
+                    <span
+                      className={`h-2 w-2 rounded-full ${
+                        isActive ? "bg-[#CEB0FA]" : "bg-white/20"
+                      }`}
+                    />
+                  </div>
+                  <p
+                    className={`text-lg font-semibold ${
+                      isActive ? "text-white" : "text-white/80"
+                    }`}
+                  >
+                    {issue.label}
+                  </p>
+                  <p className="text-sm text-white/60">{issue.summary}</p>
+                  <div className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70">
+                    See solution
+                    <Image
+                      src="/images/Arrow 1.png"
+                      alt="arrow"
+                      width={80}
+                      height={14}
+                      className="w-14 opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100"
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="rounded-[36px] border border-white/10 bg-black/30 p-6 sm:p-8 md:p-10 backdrop-blur-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+                  Solution playbook
+                </p>
+                <p className="mt-2 text-2xl font-semibold sm:text-3xl">
+                  Pain point {String(activeIssue.id).padStart(2, "0")}
+                </p>
+              </div>
+              <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+                {issues.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`h-1 w-10 rounded-full transition ${
+                      index <= activeIndex ? "bg-[#8133F1]" : "bg-white/10"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+              <div className="rounded-[28px] border border-white/10 bg-white/5 p-5 sm:p-6 text-left">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+                  The blocker
+                </p>
+                <p className="mt-3 text-sm text-white/80 sm:text-base">
+                  {activeIssue.summary}
+                </p>
+              </div>
+              <div className="rounded-[28px] border border-[#8133F1]/40 bg-gradient-to-br from-[#8133F1]/35 to-[#2B0A4E] p-5 sm:p-6 text-left shadow-[0_25px_90px_rgba(8,0,30,0.55)]">
+                <div className="flex items-center gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+                    Our fix
+                  </p>
+                  <span className="h-px flex-1 bg-white/20" />
+                  <Image
+                    src="/images/Group (1).png"
+                    alt="arrow"
+                    width={60}
+                    height={14}
+                    className="h-4 w-auto opacity-80"
+                  />
+                </div>
+                <p className="mt-4 text-base text-white sm:text-lg">
+                  {activeIssue.solution}
+                </p>
+                <div className="mt-6 inline-flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-white/70">
+                  <span className="rounded-full border border-white/20 px-4 py-1">
+                    Strategy
+                  </span>
+                  <span className="rounded-full border border-white/20 px-4 py-1">
+                    Design
+                  </span>
+                  <span className="rounded-full border border-white/20 px-4 py-1">
+                    Engineering
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Number Selectors */}
-      <div className="flex flex-row flex-wrap gap-6 sm:gap-10 md:gap-12 lg:gap-20 px-4 sm:px-10 md:px-20 lg:pl-[200px] mt-10 sm:mt-12 md:mt-16 lg:mt-[75px] mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-        <div
-          className={`w-[36px] h-[36px] md:w-[26px] md:h-[26px] font-light cursor-pointer text-center ${getNumberStyle(
-            1
-          )}`}
-          onClick={() => handleNumberClick(1)}
-        >
-          01
-        </div>
-        <div
-          className={`w-[36px] h-[36px] md:w-[26px] md:h-[26px] font-light cursor-pointer text-center ${getNumberStyle(
-            2
-          )}`}
-          onClick={() => handleNumberClick(2)}
-        >
-          02
-        </div>
-        <div
-          className={`w-[36px] h-[36px] md:w-[26px] md:h-[26px] font-light cursor-pointer text-center ${getNumberStyle(
-            3
-          )}`}
-          onClick={() => handleNumberClick(3)}
-        >
-          03
-        </div>
-        <div
-          className={`w-[36px] h-[36px] md:w-[26px] md:h-[26px] first-letter:font-light cursor-pointer text-center ${getNumberStyle(
-            4
-          )}`}
-          onClick={() => handleNumberClick(4)}
-        >
-          04
-        </div>
-        <div
-          className={`w-[36px] h-[36px] md:w-[26px] md:h-[26px] font-light cursor-pointer text-center ${getNumberStyle(
-            5
-          )}`}
-          onClick={() => handleNumberClick(5)}
-        >
-          05
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
