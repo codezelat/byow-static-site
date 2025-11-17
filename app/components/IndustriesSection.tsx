@@ -7,13 +7,12 @@ const IndustriesSection: NextPage = () => {
   return (
     <>
       <div className="container-wrapper">
-        <h1 className="font-bold text-[48px] 3xl:text-[48px] 2xl:text-[48px] xl:text-[48px] lg:text-[48px] md:text-[40px] sm:text-[32px] xs:text-[32px] 2xs:text-[32px] text-start md:text-center text-[#8133F1] leading-[120%] mb-10">
+        <h1 className="mb-6 text-start text-3xl font-semibold leading-tight text-white md:text-center md:text-[44px]">
           Industries We Empower with Bespoke Websites
         </h1>
-        <p className="text-start md:text-center px-0 md:px-10 max-w-[892px] md:mx-auto font-normal text-[16px] text-white leading-[140%] mb-20">
-          At BYOW, we believe every business deserves a website as unique as its
-          purpose. No matter your field, we craft solutions that work for you.
-          Here s how we transform visions across industries:
+        <p className="mb-12 max-w-3xl text-sm text-white/70 md:mx-auto md:text-center md:text-base">
+          From commerce to culture, every build we take on gets a bespoke system, a dedicated
+          pod, and outcomes tailored to the people who use it.
         </p>
       </div>
 

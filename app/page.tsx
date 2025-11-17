@@ -1,8 +1,7 @@
 "use client";
 
 import type { NextPage } from "next";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
 import IndustriesSection from "./components/IndustriesSection";
@@ -12,9 +11,38 @@ import OurChallengesPage from "./components/our-challenges";
 
 const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [activePainPoint, setActivePainPoint] = useState(0);
+  const painPointRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-pain-index"));
+            if (!Number.isNaN(index)) {
+              setActivePainPoint(index);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -20% 0px",
+        threshold: 0.6,
+      }
+    );
+
+    painPointRefs.current.forEach((node) => {
+      if (node) observer.observe(node);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const heroStats = [
@@ -43,10 +71,22 @@ const Home: NextPage = () => {
   ];
 
   const painPoints = [
-    "Templates can't reflect your unique vision",
-    "CMS tools promise freedom but hide limitations",
-    "You shouldn't need to be a coder to realize ideas",
-    "Updating your site shouldn't feel like a hassle",
+    {
+      title: "Templates can't reflect your unique vision",
+      gradient: "from-[#8133F1] via-[#3B157A] to-[#05000F]",
+    },
+    {
+      title: "CMS tools promise freedom but hide limitations",
+      gradient: "from-[#00DBDE] via-[#5B2FE2] to-[#0D021B]",
+    },
+    {
+      title: "You shouldn't need to be a coder to realize ideas",
+      gradient: "from-[#FF6CAB] via-[#7366FF] to-[#080111]",
+    },
+    {
+      title: "Updating your site shouldn't feel like a hassle",
+      gradient: "from-[#20E3B2] via-[#00AEEF] to-[#040621]",
+    },
   ];
 
   return (
@@ -64,7 +104,7 @@ const Home: NextPage = () => {
               Build-Your-Own-Website
             </p>
             <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-[64px]">
-              World-class custom sites, unbelievably smooth launches
+              smart brands get flawless and stunning sites
             </h1>
             <p className="mt-5 text-base text-white/70 sm:text-lg">
               Skip the fragile DIY stack. We blueprint, design, build, and
@@ -175,44 +215,57 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="px-4 pb-12 xs:px-6 sm:px-8 md:pb-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
-              Frustrated with the process?
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl md:text-[40px]">
-              Scroll for a simpler solution.
-            </h2>
-            <p className="mt-4 text-sm text-white/70 sm:text-base">
-              These are the blockers we hear every day. We designed BYOW to
-              remove them so you can stay in flow while we build.
-            </p>
-          </div>
+      <section className="relative px-0">
+        <div className="sticky top-0 z-0 flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#06000F] to-[#010104] px-4 py-20 xs:px-6 sm:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+            Frustrated with the process?
+          </p>
+          <h2 className="mt-4 text-center text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px]">
+            Scroll for a simpler solution.
+          </h2>
+          <p className="mt-4 max-w-2xl text-center text-sm text-white/70 sm:text-base">
+            These are the blockers we hear every day. We designed BYOW to remove them so you
+            can stay in flow while we build.
+          </p>
+        </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {painPoints.map((text) => (
-              <article
-                key={text}
-                className="relative overflow-hidden rounded-[32px] p-[1px]"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(129,51,241,0.8) 0%, rgba(9,9,9,0.9) 100%)",
-                }}
-              >
-                <div className="relative flex h-full flex-col items-center justify-center rounded-[30px] bg-[#090909] px-6 py-10 text-center">
-                  <Image
-                    src="/images/image.png"
-                    alt="quotation mark"
-                    width={38}
-                    height={27}
-                    className="mb-4 h-6 w-8 opacity-80 sm:h-7 sm:w-10"
-                  />
-                  <p className="text-base text-white sm:text-lg">{text}</p>
+        <div className="relative snap-y snap-mandatory">
+          {painPoints.map((point, index) => (
+            <article
+              key={point.title}
+              data-pain-index={index}
+              ref={(el) => {
+                painPointRefs.current[index] = el;
+              }}
+              className="flex min-h-screen snap-center items-center justify-center px-4 py-16 xs:px-6 sm:px-8"
+            >
+              <div className="relative w-full max-w-5xl overflow-hidden rounded-[48px] border border-white/10 bg-[#02000A] p-10 sm:p-14 shadow-[0_50px_120px_rgba(5,0,15,0.7)]">
+                <div
+                  className={`pointer-events-none absolute inset-0 rounded-[48px] bg-gradient-to-br ${point.gradient} opacity-20 blur-[140px] transition-opacity duration-500 ${
+                    activePainPoint === index ? "opacity-60" : "opacity-15"
+                  }`}
+                />
+                <div
+                  className={`relative z-10 flex flex-col items-center justify-center text-center sm:items-start sm:text-left ${
+                    activePainPoint === index ? "scale-100 opacity-100" : "scale-95 opacity-60"
+                  } transition-all duration-500`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+                    Pain point {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3
+                    className={`mt-8 bg-clip-text text-4xl font-semibold leading-tight text-transparent sm:text-5xl ${
+                      activePainPoint === index
+                        ? "bg-gradient-to-r from-white via-[#CEB0FA] to-white"
+                        : "bg-gradient-to-r from-white/50 to-white/30"
+                    }`}
+                  >
+                    {point.title}
+                  </h3>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
