@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 import Image from "next/image";
 
 interface Challenge {
@@ -12,10 +11,6 @@ interface Challenge {
 }
 
 export default function OurChallengesPage() {
-  const [selectedSolution, setSelectedSolution] = useState<number | null>(null);
-  const challengeRef = useRef<HTMLDivElement>(null);
-  const solutionRef = useRef<HTMLDivElement>(null);
-
   const challenges: Challenge[] = [
     {
       id: 1,
@@ -59,187 +54,104 @@ export default function OurChallengesPage() {
     },
   ];
 
-  const handleViewSolution = (id: number) => {
-    setSelectedSolution(id);
-    if (window.innerWidth <= 768) {
-      // Smooth scroll to solution section
-      setTimeout(() => {
-        solutionRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  };
-
-  const handleBackToChallenges = () => {
-    setSelectedSolution(null);
-    if (window.innerWidth <= 768) {
-      // Smooth scroll back to top
-      setTimeout(() => {
-        challengeRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  };
+  const [activeChallenge, setActiveChallenge] = useState<Challenge>(
+    challenges[0]
+  );
 
   return (
-    <>
-     <div className="flex flex-col md:pt-32 sm:pt-24  sm:pb-8 pb-6 px-4 sm:px-6 md:px-10 gap-4 sm:gap-6">
-  <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-left md:text-center text-[#8133F1] leading-[120%]  mb-6">
-        See BYOW in Action
-  </h1>
-  <p className="font-normal text-xs sm:text-sm md:text-base text-left md:text-center mb-14 text-white leading-[140%]">
-  A Closer Look at How BYOW Elevates Businesses with Smart, Scalable Solutions
-  </p>
-</div>
-        <div
-      className="container-wrapper flex flex-col lg:flex-row relative rounded-3xl"
-      style={{ maxWidth: "100%" }}
-    >
-      {/* Challenges Section */}
-      <div
-        ref={challengeRef}
-        className={`text-white transition-all duration-300 relative
-        ${selectedSolution ? "lg:w-1/2" : "w-full lg:w-[1151px]"}
-        h-auto p-4 xs:p-6 md:p-[72px]`}
-        style={{
-          background: "#000",
-          zIndex: selectedSolution ? "10" : "20",
-          borderTopLeftRadius: "24px",
-          borderTopRightRadius: "24px",
-          borderBottomLeftRadius: selectedSolution ? "0" : "24px",
-          borderBottomRightRadius: selectedSolution ? "0" : "24px",
-          border: "2px solid transparent",
-          backgroundImage:
-            "linear-gradient(black, black), linear-gradient(180deg, #8133F1, #090909)",
-          borderImageSlice: "1",
-          backgroundOrigin: "border-box",
-          backgroundClip: "padding-box, border-box",
-        }}
-      >
-        <h1 className="text-[#8133F1] text-xl xs:text-2xl font-bold mb-2 text-start">
-          The Challenges
-        </h1>
-        <hr className="border-[#8133F1] mb-4 md:mb-6" />
-
-        {challenges.map((challenge) => (
-          <div key={challenge.id} className="mb-6 md:mb-8 lg:mb-12">
-            <p className="mb-3 md:mb-4 text-start text-xs xs:text-sm md:text-base">
-              {challenge.description}
-              <br />
-              <span className="text-2xs xs:text-xs md:text-sm text-[#a37ff0] mt-1 xs:mt-2 block">
-                {challenge.tagline}
-              </span>
-            </p>
-            <div className="flex justify-start items-center">
-              <button
-                onClick={() => handleViewSolution(challenge.id)}
-                className="max-w-[120px] xs:max-w-[150px] w-full bg-[#8133F1] text-white px-4 xs:px-6 py-1 xs:py-2 rounded-full hover:bg-[#6325c5] transition text-xs xs:text-sm md:text-base"
-              >
-                View Solution
-              </button>
-              <div className="ml-2 hidden sm:block">
-                <Image
-                  src="/images/Arrow 1.png"
-                  alt="arrow"
-                  width={856}
-                  height={25}
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Solution Section */}
-      <div
-        ref={solutionRef}
-        className={`text-white flex flex-col items-center transition-all duration-300 overflow-hidden
-        ${
-          selectedSolution
-            ? "opacity-100 visible max-h-[5000px]"
-            : "opacity-0 invisible max-h-0 lg:opacity-100 lg:visible lg:max-h-[5000px]"
-        }
-        lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[730px] lg:border-l-2 lg:border-[#8133F1]`}
-        style={{
-          background: "linear-gradient(180deg, #8133F1 0%, #090909 100%)",
-          zIndex: "15",
-          borderRadius: "0 0 24px 24px",
-          borderTopLeftRadius: "0",
-          borderTopRightRadius: "0",
-        }}
-      >
-        <div className="w-full h-full p-4 xs:p-6 md:p-10">
-          <div className="flex justify-between items-center mb-2 w-full">
-            <h1 className="text-xl xs:text-2xl font-bold">Our Solution</h1>
-            <button
-              onClick={handleBackToChallenges}
-              className="lg:hidden animate-bounce"
-              aria-label="Back to challenges"
-            >
-              <div
-                className="w-10 h-10 flex items-center justify-center rounded-full shadow-md"
-                style={{
-                  backgroundColor: "#5b28a3",
-                  boxShadow: "0 0 12px rgba(91, 40, 163, 0.5)",
-                }}
-              >
-                <Image
-                  src="/images/up-chevron.png"
-                  alt="Back arrow"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 object-contain"
-                />
-              </div>
-            </button>
-
-            <button
-              onClick={() => setSelectedSolution(null)}
-              className="text-white hover:text-gray-200 transition-colors hidden lg:block"
-              aria-label="Close solution"
-            >
-              <CloseIcon />
-            </button>
-          </div>
-          <hr className="border-white mb-4 md:mb-6 w-full" />
-
-          {/* Video Section */}
-          <div
-            className="rounded-[16px] overflow-hidden sm:max-w-[634px] w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[668px] mx-auto"
-            style={{ maxWidth: "634px" }}
-          >
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              key={
-                selectedSolution
-                  ? challenges.find((c) => c.id === selectedSolution)?.videoSrc
-                  : challenges[0]?.videoSrc
-              }
-            >
-              <source
-                src={
-                  selectedSolution
-                    ? challenges.find((c) => c.id === selectedSolution)
-                        ?.videoSrc
-                    : challenges[0]?.videoSrc
-                }
-                type="video/mp4"
-              />
-            </video>
-          </div>
-
-          {/* Solution Paragraph */}
-          <p className="text-white text-start px-2 xs:px-4 mt-6 xs:mt-8 md:mt-10 text-xs xs:text-sm md:text-base">
-            {selectedSolution
-              ? challenges.find((c) => c.id === selectedSolution)?.solution
-              : challenges[0]?.solution}
+    <section className="px-4 pt-12 pb-10 xs:px-6 sm:px-8 md:pt-20 md:pb-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+            See BYOW in Action
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl md:text-[40px]">
+            Smart, scalable builds our clients rely on
+          </h2>
+          <p className="mt-4 text-sm text-white/70 sm:text-base">
+            Tap through the stories to see how we transform friction-heavy experiences into launch-ready products.
           </p>
         </div>
-      </div>
-    </div>
-    </>
 
+        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+          <div className="space-y-4">
+            {challenges.map((challenge) => {
+              const isActive = activeChallenge.id === challenge.id;
+              return (
+                <button
+                  key={challenge.id}
+                  onClick={() => setActiveChallenge(challenge)}
+                  className={`group w-full rounded-[28px] border px-5 py-6 text-left transition-all duration-300 ${
+                    isActive
+                      ? "border-white/40 bg-gradient-to-r from-[#1B0B2B] to-[#090909] shadow-[0_15px_80px_rgba(9,0,20,0.45)]"
+                      : "border-white/5 bg-[#05010F]/60 hover:border-white/20"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+                      {challenge.title}
+                    </p>
+                    <span
+                      className={`ml-3 h-2 w-2 rounded-full transition ${
+                        isActive ? "bg-[#CEB0FA]" : "bg-white/20"
+                      }`}
+                    />
+                  </div>
+                  <p className="mt-3 text-sm text-white/80 sm:text-base">
+                    {challenge.description}
+                  </p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-white/60 sm:text-sm">
+                    {challenge.tagline}
+                  </p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    View solution
+                    <Image
+                      src="/images/Arrow 1.png"
+                      alt="arrow"
+                      width={90}
+                      height={16}
+                      className="w-20 opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#8133F1]/20 via-[#090909] to-[#05010F] p-6 sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+                  Our solution
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">
+                  {activeChallenge.title}
+                </p>
+              </div>
+              <div className="rounded-full bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white/70">
+                Case {String(activeChallenge.id).padStart(2, "0")}
+              </div>
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-3xl border border-white/10">
+              <video
+                key={activeChallenge.id}
+                className="h-[220px] w-full object-cover xs:h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src={activeChallenge.videoSrc} type="video/mp4" />
+              </video>
+            </div>
+
+            <p className="mt-6 text-sm text-white/80 sm:text-base">
+              {activeChallenge.solution}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
