@@ -31,20 +31,32 @@ const galleryImages = [
 const videoSrc = "/videos/aboutvedio.mp4";
 
 const introCopy = [
-  "At BYOW, we believe that the digital world is more than just a space—it's a canvas for creativity, connection, and growth. Our journey began with a simple yet powerful idea: to help entrepreneurs, businesses, and individuals bring their visions to life online. With a passion for design and technology, we set out to make website building an effortless and enjoyable experience for everyone.",
-  "Your website is often the first impression you make on the world. It's where your story unfolds, your products find their audience, and your brand connects with the people who matter most. That's why we focus on creating seamless, visually stunning, and functional websites tailored to your needs.",
-  "What sets BYOW apart is our commitment to collaboration and innovation. We don't just build websites—we build partnerships. Our process begins with listening, understanding your goals, and transforming your vision into a powerful digital presence.",
+  "BYOW was formed to bring together design intuition and reliable engineering so entrepreneurs, teams, and creators can launch without the usual friction.",
+  "Every product, service, or community deserves a digital home that feels crafted. We shape immersive, responsive canvases that let your story lead.",
+  "Partnership is our core process. We listen first, co-create each milestone, and translate shared goals into thoughtful, high-performing experiences.",
 ];
 
 const extendedCopy = [
-  "But our work doesn't stop at launch. We believe that a great website is a living, evolving entity that grows with your business. That's why we offer ongoing support, updates, and maintenance to keep your site fresh, secure, and ahead of the curve. We stay up to date with the latest industry trends to ensure your website remains competitive and engaging.",
-  "BYOW was founded with a mission to empower individuals and businesses to thrive in the digital age. We recognized that many entrepreneurs and creatives had incredible ideas but lacked the tools and expertise to bring them to life online. Our goal is to bridge that gap and make digital success accessible to all.",
-  "Over the years, we've had the privilege of working with a diverse range of clients—from small startups and solo entrepreneurs to established businesses and educational institutions. Each project is a unique journey, and we take pride in crafting tailored solutions that align with our clients' goals.",
+  {
+    title: "Continuous partnership",
+    description:
+      "Launch day is step one. We keep iterating with proactive updates, maintenance, and optimization so your site evolves with the business.",
+  },
+  {
+    title: "Mission-driven",
+    description:
+      "BYOW exists to remove the barriers many founders face when taking ideas online. We make modern digital craftsmanship accessible to anyone ready to grow.",
+  },
+  {
+    title: "Broad perspective",
+    description:
+      "From solo creators to enterprise teams, we have built for a wide mix of industries. That diversity keeps our solutions adaptable and relevant.",
+  },
 ];
 
 const closingCopy = [
-  "What sets BYOW apart is our commitment to collaboration and innovation. We don't just build websites—we build partnerships. We work closely with our clients to ensure that their ideas are fully realized and translated into a dynamic online presence.",
-  "We combine modern design trends with cutting-edge technology to ensure your site is not only beautiful but also fast, responsive, and optimized for success. Whether you're launching a new venture or revamping an existing brand, BYOW is here to make your digital vision a reality.",
+  "Clients stay with BYOW because we act as an embedded extension of their team. You get transparent guidance, fast feedback loops, and design decisions grounded in real outcomes.",
+  "We obsess over speed, accessibility, and polish, ensuring each interaction remains consistent across devices and touchpoints. When you are ready to scale, the foundation already supports it.",
 ];
 
 export default function MiddleContainerAbout() {
@@ -67,9 +79,9 @@ export default function MiddleContainerAbout() {
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {introCopy.slice(1).map((paragraph, index) => (
+            {introCopy.slice(1).map((paragraph) => (
               <div
-                key={index}
+                key={paragraph}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm leading-relaxed text-white/80 shadow-[0_20px_50px_rgba(8,0,20,0.45)] sm:text-base"
               >
                 {paragraph}
@@ -102,12 +114,15 @@ export default function MiddleContainerAbout() {
       {/* Second Section - Extended Content */}
       <div className="rounded-[32px] border border-white/10 bg-[#04000C]/80 p-6 shadow-[0_25px_80px_rgba(5,0,11,0.8)] sm:p-8">
         <div className="grid gap-5 md:grid-cols-3">
-          {extendedCopy.map((paragraph, index) => (
+          {extendedCopy.map((item) => (
             <div
-              key={index}
+              key={item.title}
               className="rounded-2xl border border-white/5 bg-white/5 p-4 text-sm leading-relaxed text-white/80 sm:p-5 sm:text-base"
             >
-              {paragraph}
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+                {item.title}
+              </p>
+              <p className="mt-3">{item.description}</p>
             </div>
           ))}
         </div>
