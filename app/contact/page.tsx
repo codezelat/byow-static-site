@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import YourSuccessSection from "../components/sections/common/YourSuccessSection";
-import { contactInfo } from "../data/footerdata";
+import YourSuccessSection from "@/app/components/sections/common/YourSuccessSection";
+import { contactInfo } from "@/app/data/footerdata";
 
 export const metadata: Metadata = {
   title: "Contact BYOW | Website Design & Development Sri Lanka",

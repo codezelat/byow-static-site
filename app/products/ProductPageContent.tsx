@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import products from "../data/product";
-import ProjectDetails from "../components/sections/products/ProjectDetails";
-import ProjectGrid from "../components/sections/products/ProjectGrid";
+import products from "@/app/data/product";
+import ProjectDetails from "@/app/components/sections/products/ProjectDetails";
+import ProjectGrid from "@/app/components/sections/products/ProjectGrid";
 
 export default function ProductPageContent() {
   const [selectedProject, setSelectedProject] = useState<string>("athwela");

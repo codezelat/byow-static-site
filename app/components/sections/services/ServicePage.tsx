@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "flowbite";
 import { motion } from "framer-motion";
-import { Service, serviceCategories } from "../../../data/servicedata";
+import { Service, serviceCategories } from "@/app/data/servicedata";
 import { useRouter } from "next/navigation";
 
 // Card Component

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import MiddleContainerAbout from "../components/sections/about/MiddleContainerAbout";
-import YourSuccessSection from "../components/sections/common/YourSuccessSection";
+import MiddleContainerAbout from "@/app/components/sections/about/MiddleContainerAbout";
+import YourSuccessSection from "@/app/components/sections/common/YourSuccessSection";
 
 export const metadata: Metadata = {
   title: "About BYOW | Sri Lanka’s Custom Website Studio",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ServicePage from "../components/sections/services/ServicePage";
+import ServicePage from "@/app/components/sections/services/ServicePage";
 
 export const metadata: Metadata = {
   title: "Services | Website Strategy, Design & Development",
