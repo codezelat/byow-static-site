@@ -7,7 +7,6 @@ import {
   LinkedIn,
   X,
   WhatsApp,
-  YouTube,
   Instagram,
 } from "@mui/icons-material";
 import Image from "next/image";
@@ -242,7 +241,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   </div>
                   <div className="flex gap-3 xs:gap-4 text-white bg-[#18171A] items-center w-full xs:w-auto h-[40px] xs:h-[44px] sm:h-[50px] rounded-full px-3 xs:px-4 py-2 justify-center">
                     <a
-                      href="https://www.facebook.com/byow"
+                      href="https://www.facebook.com/byow.lk"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
@@ -250,7 +249,15 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       <Facebook className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
-                      href="https://www.linkedin.com/company/byow"
+                      href="https://www.instagram.com/byow.lk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
+                    >
+                      <Instagram className="w-4 h-4 xs:w-5 xs:h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/showcase/byowlk/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
@@ -258,20 +265,12 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       <LinkedIn className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
-                      href="https://www.x.com/byow"
+                      href="https://x.com/byowlk"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <X className="w-4 h-4 xs:w-5 xs:h-5" />
-                    </a>
-                    <a
-                      href="https://www.youtube.com/byow"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
-                    >
-                      <YouTube className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                     <a
                       href="https://wa.me/94727333577"
@@ -280,14 +279,6 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
                     >
                       <WhatsApp className="w-4 h-4 xs:w-5 xs:h-5" />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/byow"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#8133F1] hover:scale-110 transition-all duration-300"
-                    >
-                      <Instagram className="w-4 h-4 xs:w-5 xs:h-5" />
                     </a>
                   </div>
                 </div>

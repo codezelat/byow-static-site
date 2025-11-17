@@ -1,12 +1,17 @@
-import { Facebook, LinkedIn, X, WhatsApp, YouTube, Instagram } from "@mui/icons-material";
+import {
+  Facebook,
+  LinkedIn,
+  X,
+  WhatsApp,
+  Instagram,
+} from "@mui/icons-material";
 
 export const socialLinks = [
-  { id: 1, Icon: Facebook, url: "https://facebook.com" },
-  { id: 2, Icon: LinkedIn, url: "https://linkedin.com" },
-  { id: 3, Icon: X, url: "https://twitter.com" },
-  { id: 4, Icon: WhatsApp, url: "https://wa.me/94727333577" },
-  { id: 5, Icon: YouTube, url: "https://youtube.com" },
-  { id: 6, Icon: Instagram, url: "https://instagram.com" },
+  { id: 1, Icon: Facebook, url: "https://www.facebook.com/byow.lk" },
+  { id: 2, Icon: Instagram, url: "https://www.instagram.com/byow.lk" },
+  { id: 3, Icon: LinkedIn, url: "https://www.linkedin.com/showcase/byowlk/" },
+  { id: 4, Icon: X, url: "https://x.com/byowlk" },
+  { id: 5, Icon: WhatsApp, url: "https://wa.me/94727333577" },
 ];
 
 export const mainMenuLinks = [
