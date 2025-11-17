@@ -212,7 +212,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                           className="w-4 h-4 2xs:w-5 2xs:h-5"
                         />
                         <span className="text-xs 2xs:text-sm">
-                          info@byow.com
+                          info@byow.lk
                         </span>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                           className="w-4 h-4 2xs:w-5 2xs:h-5"
                         />
                         <span className="text-xs 2xs:text-sm">
-                          +9411 234 8276
+                          +94727333577
                         </span>
                       </div>
                     </div>
@@ -265,7 +265,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                       <YouTube className="w-4 h-4 2xs:w-5 2xs:h-5" />
                     </a>
                     <a
-                      href="https://wa.me/94112348276"
+                      href="https://wa.me/94727333577"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#8133F1] transition"

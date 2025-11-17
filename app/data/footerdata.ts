@@ -4,7 +4,7 @@ export const socialLinks = [
   { id: 1, Icon: Facebook, url: "https://facebook.com" },
   { id: 2, Icon: LinkedIn, url: "https://linkedin.com" },
   { id: 3, Icon: X, url: "https://twitter.com" },
-  { id: 4, Icon: WhatsApp, url: "https://wa.me/1234567890" },
+  { id: 4, Icon: WhatsApp, url: "https://wa.me/94727333577" },
   { id: 5, Icon: YouTube, url: "https://youtube.com" },
   { id: 6, Icon: Instagram, url: "https://instagram.com" },
 ];
@@ -24,7 +24,7 @@ export const quickLinks = [
 ];
 
 export const contactInfo = [
-  { id: 1, info: "+123 456 7890" },
-  { id: 2, info: "contact@byow.com" },
-  { id: 3, info: "123 Street, City, Country" },
+  { id: 1, info: "+94727333577" },
+  { id: 2, info: "info@byow.lk" },
+  { id: 3, info: "345/35, RIT Alles Mw, Colombo 08" },
 ];
