@@ -10,6 +10,7 @@ import InfiniteHorizontalScroll from "./components/infinite-horizontal";
 import OurChallengesPage from "./components/our-challenges";
 import HeroSection from "./components/home/HeroSection";
 import PainPointsSection from "./components/home/PainPointsSection";
+import BuildSquadSection from "./components/BuildSquadSection";
 
 const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -43,6 +44,9 @@ const Home: NextPage = () => {
           </section>
           <section>
             <OurChallengesPage />
+          </section>
+          <section>
+            <BuildSquadSection />
           </section>
           <section>
             <InfiniteHorizontalScroll />
