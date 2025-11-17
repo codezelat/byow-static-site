@@ -17,7 +17,7 @@ const industries = [
   },
   {
     id: 2,
-    name: "Corporate & Professional Services",
+    name: "Corporate Services",
     description:
       "Executive-ready sites that build trust, clarify services, and convert leads.",
     image: "/images/Professional Services.svg",
@@ -90,9 +90,21 @@ const industries = [
 const IndustryBox: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInitialMount, setIsInitialMount] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
   const activeIndustry = industries[activeIndex];
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const pillContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Auto-slide effect
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % industries.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   useEffect(() => {
     if (isInitialMount) {
@@ -117,36 +129,23 @@ const IndustryBox: NextPage = () => {
     }
   }, [activeIndex, isInitialMount]);
 
+  const handleManualClick = (index: number) => {
+    setActiveIndex(index);
+    setIsPaused(true);
+    // Resume auto-slide after 10 seconds of manual interaction
+    setTimeout(() => setIsPaused(false), 10000);
+  };
+
   return (
     <div className="relative overflow-hidden rounded-[48px] border border-white/10 bg-gradient-to-br from-[#080111] via-[#020007] to-[#000000] p-5 sm:p-8">
       <div className="pointer-events-none absolute -top-16 right-4 h-48 w-48 rounded-full bg-[#8133F1]/30 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 left-[-60px] h-72 w-72 rounded-full bg-[#0a1a40]/50 blur-[140px]" />
 
       <div className="relative z-10 space-y-6">
-        <div className="relative flex min-h-[260px] flex-col overflow-hidden rounded-[40px] border border-white/10 bg-black/40">
-          <Image
-            src={activeIndustry.image}
-            alt={activeIndustry.name}
-            fill
-            sizes="(min-width: 1024px) 70vw, 100vw"
-            className="object-cover opacity-30"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/50 to-transparent" />
-          <div className="pointer-events-none absolute left-8 top-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur">
-            <Image
-              src={activeIndustry.icon}
-              alt={`${activeIndustry.name} icon`}
-              width={36}
-              height={36}
-              className="opacity-90"
-            />
-          </div>
+        <div className="relative flex min-h-[100px] flex-col overflow-hidden rounded-[40px] border border-white/10 bg-black/40">
           <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
-                Spotlight industry
-              </p>
-              <h3 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+              <h3 className="text-3xl font-semibold leading-tight sm:text-4xl">
                 {activeIndustry.name}
               </h3>
               <p className="mt-3 text-sm text-white/80 sm:text-base">
@@ -182,7 +181,7 @@ const IndustryBox: NextPage = () => {
                   ref={(el) => {
                     buttonRefs.current[index] = el;
                   }}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleManualClick(index)}
                   className={`flex min-w-[220px] items-center gap-3 rounded-[24px] border px-4 py-3 text-left transition ${
                     isActive
                       ? "border-[#CEB0FA] bg-gradient-to-r from-[#8133F1]/40 to-transparent shadow-[0_20px_60px_rgba(6,0,35,0.5)]"
