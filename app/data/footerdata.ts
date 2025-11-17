@@ -23,9 +23,7 @@ export const mainMenuLinks = [
 
 export const quickLinks = [
   { id: 1, name: "FAQ", path: "/faq" },
-  { id: 2, name: "Support", path: "/support" },
-  { id: 3, name: "Terms of Service", path: "/terms" },
-  { id: 4, name: "Privacy Policy", path: "/privacy" },
+  { id: 2, name: "Privacy Policy", path: "/privacy" },
 ];
 
 export const contactInfo = [
