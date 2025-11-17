@@ -32,29 +32,31 @@ const Home: NextPage = () => {
 
       {/* Only render components if client-side mounted to avoid hydration issues */}
       {isMounted && (
-        <div className="space-y-16 px-4 pb-16 xs:px-6 sm:px-8 sm:pb-20 md:space-y-24 md:pb-28">
-          <section>
-            <SectionCard />
-          </section>
-          <section id="journey">
-            <StepBar />
-          </section>
-          <section>
-            <IndustriesSection />
-          </section>
-          <section>
-            <OurChallengesPage />
-          </section>
-          <section>
-            <BuildSquadSection />
-          </section>
-          <section>
-            <InfiniteHorizontalScroll />
-          </section>
-          <section>
+        <>
+          <div className="space-y-16 px-4 pb-16 xs:px-6 sm:px-8 sm:pb-20 md:space-y-24 md:pb-28">
+            <section>
+              <SectionCard />
+            </section>
+            <section id="journey">
+              <StepBar />
+            </section>
+            <section>
+              <IndustriesSection />
+            </section>
+            <section>
+              <OurChallengesPage />
+            </section>
+            <section>
+              <BuildSquadSection />
+            </section>
+            <section>
+              <InfiniteHorizontalScroll />
+            </section>
+          </div>
+          <section className="w-full">
             <Yoursuccess />
           </section>
-        </div>
+        </>
       )}
     </main>
   );
