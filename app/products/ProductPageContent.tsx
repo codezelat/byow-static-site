@@ -21,7 +21,8 @@ export default function ProductPageContent() {
           Explore Our Work
         </h1>
         <p className="max-w-[892px] mx-auto font-normal text-xs sm:text-sm md:text-base text-center text-white leading-[140%]">
-          Reinforces BYOW’s mission of helping clients bring their visions to life
+          Reinforces BYOW’s mission of helping clients bring their visions to
+          life
         </p>
       </div>
 

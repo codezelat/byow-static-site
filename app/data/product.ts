@@ -1,6 +1,5 @@
 import { Product } from "@/app/types/product";
 
-
 export const products: Record<string, Product> = {
   athwela: {
     id: "athwela",
