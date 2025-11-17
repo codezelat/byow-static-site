@@ -69,12 +69,13 @@ export default function OurChallengesPage() {
             Smart, scalable builds our clients rely on
           </h2>
           <p className="mt-4 text-sm text-white/70 sm:text-base">
-            Tap through the stories to see how we transform friction-heavy experiences into launch-ready products.
+            Tap through the stories to see how we transform friction-heavy
+            experiences into launch-ready products.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <div className="space-y-4">
+        <div className="mt-12 flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+          <div className="hidden space-y-4 lg:block">
             {challenges.map((challenge) => {
               const isActive = activeChallenge.id === challenge.id;
               return (
@@ -116,6 +117,30 @@ export default function OurChallengesPage() {
                 </button>
               );
             })}
+          </div>
+
+          <div className="lg:hidden">
+            <p className="text-left text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+              Choose a project
+            </p>
+            <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+              {challenges.map((challenge) => {
+                const isActive = activeChallenge.id === challenge.id;
+                return (
+                  <button
+                    key={challenge.id}
+                    onClick={() => setActiveChallenge(challenge)}
+                    className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition ${
+                      isActive
+                        ? "bg-[#8133F1] text-white shadow-[0_12px_40px_rgba(129,51,241,0.35)]"
+                        : "bg-white/5 text-white/70 hover:bg-white/10"
+                    }`}
+                  >
+                    {challenge.title}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#8133F1]/20 via-[#090909] to-[#05010F] p-6 sm:p-8">
