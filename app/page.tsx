@@ -1,7 +1,11 @@
 "use client";
 
 import type { NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useEffect, useState } from "react";
 import SectionCard from "./components/SectionCard";
 import StepBar from "./components/StepsBar";
 import IndustriesSection from "./components/IndustriesSection";
@@ -11,38 +15,9 @@ import OurChallengesPage from "./components/our-challenges";
 
 const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const [activePainPoint, setActivePainPoint] = useState(0);
-  const painPointRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-pain-index"));
-            if (!Number.isNaN(index)) {
-              setActivePainPoint(index);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -20% 0px",
-        threshold: 0.6,
-      }
-    );
-
-    painPointRefs.current.forEach((node) => {
-      if (node) observer.observe(node);
-    });
-
-    return () => observer.disconnect();
   }, []);
 
   const heroStats = [
@@ -215,58 +190,43 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="relative px-0">
-        <div className="sticky top-0 z-0 flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#06000F] to-[#010104] px-4 py-20 xs:px-6 sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
-            Frustrated with the process?
-          </p>
-          <h2 className="mt-4 text-center text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px]">
-            Scroll for a simpler solution.
-          </h2>
-          <p className="mt-4 max-w-2xl text-center text-sm text-white/70 sm:text-base">
-            These are the blockers we hear every day. We designed BYOW to remove them so you
-            can stay in flow while we build.
-          </p>
-        </div>
+      <section className="relative h-screen w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080013] via-[#020006] to-[#000]" />
 
-        <div className="relative snap-y snap-mandatory">
-          {painPoints.map((point, index) => (
-            <article
-              key={point.title}
-              data-pain-index={index}
-              ref={(el) => {
-                painPointRefs.current[index] = el;
-              }}
-              className="flex min-h-screen snap-center items-center justify-center px-4 py-16 xs:px-6 sm:px-8"
-            >
-              <div className="relative w-full max-w-5xl overflow-hidden rounded-[48px] border border-white/10 bg-[#02000A] p-10 sm:p-14 shadow-[0_50px_120px_rgba(5,0,15,0.7)]">
-                <div
-                  className={`pointer-events-none absolute inset-0 rounded-[48px] bg-gradient-to-br ${point.gradient} opacity-20 blur-[140px] transition-opacity duration-500 ${
-                    activePainPoint === index ? "opacity-60" : "opacity-15"
-                  }`}
-                />
-                <div
-                  className={`relative z-10 flex flex-col items-center justify-center text-center sm:items-start sm:text-left ${
-                    activePainPoint === index ? "scale-100 opacity-100" : "scale-95 opacity-60"
-                  } transition-all duration-500`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-                    Pain point {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3
-                    className={`mt-8 bg-clip-text text-4xl font-semibold leading-tight text-transparent sm:text-5xl ${
-                      activePainPoint === index
-                        ? "bg-gradient-to-r from-white via-[#CEB0FA] to-white"
-                        : "bg-gradient-to-r from-white/50 to-white/30"
-                    }`}
-                  >
-                    {point.title}
-                  </h3>
-                </div>
+        <Swiper
+          direction="vertical"
+          modules={[Mousewheel, Pagination]}
+          mousewheel={{ forceToAxis: true, releaseOnEdges: true, thresholdDelta: 15 }}
+          pagination={{ clickable: true }}
+          slidesPerView={1}
+          className="h-full w-full"
+        >
+          <SwiperSlide className="flex h-full flex-col items-center justify-center px-4 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
+              Frustrated with the process?
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px]">
+              Scroll for a simpler solution.
+            </h2>
+            <p className="mt-3 text-sm text-white/70 sm:text-base">
+              These are the blockers we hear every day. We designed BYOW to remove them so you
+              can stay in flow while we build.
+            </p>
+          </SwiperSlide>
+
+          {painPoints.map((point) => (
+            <SwiperSlide key={point.title} className="flex h-full items-center justify-center px-4">
+              <div className="text-center">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
+                  Pain point
+                </p>
+                <h3 className="mt-4 bg-gradient-to-r from-white via-[#CEB0FA] to-white bg-clip-text text-4xl font-semibold leading-tight text-transparent sm:text-5xl md:text-6xl">
+                  {point.title}
+                </h3>
               </div>
-            </article>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </section>
 
       {/* Only render components if client-side mounted to avoid hydration issues */}
