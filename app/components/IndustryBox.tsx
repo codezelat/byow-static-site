@@ -100,8 +100,20 @@ const IndustryBox: NextPage = () => {
       return;
     }
     const activeButton = buttonRefs.current[activeIndex];
-    if (activeButton && pillContainerRef.current) {
-      activeButton.scrollIntoView({ block: "nearest", inline: "center" });
+    const container = pillContainerRef.current;
+
+    if (activeButton && container) {
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = activeButton.getBoundingClientRect();
+      const scrollLeft =
+        activeButton.offsetLeft -
+        container.offsetWidth / 2 +
+        activeButton.offsetWidth / 2;
+
+      container.scrollTo({
+        left: scrollLeft,
+        behavior: "smooth",
+      });
     }
   }, [activeIndex, isInitialMount]);
 
