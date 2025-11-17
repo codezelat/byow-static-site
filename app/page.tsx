@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   const heroStats = [
     { value: "120+", label: "Custom builds launched" },
     { value: "<1.5s", label: "Avg. first load time" },
-    { value: "92/100", label: "Lighthouse performance" },
+    { value: "90+", label: "Lighthouse performance" },
     { value: "24/7", label: "Product team support" },
   ];
 
@@ -75,12 +75,20 @@ const Home: NextPage = () => {
           </div>
 
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <button className="inline-flex items-center justify-center rounded-full bg-[#8133F1] px-8 py-3 text-base font-semibold text-white transition hover:bg-[#6d1fe2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CEB0FA]">
+            <a
+              href="https://cal.com/codezela/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-[#8133F1] px-8 py-3 text-base font-semibold text-white transition hover:bg-[#6d1fe2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CEB0FA]"
+            >
               Book a strategy call
-            </button>
-            <button className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-3 text-base font-semibold text-white/90 backdrop-blur-sm transition hover:border-white/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30">
+            </a>
+            <a
+              href="#journey"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-3 text-base font-semibold text-white/90 backdrop-blur-sm transition hover:border-white/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30"
+            >
               See how BYOW works
-            </button>
+            </a>
           </div>
 
           <div className="mt-12 grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
@@ -215,7 +223,7 @@ const Home: NextPage = () => {
           <section>
             <SectionCard />
           </section>
-          <section>
+          <section id="journey">
             <StepBar />
           </section>
           <section>

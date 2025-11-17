@@ -103,6 +103,10 @@ body {
   background-color: var(--background);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Ensuring Images Scale Responsively */
 img {
   max-width: 100%;
