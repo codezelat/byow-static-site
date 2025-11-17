@@ -8,13 +8,12 @@ interface ProjectCardProps {
   viewportSize: "mobile" | "tablet" | "desktop";
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  product, 
-  isSelected, 
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  product,
+  isSelected,
   onClick,
-  viewportSize 
+  viewportSize,
 }) => {
-
   // Determine inner container styles based on viewport
   const getInnerContainerStyles = () => {
     switch (viewportSize) {
@@ -32,7 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // Determine image styles based on viewport
   const getImageStyles = () => {
     const baseStyles = `object-contain transition-all`;
-    
+
     switch (viewportSize) {
       case "mobile":
         return `${baseStyles} w-full h-auto max-h-56`;
@@ -54,11 +53,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         cursor-pointer transition-all
       `}
     >
-      <Image 
-        src={isSelected  ? product.selectedLogo : product.logo}
+      <Image
+        src={isSelected ? product.selectedLogo : product.logo}
         alt={product.id}
-        width={800} 
-        height={800} 
+        width={800}
+        height={800}
         className={`
           ${getImageStyles()} 
           ${isSelected ? "grayscale-0" : "grayscale"}
