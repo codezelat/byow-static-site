@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
-import BackgroundContent from "./components/BackgroundContent"; 
+import BackgroundContent from "./components/BackgroundContent";
 
 export const metadata: Metadata = {
   title: "BYOW",
@@ -14,6 +15,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-G3VDZC765B"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G3VDZC765B');
+          `}
+        </Script>
+      </head>
       <body className="antialiased relative w-full h-full min-h-screen">
         {/* Video section - top half */}
         <div className="absolute top-0 left-0 w-full h-[1100px] xs:h-[60vh] sm:h-[70vh] md:h-[55vh] lg:h-[1900px] xl:h-[1100px] z-0 overflow-hidden">
@@ -27,10 +43,10 @@ export default function RootLayout({
             <source src="/videos/Background Video.mp4" type="video/mp4" />
           </video>
         </div>
-        
+
         {/* Solid color section - bottom half */}
         <div className="absolute top-[50vh] xs:top-[60vh] sm:top-[70vh] md:top-[80vh] lg:top-[90vh] xl:top-[1074px] left-0 w-full bottom-0 bg-[#040010] z-0"></div>
-        
+
         {/* Content wrapper that sits on top of both backgrounds */}
         <div className="relative z-10 w-full min-h-screen">
           <BackgroundContent>{children}</BackgroundContent>
