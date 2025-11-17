@@ -1,13 +1,13 @@
-import SectionCard from "./components/SectionCard";
-import StepBar from "./components/StepsBar";
-import IndustriesSection from "./components/IndustriesSection";
-import Yoursuccess from "./components/yoursuccess";
-import InfiniteHorizontalScroll from "./components/infinite-horizontal";
-import OurChallengesPage from "./components/our-challenges";
-import HeroSection from "./components/home/HeroSection";
-import PainPointsSection from "./components/home/PainPointsSection";
-import BuildSquadSection from "./components/BuildSquadSection";
 import DisableScrollRestoration from "./components/DisableScrollRestoration";
+import HeroSection from "./components/sections/home/HeroSection";
+import PainPointsSection from "./components/sections/home/PainPointsSection";
+import SectionCard from "./components/sections/home/SectionCard";
+import StepBar from "./components/sections/home/StepsBar";
+import IndustriesSection from "./components/sections/home/IndustriesSection";
+import ChallengesSection from "./components/sections/home/ChallengesSection";
+import BuildSquadSection from "./components/sections/home/BuildSquadSection";
+import InfiniteHorizontalScroll from "./components/sections/home/InfiniteHorizontalScroll";
+import YourSuccessSection from "./components/sections/common/YourSuccessSection";
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
           <IndustriesSection />
         </section>
         <section>
-          <OurChallengesPage />
+          <ChallengesSection />
         </section>
         <section>
           <BuildSquadSection />
@@ -37,7 +37,7 @@ export default function Home() {
         </section>
       </div>
       <section className="w-full">
-        <Yoursuccess />
+        <YourSuccessSection />
       </section>
     </main>
   );

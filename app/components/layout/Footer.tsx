@@ -5,7 +5,7 @@ import {
   mainMenuLinks,
   quickLinks,
   contactInfo,
-} from "../data/footerdata";
+} from "../../data/footerdata";
 
 const Footer = () => {
   return (

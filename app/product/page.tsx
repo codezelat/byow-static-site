@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import products from "../data/product";
-import ProjectDetails from "../components/projectdetails";
-import ProjectGrid from "../components/projectgrid";
+import ProjectDetails from "../components/sections/product/ProjectDetails";
+import ProjectGrid from "../components/sections/product/ProjectGrid";
 
 export default function ProductPage() {
   const [selectedProject, setSelectedProject] = useState<string>("athwela");

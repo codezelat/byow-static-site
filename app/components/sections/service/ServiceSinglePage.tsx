@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Yoursuccess from "../components/yoursuccess";
+import YourSuccessSection from "../common/YourSuccessSection";
 import { serviceData } from "@/app/data/servicesingledata";
 
 const mainImage = {
@@ -19,8 +19,11 @@ export default function ServiceSinglePage({
   serviceId,
 }: ServiceSinglePageProps) {
   const { tools, technologies } = serviceData;
-
-  console.log("Selected service ID:", serviceId);
+  const formattedServiceName = serviceId
+    .replace(/[-_]/g, " ")
+    .split(" ")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
 
   return (
     <div className="py-6 pt-24 text-white">
@@ -49,7 +52,7 @@ export default function ServiceSinglePage({
         {/* Right - Content */}
         <div className="w-full lg:w-2/3 space-y-4 text-start ">
           <h2 className="text-2xl sm:text-3xl font-bold text-purple-400">
-            Custom Website Design
+            {formattedServiceName}
           </h2>
           <div className="space-y-4 text-sm sm:text-base">
             <p>
@@ -140,7 +143,7 @@ export default function ServiceSinglePage({
 
       {/* Success Section */}
       <div className="mt-12">
-        <Yoursuccess />
+        <YourSuccessSection />
       </div>
     </div>
   );

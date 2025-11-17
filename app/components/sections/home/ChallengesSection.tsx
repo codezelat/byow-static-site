@@ -12,7 +12,7 @@ interface Challenge {
   solution: string;
 }
 
-export default function OurChallengesPage() {
+export default function ChallengesSection() {
   const challenges: Challenge[] = [
     {
       id: 1,

@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
-import PopupPage from "../popup/popup-page";
+import PopupPage from "../../../popup/popup-page";
 
-export default function Yoursuccess() {
+export default function YourSuccessSection() {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleGetStartedClick = () => {

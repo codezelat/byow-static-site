@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "flowbite";
 import { motion } from "framer-motion";
-import { Service, serviceCategories } from "../data/servicedata";
-import ServiceSinglePage from "./servicesinglepage";
+import { Service, serviceCategories } from "../../data/servicedata";
+import ServiceSinglePage from "./ServiceSinglePage";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Card Component

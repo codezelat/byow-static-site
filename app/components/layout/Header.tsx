@@ -8,7 +8,7 @@ import Image from "next/image";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import PopupPage from "../popup/popup-page";
+import PopupPage from "../../popup/popup-page";
 
 export default function Header() {
   const pathname = usePathname();

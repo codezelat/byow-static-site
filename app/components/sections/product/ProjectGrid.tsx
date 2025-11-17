@@ -1,5 +1,5 @@
-import { Product } from "../types/product";
-import ProjectCard from "./projectcard";
+import { Product } from "../../types/product";
+import ProjectCard from "./ProjectCard";
 import { useRef, useState, useEffect } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
