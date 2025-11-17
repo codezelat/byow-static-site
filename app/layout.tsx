@@ -31,10 +31,10 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased relative w-full h-full min-h-screen">
-        {/* Video section - top half */}
-        <div className="absolute top-0 left-0 w-full h-[1100px] xs:h-[60vh] sm:h-[70vh] md:h-[55vh] lg:h-[1900px] xl:h-[1100px] z-0 overflow-hidden">
+        {/* Video section - fixed height for hero area */}
+        <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
           <video
-            className="w-full h-[1100px] object-cover"
+            className="w-full h-full object-cover"
             autoPlay
             loop
             muted
@@ -42,10 +42,12 @@ export default function RootLayout({
           >
             <source src="/videos/Background Video.mp4" type="video/mp4" />
           </video>
+          {/* Gradient overlay for smooth transition */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040010]" />
         </div>
 
-        {/* Solid color section - bottom half */}
-        <div className="absolute top-[50vh] xs:top-[60vh] sm:top-[70vh] md:top-[80vh] lg:top-[90vh] xl:top-[1074px] left-0 w-full bottom-0 bg-[#040010] z-0"></div>
+        {/* Solid color section - starts after hero */}
+        <div className="absolute top-[100vh] left-0 w-full min-h-screen bg-[#040010] z-0"></div>
 
         {/* Content wrapper that sits on top of both backgrounds */}
         <div className="relative z-10 w-full min-h-screen">
