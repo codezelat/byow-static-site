@@ -11,7 +11,8 @@ import InfiniteHorizontalScroll from "./components/sections/home/InfiniteHorizon
 import YourSuccessSection from "./components/sections/common/YourSuccessSection";
 
 export const metadata: Metadata = {
-  title: "Website Design & Development Agency in Sri Lanka",
+  title:
+    "Website Design & Development Agency in Sri Lanka | BYOW - Build Your Own Website",
   description:
     "BYOW crafts conversion-focused websites for startups, enterprises, and ambitious founders in Sri Lanka. Strategy, UX/UI, and engineering in one squad.",
   alternates: {
