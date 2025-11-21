@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { IconType } from "react-icons";
 import YourSuccessSection from "../common/YourSuccessSection";
 import {
   serviceDetails,
@@ -41,6 +42,10 @@ export default function ServiceSinglePage({
   const tools = serviceToolsMap[serviceId] || serviceToolsMap.default;
   const technologies =
     serviceTechnologiesMap[serviceId] || serviceTechnologiesMap.default;
+
+  const renderIcon = (Icon: IconType) => (
+    <Icon className="h-10 w-10 text-white sm:h-12 sm:w-12" aria-hidden="true" />
+  );
 
   return (
     <div className="py-6 pt-24 text-white">
@@ -102,14 +107,25 @@ export default function ServiceSinglePage({
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
             {tools.map((tool, index) => (
-              <Image
-                key={index}
-                src={tool.image}
-                alt={tool.name}
-                width={50}
-                height={50}
-                className="w-12 h-12 md:w-16 md:h-16"
-              />
+              <div
+                key={`${tool.name}-${index}`}
+                className="flex flex-col items-center gap-2 text-xs font-semibold text-white/80"
+              >
+                {tool.Icon
+                  ? renderIcon(tool.Icon)
+                  : tool.image && (
+                      <Image
+                        src={tool.image}
+                        alt={tool.name}
+                        width={64}
+                        height={64}
+                        className="h-12 w-12 md:h-16 md:w-16"
+                      />
+                    )}
+                <span className="text-center leading-tight sm:text-sm">
+                  {tool.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -123,14 +139,25 @@ export default function ServiceSinglePage({
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
             {technologies.map((tech, index) => (
-              <Image
-                key={index}
-                src={tech.image}
-                alt={tech.name}
-                width={50}
-                height={50}
-                className="w-12 h-12 md:w-16 md:h-16"
-              />
+              <div
+                key={`${tech.name}-${index}`}
+                className="flex flex-col items-center gap-2 text-xs font-semibold text-white/80"
+              >
+                {tech.Icon
+                  ? renderIcon(tech.Icon)
+                  : tech.image && (
+                      <Image
+                        src={tech.image}
+                        alt={tech.name}
+                        width={64}
+                        height={64}
+                        className="h-12 w-12 md:h-16 md:w-16"
+                      />
+                    )}
+                <span className="text-center leading-tight sm:text-sm">
+                  {tech.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>

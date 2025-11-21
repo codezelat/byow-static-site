@@ -1,8 +1,39 @@
+import type { IconType } from "react-icons";
+import {
+  SiAdobephotoshop,
+  SiAmazonaws,
+  SiCloudflare,
+  SiDocker,
+  SiFigma,
+  SiGoogledrive,
+  SiGoogleanalytics,
+  SiKubernetes,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNotion,
+  SiPaypal,
+  SiPostgresql,
+  SiReact,
+  SiRedux,
+  SiShopify,
+  SiSlack,
+  SiStripe,
+  SiTailwindcss,
+  SiVercel,
+  SiWordpress,
+  SiZapier,
+  SiRabbitmq,
+  SiStrapi,
+} from "react-icons/si";
+
 export interface ServiceDetail {
   title: string;
   heroParagraphs: string[];
   extendedCopy: string[];
 }
+
+type IconEntry = { name: string; image?: string; Icon?: IconType };
 
 const defaultDetail: ServiceDetail = {
   title: "Custom Website Design",
@@ -257,217 +288,221 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 };
 
-const designTools = [
-  { name: "figma", image: "/images/figma-logo.svg" },
-  { name: "photoshop", image: "/images/adobe-photoshop.svg" },
-  { name: "notion", image: "/images/notion-logo.svg" },
-  { name: "google-docs", image: "/images/google-docs.svg" },
+const designTools: IconEntry[] = [
+  { name: "Figma", Icon: SiFigma },
+  { name: "Photoshop", Icon: SiAdobephotoshop },
+  { name: "Notion", Icon: SiNotion },
+  { name: "Slack", Icon: SiSlack },
 ];
 
-const devTools = [
-  { name: "vscode", image: "/images/vs-code.svg" },
-  { name: "notion", image: "/images/notion-logo.svg" },
-  { name: "figma", image: "/images/figma-logo.svg" },
+const devTools: IconEntry[] = [
+  { name: "VS Code", image: "/images/vs-code.svg" },
+  { name: "Notion", Icon: SiNotion },
+  { name: "Figma", Icon: SiFigma },
 ];
 
-const coreStack = [
-  { name: "next", image: "/images/nextjs.svg" },
-  { name: "react", image: "/images/react.svg" },
-  { name: "tailwind", image: "/images/tailwind.svg" },
-  { name: "nodejs", image: "/images/nodejs.svg" },
+const coreStack: IconEntry[] = [
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "React", Icon: SiReact },
+  { name: "Tailwind", Icon: SiTailwindcss },
+  { name: "Node.js", Icon: SiNodedotjs },
 ];
 
-export const serviceToolsMap: Record<string, { name: string; image: string }[]> =
-  {
-    default: designTools,
-    "custom-design": designTools,
-    "ux-ui-design": designTools,
-    "responsive-web-design": designTools,
-    "frontend-development": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "backend-development": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "full-stack-development": devTools,
-    "single-page-applications": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "ecommerce-website-development": [
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "cms-development": [
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "progressive-web-applications": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "website-maintenance": [
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "website-security": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "performance-optimization": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "core-web-vitals": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "web-hosting-setup": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "third-party-integrations": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "microservices-architecture": [
-      { name: "vscode", image: "/images/vs-code.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-    ],
-    "seo-ready-development": [
-      { name: "figma", image: "/images/figma-logo.svg" },
-      { name: "google-docs", image: "/images/google-docs.svg" },
-      { name: "notion", image: "/images/notion-logo.svg" },
-    ],
-    "custom-web-applications": devTools,
-  };
-
-export const serviceTechnologiesMap: Record<
-  string,
-  { name: string; image: string }[]
-> = {
-  default: [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-  ],
-  "custom-design": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-  ],
-  "ux-ui-design": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-  ],
-  "responsive-web-design": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-  ],
+export const serviceToolsMap: Record<string, IconEntry[]> = {
+  default: designTools,
+  "custom-design": designTools,
+  "ux-ui-design": designTools,
+  "responsive-web-design": designTools,
   "frontend-development": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
   ],
   "backend-development": [
-    { name: "nodejs", image: "/images/nodejs.svg" },
-    { name: "mongodb", image: "/images/mongodb.svg" },
-    { name: "cloud-computing", image: "/images/cloud-computing.svg" },
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Notion", Icon: SiNotion },
+    { name: "Google Drive", Icon: SiGoogledrive },
+  ],
+  "full-stack-development": devTools,
+  "single-page-applications": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
+  ],
+  "ecommerce-website-development": [
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
+    { name: "Slack", Icon: SiSlack },
+  ],
+  "cms-development": [
+    { name: "Figma", Icon: SiFigma },
+    { name: "Google Drive", Icon: SiGoogledrive },
+    { name: "Notion", Icon: SiNotion },
+  ],
+  "progressive-web-applications": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
+  ],
+  "website-maintenance": [
+    { name: "Notion", Icon: SiNotion },
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Google Drive", Icon: SiGoogledrive },
+  ],
+  "website-security": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Slack", Icon: SiSlack },
+    { name: "Google Drive", Icon: SiGoogledrive },
+  ],
+  "performance-optimization": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
+  ],
+  "core-web-vitals": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Figma", Icon: SiFigma },
+    { name: "Notion", Icon: SiNotion },
+  ],
+  "web-hosting-setup": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Notion", Icon: SiNotion },
+    { name: "Google Drive", Icon: SiGoogledrive },
+  ],
+  "third-party-integrations": [
+    { name: "Zapier", Icon: SiZapier },
+    { name: "Stripe", Icon: SiStripe },
+    { name: "Slack", Icon: SiSlack },
+  ],
+  "microservices-architecture": [
+    { name: "VS Code", image: "/images/vs-code.svg" },
+    { name: "Notion", Icon: SiNotion },
+    { name: "Slack", Icon: SiSlack },
+  ],
+  "seo-ready-development": [
+    { name: "Google Analytics", Icon: SiGoogleanalytics },
+    { name: "Notion", Icon: SiNotion },
+    { name: "Figma", Icon: SiFigma },
+  ],
+  "custom-web-applications": devTools,
+};
+
+export const serviceTechnologiesMap: Record<string, IconEntry[]> = {
+  default: [
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+  ],
+  "custom-design": [
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+  ],
+  "ux-ui-design": [
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+  ],
+  "responsive-web-design": [
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+  ],
+  "frontend-development": [
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Node.js", Icon: SiNodedotjs },
+    { name: "Redux", Icon: SiRedux },
+  ],
+  "backend-development": [
+    { name: "Node.js", Icon: SiNodedotjs },
+    { name: "PostgreSQL", Icon: SiPostgresql },
+    { name: "MongoDB", Icon: SiMongodb },
+    { name: "Docker", Icon: SiDocker },
   ],
   "full-stack-development": [
     ...coreStack,
-    { name: "mongodb", image: "/images/mongodb.svg" },
+    { name: "MongoDB", Icon: SiMongodb },
+    { name: "Docker", Icon: SiDocker },
   ],
   "single-page-applications": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-    { name: "pwa", image: "/images/pwas.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Redux", Icon: SiRedux },
   ],
   "ecommerce-website-development": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-    { name: "wordpress", image: "/images/wordpress.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Shopify", Icon: SiShopify },
+    { name: "WordPress", Icon: SiWordpress },
   ],
   "cms-development": [
-    { name: "wordpress", image: "/images/wordpress.svg" },
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
+    { name: "WordPress", Icon: SiWordpress },
+    { name: "Strapi", Icon: SiStrapi },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Node.js", Icon: SiNodedotjs },
   ],
   "progressive-web-applications": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
-    { name: "pwa", image: "/images/pwas.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Node.js", Icon: SiNodedotjs },
   ],
   "website-maintenance": [
-    { name: "web-repair", image: "/images/web-repair.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "next", image: "/images/nextjs.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "WordPress", Icon: SiWordpress },
+    { name: "Cloudflare", Icon: SiCloudflare },
   ],
   "website-security": [
-    { name: "lock", image: "/images/lock.svg" },
-    { name: "cloud", image: "/images/cloud.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
+    { name: "Cloudflare", Icon: SiCloudflare },
+    { name: "AWS", Icon: SiAmazonaws },
+    { name: "Node.js", Icon: SiNodedotjs },
+    { name: "Docker", Icon: SiDocker },
   ],
   "performance-optimization": [
-    { name: "seo", image: "/images/seo.svg" },
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Cloudflare", Icon: SiCloudflare },
   ],
   "core-web-vitals": [
-    { name: "seo", image: "/images/seo.svg" },
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Google Analytics", Icon: SiGoogleanalytics },
   ],
   "web-hosting-setup": [
-    { name: "cloud", image: "/images/cloud.svg" },
-    { name: "cloud-computing", image: "/images/cloud-computing.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
+    { name: "Vercel", Icon: SiVercel },
+    { name: "AWS", Icon: SiAmazonaws },
+    { name: "Cloudflare", Icon: SiCloudflare },
   ],
   "third-party-integrations": [
-    { name: "share", image: "/images/share.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
-    { name: "mongodb", image: "/images/mongodb.svg" },
+    { name: "Stripe", Icon: SiStripe },
+    { name: "PayPal", Icon: SiPaypal },
+    { name: "Zapier", Icon: SiZapier },
   ],
   "microservices-architecture": [
-    { name: "cloud-computing", image: "/images/cloud-computing.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
-    { name: "mongodb", image: "/images/mongodb.svg" },
+    { name: "Node.js", Icon: SiNodedotjs },
+    { name: "Docker", Icon: SiDocker },
+    { name: "Kubernetes", Icon: SiKubernetes },
+    { name: "RabbitMQ", Icon: SiRabbitmq },
   ],
   "seo-ready-development": [
-    { name: "seo", image: "/images/seo.svg" },
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Tailwind", Icon: SiTailwindcss },
+    { name: "Google Analytics", Icon: SiGoogleanalytics },
   ],
   "custom-web-applications": [
-    { name: "next", image: "/images/nextjs.svg" },
-    { name: "react", image: "/images/react.svg" },
-    { name: "nodejs", image: "/images/nodejs.svg" },
-    { name: "mongodb", image: "/images/mongodb.svg" },
-    { name: "tailwind", image: "/images/tailwind.svg" },
+    { name: "Next.js", Icon: SiNextdotjs },
+    { name: "React", Icon: SiReact },
+    { name: "Node.js", Icon: SiNodedotjs },
+    { name: "MongoDB", Icon: SiMongodb },
+    { name: "Tailwind", Icon: SiTailwindcss },
   ],
 };
