@@ -8,19 +8,14 @@ import "swiper/css";
 export default function InfiniteHorizontalScroll() {
   // Brand logos data array
   const brands = [
-    { id: 1, src: "/images/revlon-logo.svg", alt: "revlon" },
-    { id: 2, src: "/images/tunein-logo.svg", alt: "tunein" },
-    { id: 3, src: "/images/converse-logo.svg", alt: "converse" },
-    { id: 4, src: "/images/obey-logo.svg", alt: "obey" },
-    { id: 5, src: "/images/bose-logo.svg", alt: "bose" },
-    { id: 6, src: "/images/honda-logo.svg", alt: "honda" },
-    { id: 7, src: "/images/ray-ban-logo.svg", alt: "ray-ban" },
-    { id: 8, src: "/images/prada-logo.svg", alt: "prada" },
-    { id: 9, src: "/images/shoei.svg", alt: "shoei" },
-    { id: 10, src: "/images/adidas-logo.svg", alt: "adidas" },
-    { id: 11, src: "/images/porsche-logo.svg", alt: "porsche" },
-    { id: 12, src: "/images/the-north-face-logo.svg", alt: "the-north-face" },
-    { id: 13, src: "/images/ziggo-logo.svg", alt: "ziggo" },
+    { id: 1, src: "/images/eq-logo.png", alt: "eq" },
+    { id: 2, src: "/images/vc-logo.png", alt: "vc" },
+    { id: 3, src: "/images/eb-logo.png", alt: "eb" },
+    { id: 4, src: "/images/luxe-logo.png", alt: "luxe" },
+    { id: 5, src: "/images/bookmepro-logo.png", alt: "bookmepro" },
+    { id: 6, src: "/images/athwala-h.png", alt: "athwala" },
+    { id: 7, src: "/images/skill-logo.png", alt: "skill" },
+    { id: 8, src: "/images/ehakade-logo.png", alt: "ehakade" },
   ];
 
   return (
@@ -55,13 +50,16 @@ export default function InfiniteHorizontalScroll() {
           >
             {brands.map((brand) => (
               <SwiperSlide key={brand.id} className="!w-auto">
-                <div className="flex items-center justify-center px-4">
+                <div className="flex items-center justify-center h-16 sm:h-20 w-32 sm:w-40">
                   <Image
                     src={brand.src}
                     alt={brand.alt}
-                    width={100}
-                    height={100}
-                    className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                    width={160}
+                    height={80}
+                    className="w-full h-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      filter: "brightness(0) invert(1)",
+                    }}
                   />
                 </div>
               </SwiperSlide>
