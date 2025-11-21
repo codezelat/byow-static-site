@@ -10,7 +10,6 @@ export interface Product {
   audience: string[];
   mobileImage: string;
   logo: string;
-  selectedLogo:string;
   ctaText: string;
   appStore: boolean;
   googlePlay: boolean;

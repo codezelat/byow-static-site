@@ -14,33 +14,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick,
   viewportSize,
 }) => {
-  // Determine inner container styles based on viewport
-  const getInnerContainerStyles = () => {
+  const getWrapperStyles = () => {
     switch (viewportSize) {
       case "mobile":
-        return "w-full h-auto flex items-center justify-center rounded-4xl p-3";
+        return "w-full aspect-square";
       case "tablet":
-        return "w-auto h-36 flex items-center justify-center rounded-4xl p-2";
+        return "w-full aspect-square";
       case "desktop":
-        return "w-auto h-56 flex items-center justify-center rounded-4xl p-3 mb-10 mt-10";
+        return "w-full aspect-square";
       default:
-        return "w-auto h-56 flex items-center justify-center rounded-4xl p-3 mb-10 mt-10";
-    }
-  };
-
-  // Determine image styles based on viewport
-  const getImageStyles = () => {
-    const baseStyles = `object-contain transition-all`;
-
-    switch (viewportSize) {
-      case "mobile":
-        return `${baseStyles} w-full h-auto max-h-56`;
-      case "tablet":
-        return `${baseStyles} w-auto h-auto max-h-32 max-w-full`;
-      case "desktop":
-        return `${baseStyles} mb-10 mt-10`;
-      default:
-        return `${baseStyles} mb-10 mt-10`;
+        return "w-full aspect-square";
     }
   };
 
@@ -48,18 +31,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div
       onClick={onClick}
       className={`
-        ${getInnerContainerStyles()}
-        ${isSelected ? "bg-[#111111]" : ""}
-        cursor-pointer transition-all
+        ${getWrapperStyles()}
+        cursor-pointer transition-all rounded-2xl flex items-center justify-center border ${isSelected ? "border-[#8133F1] shadow-[0_12px_40px_rgba(129,51,241,0.35)]" : "border-white/30 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"} bg-white
       `}
     >
       <Image
-        src={isSelected ? product.selectedLogo : product.logo}
+        src={product.logo}
         alt={product.id}
         width={800}
         height={800}
         className={`
-          ${getImageStyles()} 
+          h-full w-full object-contain p-1 transition duration-300 rounded-xl
           ${isSelected ? "grayscale-0" : "grayscale"}
         `}
       />

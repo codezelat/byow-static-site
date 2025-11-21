@@ -52,26 +52,17 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   const getLayoutClass = () => {
     switch (viewportSize) {
       case "mobile":
-        return "flex overflow-x-auto snap-x snap-mandatory scrollbar-hide";
+        return "grid grid-cols-2 gap-3 p-3 items-stretch";
       case "tablet":
-        return "grid grid-cols-2 gap-4 p-4";
+        return "grid grid-cols-2 md:grid-cols-3 gap-4 p-4 items-stretch";
       case "desktop":
-        return "flex justify-center gap-10 p-4";
+        return "grid grid-cols-3 lg:grid-cols-4 gap-5 p-5 items-stretch";
       default:
         return "";
     }
   };
 
-  const getItemClass = () => {
-    switch (viewportSize) {
-      case "mobile":
-        return "snap-center min-w-full flex justify-center";
-      case "tablet":
-        return "flex justify-center";
-      default:
-        return "";
-    }
-  };
+  const getItemClass = () => "";
 
   return (
     <div className="w-full flex flex-col items-center relative">
@@ -96,7 +87,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
       )}
 
       {/* Grid container */}
-      <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full">
+      <div className="p-[2px] rounded-3xl bg-gradient-to-b from-[#8133F1] to-[#090909] w-full mb-8">
         <div
           ref={sliderRef}
           className={`bg-[#111111] rounded-3xl w-full ${getLayoutClass()}`}

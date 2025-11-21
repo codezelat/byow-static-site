@@ -28,7 +28,7 @@ const galleryImages = [
   },
 ];
 
-const videoSrc = "/videos/aboutvedio.mp4";
+const videoSrc = "/videos/aboutvideo.mp4";
 
 const introCopy = [
   "BYOW was formed to bring together design intuition and reliable engineering so entrepreneurs, teams, and creators can launch without the usual friction.",
