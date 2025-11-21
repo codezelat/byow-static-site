@@ -48,21 +48,22 @@ const contactDetails = contactInfo
 export default function ContactPage() {
   return (
     <main className="text-white">
-      <section className="relative overflow-hidden bg-[#080014]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(129,51,241,0.35),_transparent_55%)]" />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 px-3 py-20 text-start xs:px-4 sm:px-6 sm:text-center">
+      <section className="relative overflow-hidden bg-transparent">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(129,51,241,0.35),_transparent_55%)] opacity-80" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,0,18,0.65)_0%,rgba(6,0,18,0.3)_45%,transparent_100%)]" />
+        <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-5 px-3 py-18 text-start xs:px-4 sm:px-6 sm:text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-white/60">
             Contact
           </p>
-          <h1 className="text-4xl font-semibold text-balance sm:text-5xl">
+          <h1 className="text-3xl font-semibold text-balance sm:text-4xl md:text-5xl">
             Let&apos;s turn your next idea into a live experience.
           </h1>
-          <p className="mx-auto max-w-2xl text-base text-white/80">
+          <p className="mx-auto max-w-2xl text-sm text-white/80 sm:text-base">
             Prefer email, calls, or an in-person workshop? All of our channels
             are open. Reach out with project details, partnership requests, or
             anything in between.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
             <Link
               href={
                 contactDetails.find((detail) => detail.label === "Email")
@@ -83,7 +84,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-3 py-16 xs:px-4 sm:px-6">
-        <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
+        <div className="grid gap-5 sm:gap-6 md:gap-8 lg:grid-cols-2">
           {contactDetails.map(({ id, label, helper, info, href, cta }) => (
             <div
               key={id}

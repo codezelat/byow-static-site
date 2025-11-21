@@ -126,7 +126,7 @@ export const products: Record<string, Product> = {
       "Finance teams who crave instant reconciliation and alerts",
     ],
     extraDescription:
-      "Embed Razorpay via drop-in widgets or APIs, then manage every flow—from payouts to payroll—inside a single control center.",
+      "Embed Razorpay via drop-in widgets or APIs, then manage every flow from payouts to payroll inside a single control center.",
     mobileImage: "/images/razorpay.png",
     logo: "/images/razorpay.svg",
     selectedLogo: "/images/razorpaySelected.png",

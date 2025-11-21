@@ -44,7 +44,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     extendedCopy: [
       "We prototype breakpoint behavior early, allowing stakeholders to validate how hero sections, navigation, and key conversions adapt as screens change.",
       "Performance budgets guide how we load fonts, videos, and scripts so mobile visitors never feel penalized.",
-      "Testing spans real hardware—from older Android phones to high-density tablets—to catch layout shifts before your users do.",
+      "Testing spans real hardware from older Android phones to high-density tablets to catch layout shifts before your users do.",
     ],
   },
   "frontend-development": {
@@ -65,7 +65,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     heroParagraphs: [
       "Secure, scalable services power unforgettable experiences. We architect APIs and databases that keep pace with your growth.",
       "Whether the stack is Node, Python, or PHP, we structure codebases for clarity, testing, and easy onboarding.",
-      "We prioritize observability—logs, metrics, and tracing—so issues can be diagnosed before they impact customers.",
+      "We prioritize observability logs, metrics, and tracing, so issues can be diagnosed before they impact customers.",
     ],
     extendedCopy: [
       "Data models are designed to support analytics, personalization, and downstream integrations without constant rework.",
@@ -115,7 +115,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "cms-development": {
     title: "CMS Development",
     heroParagraphs: [
-      "Content teams need freedom, not bottlenecks. We build CMS experiences—headless or traditional—that empower editors.",
+      "Content teams need freedom, not bottlenecks. We build CMS experiences, headless or traditional, that empower editors.",
       "Structured content models and reusable blocks keep marketing, product, and brand aligned.",
       "Custom workflows, permissions, and localization tools fit your organization's reality rather than forcing new habits.",
     ],
@@ -154,7 +154,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "website-security": {
     title: "Website Security Enhancements",
     heroParagraphs: [
-      "We secure the full stack—DNS, hosting, application, and data—so threats are neutralized before they escalate.",
+      "We secure the full stack DNS, hosting, application, and data, so threats are neutralized before they escalate.",
       "Firewalls, WAF rules, and rate limiting keep malicious traffic away from critical systems.",
       "Incident response plans and monitoring ensure that if something happens, recovery is swift and transparent.",
     ],
@@ -225,7 +225,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     extendedCopy: [
       "We implement service discovery, circuit breakers, and message queues where needed.",
-      "Data consistency strategies—event sourcing, CDC, or shared contracts—are planned up front.",
+      "Data consistency strategies, event sourcing, CDC, or shared contracts are planned up front.",
       "Governance frameworks ensure independence never devolves into chaos.",
     ],
   },
@@ -252,7 +252,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     extendedCopy: [
       "Audit logs, access control, and data governance come standard so enterprises can trust the solution.",
       "Roadmap workshops keep stakeholders aligned on priorities and releases.",
-      "We offer flexible engagement models—from full product squads to enablement for your internal dev team.",
+      "We offer flexible engagement models from full product squads to enablement for your internal dev team.",
     ],
   },
 };

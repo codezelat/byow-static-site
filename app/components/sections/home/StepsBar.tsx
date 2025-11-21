@@ -36,7 +36,7 @@ const steps: Step[] = [
     description:
       "With DIY platforms, launch day is only the beginning of performance and SEO headaches.",
     detail:
-      "We optimize, document, and train your team so post-launch feels calm—and the site stays fast and future-proof.",
+      "We optimize, document, and train your team so post-launch feels calm and the site stays fast and future-proof.",
   },
 ];
 
