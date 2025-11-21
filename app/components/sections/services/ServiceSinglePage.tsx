@@ -99,6 +99,36 @@ export default function ServiceSinglePage({
         ))}
       </div>
 
+      {detail.longFormSections && detail.longFormSections.length > 0 && (
+        <div className="mt-12 grid gap-6 rounded-[28px] border border-white/10 bg-white/5 p-6 sm:p-8">
+          {detail.longFormSections.map((section) => (
+            <div
+              key={section.heading}
+              className="rounded-[20px] border border-white/10 bg-black/40 p-5 sm:p-6"
+            >
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
+                {section.heading}
+              </h3>
+              <div className="mt-3 space-y-3 text-sm text-white/80 sm:text-base">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              {section.bullets && section.bullets.length > 0 && (
+                <ul className="mt-4 space-y-2 text-sm text-white/80 sm:text-base">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2">
+                      <span className="mt-1 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-[#CEB0FA]" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Tools */}
       <div className="mt-12 ">
         <h2 className="text-2xl sm:text-3xl font-bold text-purple-400 mb-6 text-start">
