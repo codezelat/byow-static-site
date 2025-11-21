@@ -14,8 +14,8 @@ export default function InfiniteHorizontalScroll() {
     { id: 4, src: "/images/luxe-logo.png", alt: "luxe" },
     { id: 5, src: "/images/bookmepro-logo.png", alt: "bookmepro" },
     { id: 6, src: "/images/athwala-h.png", alt: "athwala" },
-    { id: 7, src: "/images/skill-logo.png", alt: "skill" },
-    { id: 8, src: "/images/ehakade-logo.png", alt: "ehakade" },
+    { id: 7, src: "/images/skill-logo-a.png", alt: "skill" },
+    { id: 8, src: "/images/ehakade-logo-a.png", alt: "ehakade" },
   ];
 
   return (
