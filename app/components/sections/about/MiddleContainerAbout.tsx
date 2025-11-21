@@ -130,9 +130,6 @@ export default function MiddleContainerAbout() {
 
       {/* Third Section - Gallery */}
       <div className="space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-          Inside BYOW
-        </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryImages.map((image) => (
             <div
