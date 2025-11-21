@@ -55,7 +55,7 @@ export default function FAQPage() {
     <main className="text-white">
       <section className="relative overflow-hidden bg-[#080014]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(129,51,241,0.35),_transparent_55%)]" />
-        <div className="container-wrapper relative z-10 space-y-6 py-24 text-start sm:text-center">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-6 px-3 py-20 text-start xs:px-4 sm:px-6 sm:text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-white/60">
             FAQ
           </p>
@@ -68,8 +68,8 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="container-wrapper py-16">
-        <div className="rounded-[40px] border border-white/10 bg-black/60 px-4 py-6 shadow-[0_40px_80px_rgba(0,0,0,0.5)] sm:px-8 md:px-10">
+      <section className="mx-auto max-w-6xl px-3 py-16 xs:px-4 sm:px-6">
+        <div className="rounded-[32px] border border-white/10 bg-black/60 px-4 py-6 shadow-[0_40px_80px_rgba(0,0,0,0.5)] sm:px-8 md:px-10">
           <details className="group border-b border-white/5 last:border-none" open>
             <summary className="flex cursor-pointer items-center justify-between py-4 text-lg font-semibold text-white">
               <span>How do I contact BYOW directly?</span>

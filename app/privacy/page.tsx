@@ -43,13 +43,15 @@ export default function PrivacyPage() {
   return (
     <main className="text-white">
       <section className="bg-[#06001244]">
-        <div className="container-wrapper space-y-6 py-20">
-          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Legal</p>
+        <div className="mx-auto max-w-6xl space-y-6 px-3 py-20 xs:px-4 sm:px-6">
+          <p className="text-xs uppercase tracking-[0.4em] text-white/60">
+            Legal
+          </p>
           <h1 className="text-4xl font-semibold text-balance">Privacy Policy</h1>
         </div>
       </section>
 
-      <section className="container-wrapper space-y-8 py-16">
+      <section className="mx-auto max-w-6xl space-y-8 px-3 py-16 xs:px-4 sm:px-6">
         {sections.map((section) => (
           <article
             key={section.title}

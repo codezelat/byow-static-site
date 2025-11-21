@@ -61,7 +61,7 @@ const closingCopy = [
 
 export default function MiddleContainerAbout() {
   return (
-    <section className="container-wrapper space-y-16 py-12 text-white sm:py-16">
+    <section className="mx-auto max-w-6xl space-y-16 py-12 px-3 text-white xs:px-4 sm:px-6 sm:py-16">
       {/* First Section - Main Image & Intro */}
       <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Right Side - Text Content */}

@@ -15,7 +15,7 @@ export default function ProductPageContent() {
   const currentProduct = products[selectedProject] || null;
 
   return (
-    <div className="relative z-10 container-wrapper px-4 sm:px-6 md:px-8 mx-auto pt-20">
+    <div className="relative z-10 mx-auto max-w-6xl px-3 sm:px-5 md:px-6 pt-16 sm:pt-20">
       <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
         <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-[#8133F1] leading-[120%]">
           Explore Our Work

@@ -50,7 +50,7 @@ export default function ContactPage() {
     <main className="text-white">
       <section className="relative overflow-hidden bg-[#080014]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(129,51,241,0.35),_transparent_55%)]" />
-        <div className="container-wrapper relative z-10 flex flex-col gap-6 py-24 text-start sm:text-center">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 px-3 py-20 text-start xs:px-4 sm:px-6 sm:text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-white/60">
             Contact
           </p>
@@ -82,8 +82,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="container-wrapper py-16">
-        <div className="grid gap-6 lg:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-3 py-16 xs:px-4 sm:px-6">
+        <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
           {contactDetails.map(({ id, label, helper, info, href, cta }) => (
             <div
               key={id}

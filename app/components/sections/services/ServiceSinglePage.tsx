@@ -41,7 +41,7 @@ export default function ServiceSinglePage({
 
   return (
     <div className="py-6 pt-24 text-white">
-      <div className="container-wrapper px-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-6xl px-3 xs:px-4 sm:px-6">
         <div className="mb-8">
           <Link
             href="/services"
@@ -51,7 +51,7 @@ export default function ServiceSinglePage({
           </Link>
         </div>
       {/* First Section - Image & Description */}
-      <div className="flex flex-col  lg:flex-row gap-6 space-y-6 lg:space-y-0">
+      <div className="flex flex-col lg:flex-row gap-6 space-y-6 lg:space-y-0">
         {/* Left - Image */}
         <div className="w-full lg:w-1/3 flex justify-center mb-10">
           <div
@@ -97,7 +97,7 @@ export default function ServiceSinglePage({
           Tools
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
-          <div className="flex flex-wrap gap-6 justify-between">
+          <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
             {serviceTools.map((tool, index) => (
               <Image
                 key={index}
@@ -118,7 +118,7 @@ export default function ServiceSinglePage({
           Technologies
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
-          <div className="flex flex-wrap gap-6 justify-between">
+          <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
             {serviceTechnologies.map((tech, index) => (
               <Image
                 key={index}

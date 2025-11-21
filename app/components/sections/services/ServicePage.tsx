@@ -108,7 +108,7 @@ export default function ServicePage() {
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-0" />
 
       {/* Content container */}
-      <div className="relative container-wrapper z-10 mx-auto px-4 pb-10 md:pb-20 pt-10">
+      <div className="relative z-10 mx-auto max-w-6xl px-3 pb-12 pt-10 xs:px-4 sm:px-6 md:pb-20">
         <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
           <p className="uppercase tracking-[0.35em] text-xs text-white/60 text-start sm:text-center">
             Services
