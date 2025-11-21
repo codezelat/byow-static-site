@@ -5,8 +5,8 @@ import Link from "next/link";
 import YourSuccessSection from "../common/YourSuccessSection";
 import {
   serviceDetails,
-  serviceTechnologies,
-  serviceTools,
+  serviceTechnologiesMap,
+  serviceToolsMap,
 } from "@/app/data/servicesingledata";
 
 const mainImage = {
@@ -38,6 +38,9 @@ export default function ServiceSinglePage({
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
   const pageTitle = detail.title || formattedServiceName;
+  const tools = serviceToolsMap[serviceId] || serviceToolsMap.default;
+  const technologies =
+    serviceTechnologiesMap[serviceId] || serviceTechnologiesMap.default;
 
   return (
     <div className="py-6 pt-24 text-white">
@@ -98,7 +101,7 @@ export default function ServiceSinglePage({
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
-            {serviceTools.map((tool, index) => (
+            {tools.map((tool, index) => (
               <Image
                 key={index}
                 src={tool.image}
@@ -119,7 +122,7 @@ export default function ServiceSinglePage({
         </h2>
         <div className="p-6 md:p-10 border border-gradient rounded-lg">
           <div className="flex flex-wrap gap-6 justify-start sm:justify-between">
-            {serviceTechnologies.map((tech, index) => (
+            {technologies.map((tech, index) => (
               <Image
                 key={index}
                 src={tech.image}
