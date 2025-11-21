@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['"Funnel Sans"', "sans-serif"],
+        sans: ['var(--font-funnel-sans)', "sans-serif"],
       },
       keyframes: {
         float: {

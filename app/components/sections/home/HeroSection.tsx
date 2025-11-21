@@ -23,6 +23,7 @@ const HeroSection: FC = () => (
           fill
           sizes="(max-width: 768px) 80vw, (max-width: 1280px) 60vw, 843px"
           priority
+          fetchPriority="high"
           aria-hidden="true"
           className="object-contain opacity-80 motion-safe:animate-spin-counterclockwise"
         />

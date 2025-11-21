@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import BackgroundContent from "./components/layout/BackgroundContent";
 
 const siteUrl = "https://byow.lk";
+
+const funnelSans = Funnel_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-funnel-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -64,8 +72,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={funnelSans.variable}>
       <head>
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://www.google-analytics.com"
+          crossOrigin="anonymous"
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-G3VDZC765B"
@@ -114,7 +132,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className="antialiased relative w-full h-full min-h-screen"
+        className={`${funnelSans.className} antialiased relative w-full h-full min-h-screen font-sans`}
         suppressHydrationWarning
       >
         {/* Video section - fixed height for hero area */}
