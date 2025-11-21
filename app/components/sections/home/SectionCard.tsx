@@ -51,8 +51,8 @@ const SectionCard: NextPage = () => {
   const activeIssue = issues[activeIndex];
 
   return (
-    <section className="relative w-full px-4 pt-14 pb-14 xs:px-6 sm:px-8">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[56px] border border-white/10 bg-gradient-to-br from-[#19042B] via-[#08010F] to-[#030008] px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16">
+    <section className="relative w-full px-3 pt-12 pb-12 xs:px-4 sm:px-6 md:pt-14 md:pb-14">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-[#19042B] via-[#08010F] to-[#030008] px-4 py-8 sm:rounded-[56px] sm:px-8 sm:py-12 md:px-12 md:py-14">
         <div className="pointer-events-none absolute -top-16 right-6 h-64 w-64 rounded-full bg-[#8133F1]/40 blur-[120px]" />
         <div className="pointer-events-none absolute bottom-0 left-[-50px] h-72 w-72 rounded-full bg-[#03062B]/70 blur-[140px]" />
 
@@ -70,14 +70,14 @@ const SectionCard: NextPage = () => {
         </div>
 
         <div className="relative z-10 mt-12 space-y-10">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
             {issues.map((issue, index) => {
               const isActive = index === activeIndex;
               return (
                 <button
                   key={issue.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`group flex flex-col gap-3 rounded-[32px] border px-5 py-5 text-left transition-all duration-300 ${
+                  className={`group flex min-w-0 flex-col gap-2.5 rounded-[28px] border px-4 py-4 text-left transition-all duration-300 sm:rounded-[32px] sm:px-5 sm:py-5 ${
                     isActive
                       ? "border-[#8133F1] bg-[#1F0533]/70 shadow-[0_30px_120px_rgba(6,0,20,0.65)]"
                       : "border-white/5 bg-white/5 hover:border-white/15"
@@ -94,14 +94,16 @@ const SectionCard: NextPage = () => {
                     />
                   </div>
                   <p
-                    className={`text-lg font-semibold ${
+                    className={`text-base font-semibold sm:text-lg ${
                       isActive ? "text-white" : "text-white/80"
                     }`}
                   >
                     {issue.label}
                   </p>
-                  <p className="text-sm text-white/60">{issue.summary}</p>
-                  <div className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70">
+                  <p className="text-sm text-white/60 sm:text-base">
+                    {issue.summary}
+                  </p>
+                  <div className="mt-auto inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-white/70 sm:text-xs">
                     See solution
                     <Image
                       src="/images/Arrow 1.png"

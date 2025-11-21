@@ -17,7 +17,7 @@ export default function YourSuccessSection() {
   };
 
   return (
-    <div className="bg-[#0E0021] flex flex-col items-center justify-center text-center relative overflow-hidden py-6 w-full">
+    <div className="bg-[#0E0021] flex flex-col items-center justify-center text-center relative overflow-hidden py-10 sm:py-12 w-full px-4">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 flex items-center justify-center">
         <Image
@@ -30,7 +30,7 @@ export default function YourSuccessSection() {
       </div>
 
       {/* Digital Handshake Image */}
-      <div className="relative z-10 w-full max-w-[824px] mx-auto mb-6 px-4">
+      <div className="relative z-10 w-full max-w-[824px] mx-auto mb-6 px-2 sm:px-4">
         <Image
           src="/images/Hand 1.svg"
           alt="Digital handshake"
@@ -43,11 +43,11 @@ export default function YourSuccessSection() {
       </div>
 
       {/* Text Content */}
-      <div className="relative z-10 text-left sm:text-center max-w-[800px] mx-auto px-4 mb-10">
+      <div className="relative z-10 text-center max-w-[800px] mx-auto px-2 sm:px-4 mb-10">
         <h1 className="text-[#8133F1] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
           Your Success is Our Next Story.
         </h1>
-        <p className="text-white text-sm sm:text-base mb-4 sm:mb-8 max-w-[600px] mx-auto">
+        <p className="text-white text-sm sm:text-base mb-4 sm:mb-8 max-w-[620px] mx-auto">
           Whether you&apos;re redefining your brand, expanding your reach, or
           transforming your customer experience, BYOW is here to help you shine.
         </p>
@@ -56,7 +56,7 @@ export default function YourSuccessSection() {
         </p>
 
         {/* Button */}
-        <div className="flex justify-start sm:justify-center">
+        <div className="flex justify-center">
           <button
             onClick={handleGetStartedClick}
             className="bg-[#8133F1] flex items-center justify-center gap-2 px-4 py-2 text-[16px] sm:text-[18px] font-semibold text-white rounded-[36px] transition hover:bg-[#6f23e0] w-auto sm:w-[190px] h-[45px] sm:h-[50px]"

@@ -9,10 +9,10 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#250059] text-white px-4 md:px-20 py-6 text-sm">
-      <div className="flex flex-col items-center">
+    <footer className="bg-[#250059] text-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-3 py-6 sm:px-5 lg:px-8">
         {/* Social Icons */}
-        <div className="flex space-x-4 w-full sm:w-2/3 md:w-1/3 mb-4 justify-center">
+        <div className="mb-4 flex w-full justify-center space-x-4 sm:w-2/3 md:w-1/3">
           {socialLinks.map(({ id, Icon, url }) => (
             <a
               key={id}
@@ -25,17 +25,17 @@ const Footer = () => {
         </div>
 
         {/* Description */}
-        <p className="mt-4 md:mt-0 w-full text-center leading-relaxed max-w-lg px-2 text-base">
+        <p className="mt-4 w-full max-w-xl px-2 text-center text-base leading-relaxed">
           Empowering collaboration and productivity in shared spaces. Work on
           your projects, connect with others.
         </p>
       </div>
 
-      <hr className="my-8 border-t border-indigo-200/30" />
+      <hr className="border-t border-indigo-200/30" />
 
       {/* Middle Section */}
-      <div className="container mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 text-left px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-4 2xl:grid-cols-4 lg:grid-cols-4  xs:grid-cols-2 gap-4 w-full">
+      <div className="mx-auto flex max-w-6xl flex-col space-y-8 px-4 py-8 text-left sm:px-6 lg:px-8">
+        <div className="grid w-full grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {/* Main Menu */}
           <div>
             <h3 className="font-semibold mb-3 text-base">Main Menu</h3>
@@ -101,8 +101,8 @@ const Footer = () => {
           </div>
 
           {/* Logo and Description */}
-          <div className="col-span-2 3xl:col-span-1 2xl:col-span-1 xl:col-span-1 lg:col-span-1 md:col-span-4 sm:col-span-4 xs:col-span-4 ">
-            <div className="w-full flex items-start mb-3">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+            <div className="mb-3 flex w-full items-start justify-center lg:justify-start">
               <Image
                 src="/images/byow-logo.svg"
                 alt="footer logo"
@@ -112,7 +112,7 @@ const Footer = () => {
                 className="w-auto h-auto"
               />
             </div>
-            <p className="text-sm leading-relaxed max-w-sm">
+            <p className="text-sm leading-relaxed max-w-sm text-center lg:text-left">
               Build Your Own Website is where your vision meets stunning,
               custom-designed websites that drive results.
             </p>
@@ -121,9 +121,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <hr className="my-6 border-t border-indigo-200/30" />
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center text-xs sm:text-sm px-4">
-        <p className="w-full">
+      <hr className="border-t border-indigo-200/30" />
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between space-y-3 px-4 py-6 text-center text-xs sm:flex-row sm:space-y-0 sm:text-sm sm:px-6 lg:px-8">
+        <p className="w-full text-center sm:text-left">
           ©2025 BYOW. All rights reserved. A proud product built with love by{" "}
           <a
             href="https://codezela.com"

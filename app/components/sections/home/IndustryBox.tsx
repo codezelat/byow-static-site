@@ -152,16 +152,16 @@ const IndustryBox: NextPage = () => {
 
       <div className="relative z-10 space-y-6">
         <div className="relative flex min-h-[100px] flex-col overflow-hidden rounded-[40px] border border-white/10 bg-black/40">
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-10 lg:flex-row lg:items-end lg:justify-between">
+            <div className="relative z-10 flex h-full flex-col justify-end gap-6 p-6 sm:p-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <h3 className="text-3xl font-semibold leading-tight sm:text-4xl">
+              <h3 className="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
                 {activeIndustry.name}
               </h3>
               <p className="mt-3 text-sm text-white/80 sm:text-base">
                 {activeIndustry.description}
               </p>
             </div>
-            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white/80">
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/30 px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/80 sm:px-5 sm:text-sm">
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/40">
                 {String(activeIndustry.id).padStart(2, "0")}
               </span>
@@ -180,7 +180,7 @@ const IndustryBox: NextPage = () => {
         <div className="space-y-4">
           <div
             ref={pillContainerRef}
-            className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin"
+            className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin"
           >
             {industries.map((industry, index) => {
               const isActive = index === activeIndex;
@@ -191,7 +191,7 @@ const IndustryBox: NextPage = () => {
                     buttonRefs.current[index] = el;
                   }}
                   onClick={() => handleManualClick(index)}
-                  className={`flex min-w-[220px] items-center gap-3 rounded-[24px] border px-4 py-3 text-left transition ${
+                  className={`flex min-w-[180px] items-center gap-3 rounded-[24px] border px-4 py-3 text-left transition ${
                     isActive
                       ? "border-[#CEB0FA] bg-gradient-to-r from-[#8133F1]/40 to-transparent shadow-[0_20px_60px_rgba(6,0,35,0.5)]"
                       : "border-white/10 hover:border-white/40"

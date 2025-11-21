@@ -24,13 +24,13 @@ export default function InfiniteHorizontalScroll() {
   ];
 
   return (
-    <div className="bg-[#040010] text-white py-10 md:py-16">
-      <div className="container-wrapper">
-        <div className="flex flex-col pb-10 gap-[24px]">
-          <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start md:text-center text-[#8133F1] leading-[120%]">
+    <div className="text-white py-10 md:py-16">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-3 xs:px-4 sm:px-6">
+        <div className="flex flex-col pb-6 sm:pb-10 gap-[16px] sm:gap-[24px] text-center">
+          <h1 className="font-bold text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-center text-[#8133F1] leading-[120%]">
             Trusted by Visionaries and Innovators
           </h1>
-          <p className="font-normal text-[16px] text-start md:text-center text-white leading-[140%]">
+          <p className="text-[15px] leading-[140%] text-white/90 sm:text-[16px]">
             We’re proud to partner with forward-thinking businesses,
             entrepreneurs, and creatives who inspire us to push boundaries and
             deliver exceptional results
@@ -38,7 +38,7 @@ export default function InfiniteHorizontalScroll() {
         </div>
 
         {/* Swiper infinite scroll */}
-        <div className="mt-6">
+        <div className="mt-4 sm:mt-6">
           <Swiper
             modules={[Autoplay]}
             spaceBetween={40}

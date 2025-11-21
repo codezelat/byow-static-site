@@ -77,9 +77,9 @@ const StepsBar: NextPage = () => {
   };
 
   return (
-    <section className="px-4 pt-16 pb-12 xs:px-6 sm:px-8 md:pt-24 md:pb-20">
-      <div className="mx-auto max-w-5xl">
-        <div className="text-center">
+    <section className="px-3 pt-16 pb-12 xs:px-4 sm:px-6 md:pt-24 md:pb-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center mx-auto max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
             How BYOW Simplifies Your Journey
           </p>
@@ -98,9 +98,9 @@ const StepsBar: NextPage = () => {
               className="hidden lg:block absolute left-1/2 top-0 w-px -translate-x-1/2 bg-gradient-to-b from-[#8133F1] to-[#CEB0FA] transition-all duration-500"
               style={{ height: `${((activeStep + 1) / steps.length) * 100}%` }}
             />
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-white/10 lg:hidden" />
+            <div className="absolute left-3 top-0 bottom-0 w-px bg-white/10 lg:hidden" />
             <div
-              className="absolute left-4 top-0 w-px bg-gradient-to-b from-[#8133F1] to-[#CEB0FA] transition-all duration-500 lg:hidden"
+              className="absolute left-3 top-0 w-px bg-gradient-to-b from-[#8133F1] to-[#CEB0FA] transition-all duration-500 lg:hidden"
               style={{ height: `${((activeStep + 1) / steps.length) * 100}%` }}
             />
 
@@ -185,7 +185,7 @@ const StepCard = ({ step, index, align, isActive, registerRef }: StepCardProps) 
       data-step-index={index}
       className={`relative col-span-full lg:col-auto ${
         align === "left" ? "lg:justify-self-end lg:pr-6" : "lg:justify-self-start lg:pl-6"
-      } pl-10 lg:pl-0`}
+      } pl-9 sm:pl-10 lg:pl-0`}
     >
       <span
         className={`absolute left-4 top-6 h-3 w-3 -translate-x-1/2 rounded-full border border-[#8133F1] lg:hidden transition ${
@@ -194,7 +194,7 @@ const StepCard = ({ step, index, align, isActive, registerRef }: StepCardProps) 
       />
 
       <div
-        className={`w-full rounded-[28px] border px-5 py-6 sm:px-7 sm:py-8 text-left transition-all duration-300 ${
+        className={`w-full rounded-[24px] border px-4 py-5 sm:rounded-[28px] sm:px-6 sm:py-7 text-left transition-all duration-300 ${
           isActive
             ? "border-[#8133F1] bg-gradient-to-br from-[#1B0B2B] to-[#090909] shadow-[0_20px_80px_rgba(6,0,14,0.55)]"
             : "border-white/10 bg-[#05010F]/90"

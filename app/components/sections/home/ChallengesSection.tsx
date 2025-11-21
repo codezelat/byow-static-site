@@ -61,9 +61,9 @@ export default function ChallengesSection() {
   );
 
   return (
-    <section className="px-4 pt-12 pb-10 xs:px-6 sm:px-8 md:pt-20 md:pb-16">
+    <section className="px-3 pt-12 pb-10 xs:px-4 sm:px-6 md:pt-20 md:pb-16">
       <div className="mx-auto max-w-6xl">
-        <div className="text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#CEB0FA]">
             See BYOW in Action
           </p>
@@ -165,7 +165,7 @@ export default function ChallengesSection() {
             <div className="mt-6 overflow-hidden rounded-3xl border border-white/10">
               <video
                 key={activeChallenge.id}
-                className="h-[220px] w-full object-cover xs:h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px]"
+                className="h-[200px] w-full object-cover xs:h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px]"
                 autoPlay
                 muted
                 loop
