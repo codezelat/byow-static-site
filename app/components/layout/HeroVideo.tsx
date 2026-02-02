@@ -11,10 +11,24 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Intersection Observer to only load video when visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(video);
 
     const handleLoadedData = () => {
       setIsLoaded(true);
@@ -28,18 +42,20 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
       console.error("Video failed to load");
     };
 
-    video.addEventListener("loadeddata", handleLoadedData);
-    video.addEventListener("error", handleError);
+    if (shouldLoad) {
+      video.addEventListener("loadeddata", handleLoadedData);
+      video.addEventListener("error", handleError);
+    }
 
     return () => {
-      // Clean up video to prevent memory leaks
+      observer.disconnect();
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("error", handleError);
       video.pause();
       video.src = "";
       video.load();
     };
-  }, []);
+  }, [shouldLoad]);
 
   return (
     <>
@@ -58,10 +74,10 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         poster={poster}
       >
-        <source src={src} type="video/mp4" />
+        {shouldLoad && <source src={src} type="video/mp4" />}
       </video>
     </>
   );

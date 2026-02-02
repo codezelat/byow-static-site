@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
 
+  // Experimental performance features
+  experimental: {
+    optimizePackageImports: ["swiper"],
+  },
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
