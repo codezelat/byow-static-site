@@ -3,58 +3,23 @@
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    // Next.js 15: This runs only on client after hydration
+    const timer = setTimeout(() => {
+      setIsExiting(true);
+    }, 100);
 
-    // Safety check for document availability
-    if (typeof window === "undefined" || typeof document === "undefined") {
-      return;
-    }
-
-    const handleLoadComplete = () => {
-      setTimeout(() => {
-        setIsExiting(true);
-        setTimeout(() => setIsLoading(false), 400);
-      }, 200);
-    };
-
-    // Check if already loaded
-    if (document.readyState === "complete") {
-      handleLoadComplete();
-      return;
-    }
-
-    // Listen for load events
-    const handleLoad = () => handleLoadComplete();
-
-    window.addEventListener("load", handleLoad);
-    document.addEventListener("DOMContentLoaded", handleLoad);
-
-    // Fallback timeout to ensure loading screen doesn't stay forever
-    const fallbackTimer = setTimeout(() => {
-      handleLoadComplete();
-    }, 5000); // Max 5 seconds
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-      document.removeEventListener("DOMContentLoaded", handleLoad);
-      clearTimeout(fallbackTimer);
-    };
+    return () => clearTimeout(timer);
   }, []);
-
-  // Don't render anything until mounted (prevents hydration issues)
-  if (!isMounted || !isLoading) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-500 pointer-events-none ${
         isExiting ? "opacity-0" : "opacity-100"
       }`}
-      style={{ contain: "layout style paint" }}
+      aria-hidden="true"
     >
       <div className="relative flex flex-col items-center">
         {/* Animated gradient orbs in background */}
