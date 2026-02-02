@@ -5,34 +5,49 @@ import { useEffect, useState } from "react";
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Immediate check - no delays
+    setIsMounted(true);
+
+    // Safety check for document availability
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+
+    const handleLoadComplete = () => {
+      setTimeout(() => {
+        setIsExiting(true);
+        setTimeout(() => setIsLoading(false), 400);
+      }, 200);
+    };
+
+    // Check if already loaded
     if (document.readyState === "complete") {
       handleLoadComplete();
-    } else {
-      // Listen for multiple load events to catch earliest completion
-      const handleLoad = () => handleLoadComplete();
-
-      window.addEventListener("load", handleLoad);
-      document.addEventListener("DOMContentLoaded", handleLoad);
-
-      return () => {
-        window.removeEventListener("load", handleLoad);
-        document.removeEventListener("DOMContentLoaded", handleLoad);
-      };
+      return;
     }
+
+    // Listen for load events
+    const handleLoad = () => handleLoadComplete();
+
+    window.addEventListener("load", handleLoad);
+    document.addEventListener("DOMContentLoaded", handleLoad);
+
+    // Fallback timeout to ensure loading screen doesn't stay forever
+    const fallbackTimer = setTimeout(() => {
+      handleLoadComplete();
+    }, 5000); // Max 5 seconds
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+      document.removeEventListener("DOMContentLoaded", handleLoad);
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
-  const handleLoadComplete = () => {
-    // Minimal delay for smooth UX
-    setTimeout(() => {
-      setIsExiting(true);
-      setTimeout(() => setIsLoading(false), 400); // Reduced from 600ms
-    }, 200); // Reduced from 500ms
-  };
-
-  if (!isLoading) return null;
+  // Don't render anything until mounted (prevents hydration issues)
+  if (!isMounted || !isLoading) return null;
 
   return (
     <div

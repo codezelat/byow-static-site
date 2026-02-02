@@ -76,6 +76,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={funnelSans.variable}>
       <head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Handle chunk loading errors
+              window.addEventListener('error', function(e) {
+                if (e.message && (e.message.includes('Loading chunk') || e.message.includes('ChunkLoadError'))) {
+                  console.warn('Chunk loading error detected, reloading page...');
+                  window.location.reload();
+                }
+              });
+            `,
+          }}
+        />
         <link
           rel="preconnect"
           href="https://www.googletagmanager.com"
