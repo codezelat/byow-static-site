@@ -13,10 +13,10 @@ export default function LoadingScreen() {
     } else {
       // Listen for multiple load events to catch earliest completion
       const handleLoad = () => handleLoadComplete();
-      
+
       window.addEventListener("load", handleLoad);
       document.addEventListener("DOMContentLoaded", handleLoad);
-      
+
       return () => {
         window.removeEventListener("load", handleLoad);
         document.removeEventListener("DOMContentLoaded", handleLoad);
