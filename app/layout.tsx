@@ -13,6 +13,9 @@ const funnelSans = Funnel_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-funnel-sans",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {

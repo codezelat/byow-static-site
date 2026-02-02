@@ -40,6 +40,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         alt={product.id}
         width={800}
         height={800}
+        loading="lazy"
+        quality={85}
         className={`
           h-full w-full object-contain p-1 transition duration-300 rounded-xl
           ${isSelected ? "grayscale-0" : "grayscale"}
