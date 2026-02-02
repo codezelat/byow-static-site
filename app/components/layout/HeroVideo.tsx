@@ -13,22 +13,31 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
   const [hasError, setHasError] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
 
+  // Separate effect for Intersection Observer
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || shouldLoad) return;
 
-    // Intersection Observer to only load video when visible
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setShouldLoad(true);
-          observer.disconnect();
         }
       },
       { threshold: 0.1 },
     );
 
     observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldLoad]);
+
+  // Separate effect for video loading
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !shouldLoad) return;
 
     const handleLoadedData = () => {
       setIsLoaded(true);
@@ -42,18 +51,12 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
       console.error("Video failed to load");
     };
 
-    if (shouldLoad) {
-      video.addEventListener("loadeddata", handleLoadedData);
-      video.addEventListener("error", handleError);
-    }
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("error", handleError);
 
     return () => {
-      observer.disconnect();
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("error", handleError);
-      video.pause();
-      video.src = "";
-      video.load();
     };
   }, [shouldLoad]);
 

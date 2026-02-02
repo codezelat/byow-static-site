@@ -70,35 +70,33 @@ export default function Header() {
 
   return (
     <header className="md:container-wrapper bg-transparent text-white lg:pt-10 md:pt-10 shadow-md relative z-50">
-      <div className="flex justify-between items-center xs:px-4 sm:px-5 lg:px-8 h-[50px] xs:h-[55px] sm:h-[70px] w-full">
+      <div className="flex justify-between items-center px-4 sm:px-5 lg:px-8 h-[70px] sm:h-[80px] lg:h-[90px] w-full">
         {/* Logo */}
-        <Link href="/" className="text-2xl ml-5 font-bold flex-shrink-0">
+        <Link href="/" className="text-2xl font-bold flex-shrink-0">
           <Image
             src="/images/byow-logo.svg"
             alt="header logo"
             width={161}
             height={79}
-            className="xs:w-[80px] w-[90px] h-[80px] md:w-[120px] lg:w-[140px]"
+            className="w-[100px] sm:w-[120px] md:w-[130px] lg:w-[140px] h-auto"
             priority
           />
         </Link>
 
-        {/* Mobile Sidebar Toggle - Shows on 2xs, xs, sm, md */}
+        {/* Mobile Hamburger Menu - Shows on mobile/tablet only */}
         {mounted && (
-          <div className="fixed pt-2 md:right-10 sm:right-3 xs:right-3 2xs:right-3 z-50 lg:hidden">
-            <button
-              id="sidebar-toggle"
-              className="bg-[#8133F1] p-1.5 xs:p-2 rounded-lg shadow-lg hover:bg-[#6a1fc7] transition-colors duration-200"
-              onClick={() => setSidebarVisible(!sidebarVisible)}
-              aria-label={sidebarVisible ? "Close menu" : "Open menu"}
-            >
-              {sidebarVisible ? (
-                <CloseIcon className="w-5 h-5 xs:w-6 xs:h-6 text-white" />
-              ) : (
-                <MenuIcon className="w-5 h-5 xs:w-6 xs:h-6 text-white" />
-              )}
-            </button>
-          </div>
+          <button
+            id="sidebar-toggle"
+            className="lg:hidden relative z-50 bg-[#8133F1] p-2 sm:p-2.5 rounded-lg shadow-lg hover:bg-[#6a1fc7] transition-all duration-200 active:scale-95"
+            onClick={() => setSidebarVisible(!sidebarVisible)}
+            aria-label={sidebarVisible ? "Close menu" : "Open menu"}
+          >
+            {sidebarVisible ? (
+              <CloseIcon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            ) : (
+              <MenuIcon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            )}
+          </button>
         )}
 
         {/* Desktop Navigation - Shows on lg and above */}
@@ -146,55 +144,94 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Sidebar - Shows on 2xs, xs, sm, md */}
+      {/* Mobile Sidebar Menu */}
       {mounted && (
-        <div
-          id="mobile-sidebar"
-          className={`fixed top-0 right-0 w-56 xs:w-64 max-w-[80vw] h-full bg-[#090909] text-white p-4 xs:p-5 transition-transform duration-300 z-40 overflow-y-auto lg:hidden ${
-            sidebarVisible ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="mt-12 xs:mt-14 sm:mt-16">
-            <ul className="flex flex-col gap-5 xs:gap-6">
-              {["/", "/about", "/services", "/products"].map((path, index) => {
-                const isActive = pathname === path;
+        <>
+          {/* Backdrop Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: sidebarVisible ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden ${
+              sidebarVisible ? "pointer-events-auto" : "pointer-events-none"
+            }`}
+            onClick={() => setSidebarVisible(false)}
+          />
 
-                return (
-                  <li key={index}>
-                    <Link
-                      href={path}
-                      className={`relative z-10 text-white px-3 xs:px-4 py-1.5 xs:py-2 text-sm ${
-                        isActive ? "font-bold text-[#8133F1]" : ""
-                      }`}
-                      onClick={() => setSidebarVisible(false)}
-                    >
-                      {path === "/"
-                        ? "HOME"
-                        : path.toUpperCase().replace("/", "")}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+          {/* Sliding Menu Panel */}
+          <motion.div
+            id="mobile-sidebar"
+            initial={{ x: "100%" }}
+            animate={{ x: sidebarVisible ? 0 : "100%" }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="fixed top-0 right-0 w-[280px] sm:w-[320px] h-full bg-gradient-to-b from-[#0a0a0a] to-[#040010] text-white shadow-2xl z-50 overflow-y-auto lg:hidden border-l border-[#8133F1]/20"
+          >
+            <div className="flex flex-col h-full p-6 sm:p-8">
+              {/* Close Button */}
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={() => setSidebarVisible(false)}
+                  className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+                  aria-label="Close menu"
+                >
+                  <CloseIcon className="w-6 h-6 text-white/70 hover:text-white" />
+                </button>
+              </div>
 
-            {/* Mobile Build Now Button */}
-            <button
-              className="mt-5 xs:mt-6 bg-[#8133F1] flex items-center justify-center text-xs xs:text-sm font-semibold text-white w-full h-[36px] xs:h-[40px] sm:h-[45px] rounded-full p-2 xs:p-3 transition gap-1.5 xs:gap-2"
-              onClick={handleOpenPopup}
-            >
-              BUILD NOW
-              <ArrowCircleRightOutlinedIcon className="w-4 h-4 xs:w-5 xs:h-5" />
-            </button>
-          </div>
-        </div>
-      )}
+              {/* Navigation Links */}
+              <nav className="flex-1">
+                <ul className="flex flex-col gap-2">
+                  {[
+                    { path: "/", label: "HOME" },
+                    { path: "/about", label: "ABOUT" },
+                    { path: "/services", label: "SERVICES" },
+                    { path: "/products", label: "PRODUCTS" },
+                  ].map(({ path, label }, index) => {
+                    const isActive = pathname === path;
 
-      {/* Overlay for Mobile Sidebar */}
-      {sidebarVisible && mounted && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-          onClick={() => setSidebarVisible(false)}
-        ></div>
+                    return (
+                      <motion.li
+                        key={path}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <Link
+                          href={path}
+                          className={`block px-4 py-3 rounded-lg text-base sm:text-lg font-medium transition-all ${
+                            isActive
+                              ? "bg-[#8133F1] text-white shadow-lg shadow-[#8133F1]/30"
+                              : "text-white/80 hover:bg-white/5 hover:text-white"
+                          }`}
+                          onClick={() => setSidebarVisible(false)}
+                        >
+                          {label}
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </nav>
+
+              {/* Build Now Button */}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-8 bg-gradient-to-r from-[#8133F1] to-[#6a1fc7] flex items-center justify-center text-sm sm:text-base font-semibold text-white w-full h-[50px] rounded-full shadow-lg shadow-[#8133F1]/30 hover:shadow-[#8133F1]/50 transition-all gap-2 active:scale-95"
+                onClick={handleOpenPopup}
+              >
+                BUILD NOW
+                <ArrowCircleRightOutlinedIcon className="w-5 h-5" />
+              </motion.button>
+
+              {/* Optional: Contact Info */}
+              <div className="mt-6 pt-6 border-t border-white/10 text-center text-sm text-white/50">
+                <p>Need help? Contact us</p>
+              </div>
+            </div>
+          </motion.div>
+        </>
       )}
 
       {/* Popup */}
