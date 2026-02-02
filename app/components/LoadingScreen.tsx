@@ -11,7 +11,7 @@ export default function LoadingScreen() {
     setIsMounted(true);
 
     // Safety check for document availability
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
+    if (typeof window === "undefined" || typeof document === "undefined") {
       return;
     }
 

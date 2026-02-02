@@ -5,10 +5,10 @@ const nextConfig: NextConfig = {
   generateBuildId: async () => {
     return `build-${Date.now()}`;
   },
-  
+
   // Optimize for production
   reactStrictMode: true,
-  
+
   // Better error handling
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
