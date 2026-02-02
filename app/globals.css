@@ -164,15 +164,20 @@ button {
 
 /* Modern Loading Animations - Optimized for performance */
 @keyframes spin-slow {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-reverse {
-  to { transform: rotate(-360deg); }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: translate(-50%, -50%) scale(1);
   }
@@ -183,10 +188,10 @@ button {
 }
 
 @keyframes pulse-slower {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: translate(-50%, -50%) scale(1);
-  }
   }
   50% {
     opacity: 0.4;
