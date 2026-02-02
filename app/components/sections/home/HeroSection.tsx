@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import Image from "next/image";
+import RotatingHeroImage from "./RotatingHeroImage";
 
 const heroStats = [
   { value: "120+", label: "Custom builds launched" },
@@ -16,18 +16,7 @@ const HeroSection: FC = () => (
       <div className="absolute bottom-0 left-4 h-64 w-64 rounded-full bg-[#090909] blur-[100px] opacity-80" />
     </div>
     <div className="pointer-events-none absolute left-1/2 top-10 -z-20 -translate-x-1/2">
-      <div className="relative h-[360px] w-[360px] xs:h-[420px] xs:w-[420px] sm:h-[520px] sm:w-[520px] md:h-[700px] md:w-[700px] lg:h-[843px] lg:w-[843px]">
-        <Image
-          src="/images/Long Dashed Circle.png"
-          alt=""
-          fill
-          sizes="(max-width: 768px) 80vw, (max-width: 1280px) 60vw, 843px"
-          priority
-          fetchPriority="high"
-          aria-hidden="true"
-          className="object-contain opacity-80 motion-safe:animate-spin-counterclockwise"
-        />
-      </div>
+      <RotatingHeroImage />
     </div>
 
     <div className="mx-auto flex max-w-6xl flex-col items-center px-4 xs:px-6 sm:px-8">
