@@ -1,46 +1,6 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-export default function LoadingScreen() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isExiting, setIsExiting] = useState(false);
-
-  useEffect(() => {
-    // Immediate check - no delays
-    if (document.readyState === "complete") {
-      handleLoadComplete();
-    } else {
-      // Listen for multiple load events to catch earliest completion
-      const handleLoad = () => handleLoadComplete();
-      
-      window.addEventListener("load", handleLoad);
-      document.addEventListener("DOMContentLoaded", handleLoad);
-      
-      return () => {
-        window.removeEventListener("load", handleLoad);
-        document.removeEventListener("DOMContentLoaded", handleLoad);
-      };
-    }
-  }, []);
-
-  const handleLoadComplete = () => {
-    // Minimal delay for smooth UX
-    setTimeout(() => {
-      setIsExiting(true);
-      setTimeout(() => setIsLoading(false), 400); // Reduced from 600ms
-    }, 200); // Reduced from 500ms
-  };
-
-  if (!isLoading) return null;
-
+export default function Loading() {
   return (
-    <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-300 ${
-        isExiting ? "opacity-0" : "opacity-100"
-      }`}
-      style={{ contain: "layout style paint" }}
-    >
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010]">
       <div className="relative flex flex-col items-center">
         {/* Animated gradient orbs in background */}
         <div className="pointer-events-none absolute inset-0 -z-10">

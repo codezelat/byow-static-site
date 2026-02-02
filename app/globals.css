@@ -22,9 +22,6 @@
   margin-right: 16px;
 }
 
-
-
-
 /* 2xs - 320px */
 @media (min-width: 320px) {
   .container-wrapper {
@@ -165,23 +162,13 @@ button {
   scrollbar-width: none;
 }
 
-/* Modern Loading Animations */
+/* Modern Loading Animations - Optimized for performance */
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes spin-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+  to { transform: rotate(-360deg); }
 }
 
 @keyframes pulse-slow {
@@ -199,6 +186,7 @@ button {
   0%, 100% {
     opacity: 0.2;
     transform: translate(-50%, -50%) scale(1);
+  }
   }
   50% {
     opacity: 0.4;
@@ -232,7 +220,9 @@ button {
 }
 
 @keyframes bounce-dot {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: translateY(0);
     opacity: 0.7;
   }
@@ -244,41 +234,50 @@ button {
 
 .animate-spin-slow {
   animation: spin-slow 2s linear infinite;
+  will-change: transform;
 }
 
 .animate-spin-reverse {
   animation: spin-reverse 3s linear infinite;
+  will-change: transform;
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .animate-pulse-slower {
   animation: pulse-slower 5s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .animate-ping-slow {
   animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
 }
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 .animate-bounce-1 {
   animation: bounce-dot 1.4s infinite;
   animation-delay: 0s;
+  will-change: transform, opacity;
 }
 
 .animate-bounce-2 {
   animation: bounce-dot 1.4s infinite;
   animation-delay: 0.2s;
+  will-change: transform, opacity;
 }
 
 .animate-bounce-3 {
   animation: bounce-dot 1.4s infinite;
   animation-delay: 0.4s;
+  will-change: transform, opacity;
 }
 
 /* Reduce motion for accessibility */
@@ -293,7 +292,7 @@ button {
   .animate-bounce-3 {
     animation: none;
   }
-  
+
   .animate-fade-in {
     animation: none;
     opacity: 1;

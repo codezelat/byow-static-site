@@ -136,8 +136,9 @@ export default function RootLayout({
       <body
         className={`${funnelSans.className} antialiased relative w-full h-full min-h-screen font-sans`}
         suppressHydrationWarning
-      ><LoadingScreen />
-        
+      >
+        <LoadingScreen />
+
         {/* Video section - fixed height for hero area */}
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-[#040010]">
           <HeroVideo
