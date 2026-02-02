@@ -140,7 +140,7 @@ export default function RootLayout({
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
           <HeroVideo
             src="/videos/background-video.mp4"
-            poster="/images/service_background.png"
+            poster="/images/bg-vid-cover.jpg"
           />
           {/* Gradient overlay for smooth transition */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040010]" />
