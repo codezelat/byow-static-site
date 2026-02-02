@@ -80,13 +80,55 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Handle chunk loading errors
-              window.addEventListener('error', function(e) {
-                if (e.message && (e.message.includes('Loading chunk') || e.message.includes('ChunkLoadError'))) {
-                  console.warn('Chunk loading error detected, reloading page...');
-                  window.location.reload();
-                }
-              });
+              // Aggressive chunk error recovery
+              (function() {
+                let chunkErrorCount = 0;
+                const maxRetries = 3;
+                
+                window.addEventListener('error', function(e) {
+                  const isChunkError = e.message && 
+                    (e.message.includes('Loading chunk') || 
+                     e.message.includes('ChunkLoadError') ||
+                     e.filename && e.filename.includes('/_next/static/chunks/'));
+                  
+                  if (isChunkError) {
+                    e.preventDefault();
+                    chunkErrorCount++;
+                    console.warn('Chunk error detected (attempt ' + chunkErrorCount + '/' + maxRetries + ')');
+                    
+                    if (chunkErrorCount <= maxRetries) {
+                      // Clear caches and force hard reload
+                      if ('caches' in window) {
+                        caches.keys().then(function(names) {
+                          names.forEach(function(name) {
+                            caches.delete(name);
+                          });
+                        });
+                      }
+                      
+                      // Force hard reload with cache bypass
+                      setTimeout(function() {
+                        window.location.href = window.location.href.split('#')[0] + '?t=' + Date.now();
+                      }, 100);
+                    } else {
+                      // Max retries exceeded, show error UI
+                      document.body.innerHTML = '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#040010;font-family:system-ui;color:white;text-align:center;padding:20px"><div><h2 style="font-size:24px;margin-bottom:16px">Unable to Load Page</h2><p style="color:rgba(255,255,255,0.7);margin-bottom:32px">Please clear your browser cache and try again.</p><button onclick="window.location.reload(true)" style="background:#8133F1;color:white;border:none;border-radius:9999px;padding:12px 28px;font-size:14px;font-weight:600;cursor:pointer">Reload Page</button></div></div>';
+                    }
+                    return false;
+                  }
+                }, true);
+                
+                // Also catch unhandled promise rejections from dynamic imports
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && e.reason.message && 
+                      (e.reason.message.includes('Failed to fetch') ||
+                       e.reason.message.includes('Loading chunk'))) {
+                    e.preventDefault();
+                    console.warn('Chunk promise rejection detected');
+                    window.location.href = window.location.href.split('#')[0] + '?t=' + Date.now();
+                  }
+                });
+              })();
             `,
           }}
         />
