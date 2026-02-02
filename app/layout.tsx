@@ -4,6 +4,7 @@ import { Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import BackgroundContent from "./components/layout/BackgroundContent";
 import HeroVideo from "./components/layout/HeroVideo";
+import LoadingScreen from "./components/LoadingScreen";
 
 const siteUrl = "https://byow.lk";
 
@@ -135,9 +136,10 @@ export default function RootLayout({
       <body
         className={`${funnelSans.className} antialiased relative w-full h-full min-h-screen font-sans`}
         suppressHydrationWarning
-      >
+      ><LoadingScreen />
+        
         {/* Video section - fixed height for hero area */}
-        <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
+        <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-[#040010]">
           <HeroVideo
             src="/videos/background-video.mp4"
             poster="/images/bg-vid-cover.jpg"
