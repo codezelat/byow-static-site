@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface Challenge {
@@ -59,6 +59,27 @@ export default function ChallengesSection() {
   const [activeChallenge, setActiveChallenge] = useState<Challenge>(
     challenges[0]
   );
+
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVideoVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (videoContainerRef.current) {
+      observer.observe(videoContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="px-3 pt-12 pb-10 xs:px-4 sm:px-6 md:pt-20 md:pb-16">
@@ -162,17 +183,24 @@ export default function ChallengesSection() {
               </div>
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-3xl border border-white/10">
-              <video
-                key={activeChallenge.id}
-                className="h-[200px] w-full object-cover xs:h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px]"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source src={activeChallenge.videoSrc} type="video/mp4" />
-              </video>
+            <div
+              ref={videoContainerRef}
+              className="mt-6 overflow-hidden rounded-3xl border border-white/10"
+            >
+              {isVideoVisible ? (
+                <video
+                  key={activeChallenge.id}
+                  className="h-[200px] w-full object-cover xs:h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px]"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source src={activeChallenge.videoSrc} type="video/mp4" />
+                </video>
+              ) : (
+                <div className="h-[200px] w-full bg-white/5 xs:h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px]" />
+              )}
             </div>
 
             <p className="mt-6 text-sm text-white/80 sm:text-base">
