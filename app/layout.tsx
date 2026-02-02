@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import BackgroundContent from "./components/layout/BackgroundContent";
+import HeroVideo from "./components/layout/HeroVideo";
 
 const siteUrl = "https://byow.lk";
 
@@ -137,15 +138,10 @@ export default function RootLayout({
       >
         {/* Video section - fixed height for hero area */}
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="/videos/Background Video.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo
+            src="/videos/background-video.mp4"
+            poster="/images/service_background.png"
+          />
           {/* Gradient overlay for smooth transition */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040010]" />
         </div>
