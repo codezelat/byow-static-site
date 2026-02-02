@@ -77,6 +77,7 @@ export default function RootLayout({
     <html lang="en" className={funnelSans.variable}>
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <script src="/clear-sw.js" defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
