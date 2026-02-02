@@ -6,18 +6,32 @@ export default function LoadingScreen() {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Next.js 15: This runs only on client after hydration
-    const timer = setTimeout(() => {
-      setIsExiting(true);
-    }, 100);
+    // Show loading screen for at least 1 second, then wait for page to be fully interactive
+    const minDisplayTime = 1000;
+    const startTime = Date.now();
 
-    return () => clearTimeout(timer);
+    const checkAndExit = () => {
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+
+      setTimeout(() => {
+        setIsExiting(true);
+      }, remainingTime);
+    };
+
+    // Wait for page to be interactive
+    if (document.readyState === "complete") {
+      checkAndExit();
+    } else {
+      window.addEventListener("load", checkAndExit);
+      return () => window.removeEventListener("load", checkAndExit);
+    }
   }, []);
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-500 pointer-events-none ${
-        isExiting ? "opacity-0" : "opacity-100"
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-700 ${
+        isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       aria-hidden="true"
     >
