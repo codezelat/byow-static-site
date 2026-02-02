@@ -4,17 +4,19 @@ import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
   const [isExiting, setIsExiting] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false);
 
   useEffect(() => {
     // Show loading screen for at least 1 second, then wait for page to be fully interactive
     const minDisplayTime = 1000;
     const startTime = Date.now();
+    let exitTimer: NodeJS.Timeout | null = null;
 
     const checkAndExit = () => {
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
 
-      setTimeout(() => {
+      exitTimer = setTimeout(() => {
         setIsExiting(true);
       }, remainingTime);
     };
@@ -24,9 +26,32 @@ export default function LoadingScreen() {
       checkAndExit();
     } else {
       window.addEventListener("load", checkAndExit);
-      return () => window.removeEventListener("load", checkAndExit);
     }
+
+    // Safety timeout - force exit after 5 seconds to prevent black screen
+    const safetyTimeout = setTimeout(() => {
+      console.warn("Loading screen safety timeout triggered");
+      setIsExiting(true);
+    }, 5000);
+
+    return () => {
+      window.removeEventListener("load", checkAndExit);
+      if (exitTimer) clearTimeout(exitTimer);
+      clearTimeout(safetyTimeout);
+    };
   }, []);
+
+  // Remove from DOM after fade-out animation completes
+  useEffect(() => {
+    if (isExiting) {
+      const removeTimer = setTimeout(() => {
+        setIsRemoved(true);
+      }, 700); // Match transition duration
+      return () => clearTimeout(removeTimer);
+    }
+  }, [isExiting]);
+
+  if (isRemoved) return null;
 
   return (
     <div

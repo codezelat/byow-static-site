@@ -32,8 +32,12 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
     video.addEventListener("error", handleError);
 
     return () => {
+      // Clean up video to prevent memory leaks
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("error", handleError);
+      video.pause();
+      video.src = "";
+      video.load();
     };
   }, []);
 
