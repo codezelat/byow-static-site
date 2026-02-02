@@ -192,11 +192,91 @@ export default function RootLayout({
             },
           })}
         </Script>
+
+        {/* Service Worker Registration - Clean up old caches */}
+        <Script id="service-worker-cleanup" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(registration => registration.unregister());
+              });
+            }
+          `}
+        </Script>
       </head>
       <body
         className={`${funnelSans.className} antialiased relative w-full h-full min-h-screen font-sans`}
         suppressHydrationWarning
       >
+        {/* Critical: Catch chunk loading errors before React hydration */}
+        <Script
+          id="chunk-error-recovery"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Detect chunk load failures
+                var chunkFailures = 0;
+                var MAX_RETRIES = 3;
+                
+                // Override error handler
+                window.addEventListener('error', function(e) {
+                  var isChunkError = e.message && (
+                    e.message.includes('Loading chunk') ||
+                    e.message.includes('ChunkLoadError') ||
+                    (e.filename && e.filename.includes('/_next/static/chunks/'))
+                  );
+                  
+                  if (isChunkError) {
+                    e.preventDefault();
+                    chunkFailures++;
+                    
+                    console.warn('Chunk load error detected (#' + chunkFailures + '):', e.message);
+                    
+                    if (chunkFailures <= MAX_RETRIES) {
+                      // Clear all caches
+                      if ('caches' in window) {
+                        caches.keys().then(function(names) {
+                          names.forEach(function(name) { caches.delete(name); });
+                        });
+                      }
+                      
+                      // Clear localStorage flags
+                      try {
+                        localStorage.removeItem('chunk-retry-count');
+                        sessionStorage.clear();
+                      } catch(e) {}
+                      
+                      // Hard reload with cache bust
+                      setTimeout(function() {
+                        window.location.href = window.location.pathname + 
+                          '?v=' + Date.now() + 
+                          (window.location.hash || '');
+                      }, 500);
+                    } else {
+                      // After max retries, show error
+                      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#040010;color:white;text-align:center;padding:2rem;"><div><h1 style="font-size:1.5rem;margin-bottom:1rem;">Unable to Load Page</h1><p style="color:#999;margin-bottom:1.5rem;">Please clear your browser cache and try again.</p><button onclick="location.reload(true)" style="background:#8133F1;color:white;padding:0.75rem 2rem;border:none;border-radius:9999px;cursor:pointer;">Reload Page</button></div></div>';
+                    }
+                  }
+                }, true);
+                
+                // Catch unhandled promise rejections (dynamic imports)
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && (
+                    e.reason.message?.includes('Loading chunk') ||
+                    e.reason.message?.includes('Failed to fetch')
+                  )) {
+                    e.preventDefault();
+                    window.dispatchEvent(new ErrorEvent('error', {
+                      message: e.reason.message,
+                      filename: '_next/static/chunks'
+                    }));
+                  }
+                });
+              })();
+            `,
+          }}
+        />
         <LoadingScreen />
 
         {/* Video section - fixed height for hero area */}
