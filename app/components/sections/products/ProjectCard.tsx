@@ -12,26 +12,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   product,
   isSelected,
   onClick,
-  viewportSize,
+
 }) => {
-  const getWrapperStyles = () => {
-    switch (viewportSize) {
-      case "mobile":
-        return "w-full aspect-square";
-      case "tablet":
-        return "w-full aspect-square";
-      case "desktop":
-        return "w-full aspect-square";
-      default:
-        return "w-full aspect-square";
-    }
-  };
 
   return (
     <div
       onClick={onClick}
       className={`
-        ${getWrapperStyles()}
+        w-full aspect-square
         cursor-pointer transition-all rounded-2xl flex items-center justify-center border ${isSelected ? "border-[#8133F1] shadow-[0_12px_40px_rgba(129,51,241,0.35)]" : "border-white/30 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"} bg-white
       `}
     >
