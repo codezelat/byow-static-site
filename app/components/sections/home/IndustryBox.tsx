@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 const industries = [
   {
@@ -87,6 +87,56 @@ const industries = [
   },
 ];
 
+type Industry = typeof industries[number];
+
+interface IndustryButtonProps {
+  industry: Industry;
+  isActive: boolean;
+  index: number;
+  onClick: (index: number) => void;
+  onRegisterRef: (el: HTMLButtonElement | null, index: number) => void;
+}
+
+const IndustryButton = memo(({ industry, isActive, index, onClick, onRegisterRef }: IndustryButtonProps) => {
+  return (
+    <button
+      key={industry.id}
+      ref={(el) => onRegisterRef(el, index)}
+      onClick={() => onClick(index)}
+      className={`flex min-w-[180px] items-center gap-3 rounded-[24px] border px-4 py-3 text-left transition ${
+        isActive
+          ? "border-[#CEB0FA] bg-gradient-to-r from-[#8133F1]/40 to-transparent shadow-[0_20px_60px_rgba(6,0,35,0.5)]"
+          : "border-white/10 hover:border-white/40"
+      }`}
+    >
+      <div
+        className={`flex h-10 w-10 items-center justify-center rounded-full ${
+          isActive ? "bg-[#8133F1]/40" : "bg-white/10"
+        }`}
+      >
+        <Image
+          src={industry.icon}
+          alt={industry.name}
+          width={24}
+          height={24}
+        />
+      </div>
+      <div>
+        <p
+          className={`text-sm font-semibold ${
+            isActive ? "text-white" : "text-white/70"
+          }`}
+        >
+          {industry.name}
+        </p>
+        <p className="text-xs text-white/50">Tap to explore</p>
+      </div>
+    </button>
+  );
+});
+
+IndustryButton.displayName = "IndustryButton";
+
 const IndustryBox: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInitialMount, setIsInitialMount] = useState(true);
@@ -136,14 +186,18 @@ const IndustryBox: NextPage = () => {
     };
   }, []);
 
-  const handleManualClick = (index: number) => {
+  const handleManualClick = useCallback((index: number) => {
     setActiveIndex(index);
     setIsPaused(true);
     if (resumeTimeoutRef.current) {
       clearTimeout(resumeTimeoutRef.current);
     }
     resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 10000);
-  };
+  }, []);
+
+  const registerRef = useCallback((el: HTMLButtonElement | null, index: number) => {
+    buttonRefs.current[index] = el;
+  }, []);
 
   return (
     <div className="relative overflow-hidden rounded-[48px] border border-white/10 bg-gradient-to-br from-[#080111] via-[#020007] to-[#000000] p-5 sm:p-8">
@@ -185,41 +239,14 @@ const IndustryBox: NextPage = () => {
             {industries.map((industry, index) => {
               const isActive = index === activeIndex;
               return (
-                <button
+                <IndustryButton
                   key={industry.id}
-                  ref={(el) => {
-                    buttonRefs.current[index] = el;
-                  }}
-                  onClick={() => handleManualClick(index)}
-                  className={`flex min-w-[180px] items-center gap-3 rounded-[24px] border px-4 py-3 text-left transition ${
-                    isActive
-                      ? "border-[#CEB0FA] bg-gradient-to-r from-[#8133F1]/40 to-transparent shadow-[0_20px_60px_rgba(6,0,35,0.5)]"
-                      : "border-white/10 hover:border-white/40"
-                  }`}
-                >
-                  <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                      isActive ? "bg-[#8133F1]/40" : "bg-white/10"
-                    }`}
-                  >
-                    <Image
-                      src={industry.icon}
-                      alt={industry.name}
-                      width={24}
-                      height={24}
-                    />
-                  </div>
-                  <div>
-                    <p
-                      className={`text-sm font-semibold ${
-                        isActive ? "text-white" : "text-white/70"
-                      }`}
-                    >
-                      {industry.name}
-                    </p>
-                    <p className="text-xs text-white/50">Tap to explore</p>
-                  </div>
-                </button>
+                  industry={industry}
+                  isActive={isActive}
+                  index={index}
+                  onClick={handleManualClick}
+                  onRegisterRef={registerRef}
+                />
               );
             })}
           </div>
