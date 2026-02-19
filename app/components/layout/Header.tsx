@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,6 +16,9 @@ export default function Header() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [popupVisible, setPopupVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -31,8 +34,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const sidebar = document.getElementById("mobile-sidebar");
-      const toggleButton = document.getElementById("sidebar-toggle");
+      const sidebar = sidebarRef.current;
+      const toggleButton = toggleButtonRef.current;
       if (
         sidebarVisible &&
         sidebar &&
@@ -86,7 +89,7 @@ export default function Header() {
         {/* Mobile Hamburger Menu - Shows on mobile/tablet only */}
         {mounted && (
           <button
-            id="sidebar-toggle"
+            ref={toggleButtonRef}
             className="lg:hidden relative z-50 bg-[#8133F1] p-2 sm:p-2.5 rounded-lg shadow-lg hover:bg-[#6a1fc7] transition-all duration-200 active:scale-95"
             onClick={() => setSidebarVisible(!sidebarVisible)}
             aria-label={sidebarVisible ? "Close menu" : "Open menu"}
@@ -160,7 +163,7 @@ export default function Header() {
 
           {/* Sliding Menu Panel */}
           <motion.div
-            id="mobile-sidebar"
+            ref={sidebarRef}
             initial={{ x: "100%" }}
             animate={{ x: sidebarVisible ? 0 : "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
