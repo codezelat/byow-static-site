@@ -9,7 +9,7 @@ const heroStats = [
 ];
 
 const HeroSection: FC = () => (
-  <section className="relative isolate overflow-hidden pt-20 pb-14 xs:pt-24 xs:pb-16 sm:pt-28 sm:pb-20 md:pt-36 lg:pt-48">
+  <section className="relative isolate overflow-hidden pt-20 pb-14 xs:pt-24 xs:pb-16 sm:pt-28 sm:pb-20 md:pt-32 lg:pt-44">
     <div className="pointer-events-none absolute inset-0 -z-10">
       <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 bg-[#8133F1]/30 blur-[120px]" />
       <div className="absolute right-10 top-16 h-48 w-48 rounded-full bg-[#2D2836]/70 blur-[90px]" />

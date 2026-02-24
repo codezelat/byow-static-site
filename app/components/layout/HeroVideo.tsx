@@ -22,6 +22,7 @@ export default function HeroVideo({
   startDelayMs = 900,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasStartedRef = useRef(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -118,11 +119,8 @@ export default function HeroVideo({
     const shouldAttachSources = shouldLoad && allowPlayback && canStart;
     if (!video || !shouldAttachSources) return;
 
-    const handleLoadedData = () => {
+    const handleReady = () => {
       setIsLoaded(true);
-      video.play().catch((error) => {
-        console.warn("Video autoplay failed:", error);
-      });
     };
 
     const handleError = () => {
@@ -130,15 +128,30 @@ export default function HeroVideo({
       console.error("Video failed to load");
     };
 
+    const tryStartPlayback = () => {
+      if (hasStartedRef.current) return;
+      hasStartedRef.current = true;
+      video.load();
+      video.play().catch((error) => {
+        console.warn("Video autoplay failed:", error);
+        hasStartedRef.current = false;
+      });
+    };
+
     if (video.readyState >= 2) {
-      handleLoadedData();
+      handleReady();
     }
 
-    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("loadeddata", handleReady);
+    video.addEventListener("canplay", handleReady);
+    video.addEventListener("playing", handleReady);
     video.addEventListener("error", handleError);
+    tryStartPlayback();
 
     return () => {
-      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("loadeddata", handleReady);
+      video.removeEventListener("canplay", handleReady);
+      video.removeEventListener("playing", handleReady);
       video.removeEventListener("error", handleError);
     };
   }, [shouldLoad, allowPlayback, canStart]);
@@ -162,7 +175,7 @@ export default function HeroVideo({
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         poster={poster}
         aria-hidden="true"
       >

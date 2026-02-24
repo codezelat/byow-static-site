@@ -98,50 +98,44 @@ export default function ServicePage() {
   };
 
   return (
-    <div
-      className="relative w-full h-fit mt-10 bg-cover bg-center"
-      style={{
-        backgroundImage: 'url("/images/service_background.png")',
-      }}
-    >
-      {/* Overlay with reduced opacity */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-0" />
-
+    <div className="relative mt-10 h-fit w-full bg-transparent">
       {/* Content container */}
-      <div className="relative z-10 mx-auto max-w-6xl px-3 pb-12 pt-10 xs:px-4 sm:px-6 md:pb-20">
-        <div className="flex flex-col pb-6 sm:pb-8 md:pb-16 gap-4 sm:gap-5 md:gap-6">
-          <p className="uppercase tracking-[0.35em] text-xs text-white/60 text-start sm:text-center">
-            Services
-          </p>
-          <h1 className="font-bold text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px] text-start sm:text-start md:text-center text-[#8133F1] leading-[120%] text-balance">
-            Digital Services Tailored for Business Growth
-          </h1>
-          <p className="font-normal text-[16px] lg:px-10 text-start sm:text-start md:text-center text-white/80 leading-[160%] text-balance">
-            At BYOW, we craft websites that go beyond templates, delivering
-            tailored designs, seamless functionality, and a unique online
-            presence that truly represents your brand.
-          </p>
-        </div>
+      <div className="mx-auto max-w-6xl px-3 pb-12 pt-10 xs:px-4 sm:px-6 md:pb-20">
+        <div className="rounded-[34px] border border-white/12 bg-white/[0.045] px-3 py-7 shadow-[0_25px_100px_rgba(2,0,10,0.35)] backdrop-blur-2xl sm:px-5 md:px-8 md:py-10">
+          <div className="flex flex-col gap-4 pb-6 sm:gap-5 sm:pb-8 md:gap-6 md:pb-16">
+            <p className="text-start text-xs uppercase tracking-[0.35em] text-white/60 sm:text-center">
+              Services
+            </p>
+            <h1 className="text-balance text-start font-bold leading-[120%] text-[#8133F1] sm:text-start md:text-center text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[48px]">
+              Digital Services Tailored for Business Growth
+            </h1>
+            <p className="text-balance text-start text-[16px] font-normal leading-[160%] text-white/80 sm:text-start md:text-center lg:px-10">
+              At BYOW, we craft websites that go beyond templates, delivering
+              tailored designs, seamless functionality, and a unique online
+              presence that truly represents your brand.
+            </p>
+          </div>
 
-        <div
-          id="accordion-collapse"
-          data-accordion="collapse"
-          className="space-y-4 "
-        >
-          {serviceCategories.map((category, index) => (
-            <AccordionItem
-              key={category.id}
-              id={(index + 2).toString()}
-              title={category.title}
-            >
-              <ServiceGrid
-                services={category.services}
-                hoveredCard={hoveredCard}
-                setHoveredCard={setHoveredCard}
-                onSelect={handleSelect}
-              />
-            </AccordionItem>
-          ))}
+          <div
+            id="accordion-collapse"
+            data-accordion="collapse"
+            className="space-y-4"
+          >
+            {serviceCategories.map((category, index) => (
+              <AccordionItem
+                key={category.id}
+                id={(index + 2).toString()}
+                title={category.title}
+              >
+                <ServiceGrid
+                  services={category.services}
+                  hoveredCard={hoveredCard}
+                  setHoveredCard={setHoveredCard}
+                  onSelect={handleSelect}
+                />
+              </AccordionItem>
+            ))}
+          </div>
         </div>
       </div>
     </div>
