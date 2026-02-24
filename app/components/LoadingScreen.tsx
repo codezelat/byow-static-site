@@ -55,6 +55,7 @@ export default function LoadingScreen() {
 
   return (
     <div
+      id="app-loading-screen"
       className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#040010] transition-opacity duration-700 ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}

@@ -81,61 +81,6 @@ export default function RootLayout({
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <script src="/clear-sw.js" defer></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Aggressive chunk error recovery
-              (function() {
-                let chunkErrorCount = 0;
-                const maxRetries = 3;
-                
-                window.addEventListener('error', function(e) {
-                  const isChunkError = e.message && 
-                    (e.message.includes('Loading chunk') || 
-                     e.message.includes('ChunkLoadError') ||
-                     e.filename && e.filename.includes('/_next/static/chunks/'));
-                  
-                  if (isChunkError) {
-                    e.preventDefault();
-                    chunkErrorCount++;
-                    console.warn('Chunk error detected (attempt ' + chunkErrorCount + '/' + maxRetries + ')');
-                    
-                    if (chunkErrorCount <= maxRetries) {
-                      // Clear caches and force hard reload
-                      if ('caches' in window) {
-                        caches.keys().then(function(names) {
-                          names.forEach(function(name) {
-                            caches.delete(name);
-                          });
-                        });
-                      }
-                      
-                      // Force hard reload with cache bypass
-                      setTimeout(function() {
-                        window.location.href = window.location.href.split('#')[0] + '?t=' + Date.now();
-                      }, 100);
-                    } else {
-                      // Max retries exceeded, show error UI
-                      document.body.innerHTML = '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#040010;font-family:system-ui;color:white;text-align:center;padding:20px"><div><h2 style="font-size:24px;margin-bottom:16px">Unable to Load Page</h2><p style="color:rgba(255,255,255,0.7);margin-bottom:32px">Please clear your browser cache and try again.</p><button onclick="window.location.reload(true)" style="background:#8133F1;color:white;border:none;border-radius:9999px;padding:12px 28px;font-size:14px;font-weight:600;cursor:pointer">Reload Page</button></div></div>';
-                    }
-                    return false;
-                  }
-                }, true);
-                
-                // Also catch unhandled promise rejections from dynamic imports
-                window.addEventListener('unhandledrejection', function(e) {
-                  if (e.reason && e.reason.message && 
-                      (e.reason.message.includes('Failed to fetch') ||
-                       e.reason.message.includes('Loading chunk'))) {
-                    e.preventDefault();
-                    console.warn('Chunk promise rejection detected');
-                    window.location.href = window.location.href.split('#')[0] + '?t=' + Date.now();
-                  }
-                });
-              })();
-            `,
-          }}
-        />
         <link
           rel="preconnect"
           href="https://www.googletagmanager.com"
@@ -149,9 +94,9 @@ export default function RootLayout({
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-G3VDZC765B"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -192,72 +137,98 @@ export default function RootLayout({
             },
           })}
         </Script>
-
-        {/* Service Worker Registration - Clean up old caches */}
-        <Script id="service-worker-cleanup" strategy="afterInteractive">
-          {`
-            if ('serviceWorker' in navigator) {
-              navigator.serviceWorker.getRegistrations().then(registrations => {
-                registrations.forEach(registration => registration.unregister());
-              });
-            }
-          `}
-        </Script>
       </head>
       <body
         className={`${funnelSans.className} antialiased relative w-full h-full min-h-screen font-sans`}
         suppressHydrationWarning
       >
-        {/* Critical: Catch chunk loading errors before React hydration */}
+        {/* Catch chunk loading errors before React hydration and avoid permanent loader lock */}
         <Script
           id="chunk-error-recovery"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                var chunkFailures = 0;
+                var RETRY_KEY = 'chunk-reload-attempts';
                 var MAX_RETRIES = 2;
-                var hasReloaded = sessionStorage.getItem('chunk-reload');
-                
-                // Only intercept actual chunk loading errors (404s)
+
+                function removeLoadingScreen() {
+                  var loader = document.getElementById('app-loading-screen');
+                  if (!loader) return;
+                  loader.style.opacity = '0';
+                  loader.style.pointerEvents = 'none';
+                  setTimeout(function() {
+                    if (loader.parentNode) loader.parentNode.removeChild(loader);
+                  }, 700);
+                }
+
+                function showChunkErrorUI() {
+                  removeLoadingScreen();
+                  if (document.getElementById('chunk-error-fallback')) return;
+
+                  var fallback = document.createElement('div');
+                  fallback.id = 'chunk-error-fallback';
+                  fallback.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#040010;color:#fff;z-index:10000;padding:20px;font-family:system-ui,-apple-system,sans-serif;text-align:center;';
+                  fallback.innerHTML = '<div><h2 style="font-size:24px;margin:0 0 12px">Unable to Load Latest Version</h2><p style="margin:0 0 24px;color:rgba(255,255,255,0.75)">Please refresh to fetch the newest website assets.</p><button id="chunk-error-refresh" style="background:#8133F1;color:#fff;border:none;border-radius:9999px;padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer">Refresh Page</button></div>';
+                  document.body.appendChild(fallback);
+
+                  var refreshButton = document.getElementById('chunk-error-refresh');
+                  if (refreshButton) {
+                    refreshButton.addEventListener('click', function() {
+                      sessionStorage.removeItem(RETRY_KEY);
+                      window.location.reload();
+                    });
+                  }
+                }
+
+                function retryChunkLoad() {
+                  var retries = Number(sessionStorage.getItem(RETRY_KEY) || '0');
+                  if (retries >= MAX_RETRIES) {
+                    sessionStorage.removeItem(RETRY_KEY);
+                    showChunkErrorUI();
+                    return;
+                  }
+
+                  sessionStorage.setItem(RETRY_KEY, String(retries + 1));
+                  var nextUrl = new URL(window.location.href);
+                  nextUrl.searchParams.set('v', Date.now().toString());
+                  window.location.replace(nextUrl.toString());
+                }
+
                 window.addEventListener('error', function(e) {
-                  // More specific detection - only catch script load failures
-                  var isChunkError = e.target && 
+                  var isChunkScriptError = e.target && 
                     e.target.tagName === 'SCRIPT' && 
                     e.target.src && 
                     e.target.src.includes('/_next/static/chunks/') &&
                     !e.target.src.includes('gtag');
-                  
-                  if (isChunkError && !hasReloaded) {
+
+                  if (isChunkScriptError) {
                     e.preventDefault();
-                    chunkFailures++;
-                    
-                    console.warn('Chunk 404 detected - reloading...');
-                    
-                    // Mark that we're reloading to prevent infinite loops
-                    sessionStorage.setItem('chunk-reload', '1');
-                    
-                    // Clear caches
-                    if ('caches' in window) {
-                      caches.keys().then(function(names) {
-                        names.forEach(function(name) { caches.delete(name); });
-                      });
-                    }
-                    
-                    // Reload with cache bust after short delay
-                    setTimeout(function() {
-                      window.location.href = window.location.pathname + 
-                        '?v=' + Date.now();
-                    }, 300);
+                    retryChunkLoad();
                   }
                 }, true);
-                
-                // Clear reload flag after successful load
-                window.addEventListener('load', function() {
-                  setTimeout(function() {
-                    sessionStorage.removeItem('chunk-reload');
-                  }, 2000);
+
+                window.addEventListener('unhandledrejection', function(e) {
+                  var reason = e.reason && e.reason.message ? e.reason.message : '';
+                  var isChunkRejection = reason.includes('Loading chunk') || reason.includes('ChunkLoadError');
+                  if (isChunkRejection) {
+                    e.preventDefault();
+                    retryChunkLoad();
+                  }
                 });
+
+                window.addEventListener('load', function() {
+                  sessionStorage.removeItem(RETRY_KEY);
+                });
+
+                // Last-resort loader safety when React fails before hydration
+                setTimeout(function() {
+                  removeLoadingScreen();
+                }, 8000);
+
+                if (document.readyState === 'complete') {
+                  sessionStorage.removeItem(RETRY_KEY);
+                }
               })();
             `,
           }}
