@@ -2,21 +2,65 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface HeroVideoProps {
+interface HeroVideoSource {
   src: string;
-  poster?: string;
+  type: string;
+  media?: string;
 }
 
-export default function HeroVideo({ src, poster }: HeroVideoProps) {
+interface HeroVideoProps {
+  src?: string;
+  sources?: HeroVideoSource[];
+  poster?: string;
+  startDelayMs?: number;
+}
+
+export default function HeroVideo({
+  src,
+  sources,
+  poster,
+  startDelayMs = 900,
+}: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [canStart, setCanStart] = useState(false);
+  const [allowPlayback, setAllowPlayback] = useState(true);
 
-  // Separate effect for Intersection Observer
+  const resolvedSources: HeroVideoSource[] =
+    sources && sources.length > 0
+      ? sources
+      : src
+        ? [{ src, type: "video/mp4" }]
+        : [];
+
+  // Respect reduced-motion and save-data preferences.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection;
+
+    const updatePlaybackPreference = () => {
+      const shouldDisablePlayback = motionQuery.matches || !!connection?.saveData;
+      setAllowPlayback(!shouldDisablePlayback);
+    };
+
+    updatePlaybackPreference();
+    motionQuery.addEventListener("change", updatePlaybackPreference);
+
+    return () => {
+      motionQuery.removeEventListener("change", updatePlaybackPreference);
+    };
+  }, []);
+
+  // Intersection-driven loading keeps hero media out of network queue until needed.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || shouldLoad) return;
+    if (!video || shouldLoad || !allowPlayback) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -32,12 +76,47 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
     return () => {
       observer.disconnect();
     };
-  }, [shouldLoad]);
+  }, [shouldLoad, allowPlayback]);
 
-  // Separate effect for video loading
+  // Delay motion start so text and poster paint first.
+  useEffect(() => {
+    if (!shouldLoad || !allowPlayback || hasError) return;
+
+    const browserWindow = window as Window & {
+      requestIdleCallback?: (
+        callback: (deadline: IdleDeadline) => void,
+        options?: { timeout: number },
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    let idleId: number | null = null;
+    const delayTimer = window.setTimeout(() => {
+      if (browserWindow.requestIdleCallback) {
+        idleId = browserWindow.requestIdleCallback(
+          () => {
+            setCanStart(true);
+          },
+          { timeout: 1200 },
+        );
+      } else {
+        setCanStart(true);
+      }
+    }, startDelayMs);
+
+    return () => {
+      window.clearTimeout(delayTimer);
+      if (idleId !== null && browserWindow.cancelIdleCallback) {
+        browserWindow.cancelIdleCallback(idleId);
+      }
+    };
+  }, [shouldLoad, allowPlayback, hasError, startDelayMs]);
+
+  // Load and play once sources are attached.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !shouldLoad) return;
+    const shouldAttachSources = shouldLoad && allowPlayback && canStart;
+    if (!video || !shouldAttachSources) return;
 
     const handleLoadedData = () => {
       setIsLoaded(true);
@@ -51,6 +130,10 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
       console.error("Video failed to load");
     };
 
+    if (video.readyState >= 2) {
+      handleLoadedData();
+    }
+
     video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("error", handleError);
 
@@ -58,7 +141,9 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("error", handleError);
     };
-  }, [shouldLoad]);
+  }, [shouldLoad, allowPlayback, canStart]);
+
+  const shouldAttachSources = shouldLoad && allowPlayback && canStart;
 
   return (
     <>
@@ -77,10 +162,19 @@ export default function HeroVideo({ src, poster }: HeroVideoProps) {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         poster={poster}
+        aria-hidden="true"
       >
-        {shouldLoad && <source src={src} type="video/mp4" />}
+        {shouldAttachSources &&
+          resolvedSources.map((source) => (
+            <source
+              key={`${source.src}-${source.media || "all"}`}
+              src={source.src}
+              type={source.type}
+              media={source.media}
+            />
+          ))}
       </video>
     </>
   );

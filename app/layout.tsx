@@ -238,11 +238,51 @@ export default function RootLayout({
         {/* Video section - fixed height for hero area */}
         <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-[#040010]">
           <HeroVideo
-            src="/videos/background-video.mp4"
             poster="/images/bg-vid-cover.jpg"
+            startDelayMs={900}
+            sources={[
+              {
+                src: "/videos/background-video-mobile.webm",
+                type: "video/webm",
+                media: "(max-width: 767px)",
+              },
+              {
+                src: "/videos/background-video-mobile.mp4",
+                type: "video/mp4",
+                media: "(max-width: 767px)",
+              },
+              {
+                src: "/videos/background-video-desktop.webm",
+                type: "video/webm",
+                media: "(min-width: 768px)",
+              },
+              {
+                src: "/videos/background-video-desktop.mp4",
+                type: "video/mp4",
+                media: "(min-width: 768px)",
+              },
+              {
+                src: "/videos/background-video-mobile.mp4",
+                type: "video/mp4",
+              },
+            ]}
           />
-          {/* Gradient overlay for smooth transition */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040010]" />
+          {/* Cinematic overlays hide compression artifacts while keeping brand mood */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 50% 10%, rgba(129, 51, 241, 0.28), rgba(129, 51, 241, 0) 55%), linear-gradient(to bottom, rgba(4, 0, 16, 0.2), rgba(4, 0, 16, 0.76) 72%, #040010 100%)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.1] mix-blend-soft-light"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.5px)",
+              backgroundSize: "3px 3px",
+            }}
+          />
         </div>
 
         {/* Solid color section - starts after hero */}
