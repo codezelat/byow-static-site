@@ -79,8 +79,8 @@ const Footer = () => {
                 const href = isPhone
                   ? `tel:${info.replace(/\s+/g, "")}`
                   : info.includes("@")
-                  ? `mailto:${info}`
-                  : undefined;
+                    ? `mailto:${info}`
+                    : undefined;
 
                 return (
                   <li key={id}>
@@ -124,7 +124,8 @@ const Footer = () => {
       <hr className="border-t border-indigo-200/30" />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between space-y-3 px-4 py-6 text-center text-xs sm:flex-row sm:space-y-0 sm:text-sm sm:px-6 lg:px-8">
         <p className="w-full text-center sm:text-left">
-          ©2025 BYOW. All rights reserved. A proud product built with love by{" "}
+          ©{new Date().getFullYear()} BYOW. All rights reserved. A proud product
+          built with love by{" "}
           <a
             href="https://codezela.com"
             target="_blank"
