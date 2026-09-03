@@ -927,6 +927,38 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 900px) {
+  .heroInner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .heroCopy {
+    width: min(100%, 39rem);
+  }
+
+  .heroStage {
+    width: 100%;
+    min-height: 40rem;
+    margin-top: -4rem;
+  }
+
+  .heroCharacter1 {
+    inset: 0 8% 0 24%;
+  }
+
+  .heroCharacter2 {
+    left: 4%;
+    width: 29%;
+  }
+
+  .heroCharacter3 {
+    right: 2%;
+    width: 31%;
+  }
+}
+
 @media (max-width: 399px) {
   .heroActions {
     align-items: stretch;
