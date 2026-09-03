@@ -9,6 +9,7 @@ import ChallengesSection from "./components/sections/home/ChallengesSection";
 import BuildSquadSection from "./components/sections/home/BuildSquadSection";
 import InfiniteHorizontalScroll from "./components/sections/home/InfiniteHorizontalScroll";
 import YourSuccessSection from "./components/sections/common/YourSuccessSection";
+import CharacterStoriesSection from "./components/sections/home/CharacterStoriesSection";
 
 export const metadata: Metadata = {
   title:
@@ -47,6 +48,7 @@ export default function Home() {
           <InfiniteHorizontalScroll />
         </section>
       </div>
+      <CharacterStoriesSection />
       <section className="w-full">
         <YourSuccessSection />
       </section>

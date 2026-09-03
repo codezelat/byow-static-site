@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products",
     "/contact",
     "/privacy",
+    "/scoob",
+    "/yoda",
   ];
 
   const serviceRoutes = Object.keys(serviceDetails)
