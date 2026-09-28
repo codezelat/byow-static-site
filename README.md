@@ -72,7 +72,11 @@ app/
 ## Deployment
 
 - Build output lives under `.next`. Any Node-compatible host (Vercel, Netlify, Render, etc.) can run `npm run build && npm run start`.
-- Environment variables are not required right now. If you add any, prefer storing them via platform secrets and exposing only those prefixed with `NEXT_PUBLIC_` to the client.
+- The shared contact form sends enquiries through `POST /api/contact` using Resend. Configure these server-only environment variables in Vercel (Production and Preview) and in an ignored `.env.local` for local delivery tests:
+  - `RESEND_API_KEY`: a Resend sending API key. Never prefix it with `NEXT_PUBLIC_` or commit it.
+  - `CONTACT_FROM_EMAIL`: a sender on the verified Resend domain, default `BYOW Website <website@byow.lk>`.
+  - `CONTACT_TO_EMAIL`: the enquiry inbox, default `info@byow.lk`.
+- The visitor's email is set as Reply-To. A success message appears only after Resend accepts the email; final delivery can be checked in Resend. The route validates input, rejects cross-origin submissions, limits request size, checks a honeypot, and uses Resend idempotency keys to avoid duplicate retries. The in-memory attempt limiter is best effort per server instance, not a distributed rate limit.
 
 ## Contributing / Extending
 

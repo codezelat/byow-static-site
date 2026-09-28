@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import {
   Facebook,
@@ -17,9 +17,50 @@ interface PopupPageProps {
 }
 
 export default function PopupPage({ onClose }: PopupPageProps) {
-  const handleSubmit = (e: React.FormEvent) => {
+  const formId = useId();
+  const pending = useRef(false);
+  const submissionId = useRef<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+  const feedback = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") feedback.current?.focus();
+  }, [status]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    if (pending.current) return;
+    const form = e.currentTarget;
+    const fields = Object.fromEntries(new FormData(form));
+    pending.current = true;
+    setStatus("sending");
+    setError("");
+
+    try {
+      // Keep the same ID after a network failure so retrying cannot send a duplicate.
+      submissionId.current ??= crypto.randomUUID();
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...fields, submissionId: submissionId.current }),
+        signal: AbortSignal.timeout(25_000),
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true) {
+        throw new Error(typeof result.error === "string" ? result.error : "We couldn't send your enquiry. Please try again.");
+      }
+      form.reset();
+      submissionId.current = null;
+      setStatus("success");
+    } catch (failure) {
+      setError(failure instanceof Error && failure.name === "Error"
+        ? failure.message
+        : "We couldn't confirm your submission. Please try again or email info@byow.lk.");
+      setStatus("error");
+    } finally {
+      pending.current = false;
+    }
   };
 
   return (
@@ -58,6 +99,7 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                 {/* Close Button */}
                 <button
                   onClick={onClose}
+                  aria-label="Close contact form"
                   className="absolute top-3 right-3 xs:top-4 xs:right-4 text-white hover:text-[#8133F1] hover:scale-110 active:scale-95 transition-all duration-300 z-10"
                 >
                   <CloseIcon className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
@@ -74,28 +116,39 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6"
+                  aria-busy={status === "sending"}
                 >
+                  <fieldset disabled={status === "sending"} className="min-w-0 space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6">
+                  <div className="sr-only" aria-hidden="true">
+                    <label htmlFor={`${formId}-website`}>Leave this field empty</label>
+                    <input id={`${formId}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xs:gap-4">
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                      <label htmlFor={`${formId}-firstName`} className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         First Name*
                       </label>
                       <input
                         type="text"
                         name="firstName"
+                        id={`${formId}-firstName`}
+                        autoComplete="given-name"
+                        maxLength={100}
                         required
                         className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none rounded-full transition-all duration-300"
                         placeholder="Enter your first name"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                      <label htmlFor={`${formId}-lastName`} className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                         Last Name*
                       </label>
                       <input
                         type="text"
                         name="lastName"
+                        id={`${formId}-lastName`}
+                        autoComplete="family-name"
+                        maxLength={100}
                         required
                         className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
                         placeholder="Enter your last name"
@@ -104,12 +157,15 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                    <label htmlFor={`${formId}-business`} className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                       Business Name*
                     </label>
                     <input
                       type="text"
                       name="business"
+                      id={`${formId}-business`}
+                      autoComplete="organization"
+                      maxLength={200}
                       required
                       className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300"
                       placeholder="Your company or business name"
@@ -117,11 +173,12 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
+                    <label htmlFor={`${formId}-service`} className="block text-xs 2xs:text-sm text-gray-300 mb-1 2xs:mb-2 text-left pl-2">
                       I am looking for...
                     </label>
                     <select
                       name="service"
+                      id={`${formId}-service`}
                       required
                       className="w-full bg-[#18171A] text-white px-3 py-2 2xs:px-4 2xs:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 cursor-pointer appearance-none"
                       style={{
@@ -174,26 +231,32 @@ export default function PopupPage({ onClose }: PopupPageProps) {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 xs:gap-4">
                     <div>
-                      <label className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
+                      <label htmlFor={`${formId}-email`} className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
                         Email*
                       </label>
                       <input
                         type="email"
                         name="email"
+                        id={`${formId}-email`}
+                        autoComplete="email"
+                        maxLength={254}
                         required
                         className="w-full bg-[#18171A] text-white px-3 py-2 xs:px-4 xs:py-2.5 sm:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 text-sm"
                         placeholder="your.email@company.com"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
+                      <label htmlFor={`${formId}-phone`} className="block text-xs xs:text-sm text-gray-300 mb-1 xs:mb-2 text-left pl-2">
                         Contact Number*
                       </label>
                       <input
                         type="tel"
                         name="phone"
+                        id={`${formId}-phone`}
+                        autoComplete="tel"
+                        maxLength={30}
                         required
-                        pattern="[+]?[0-9\s\-\(\)]{7,20}"
+                        pattern={"[+]?[0-9\\s\\-\\(\\)]{7,30}"}
                         title="Please enter a valid phone number (e.g., +1 555-123-4567, +44 20 1234 5678, +94 77 123 4567)"
                         className="w-full bg-[#18171A] text-white px-3 py-2 xs:px-4 xs:py-2.5 sm:py-3 rounded-full border border-transparent focus:border-[#8133F1] hover:border-[#8133F1] focus:outline-none transition-all duration-300 text-sm"
                         placeholder="+94 77 123 4567 (LK/UK/US/Any country)"
@@ -204,12 +267,25 @@ export default function PopupPage({ onClose }: PopupPageProps) {
                   <div className="flex justify-start mt-3 xs:mt-4 sm:mt-6">
                     <button
                       type="submit"
-                      className="bg-[#8133F1] text-white px-5 py-2 xs:px-6 xs:py-2.5 sm:px-8 sm:py-3 rounded-full flex items-center gap-2 hover:bg-[#9d5bff] active:scale-95 transition-all duration-300 text-xs xs:text-sm font-medium"
+                      disabled={status === "sending"}
+                      className="bg-[#8133F1] text-white px-5 py-2 xs:px-6 xs:py-2.5 sm:px-8 sm:py-3 rounded-full flex items-center gap-2 hover:bg-[#9d5bff] active:scale-95 transition-all duration-300 text-xs xs:text-sm font-medium disabled:opacity-60 disabled:cursor-wait"
                     >
-                      SUBMIT NOW{" "}
+                      {status === "sending" ? "SENDING..." : "SUBMIT NOW"}{" "}
                       <ArrowCircleRightOutlinedIcon className="w-4 h-4 xs:w-5 xs:h-5" />
                     </button>
                   </div>
+                  </fieldset>
+                  {status === "success" && (
+                    <p ref={feedback} tabIndex={-1} role="status" className="mt-4 text-sm text-emerald-300 text-left outline-none">
+                      Thank you! Your enquiry has been sent. Our team will be in touch.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p ref={feedback} tabIndex={-1} role="alert" className="mt-4 text-sm text-rose-300 text-left outline-none">
+                      {error}{" "}
+                      <a href="mailto:info@byow.lk" className="underline">Email BYOW</a>
+                    </p>
+                  )}
                 </form>
 
                 <div className="mt-3 xs:mt-4 sm:mt-6 mb-4 xs:mb-6 md:mb-8 flex flex-col xs:flex-row flex-wrap items-center justify-between space-y-3 xs:space-y-0 gap-3 xs:gap-4">
